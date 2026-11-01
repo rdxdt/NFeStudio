@@ -33,12 +33,28 @@ NFeStudio/
 └── dist/                   # Pacotes gerados (.deb, .rpm, instalador win64)
 ```
 
-Nos *Build Modes* do Lazarus, configure para cada plataforma:
+O projeto (`src/nfestudio.lpi`) possui os seguintes *Build Modes*:
 
-| Modo    | Target OS / CPU  | Unit output (`-FU`) | Executável (`-o`)          |
-|---------|------------------|---------------------|----------------------------|
-| Win64   | win64 / x86_64   | `../build/win64`    | `../bin/win64/nfestudio`   |
-| Linux64 | linux / x86_64   | `../build/linux64`  | `../bin/linux64/nfestudio` |
+| Modo            | Target OS / CPU  | Widgetset | Unit output (`-FU`)         | Executável (`-o`)                    |
+|-----------------|------------------|-----------|-----------------------------|--------------------------------------|
+| Debug-Linux64   | linux / x86_64   | gtk2      | `../build/linux64/debug`    | `../bin/linux64/debug/nfestudio`     |
+| Release-Linux64 | linux / x86_64   | gtk2      | `../build/linux64/release`  | `../bin/linux64/nfestudio`           |
+| Debug-Win64     | win64 / x86_64   | win32     | `../build/win64/debug`      | `../bin/win64/debug/nfestudio.exe`   |
+| Release-Win64   | win64 / x86_64   | win32     | `../build/win64/release`    | `../bin/win64/nfestudio.exe`         |
+
+- **Debug**: sem otimização, informação de debug DWARF3 (`-gw3 -gl`), heaptrc (`-gh`),
+  checagens de range/overflow/IO/stack (`-CirotR`), assertions e `-dDEBUG`.
+- **Release**: otimização `-O3`, smart linking (`-CX -XX`), sem informação de debug e
+  com símbolos removidos (`-Xs`), além de `-dRELEASE`.
+
+Compilação pela linha de comando:
+
+```sh
+lazbuild --bm=Release-Linux64 src/nfestudio.lpi
+lazbuild --bm=Release-Win64   src/nfestudio.lpi   # cross-compile (requer FPC x86_64-win64)
+```
+
+Os pacotes abaixo devem ser gerados a partir do modo **Release-Linux64**.
 
 ### Empacotamento (linux64)
 
