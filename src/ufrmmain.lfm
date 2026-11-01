@@ -1,0 +1,251 @@
+object frmMain: TfrmMain
+  Left = 462
+  Height = 502
+  Top = 30
+  Width = 652
+  Caption = 'NFe Studio'
+  ClientHeight = 502
+  ClientWidth = 652
+  object pnlTopBar: TPanel
+    Left = 0
+    Height = 50
+    Top = 0
+    Width = 652
+    Align = alTop
+    ClientHeight = 50
+    ClientWidth = 652
+    TabOrder = 0
+    object btnMenu: TSpeedButton
+      Left = 9
+      Height = 32
+      Top = 9
+      Width = 32
+      Align = alLeft
+      BorderSpacing.Around = 8
+    end
+    object dtpInicial: TDateTimePicker
+      Left = 82
+      Height = 22
+      Top = 19
+      Width = 87
+      CenturyFrom = 1941
+      MaxDate = 2958465
+      MinDate = -53780
+      TabOrder = 0
+      TrailingSeparator = False
+      TextForNullDate = 'NULL'
+      LeadingZeros = True
+      Kind = dtkDate
+      TimeFormat = tf24
+      TimeDisplay = tdHMS
+      DateMode = dmComboBox
+      Date = 46327
+      Time = 0.224143541665399
+      UseDefaultSeparators = True
+      HideDateTimeParts = []
+      MonthNames = 'Long'
+    end
+    object dtpFinal: TDateTimePicker
+      Left = 184
+      Height = 22
+      Top = 19
+      Width = 87
+      CenturyFrom = 1941
+      MaxDate = 2958465
+      MinDate = -53780
+      TabOrder = 1
+      TrailingSeparator = False
+      TextForNullDate = 'NULL'
+      LeadingZeros = True
+      Kind = dtkDate
+      TimeFormat = tf24
+      TimeDisplay = tdHMS
+      DateMode = dmComboBox
+      Date = 46327
+      Time = 0.224187766201794
+      UseDefaultSeparators = True
+      HideDateTimeParts = []
+      MonthNames = 'Long'
+    end
+    object Label1: TLabel
+      Left = 84
+      Height = 18
+      Top = 4
+      Width = 69
+      Caption = 'Data Inicial'
+    end
+    object Label2: TLabel
+      Left = 187
+      Height = 18
+      Top = 4
+      Width = 61
+      Caption = 'Data Final'
+    end
+    object btnAbrir: TButton
+      Left = 280
+      Height = 32
+      Top = 9
+      Width = 120
+      Caption = 'Abrir'
+      TabOrder = 2
+    end
+  end
+  object DBGrid1: TDBGrid
+    Left = 170
+    Height = 429
+    Top = 50
+    Width = 482
+    Align = alClient
+    Color = clWindow
+    Columns = <>
+    TabOrder = 1
+  end
+  object StatusBar1: TStatusBar
+    Left = 0
+    Height = 23
+    Top = 479
+    Width = 652
+    Panels = <>
+  end
+  object pnlMenu: TPanel
+    Left = 0
+    Height = 429
+    Top = 50
+    Width = 170
+    Align = alLeft
+    TabOrder = 3
+  end
+  object ZConnection1: TZConnection
+    ControlsCodePage = cCP_UTF8
+    Properties.Strings = (
+      'RawStringEncoding=DB_CP'
+    )
+    DisableSavepoints = False
+    Port = 0
+    Database = ':memory:'
+    Protocol = 'sqlite'
+    Left = 270
+    Top = 169
+  end
+  object ACBrNFe1: TACBrNFe
+    Configuracoes.Geral.SSLLib = libNone
+    Configuracoes.Geral.SSLCryptLib = cryNone
+    Configuracoes.Geral.SSLHttpLib = httpNone
+    Configuracoes.Geral.SSLXmlSignLib = xsNone
+    Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
+    Configuracoes.Arquivos.OrdenacaoPath = <>
+    Configuracoes.WebServices.UF = 'SP'
+    Configuracoes.WebServices.AguardarConsultaRet = 0
+    Configuracoes.WebServices.QuebradeLinha = '|'
+    Configuracoes.RespTec.IdCSRT = 0
+    Left = 440
+    Top = 171
+  end
+  object ACBrNFeDANFeESCPOS1: TACBrNFeDANFeESCPOS
+    Sistema = 'Projeto ACBr - www.projetoacbr.com.br'
+    MargemInferior = 8
+    MargemSuperior = 8
+    MargemEsquerda = 6
+    MargemDireita = 5.1
+    ExpandeLogoMarcaConfig.Altura = 0
+    ExpandeLogoMarcaConfig.Esquerda = 0
+    ExpandeLogoMarcaConfig.Topo = 0
+    ExpandeLogoMarcaConfig.Largura = 0
+    ExpandeLogoMarcaConfig.Dimensionar = False
+    ExpandeLogoMarcaConfig.Esticar = True
+    CasasDecimais.Formato = tdetInteger
+    CasasDecimais.qCom = 2
+    CasasDecimais.vUnCom = 2
+    CasasDecimais.MaskqCom = ',0.00'
+    CasasDecimais.MaskvUnCom = ',0.00'
+    CasasDecimais.Aliquota = 2
+    CasasDecimais.MaskAliquota = ',0.00'
+    Left = 268
+    Top = 245
+  end
+  object ACBrNFeDANFCeFortesA4_1: TACBrNFeDANFCeFortesA4
+    Sistema = 'Projeto ACBr - www.projetoacbr.com.br'
+    MargemInferior = 8
+    MargemSuperior = 8
+    MargemEsquerda = 6
+    MargemDireita = 5.1
+    ExpandeLogoMarcaConfig.Altura = 0
+    ExpandeLogoMarcaConfig.Esquerda = 0
+    ExpandeLogoMarcaConfig.Topo = 0
+    ExpandeLogoMarcaConfig.Largura = 0
+    ExpandeLogoMarcaConfig.Dimensionar = False
+    ExpandeLogoMarcaConfig.Esticar = True
+    CasasDecimais.Formato = tdetInteger
+    CasasDecimais.qCom = 2
+    CasasDecimais.vUnCom = 2
+    CasasDecimais.MaskqCom = ',0.00'
+    CasasDecimais.MaskvUnCom = ',0.00'
+    CasasDecimais.Aliquota = 2
+    CasasDecimais.MaskAliquota = ',0.00'
+    Left = 443
+    Top = 245
+  end
+  object ACBrNFeDANFCeFortes1: TACBrNFeDANFCeFortes
+    Sistema = 'Projeto ACBr - www.projetoacbr.com.br'
+    MargemInferior = 8
+    MargemSuperior = 8
+    MargemEsquerda = 6
+    MargemDireita = 5.1
+    ExpandeLogoMarcaConfig.Altura = 0
+    ExpandeLogoMarcaConfig.Esquerda = 0
+    ExpandeLogoMarcaConfig.Topo = 0
+    ExpandeLogoMarcaConfig.Largura = 0
+    ExpandeLogoMarcaConfig.Dimensionar = False
+    ExpandeLogoMarcaConfig.Esticar = True
+    CasasDecimais.Formato = tdetInteger
+    CasasDecimais.qCom = 2
+    CasasDecimais.vUnCom = 2
+    CasasDecimais.MaskqCom = ',0.00'
+    CasasDecimais.MaskvUnCom = ',0.00'
+    CasasDecimais.Aliquota = 2
+    CasasDecimais.MaskAliquota = ',0.00'
+    FonteLinhaItem.Height = -9
+    FonteLinhaItem.Name = 'Lucida Console'
+    Left = 264
+    Top = 320
+  end
+  object ACBrPosPrinter1: TACBrPosPrinter
+    ConfigBarras.MostrarCodigo = False
+    ConfigBarras.LarguraLinha = 0
+    ConfigBarras.Altura = 0
+    ConfigBarras.Margem = 0
+    ConfigQRCode.Tipo = 2
+    ConfigQRCode.LarguraModulo = 4
+    ConfigQRCode.ErrorLevel = 0
+    LinhasEntreCupons = 0
+    Left = 448
+    Top = 317
+  end
+  object ACBrNFeDANFeRL1: TACBrNFeDANFeRL
+    Sistema = 'Projeto ACBr - www.projetoacbr.com.br'
+    MargemInferior = 8
+    MargemSuperior = 8
+    MargemEsquerda = 6
+    MargemDireita = 5.1
+    ExpandeLogoMarcaConfig.Altura = 0
+    ExpandeLogoMarcaConfig.Esquerda = 0
+    ExpandeLogoMarcaConfig.Topo = 0
+    ExpandeLogoMarcaConfig.Largura = 0
+    ExpandeLogoMarcaConfig.Dimensionar = False
+    ExpandeLogoMarcaConfig.Esticar = True
+    CasasDecimais.Formato = tdetInteger
+    CasasDecimais.qCom = 2
+    CasasDecimais.vUnCom = 2
+    CasasDecimais.MaskqCom = ',0.00'
+    CasasDecimais.MaskvUnCom = ',0.00'
+    CasasDecimais.Aliquota = 2
+    CasasDecimais.MaskAliquota = ',0.00'
+    Left = 264
+    Top = 392
+  end
+  object DataSource1: TDataSource
+    DataSet = dmdNFe.qryNFeCab
+    Left = 456
+    Top = 392
+  end
+end

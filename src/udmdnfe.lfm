@@ -1,0 +1,49 @@
+object dmdNFe: TdmdNFe
+  OldCreateOrder = False
+  Height = 396
+  HorizontalOffset = 462
+  VerticalOffset = 30
+  Width = 561
+  object qryNFeCab: TZQuery
+    Connection = frmMain.ZConnection1
+    Params = <>
+    Left = 32
+    Top = 17
+  end
+  object qryNFeDet: TZQuery
+    Connection = frmMain.ZConnection1
+    Params = <>
+    Left = 136
+    Top = 17
+  end
+  object qryNFePgt: TZQuery
+    Connection = frmMain.ZConnection1
+    Params = <>
+    Left = 226
+    Top = 16
+  end
+  object qryNFeVol: TZQuery
+    Connection = frmMain.ZConnection1
+    Params = <>
+    Left = 312
+    Top = 16
+  end
+  object qryNFeDup: TZQuery
+    Connection = frmMain.ZConnection1
+    Params = <>
+    Left = 392
+    Top = 16
+  end
+  object qryNFeFat: TZQuery
+    Connection = frmMain.ZConnection1
+    Params = <>
+    Left = 32
+    Top = 88
+  end
+  object cmdCreateTables: TZQuery
+    Connection = frmMain.ZConnection1
+    Params = <>
+    Left = 136
+    Top = 88
+  end
+end

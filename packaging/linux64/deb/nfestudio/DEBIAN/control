@@ -1,0 +1,11 @@
+Package: nfestudio
+Version: 0.1.0
+Section: utils
+Priority: optional
+Architecture: amd64
+Depends: libgtk2.0-0
+Maintainer: Rodrigo P. <ropeetz@gmail.com>
+Homepage: https://github.com/rdxdt/NFeStudio
+Description: Visualização, impressão de DANFe e relatórios
+ NFeStudio reúne visualização de NF-e, impressão de DANFe e
+ relatórios em um aplicativo só.

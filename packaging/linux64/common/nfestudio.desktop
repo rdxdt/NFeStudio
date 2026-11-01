@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=NFeStudio
+Comment=Visualização, impressão de DANFe e relatórios
+Exec=nfestudio %f
+Icon=nfestudio
+Terminal=false
+Categories=Office;Finance;
+MimeType=application/xml;
