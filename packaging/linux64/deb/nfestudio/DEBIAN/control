@@ -3,7 +3,7 @@ Version: 0.1.0
 Section: utils
 Priority: optional
 Architecture: amd64
-Depends: libgtk2.0-0
+Depends: libqt6pas6
 Maintainer: Rodrigo P. <ropeetz@gmail.com>
 Homepage: https://github.com/rdxdt/NFeStudio
 Description: Visualização, impressão de DANFe e relatórios

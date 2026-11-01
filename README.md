@@ -40,8 +40,8 @@ O projeto (`src/nfestudio.lpi`) possui os seguintes *Build Modes*:
 
 | Modo            | Target OS / CPU  | Widgetset | Unit output (`-FU`)         | Executável (`-o`)                    |
 |-----------------|------------------|-----------|-----------------------------|--------------------------------------|
-| Debug-Linux64   | linux / x86_64   | gtk2      | `../build/linux64/debug`    | `../bin/linux64/debug/nfestudio`     |
-| Release-Linux64 | linux / x86_64   | gtk2      | `../build/linux64/release`  | `../bin/linux64/nfestudio`           |
+| Debug-Linux64   | linux / x86_64   | qt6       | `../build/linux64/debug`    | `../bin/linux64/debug/nfestudio`     |
+| Release-Linux64 | linux / x86_64   | qt6       | `../build/linux64/release`  | `../bin/linux64/nfestudio`           |
 | Debug-Win64     | win64 / x86_64   | win32     | `../build/win64/debug`      | `../bin/win64/debug/nfestudio.exe`   |
 | Release-Win64   | win64 / x86_64   | win32     | `../build/win64/release`    | `../bin/win64/nfestudio.exe`         |
 
@@ -49,6 +49,20 @@ O projeto (`src/nfestudio.lpi`) possui os seguintes *Build Modes*:
   checagens de range/overflow/IO/stack (`-CirotR`), assertions e `-dDEBUG`.
 - **Release**: otimização `-O3`, smart linking (`-CX -XX`), sem informação de debug e
   com símbolos removidos (`-Xs`), além de `-dRELEASE`.
+
+As builds Linux64 usam o widgetset **Qt6**, que depende da biblioteca de bindings
+Qt6Pas. Para compilar é necessário o pacote de desenvolvimento e, para executar, apenas
+a biblioteca:
+
+```sh
+# Debian/Ubuntu
+sudo apt install libqt6pas-dev   # compilação
+sudo apt install libqt6pas6      # execução
+
+# Fedora
+sudo dnf install qt6pas-devel    # compilação
+sudo dnf install qt6pas          # execução
+```
 
 Compilação pela linha de comando:
 

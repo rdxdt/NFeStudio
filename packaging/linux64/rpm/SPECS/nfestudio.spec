@@ -5,7 +5,7 @@ Summary:        Visualização, impressão de DANFe e relatórios
 License:        GPL-3.0-or-later
 URL:            https://github.com/rdxdt/NFeStudio
 BuildArch:      x86_64
-Requires:       gtk2
+Requires:       qt6pas
 
 # O binário é compilado pelo Lazarus (bin/linux64) e copiado para SOURCES antes do rpmbuild
 Source0:        nfestudio

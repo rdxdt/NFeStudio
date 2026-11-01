@@ -134,7 +134,7 @@
         </CompilerOptions>
       </Item>
       <SharedMatrixOptions Count="2">
-        <Item1 ID="512026110101" Modes="Debug-Linux64,Release-Linux64" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk2"/>
+        <Item1 ID="512026110101" Modes="Debug-Linux64,Release-Linux64" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt6"/>
         <Item2 ID="512026110102" Modes="Debug-Win64,Release-Win64" Type="IDEMacro" MacroName="LCLWidgetType" Value="win32"/>
       </SharedMatrixOptions>
     </BuildModes>
