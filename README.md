@@ -5,10 +5,13 @@ Visualização, impressão de DANFe e relatórios em um aplicativo só
 
 ```
 NFeStudio/
-├── src/                    # Código-fonte Lazarus (.lpi, .lpr)
-│   ├── forms/              # Formulários (.pas + .lfm)
-│   ├── units/              # Units de lógica / regras de negócio
-│   └── resources/          # Recursos (.rc, .res, .ico, manifest)
+├── src/                    # Código-fonte Lazarus
+│   ├── nfestudio.lpi       # Projeto Lazarus (build modes, pacotes)
+│   ├── nfestudio.lpr       # Programa principal
+│   ├── nfestudio.ico       # Ícone da aplicação
+│   ├── nfestudio.res       # Recursos compilados (ícone, manifest)
+│   ├── ufrmmain.pas/.lfm   # Formulário principal (frmMain)
+│   └── udmdnfe.pas/.lfm    # Data module da NF-e (dmdNFe)
 ├── images/                 # Imagens do projeto
 │   ├── icons/
 │   ├── logos/
