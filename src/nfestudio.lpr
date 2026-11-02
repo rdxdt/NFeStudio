@@ -22,8 +22,8 @@ begin
   Application.MainFormOnTaskbar:=True;
   {$POP}
   Application.Initialize;
-  Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(TdmdNFe, dmdNFe);
+  Application.CreateForm(TfrmMain, frmMain);
   Application.Run;
 end.
 

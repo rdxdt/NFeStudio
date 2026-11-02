@@ -6,6 +6,7 @@ object frmMain: TfrmMain
   Caption = 'NFe Studio'
   ClientHeight = 502
   ClientWidth = 652
+  OnCreate = FormCreate
   object pnlTopBar: TPanel
     Left = 0
     Height = 50
