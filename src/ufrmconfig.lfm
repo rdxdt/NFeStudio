@@ -1,0 +1,2218 @@
+object frmConfig: TfrmConfig
+  Left = 400
+  Height = 600
+  Top = 120
+  Width = 720
+  BorderIcons = [biSystemMenu]
+  Caption = 'Configura'#231#245'es'
+  ClientHeight = 600
+  ClientWidth = 720
+  Constraints.MinHeight = 400
+  Constraints.MinWidth = 600
+  Position = poOwnerFormCenter
+  object pgcConfig: TPageControl
+    Left = 0
+    Height = 552
+    Top = 0
+    Width = 720
+    ActivePage = tabGeral
+    Align = alClient
+    BorderSpacing.Around = 4
+    TabIndex = 0
+    TabOrder = 0
+    object tabGeral: TTabSheet
+      Caption = 'Geral'
+      object sbxGeral: TScrollBox
+        Left = 0
+        Height = 500
+        Top = 0
+        Width = 700
+        HorzScrollBar.Page = 1
+        HorzScrollBar.Visible = False
+        VertScrollBar.Page = 1
+        Align = alClient
+        BorderStyle = bsNone
+        TabOrder = 0
+        object grpGeralDocumento: TGroupBox
+          Left = 0
+          Top = 0
+          Width = 690
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'Documento'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 2
+          TabOrder = 0
+          object lblModeloDF: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 150
+            Caption = 'Modelo'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxModeloDF: TComboBox
+            Left = 0
+            Top = 10
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            ItemHeight = 0
+            Items.Strings = (
+              'NFe (55)'
+              'NFCe (65)'
+            )
+            Style = csDropDownList
+            TabOrder = 1
+          end
+          object lblVersaoDF: TLabel
+            Left = 0
+            Top = 20
+            Height = 28
+            Width = 150
+            Caption = 'Vers'#227'o'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxVersaoDF: TComboBox
+            Left = 0
+            Top = 30
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            ItemHeight = 0
+            Items.Strings = (
+              '2.00'
+              '3.00'
+              '3.10'
+              '4.00'
+            )
+            Style = csDropDownList
+            TabOrder = 3
+          end
+          object lblFormaEmissao: TLabel
+            Left = 0
+            Top = 40
+            Height = 28
+            Width = 150
+            Caption = 'Forma de emiss'#227'o'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxFormaEmissao: TComboBox
+            Left = 0
+            Top = 50
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            ItemHeight = 0
+            Items.Strings = (
+              'Normal'
+              'Conting'#234'ncia'
+              'SCAN'
+              'DPEC'
+              'FS-DA'
+              'SVC-AN'
+              'SVC-RS'
+              'SVC-SP'
+              'Offline'
+            )
+            Style = csDropDownList
+            TabOrder = 5
+          end
+          object lblVersaoQRCode: TLabel
+            Left = 0
+            Top = 60
+            Height = 28
+            Width = 150
+            Caption = 'Vers'#227'o do QR Code'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxVersaoQRCode: TComboBox
+            Left = 0
+            Top = 70
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            ItemHeight = 0
+            Items.Strings = (
+              '0'
+              '1'
+              '2'
+              '3'
+            )
+            Style = csDropDownList
+            TabOrder = 7
+          end
+          object lblIdCSC: TLabel
+            Left = 0
+            Top = 80
+            Height = 28
+            Width = 150
+            Caption = 'Id do CSC'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtIdCSC: TEdit
+            Left = 0
+            Top = 90
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            Text = ''
+            TabOrder = 9
+          end
+          object lblCSC: TLabel
+            Left = 0
+            Top = 100
+            Height = 28
+            Width = 150
+            Caption = 'CSC'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtCSC: TEdit
+            Left = 0
+            Top = 110
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            Text = ''
+            TabOrder = 11
+          end
+          object lblForcarGerarTagRejeicao938: TLabel
+            Left = 0
+            Top = 120
+            Height = 28
+            Width = 150
+            Caption = 'Gerar tag (rejei'#231#227'o 938)'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxForcarGerarTagRejeicao938: TComboBox
+            Left = 0
+            Top = 130
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            ItemHeight = 0
+            Items.Strings = (
+              'Nunca'
+              'Somente em produ'#231#227'o'
+              'Somente em homologa'#231#227'o'
+              'Sempre'
+            )
+            Style = csDropDownList
+            TabOrder = 13
+          end
+          object lblForcarGerarTagRejeicao906: TLabel
+            Left = 0
+            Top = 140
+            Height = 28
+            Width = 150
+            Caption = 'Gerar tag (rejei'#231#227'o 906)'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxForcarGerarTagRejeicao906: TComboBox
+            Left = 0
+            Top = 150
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            ItemHeight = 0
+            Items.Strings = (
+              'Nunca'
+              'Somente em produ'#231#227'o'
+              'Somente em homologa'#231#227'o'
+              'Sempre'
+            )
+            Style = csDropDownList
+            TabOrder = 15
+          end
+          object lblFormatoAlerta: TLabel
+            Left = 0
+            Top = 160
+            Height = 28
+            Width = 150
+            Caption = 'Formato do alerta'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtFormatoAlerta: TEdit
+            Left = 0
+            Top = 170
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            Text = ''
+            TabOrder = 17
+          end
+        end
+        object grpGeralBibliotecasSSL: TGroupBox
+          Left = 0
+          Top = 1000
+          Width = 690
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'Bibliotecas SSL'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 2
+          TabOrder = 1
+          object lblSSLCryptLib: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 150
+            Caption = 'Criptografia'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxSSLCryptLib: TComboBox
+            Left = 0
+            Top = 10
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            ItemHeight = 0
+            Items.Strings = (
+              'Nenhuma'
+              'OpenSSL'
+              'Capicom'
+              'WinCrypt'
+            )
+            Style = csDropDownList
+            TabOrder = 1
+          end
+          object lblSSLHttpLib: TLabel
+            Left = 0
+            Top = 20
+            Height = 28
+            Width = 150
+            Caption = 'HTTP'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxSSLHttpLib: TComboBox
+            Left = 0
+            Top = 30
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            ItemHeight = 0
+            Items.Strings = (
+              'Nenhuma'
+              'WinINet'
+              'WinHTTP'
+              'OpenSSL'
+              'Indy'
+            )
+            Style = csDropDownList
+            TabOrder = 3
+          end
+          object lblSSLXmlSignLib: TLabel
+            Left = 0
+            Top = 40
+            Height = 28
+            Width = 150
+            Caption = 'Assinatura XML'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxSSLXmlSignLib: TComboBox
+            Left = 0
+            Top = 50
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            ItemHeight = 0
+            Items.Strings = (
+              'Nenhuma'
+              'XmlSec'
+              'MsXml'
+              'MsXml Capicom'
+            )
+            Style = csDropDownList
+            TabOrder = 5
+          end
+        end
+        object grpGeralOpcoes: TGroupBox
+          Left = 0
+          Top = 2000
+          Width = 690
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'Op'#231#245'es'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 2
+          TabOrder = 2
+          object chkSalvarGer: TCheckBox
+            Left = 0
+            Top = 0
+            Height = 24
+            Width = 200
+            Caption = 'Salvar arquivos gerados'
+            TabOrder = 0
+          end
+          object chkExibirErroSchema: TCheckBox
+            Left = 0
+            Top = 10
+            Height = 24
+            Width = 200
+            Caption = 'Exibir erro de schema'
+            TabOrder = 1
+          end
+          object chkRetirarAcentos: TCheckBox
+            Left = 0
+            Top = 20
+            Height = 24
+            Width = 200
+            Caption = 'Retirar acentos'
+            TabOrder = 2
+          end
+          object chkRetirarEspacos: TCheckBox
+            Left = 0
+            Top = 30
+            Height = 24
+            Width = 200
+            Caption = 'Retirar espa'#231'os'
+            TabOrder = 3
+          end
+          object chkIdentarXML: TCheckBox
+            Left = 0
+            Top = 40
+            Height = 24
+            Width = 200
+            Caption = 'Identar XML'
+            TabOrder = 4
+          end
+          object chkValidarDigest: TCheckBox
+            Left = 0
+            Top = 50
+            Height = 24
+            Width = 200
+            Caption = 'Validar digest'
+            TabOrder = 5
+          end
+          object chkAtualizarXMLCancelado: TCheckBox
+            Left = 0
+            Top = 60
+            Height = 24
+            Width = 200
+            Caption = 'Atualizar XML cancelado'
+            TabOrder = 6
+          end
+          object chkCamposFatObrigatorios: TCheckBox
+            Left = 0
+            Top = 70
+            Height = 24
+            Width = 200
+            Caption = 'Campos de fatura obrigat'#243'rios'
+            TabOrder = 7
+          end
+        end
+      end
+    end
+    object tabWebServices: TTabSheet
+      Caption = 'WebServices'
+      object sbxWebServices: TScrollBox
+        Left = 0
+        Height = 500
+        Top = 0
+        Width = 700
+        HorzScrollBar.Page = 1
+        HorzScrollBar.Visible = False
+        VertScrollBar.Page = 1
+        Align = alClient
+        BorderStyle = bsNone
+        TabOrder = 0
+        object grpWebServices: TGroupBox
+          Left = 0
+          Top = 0
+          Width = 690
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'WebServices'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 2
+          TabOrder = 0
+          object lblUF: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 150
+            Caption = 'UF'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxUF: TComboBox
+            Left = 0
+            Top = 10
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            ItemHeight = 0
+            Items.Strings = (
+              'AC'
+              'AL'
+              'AP'
+              'AM'
+              'BA'
+              'CE'
+              'DF'
+              'ES'
+              'GO'
+              'MA'
+              'MT'
+              'MS'
+              'MG'
+              'PA'
+              'PB'
+              'PR'
+              'PE'
+              'PI'
+              'RJ'
+              'RN'
+              'RS'
+              'RO'
+              'RR'
+              'SC'
+              'SP'
+              'SE'
+              'TO'
+            )
+            Style = csDropDownList
+            TabOrder = 1
+          end
+          object lblAmbiente: TLabel
+            Left = 0
+            Top = 20
+            Height = 28
+            Width = 150
+            Caption = 'Ambiente'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxAmbiente: TComboBox
+            Left = 0
+            Top = 30
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            ItemHeight = 0
+            Items.Strings = (
+              'Produ'#231#227'o'
+              'Homologa'#231#227'o'
+            )
+            Style = csDropDownList
+            TabOrder = 3
+          end
+          object lblSSLType: TLabel
+            Left = 0
+            Top = 40
+            Height = 28
+            Width = 150
+            Caption = 'Protocolo SSL'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxSSLType: TComboBox
+            Left = 0
+            Top = 50
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            ItemHeight = 0
+            Items.Strings = (
+              'Autom'#225'tico'
+              'SSLv2'
+              'SSLv3'
+              'TLSv1'
+              'TLSv1.1'
+              'TLSv1.2'
+              'TLSv1.3'
+              'SSHv2'
+            )
+            Style = csDropDownList
+            TabOrder = 5
+          end
+          object lblTimeOut: TLabel
+            Left = 0
+            Top = 60
+            Height = 28
+            Width = 150
+            Caption = 'Timeout (ms)'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speTimeOut: TSpinEdit
+            Left = 0
+            Top = 70
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxValue = 999999
+            TabOrder = 7
+          end
+          object lblAguardarConsultaRet: TLabel
+            Left = 0
+            Top = 80
+            Height = 28
+            Width = 150
+            Caption = 'Aguardar consulta do retorno (ms)'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speAguardarConsultaRet: TSpinEdit
+            Left = 0
+            Top = 90
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxValue = 999999
+            TabOrder = 9
+          end
+          object lblIntervaloTentativas: TLabel
+            Left = 0
+            Top = 100
+            Height = 28
+            Width = 150
+            Caption = 'Intervalo entre tentativas (ms)'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speIntervaloTentativas: TSpinEdit
+            Left = 0
+            Top = 110
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxValue = 999999
+            TabOrder = 11
+          end
+          object lblTentativas: TLabel
+            Left = 0
+            Top = 120
+            Height = 28
+            Width = 150
+            Caption = 'Tentativas'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speTentativas: TSpinEdit
+            Left = 0
+            Top = 130
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxValue = 999
+            TabOrder = 13
+          end
+          object lblQuebradeLinha: TLabel
+            Left = 0
+            Top = 140
+            Height = 28
+            Width = 150
+            Caption = 'Quebra de linha'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtQuebradeLinha: TEdit
+            Left = 0
+            Top = 150
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            Text = ''
+            TabOrder = 15
+          end
+          object lblTimeZoneModo: TLabel
+            Left = 0
+            Top = 160
+            Height = 28
+            Width = 150
+            Caption = 'Fuso hor'#225'rio'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxTimeZoneModo: TComboBox
+            Left = 0
+            Top = 170
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            ItemHeight = 0
+            Items.Strings = (
+              'Sistema'
+              'PCN'
+              'Manual'
+            )
+            Style = csDropDownList
+            TabOrder = 17
+          end
+          object lblTimeZoneStr: TLabel
+            Left = 0
+            Top = 180
+            Height = 28
+            Width = 150
+            Caption = 'Fuso manual (ex.: -03:00)'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtTimeZoneStr: TEdit
+            Left = 0
+            Top = 190
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            Text = ''
+            TabOrder = 19
+          end
+        end
+        object grpWebServicesOpcoes: TGroupBox
+          Left = 0
+          Top = 1000
+          Width = 690
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'Op'#231#245'es'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 2
+          TabOrder = 1
+          object chkSalvarWS: TCheckBox
+            Left = 0
+            Top = 0
+            Height = 24
+            Width = 200
+            Caption = 'Salvar envelopes SOAP'
+            TabOrder = 0
+          end
+          object chkVisualizar: TCheckBox
+            Left = 0
+            Top = 10
+            Height = 24
+            Width = 200
+            Caption = 'Visualizar mensagens'
+            TabOrder = 1
+          end
+          object chkTimeOutPorThread: TCheckBox
+            Left = 0
+            Top = 20
+            Height = 24
+            Width = 200
+            Caption = 'Timeout por thread'
+            TabOrder = 2
+          end
+          object chkAjustaAguardaConsultaRet: TCheckBox
+            Left = 0
+            Top = 30
+            Height = 24
+            Width = 200
+            Caption = 'Ajustar aguardo da consulta'
+            TabOrder = 3
+          end
+        end
+        object grpWebServicesProxy: TGroupBox
+          Left = 0
+          Top = 2000
+          Width = 690
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'Proxy'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 2
+          TabOrder = 2
+          object lblProxyHost: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 150
+            Caption = 'Servidor'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtProxyHost: TEdit
+            Left = 0
+            Top = 10
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            Text = ''
+            TabOrder = 1
+          end
+          object lblProxyPort: TLabel
+            Left = 0
+            Top = 20
+            Height = 28
+            Width = 150
+            Caption = 'Porta'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtProxyPort: TEdit
+            Left = 0
+            Top = 30
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            Text = ''
+            TabOrder = 3
+          end
+          object lblProxyUser: TLabel
+            Left = 0
+            Top = 40
+            Height = 28
+            Width = 150
+            Caption = 'Usu'#225'rio'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtProxyUser: TEdit
+            Left = 0
+            Top = 50
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            Text = ''
+            TabOrder = 5
+          end
+          object lblProxyPass: TLabel
+            Left = 0
+            Top = 60
+            Height = 28
+            Width = 150
+            Caption = 'Senha'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtProxyPass: TEdit
+            Left = 0
+            Top = 70
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            Text = ''
+            PasswordChar = '*'
+            TabOrder = 7
+          end
+        end
+      end
+    end
+    object tabCertificado: TTabSheet
+      Caption = 'Certificado'
+      object sbxCertificado: TScrollBox
+        Left = 0
+        Height = 500
+        Top = 0
+        Width = 700
+        HorzScrollBar.Page = 1
+        HorzScrollBar.Visible = False
+        VertScrollBar.Page = 1
+        Align = alClient
+        BorderStyle = bsNone
+        TabOrder = 0
+        object grpCertificadoCertificadoDigital: TGroupBox
+          Left = 0
+          Top = 0
+          Width = 690
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'Certificado digital'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 2
+          TabOrder = 0
+          object lblArquivoPFX: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 150
+            Caption = 'Arquivo PFX'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtArquivoPFX: TFileNameEdit
+            Left = 0
+            Top = 10
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            Filter = 'Certificado (*.pfx;*.p12)|*.pfx;*.p12|Todos os arquivos|*'
+            FilterIndex = 0
+            HideDirectories = False
+            ButtonWidth = 28
+            NumGlyphs = 1
+            MaxLength = 0
+            TabOrder = 1
+          end
+          object lblURLPFX: TLabel
+            Left = 0
+            Top = 20
+            Height = 28
+            Width = 150
+            Caption = 'URL do PFX'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtURLPFX: TEdit
+            Left = 0
+            Top = 30
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            Text = ''
+            TabOrder = 3
+          end
+          object lblSenha: TLabel
+            Left = 0
+            Top = 40
+            Height = 28
+            Width = 150
+            Caption = 'Senha'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtSenha: TEdit
+            Left = 0
+            Top = 50
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            Text = ''
+            PasswordChar = '*'
+            TabOrder = 5
+          end
+          object lblNumeroSerie: TLabel
+            Left = 0
+            Top = 60
+            Height = 28
+            Width = 150
+            Caption = 'N'#250'mero de s'#233'rie'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtNumeroSerie: TEdit
+            Left = 0
+            Top = 70
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            Text = ''
+            TabOrder = 7
+          end
+          object lblVerificarValidade: TLabel
+            Left = 0
+            Top = 80
+            Height = 28
+            Width = 150
+            Caption = 'Verificar validade'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object chkVerificarValidade: TCheckBox
+            Left = 0
+            Top = 90
+            Height = 24
+            Width = 200
+            Caption = ''
+            TabOrder = 9
+          end
+        end
+        object grpCertificadoResponsavelTecnico: TGroupBox
+          Left = 0
+          Top = 1000
+          Width = 690
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'Respons'#225'vel t'#233'cnico'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 2
+          TabOrder = 1
+          object lblIdCSRT: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 150
+            Caption = 'Id do CSRT'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speIdCSRT: TSpinEdit
+            Left = 0
+            Top = 10
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxValue = 999999
+            TabOrder = 1
+          end
+          object lblCSRT: TLabel
+            Left = 0
+            Top = 20
+            Height = 28
+            Width = 150
+            Caption = 'CSRT'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtCSRT: TEdit
+            Left = 0
+            Top = 30
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            Text = ''
+            TabOrder = 3
+          end
+        end
+      end
+    end
+    object tabArquivos: TTabSheet
+      Caption = 'Arquivos'
+      object sbxArquivos: TScrollBox
+        Left = 0
+        Height = 500
+        Top = 0
+        Width = 700
+        HorzScrollBar.Page = 1
+        HorzScrollBar.Visible = False
+        VertScrollBar.Page = 1
+        Align = alClient
+        BorderStyle = bsNone
+        TabOrder = 0
+        object grpArquivosPastas: TGroupBox
+          Left = 0
+          Top = 0
+          Width = 690
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'Pastas'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 2
+          TabOrder = 0
+          object lblPathSalvar: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 150
+            Caption = 'Logs de envio/resposta'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtPathSalvar: TDirectoryEdit
+            Left = 0
+            Top = 10
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            ShowHidden = False
+            ButtonWidth = 28
+            NumGlyphs = 1
+            MaxLength = 0
+            TabOrder = 1
+          end
+          object lblPathSchemas: TLabel
+            Left = 0
+            Top = 20
+            Height = 28
+            Width = 150
+            Caption = 'Schemas'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtPathSchemas: TDirectoryEdit
+            Left = 0
+            Top = 30
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            ShowHidden = False
+            ButtonWidth = 28
+            NumGlyphs = 1
+            MaxLength = 0
+            TabOrder = 3
+          end
+          object lblPathNFe: TLabel
+            Left = 0
+            Top = 40
+            Height = 28
+            Width = 150
+            Caption = 'NFe'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtPathNFe: TDirectoryEdit
+            Left = 0
+            Top = 50
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            ShowHidden = False
+            ButtonWidth = 28
+            NumGlyphs = 1
+            MaxLength = 0
+            TabOrder = 5
+          end
+          object lblPathEvento: TLabel
+            Left = 0
+            Top = 60
+            Height = 28
+            Width = 150
+            Caption = 'Eventos'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtPathEvento: TDirectoryEdit
+            Left = 0
+            Top = 70
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            ShowHidden = False
+            ButtonWidth = 28
+            NumGlyphs = 1
+            MaxLength = 0
+            TabOrder = 7
+          end
+          object lblPathInu: TLabel
+            Left = 0
+            Top = 80
+            Height = 28
+            Width = 150
+            Caption = 'Inutiliza'#231#245'es'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtPathInu: TDirectoryEdit
+            Left = 0
+            Top = 90
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            ShowHidden = False
+            ButtonWidth = 28
+            NumGlyphs = 1
+            MaxLength = 0
+            TabOrder = 9
+          end
+          object lblPathDownload: TLabel
+            Left = 0
+            Top = 100
+            Height = 28
+            Width = 150
+            Caption = 'Downloads'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtPathDownload: TDirectoryEdit
+            Left = 0
+            Top = 110
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            ShowHidden = False
+            ButtonWidth = 28
+            NumGlyphs = 1
+            MaxLength = 0
+            TabOrder = 11
+          end
+          object lblIniServicos: TLabel
+            Left = 0
+            Top = 120
+            Height = 28
+            Width = 150
+            Caption = 'Arquivo de servi'#231'os'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtIniServicos: TFileNameEdit
+            Left = 0
+            Top = 130
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            Filter = 'Arquivo INI (*.ini)|*.ini|Todos os arquivos|*'
+            FilterIndex = 0
+            HideDirectories = False
+            ButtonWidth = 28
+            NumGlyphs = 1
+            MaxLength = 0
+            TabOrder = 13
+          end
+          object lblPathArquivoMunicipios: TLabel
+            Left = 0
+            Top = 140
+            Height = 28
+            Width = 150
+            Caption = 'Arquivo de munic'#237'pios'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtPathArquivoMunicipios: TFileNameEdit
+            Left = 0
+            Top = 150
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            Filter = 'Todos os arquivos|*'
+            FilterIndex = 0
+            HideDirectories = False
+            ButtonWidth = 28
+            NumGlyphs = 1
+            MaxLength = 0
+            TabOrder = 15
+          end
+        end
+        object grpArquivosOpcoes: TGroupBox
+          Left = 0
+          Top = 1000
+          Width = 690
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'Op'#231#245'es'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 2
+          TabOrder = 1
+          object chkSalvarArq: TCheckBox
+            Left = 0
+            Top = 0
+            Height = 24
+            Width = 200
+            Caption = 'Salvar arquivos'
+            TabOrder = 0
+          end
+          object chkAdicionarLiteral: TCheckBox
+            Left = 0
+            Top = 10
+            Height = 24
+            Width = 200
+            Caption = 'Adicionar literal'
+            TabOrder = 1
+          end
+          object chkSepararPorCNPJ: TCheckBox
+            Left = 0
+            Top = 20
+            Height = 24
+            Width = 200
+            Caption = 'Separar por CNPJ'
+            TabOrder = 2
+          end
+          object chkSepararPorIE: TCheckBox
+            Left = 0
+            Top = 30
+            Height = 24
+            Width = 200
+            Caption = 'Separar por IE'
+            TabOrder = 3
+          end
+          object chkSepararPorModelo: TCheckBox
+            Left = 0
+            Top = 40
+            Height = 24
+            Width = 200
+            Caption = 'Separar por modelo'
+            TabOrder = 4
+          end
+          object chkSepararPorAno: TCheckBox
+            Left = 0
+            Top = 50
+            Height = 24
+            Width = 200
+            Caption = 'Separar por ano'
+            TabOrder = 5
+          end
+          object chkSepararPorMes: TCheckBox
+            Left = 0
+            Top = 60
+            Height = 24
+            Width = 200
+            Caption = 'Separar por m'#234's'
+            TabOrder = 6
+          end
+          object chkSepararPorDia: TCheckBox
+            Left = 0
+            Top = 70
+            Height = 24
+            Width = 200
+            Caption = 'Separar por dia'
+            TabOrder = 7
+          end
+          object chkSepararPorNome: TCheckBox
+            Left = 0
+            Top = 80
+            Height = 24
+            Width = 200
+            Caption = 'Separar downloads por nome'
+            TabOrder = 8
+          end
+          object chkSalvarEvento: TCheckBox
+            Left = 0
+            Top = 90
+            Height = 24
+            Width = 200
+            Caption = 'Salvar eventos'
+            TabOrder = 9
+          end
+          object chkSalvarApenasNFeProcessadas: TCheckBox
+            Left = 0
+            Top = 100
+            Height = 24
+            Width = 200
+            Caption = 'Salvar apenas NFe processadas'
+            TabOrder = 10
+          end
+          object chkEmissaoPathNFe: TCheckBox
+            Left = 0
+            Top = 110
+            Height = 24
+            Width = 200
+            Caption = 'Usar data de emiss'#227'o no path'
+            TabOrder = 11
+          end
+          object chkNormatizarMunicipios: TCheckBox
+            Left = 0
+            Top = 120
+            Height = 24
+            Width = 200
+            Caption = 'Normatizar munic'#237'pios'
+            TabOrder = 12
+          end
+        end
+      end
+    end
+    object tabPosPrinter: TTabSheet
+      Caption = 'Impressora'
+      object sbxPosPrinter: TScrollBox
+        Left = 0
+        Height = 500
+        Top = 0
+        Width = 700
+        HorzScrollBar.Page = 1
+        HorzScrollBar.Visible = False
+        VertScrollBar.Page = 1
+        Align = alClient
+        BorderStyle = bsNone
+        TabOrder = 0
+        object grpPosPrinterImpressora: TGroupBox
+          Left = 0
+          Top = 0
+          Width = 690
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'Impressora'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 2
+          TabOrder = 0
+          object lblPosModelo: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 150
+            Caption = 'Modelo'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxPosModelo: TComboBox
+            Left = 0
+            Top = 10
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            ItemHeight = 0
+            Items.Strings = (
+              'Texto'
+              'ESC/POS Epson'
+              'ESC Bematech'
+              'ESC Daruma'
+              'ESC Vox'
+              'ESC Diebold'
+              'ESC Epson P2'
+              'Personalizado'
+              'ESC/POS Star'
+              'ESC ZJiang'
+              'ESC GPrinter'
+              'ESC Datecs'
+              'ESC Sunmi'
+              'Externo'
+            )
+            Style = csDropDownList
+            TabOrder = 1
+          end
+          object lblPosPorta: TLabel
+            Left = 0
+            Top = 20
+            Height = 28
+            Width = 150
+            Caption = 'Porta'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtPosPorta: TEdit
+            Left = 0
+            Top = 30
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            Text = ''
+            TabOrder = 3
+          end
+          object lblPosParamsDevice: TLabel
+            Left = 0
+            Top = 40
+            Height = 28
+            Width = 150
+            Caption = 'Par'#226'metros da porta'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtPosParamsDevice: TEdit
+            Left = 0
+            Top = 50
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            Text = ''
+            TabOrder = 5
+          end
+          object lblPosPaginaDeCodigo: TLabel
+            Left = 0
+            Top = 60
+            Height = 28
+            Width = 150
+            Caption = 'P'#225'gina de c'#243'digo'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxPosPaginaDeCodigo: TComboBox
+            Left = 0
+            Top = 70
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            ItemHeight = 0
+            Items.Strings = (
+              'Nenhuma'
+              '437'
+              '850'
+              '852'
+              '860'
+              'UTF-8'
+              '1252'
+            )
+            Style = csDropDownList
+            TabOrder = 7
+          end
+          object lblPosColunasFonteNormal: TLabel
+            Left = 0
+            Top = 80
+            Height = 28
+            Width = 150
+            Caption = 'Colunas'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object spePosColunasFonteNormal: TSpinEdit
+            Left = 0
+            Top = 90
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxValue = 999
+            TabOrder = 9
+          end
+          object lblPosEspacoEntreLinhas: TLabel
+            Left = 0
+            Top = 100
+            Height = 28
+            Width = 150
+            Caption = 'Espa'#231'o entre linhas'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object spePosEspacoEntreLinhas: TSpinEdit
+            Left = 0
+            Top = 110
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxValue = 255
+            TabOrder = 11
+          end
+          object lblPosLinhasEntreCupons: TLabel
+            Left = 0
+            Top = 120
+            Height = 28
+            Width = 150
+            Caption = 'Linhas entre cupons'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object spePosLinhasEntreCupons: TSpinEdit
+            Left = 0
+            Top = 130
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxValue = 999
+            TabOrder = 13
+          end
+          object lblPosTipoCorte: TLabel
+            Left = 0
+            Top = 140
+            Height = 28
+            Width = 150
+            Caption = 'Tipo de corte'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxPosTipoCorte: TComboBox
+            Left = 0
+            Top = 150
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            ItemHeight = 0
+            Items.Strings = (
+              'Total'
+              'Parcial'
+            )
+            Style = csDropDownList
+            TabOrder = 15
+          end
+          object lblPosLinhasBuffer: TLabel
+            Left = 0
+            Top = 160
+            Height = 28
+            Width = 150
+            Caption = 'Linhas do buffer'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object spePosLinhasBuffer: TSpinEdit
+            Left = 0
+            Top = 170
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxValue = 9999
+            TabOrder = 17
+          end
+          object lblPosArqLOG: TLabel
+            Left = 0
+            Top = 180
+            Height = 28
+            Width = 150
+            Caption = 'Arquivo de log'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtPosArqLOG: TFileNameEdit
+            Left = 0
+            Top = 190
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            Filter = 'Arquivo de log (*.log;*.txt)|*.log;*.txt|Todos os arquivos|*'
+            FilterIndex = 0
+            HideDirectories = False
+            DialogKind = dkSave
+            ButtonWidth = 28
+            NumGlyphs = 1
+            MaxLength = 0
+            TabOrder = 19
+          end
+        end
+        object grpPosPrinterOpcoes: TGroupBox
+          Left = 0
+          Top = 1000
+          Width = 690
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'Op'#231#245'es'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 2
+          TabOrder = 1
+          object chkPosCortaPapel: TCheckBox
+            Left = 0
+            Top = 0
+            Height = 24
+            Width = 200
+            Caption = 'Cortar papel'
+            TabOrder = 0
+          end
+          object chkPosTraduzirTags: TCheckBox
+            Left = 0
+            Top = 10
+            Height = 24
+            Width = 200
+            Caption = 'Traduzir tags'
+            TabOrder = 1
+          end
+          object chkPosIgnorarTags: TCheckBox
+            Left = 0
+            Top = 20
+            Height = 24
+            Width = 200
+            Caption = 'Ignorar tags'
+            TabOrder = 2
+          end
+          object chkPosControlePorta: TCheckBox
+            Left = 0
+            Top = 30
+            Height = 24
+            Width = 200
+            Caption = 'Controlar porta'
+            TabOrder = 3
+          end
+          object chkPosVerificarImpressora: TCheckBox
+            Left = 0
+            Top = 40
+            Height = 24
+            Width = 200
+            Caption = 'Verificar impressora'
+            TabOrder = 4
+          end
+        end
+        object grpPosPrinterCodigoDeBarras: TGroupBox
+          Left = 0
+          Top = 2000
+          Width = 690
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'C'#243'digo de barras'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 2
+          TabOrder = 2
+          object lblBarrasMostrarCodigo: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 150
+            Caption = 'Mostrar c'#243'digo'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object chkBarrasMostrarCodigo: TCheckBox
+            Left = 0
+            Top = 10
+            Height = 24
+            Width = 200
+            Caption = ''
+            TabOrder = 1
+          end
+          object lblBarrasLarguraLinha: TLabel
+            Left = 0
+            Top = 20
+            Height = 28
+            Width = 150
+            Caption = 'Largura da linha'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speBarrasLarguraLinha: TSpinEdit
+            Left = 0
+            Top = 30
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxValue = 999
+            TabOrder = 3
+          end
+          object lblBarrasAltura: TLabel
+            Left = 0
+            Top = 40
+            Height = 28
+            Width = 150
+            Caption = 'Altura'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speBarrasAltura: TSpinEdit
+            Left = 0
+            Top = 50
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxValue = 999
+            TabOrder = 5
+          end
+          object lblBarrasMargem: TLabel
+            Left = 0
+            Top = 60
+            Height = 28
+            Width = 150
+            Caption = 'Margem'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speBarrasMargem: TSpinEdit
+            Left = 0
+            Top = 70
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxValue = 999
+            TabOrder = 7
+          end
+        end
+        object grpPosPrinterQRCode: TGroupBox
+          Left = 0
+          Top = 3000
+          Width = 690
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'QR Code'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 2
+          TabOrder = 3
+          object lblQRCodeTipo: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 150
+            Caption = 'Tipo'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speQRCodeTipo: TSpinEdit
+            Left = 0
+            Top = 10
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxValue = 99
+            TabOrder = 1
+          end
+          object lblQRCodeLarguraModulo: TLabel
+            Left = 0
+            Top = 20
+            Height = 28
+            Width = 150
+            Caption = 'Largura do m'#243'dulo'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speQRCodeLarguraModulo: TSpinEdit
+            Left = 0
+            Top = 30
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxValue = 99
+            TabOrder = 3
+          end
+          object lblQRCodeErrorLevel: TLabel
+            Left = 0
+            Top = 40
+            Height = 28
+            Width = 150
+            Caption = 'N'#237'vel de corre'#231#227'o de erro'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speQRCodeErrorLevel: TSpinEdit
+            Left = 0
+            Top = 50
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxValue = 99
+            TabOrder = 5
+          end
+        end
+        object grpPosPrinterLogotipo: TGroupBox
+          Left = 0
+          Top = 4000
+          Width = 690
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'Logotipo'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 2
+          TabOrder = 4
+          object lblLogoIgnorarLogo: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 150
+            Caption = 'Ignorar logotipo'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object chkLogoIgnorarLogo: TCheckBox
+            Left = 0
+            Top = 10
+            Height = 24
+            Width = 200
+            Caption = ''
+            TabOrder = 1
+          end
+          object lblLogoKeyCode1: TLabel
+            Left = 0
+            Top = 20
+            Height = 28
+            Width = 150
+            Caption = 'Key code 1'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speLogoKeyCode1: TSpinEdit
+            Left = 0
+            Top = 30
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxValue = 255
+            TabOrder = 3
+          end
+          object lblLogoKeyCode2: TLabel
+            Left = 0
+            Top = 40
+            Height = 28
+            Width = 150
+            Caption = 'Key code 2'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speLogoKeyCode2: TSpinEdit
+            Left = 0
+            Top = 50
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxValue = 255
+            TabOrder = 5
+          end
+          object lblLogoFatorX: TLabel
+            Left = 0
+            Top = 60
+            Height = 28
+            Width = 150
+            Caption = 'Fator X'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speLogoFatorX: TSpinEdit
+            Left = 0
+            Top = 70
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxValue = 255
+            TabOrder = 7
+          end
+          object lblLogoFatorY: TLabel
+            Left = 0
+            Top = 80
+            Height = 28
+            Width = 150
+            Caption = 'Fator Y'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speLogoFatorY: TSpinEdit
+            Left = 0
+            Top = 90
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxValue = 255
+            TabOrder = 9
+          end
+        end
+        object grpPosPrinterGaveta: TGroupBox
+          Left = 0
+          Top = 5000
+          Width = 690
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'Gaveta'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 2
+          TabOrder = 5
+          object lblGavetaSinalInvertido: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 150
+            Caption = 'Sinal invertido'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object chkGavetaSinalInvertido: TCheckBox
+            Left = 0
+            Top = 10
+            Height = 24
+            Width = 200
+            Caption = ''
+            TabOrder = 1
+          end
+          object lblGavetaTempoON: TLabel
+            Left = 0
+            Top = 20
+            Height = 28
+            Width = 150
+            Caption = 'Tempo ligado (ms)'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speGavetaTempoON: TSpinEdit
+            Left = 0
+            Top = 30
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxValue = 255
+            TabOrder = 3
+          end
+          object lblGavetaTempoOFF: TLabel
+            Left = 0
+            Top = 40
+            Height = 28
+            Width = 150
+            Caption = 'Tempo desligado (ms)'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speGavetaTempoOFF: TSpinEdit
+            Left = 0
+            Top = 50
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxValue = 255
+            TabOrder = 5
+          end
+        end
+        object grpPosPrinterModoPagina: TGroupBox
+          Left = 0
+          Top = 6000
+          Width = 690
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'Modo p'#225'gina'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 2
+          TabOrder = 6
+          object lblModoPaginaLargura: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 150
+            Caption = 'Largura'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speModoPaginaLargura: TSpinEdit
+            Left = 0
+            Top = 10
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxValue = 9999
+            TabOrder = 1
+          end
+          object lblModoPaginaAltura: TLabel
+            Left = 0
+            Top = 20
+            Height = 28
+            Width = 150
+            Caption = 'Altura'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speModoPaginaAltura: TSpinEdit
+            Left = 0
+            Top = 30
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxValue = 9999
+            TabOrder = 3
+          end
+          object lblModoPaginaEsquerda: TLabel
+            Left = 0
+            Top = 40
+            Height = 28
+            Width = 150
+            Caption = 'Esquerda'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speModoPaginaEsquerda: TSpinEdit
+            Left = 0
+            Top = 50
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxValue = 9999
+            TabOrder = 5
+          end
+          object lblModoPaginaTopo: TLabel
+            Left = 0
+            Top = 60
+            Height = 28
+            Width = 150
+            Caption = 'Topo'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speModoPaginaTopo: TSpinEdit
+            Left = 0
+            Top = 70
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxValue = 9999
+            TabOrder = 7
+          end
+          object lblModoPaginaDirecao: TLabel
+            Left = 0
+            Top = 80
+            Height = 28
+            Width = 150
+            Caption = 'Dire'#231#227'o'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxModoPaginaDirecao: TComboBox
+            Left = 0
+            Top = 90
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            ItemHeight = 0
+            Items.Strings = (
+              'Esquerda para direita'
+              'Topo para baixo'
+              'Direita para esquerda'
+              'Baixo para topo'
+            )
+            Style = csDropDownList
+            TabOrder = 9
+          end
+          object lblModoPaginaEspacoEntreLinhas: TLabel
+            Left = 0
+            Top = 100
+            Height = 28
+            Width = 150
+            Caption = 'Espa'#231'o entre linhas'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speModoPaginaEspacoEntreLinhas: TSpinEdit
+            Left = 0
+            Top = 110
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxValue = 255
+            TabOrder = 11
+          end
+        end
+      end
+    end
+    object tabDANFE: TTabSheet
+      Caption = 'DANFE'
+      object sbxDANFE: TScrollBox
+        Left = 0
+        Height = 500
+        Top = 0
+        Width = 700
+        HorzScrollBar.Page = 1
+        HorzScrollBar.Visible = False
+        VertScrollBar.Page = 1
+        Align = alClient
+        BorderStyle = bsNone
+        TabOrder = 0
+        object grpDANFE: TGroupBox
+          Left = 0
+          Top = 0
+          Width = 690
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'DANFE'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 2
+          TabOrder = 0
+          object lblDANFE: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 150
+            Caption = 'Componente'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxDANFE: TComboBox
+            Left = 0
+            Top = 10
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            ItemHeight = 0
+            Items.Strings = (
+              'RL - DANFe A4 (Fortes Report)'
+              'ESCPOS - DANFCe impressora t'#233'rmica (ESC/POS)'
+              'FORTES - DANFCe bobina (Fortes Report)'
+              'FORTESA4 - DANFCe A4 (Fortes Report)'
+            )
+            Style = csDropDownList
+            TabOrder = 1
+          end
+        end
+      end
+    end
+  end
+  object pnlBotoes: TPanel
+    Left = 0
+    Height = 44
+    Top = 556
+    Width = 720
+    Align = alBottom
+    AutoSize = True
+    BevelOuter = bvNone
+    TabOrder = 1
+    object btnCancelar: TButton
+      Left = 620
+      Height = 32
+      Top = 6
+      Width = 92
+      Align = alRight
+      AutoSize = True
+      BorderSpacing.Around = 6
+      Caption = 'Cancelar'
+      Constraints.MinWidth = 92
+      Cancel = True
+      ModalResult = 2
+      TabOrder = 1
+    end
+    object btnSalvar: TButton
+      Left = 520
+      Height = 32
+      Top = 6
+      Width = 92
+      Align = alRight
+      AutoSize = True
+      BorderSpacing.Around = 6
+      Caption = 'Salvar'
+      Constraints.MinWidth = 92
+      Default = True
+      OnClick = btnSalvarClick
+      TabOrder = 0
+    end
+  end
+  object ACBrNFe1: TACBrNFe
+    Left = 40
+    Top = 520
+  end
+end
