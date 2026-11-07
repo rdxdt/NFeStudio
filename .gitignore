@@ -77,3 +77,33 @@ __recovery/
 
 # Castalia statistics file (since XE7 Castalia is distributed with Delphi)
 *.stat
+
+# Lazarus / Free Pascal
+*.ppu
+*.compiled
+*.lps
+*.bak
+backup/
+lib/
+
+# Saídas de build (mantém apenas a estrutura de diretórios)
+build/*/*
+bin/*/*
+dist/*
+!build/*/.gitkeep
+!bin/*/.gitkeep
+!dist/.gitkeep
+
+# Artefatos gerados no empacotamento
+packaging/linux64/deb/nfestudio/usr/bin/nfestudio
+packaging/linux64/deb/nfestudio/usr/share/applications/nfestudio.desktop
+packaging/linux64/deb/nfestudio/usr/share/icons/hicolor/256x256/apps/nfestudio.png
+packaging/linux64/rpm/BUILD/
+packaging/linux64/rpm/BUILDROOT/
+packaging/linux64/rpm/RPMS/
+packaging/linux64/rpm/SRPMS/
+packaging/linux64/rpm/SOURCES/*
+!packaging/linux64/rpm/SOURCES/.gitkeep
+*.deb
+*.rpm
+*.sqlite3
