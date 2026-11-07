@@ -78,9 +78,9 @@ Campos decimais exibem sempre ao menos duas casas, e as casas extras só aparece
   campo com `R$` ou `%` define `EditFormat` sem prefixo/sufixo; caso contrário o texto editado não seria
   convertido de volta para número.
 - Nos campos de data/hora do Zeos o `DisplayFormat` é um objeto; o formato fica em `DisplayFormat.Format`.
-- Separadores decimal, de milhar e de data vêm de `DefaultFormatSettings`. Para exibir `R$ 1.234,50` e
-  `07/11/2026`, o programa precisa usar as configurações regionais pt-BR (no Linux, `clocale` no `uses`
-  do `.lpr` ou atribuição explícita de `DefaultFormatSettings`).
+- Separadores decimal, de milhar e de data vêm de `DefaultFormatSettings`, preenchido a partir das
+  configurações regionais do sistema (no Linux, pela unit `clocale` no `uses` do `nfestudio.lpr`).
+  `R$ 1.234,50` e `07/11/2026` só são exibidos com o sistema em pt-BR.
 
 ### sqlCreateTables
 

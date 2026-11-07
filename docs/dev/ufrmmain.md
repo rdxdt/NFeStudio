@@ -12,6 +12,40 @@ e o `TACBrPosPrinter`.
 
 O `dmdNFe` é criado antes do `frmMain` em `nfestudio.lpr`, pois é usado no `FormCreate`.
 
+### Listagem de notas (`DBGrid1`)
+
+Ligado a `dsNFeCab` (`dmdNFe.qryNFeCab`). Colunas:
+
+| Campo          | Título          | Largura                     |
+|----------------|-----------------|-----------------------------|
+| `CHNFE`        | Chave de Acesso | 340                         |
+| `IDE_DHEMI`    | Emissão         | 140                         |
+| `DEST_CNPJCPF` | CNPJ/CPF Dest.  | 130                         |
+| `DEST_XNOME`   | Destinatário    | ocupa o espaço restante     |
+| `TOT_VNF`      | Valor Total     | 120                         |
+
+`AutoFillColumns = True` com `SizePriority = 1` somente em `DEST_XNOME`; as demais colunas mantêm a
+largura definida.
+
+### Painel de detalhes (`pnlDetalhes`)
+
+Painel alinhado ao rodapé com o `pgcDetalhes`. Todos os campos são `TDBEdit` somente leitura ligados a
+`dsNFeCab`, acompanhando o registro selecionado no grid.
+
+| Aba                  | Conteúdo                                                     |
+|----------------------|--------------------------------------------------------------|
+| `tabDestinatario`    | Campos `DEST_*` (identificação, endereço e contato)          |
+| `tabTotaisICMS`      | Campos `TOT_*` do `ICMSTot`                                  |
+| `tabTotaisISSQN`     | Campos `ISSQNTOT_*`                                          |
+| `tabRetencoes`       | Campos `RETTRIB_*`                                           |
+| `tabTotaisIBSCBS`    | `ISTOT_VIS`, `IBSCBSTOT_*`, `IBSUFTOT_*`, `IBSMUNTOT_*`, `IBSTOT_*`, `CBSTOT_*`, `MONOTOT_*` e `TOT_VNFTOT` |
+
+Cada aba contém um `TScrollBox` (`sbx<Aba>`) com `ChildSizing.Layout = cclLeftToRightThenTopToBottom`,
+que distribui os pares `lbl<Campo>`/`edt<Campo>` em grade (3 pares por linha no destinatário, 4 nos totais).
+Para incluir um campo basta adicionar o par label/edit na posição desejada da lista de controles da aba.
+A largura dos edits é fixada por `Width` + `Constraints.MinWidth`, pois o ChildSizing redistribuiria o
+espaço livre também para os labels.
+
 ### Arquivo de configuração
 
 Local: `GetAppConfigDir(False)` + `<nome do executável>.ini`

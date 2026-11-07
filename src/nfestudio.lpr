@@ -5,6 +5,7 @@ program nfestudio;
 uses
   {$IFDEF UNIX}
   cthreads,
+  clocale,
   {$ENDIF}
   {$IFDEF HASAMIGA}
   athreads,

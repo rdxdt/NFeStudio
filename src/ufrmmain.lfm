@@ -1,11 +1,11 @@
 object frmMain: TfrmMain
   Left = 462
-  Height = 502
+  Height = 760
   Top = 30
-  Width = 652
+  Width = 1200
   Caption = 'NFe Studio'
-  ClientHeight = 502
-  ClientWidth = 652
+  ClientHeight = 760
+  ClientWidth = 1200
   OnCreate = FormCreate
   object pnlTopBar: TPanel
     Left = 0
@@ -199,9 +199,1646 @@ object frmMain: TfrmMain
     Width = 482
     Align = alClient
     Color = clWindow
-    Columns = <>
+    AutoFillColumns = True
+    Columns = <
+      item
+        SizePriority = 0
+        Title.Caption = 'Chave de Acesso'
+        Width = 340
+        FieldName = 'CHNFE'
+      end
+      item
+        SizePriority = 0
+        Title.Caption = 'Emiss'#227'o'
+        Width = 140
+        FieldName = 'IDE_DHEMI'
+      end
+      item
+        SizePriority = 0
+        Title.Caption = 'CNPJ/CPF Dest.'
+        Width = 130
+        FieldName = 'DEST_CNPJCPF'
+      end
+      item
+        SizePriority = 1
+        Title.Caption = 'Destinat'#225'rio'
+        Width = 200
+        FieldName = 'DEST_XNOME'
+      end
+      item
+        Title.Alignment = taRightJustify
+        SizePriority = 0
+        Title.Caption = 'Valor Total'
+        Width = 120
+        FieldName = 'TOT_VNF'
+      end>
     DataSource = dsNFeCab
     TabOrder = 1
+  end
+  object pnlDetalhes: TPanel
+    Left = 0
+    Height = 350
+    Top = 387
+    Width = 1200
+    Align = alBottom
+    BevelOuter = bvNone
+    TabOrder = 4
+    object pgcDetalhes: TPageControl
+      Align = alClient
+      BorderSpacing.Around = 4
+      ActivePage = tabDestinatario
+      TabIndex = 0
+      TabOrder = 0
+      object tabDestinatario: TTabSheet
+        Caption = 'Destinat'#225'rio'
+        object sbxDestinatario: TScrollBox
+          Align = alClient
+          BorderStyle = bsNone
+          HorzScrollBar.Page = 1
+          VertScrollBar.Page = 1
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 8
+          ChildSizing.HorizontalSpacing = 6
+          ChildSizing.VerticalSpacing = 4
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 6
+          TabOrder = 0
+          object lblDestCNPJCPF: TLabel
+            Caption = 'CNPJ/CPF'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtDestCNPJCPF
+            ParentColor = False
+          end
+          object edtDestCNPJCPF: TDBEdit
+            DataField = 'DEST_CNPJCPF'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 0
+            Width = 240
+            Constraints.MinWidth = 240
+          end
+          object lblDestIdEstrangeiro: TLabel
+            Caption = 'Id. Estrangeiro'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtDestIdEstrangeiro
+            ParentColor = False
+          end
+          object edtDestIdEstrangeiro: TDBEdit
+            DataField = 'DEST_IDESTRANGEIRO'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 1
+            Width = 240
+            Constraints.MinWidth = 240
+          end
+          object lblDestXNome: TLabel
+            Caption = 'Nome/Raz'#227'o Social'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtDestXNome
+            ParentColor = False
+          end
+          object edtDestXNome: TDBEdit
+            DataField = 'DEST_XNOME'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 2
+            Width = 240
+            Constraints.MinWidth = 240
+          end
+          object lblDestIE: TLabel
+            Caption = 'Inscri'#231#227'o Estadual'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtDestIE
+            ParentColor = False
+          end
+          object edtDestIE: TDBEdit
+            DataField = 'DEST_IE'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 3
+            Width = 240
+            Constraints.MinWidth = 240
+          end
+          object lblDestIndIEDest: TLabel
+            Caption = 'Indicador IE'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtDestIndIEDest
+            ParentColor = False
+          end
+          object edtDestIndIEDest: TDBEdit
+            DataField = 'DEST_INDIEDEST'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 4
+            Width = 240
+            Constraints.MinWidth = 240
+          end
+          object lblDestIM: TLabel
+            Caption = 'Inscri'#231#227'o Municipal'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtDestIM
+            ParentColor = False
+          end
+          object edtDestIM: TDBEdit
+            DataField = 'DEST_IM'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 5
+            Width = 240
+            Constraints.MinWidth = 240
+          end
+          object lblDestISUF: TLabel
+            Caption = 'Inscri'#231#227'o SUFRAMA'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtDestISUF
+            ParentColor = False
+          end
+          object edtDestISUF: TDBEdit
+            DataField = 'DEST_ISUF'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 6
+            Width = 240
+            Constraints.MinWidth = 240
+          end
+          object lblDestFone: TLabel
+            Caption = 'Telefone'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtDestFone
+            ParentColor = False
+          end
+          object edtDestFone: TDBEdit
+            DataField = 'DEST_FONE'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 7
+            Width = 240
+            Constraints.MinWidth = 240
+          end
+          object lblDestEmail: TLabel
+            Caption = 'E-mail'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtDestEmail
+            ParentColor = False
+          end
+          object edtDestEmail: TDBEdit
+            DataField = 'DEST_EMAIL'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 8
+            Width = 240
+            Constraints.MinWidth = 240
+          end
+          object lblDestXLgr: TLabel
+            Caption = 'Logradouro'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtDestXLgr
+            ParentColor = False
+          end
+          object edtDestXLgr: TDBEdit
+            DataField = 'DEST_XLGR'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 9
+            Width = 240
+            Constraints.MinWidth = 240
+          end
+          object lblDestNro: TLabel
+            Caption = 'N'#250'mero'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtDestNro
+            ParentColor = False
+          end
+          object edtDestNro: TDBEdit
+            DataField = 'DEST_NRO'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 10
+            Width = 240
+            Constraints.MinWidth = 240
+          end
+          object lblDestXCpl: TLabel
+            Caption = 'Complemento'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtDestXCpl
+            ParentColor = False
+          end
+          object edtDestXCpl: TDBEdit
+            DataField = 'DEST_XCPL'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 11
+            Width = 240
+            Constraints.MinWidth = 240
+          end
+          object lblDestXBairro: TLabel
+            Caption = 'Bairro'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtDestXBairro
+            ParentColor = False
+          end
+          object edtDestXBairro: TDBEdit
+            DataField = 'DEST_XBAIRRO'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 12
+            Width = 240
+            Constraints.MinWidth = 240
+          end
+          object lblDestCMun: TLabel
+            Caption = 'C'#243'd. Munic'#237'pio'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtDestCMun
+            ParentColor = False
+          end
+          object edtDestCMun: TDBEdit
+            DataField = 'DEST_CMUN'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 13
+            Width = 240
+            Constraints.MinWidth = 240
+          end
+          object lblDestXMun: TLabel
+            Caption = 'Munic'#237'pio'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtDestXMun
+            ParentColor = False
+          end
+          object edtDestXMun: TDBEdit
+            DataField = 'DEST_XMUN'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 14
+            Width = 240
+            Constraints.MinWidth = 240
+          end
+          object lblDestUF: TLabel
+            Caption = 'UF'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtDestUF
+            ParentColor = False
+          end
+          object edtDestUF: TDBEdit
+            DataField = 'DEST_UF'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 15
+            Width = 240
+            Constraints.MinWidth = 240
+          end
+          object lblDestCEP: TLabel
+            Caption = 'CEP'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtDestCEP
+            ParentColor = False
+          end
+          object edtDestCEP: TDBEdit
+            DataField = 'DEST_CEP'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 16
+            Width = 240
+            Constraints.MinWidth = 240
+          end
+          object lblDestCPais: TLabel
+            Caption = 'C'#243'd. Pa'#237's'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtDestCPais
+            ParentColor = False
+          end
+          object edtDestCPais: TDBEdit
+            DataField = 'DEST_CPAIS'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 17
+            Width = 240
+            Constraints.MinWidth = 240
+          end
+          object lblDestXPais: TLabel
+            Caption = 'Pa'#237's'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtDestXPais
+            ParentColor = False
+          end
+          object edtDestXPais: TDBEdit
+            DataField = 'DEST_XPAIS'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 18
+            Width = 240
+            Constraints.MinWidth = 240
+          end
+        end
+      end
+      object tabTotaisICMS: TTabSheet
+        Caption = 'Totais ICMS'
+        object sbxTotaisICMS: TScrollBox
+          Align = alClient
+          BorderStyle = bsNone
+          HorzScrollBar.Page = 1
+          VertScrollBar.Page = 1
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 8
+          ChildSizing.HorizontalSpacing = 6
+          ChildSizing.VerticalSpacing = 4
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 8
+          TabOrder = 0
+          object lblTotVBC: TLabel
+            Caption = 'Base ICMS'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtTotVBC
+            ParentColor = False
+          end
+          object edtTotVBC: TDBEdit
+            DataField = 'TOT_VBC'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 0
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblTotVICMS: TLabel
+            Caption = 'ICMS'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtTotVICMS
+            ParentColor = False
+          end
+          object edtTotVICMS: TDBEdit
+            DataField = 'TOT_VICMS'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 1
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblTotVICMSDeson: TLabel
+            Caption = 'ICMS Desonerado'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtTotVICMSDeson
+            ParentColor = False
+          end
+          object edtTotVICMSDeson: TDBEdit
+            DataField = 'TOT_VICMSDESON'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 2
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblTotVFCP: TLabel
+            Caption = 'FCP'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtTotVFCP
+            ParentColor = False
+          end
+          object edtTotVFCP: TDBEdit
+            DataField = 'TOT_VFCP'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 3
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblTotVBCST: TLabel
+            Caption = 'Base ICMS ST'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtTotVBCST
+            ParentColor = False
+          end
+          object edtTotVBCST: TDBEdit
+            DataField = 'TOT_VBCST'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 4
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblTotVST: TLabel
+            Caption = 'ICMS ST'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtTotVST
+            ParentColor = False
+          end
+          object edtTotVST: TDBEdit
+            DataField = 'TOT_VST'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 5
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblTotVFCPST: TLabel
+            Caption = 'FCP ST'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtTotVFCPST
+            ParentColor = False
+          end
+          object edtTotVFCPST: TDBEdit
+            DataField = 'TOT_VFCPST'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 6
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblTotVFCPSTRet: TLabel
+            Caption = 'FCP ST Retido'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtTotVFCPSTRet
+            ParentColor = False
+          end
+          object edtTotVFCPSTRet: TDBEdit
+            DataField = 'TOT_VFCPSTRET'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 7
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblTotVFCPUFDest: TLabel
+            Caption = 'FCP UF Destino'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtTotVFCPUFDest
+            ParentColor = False
+          end
+          object edtTotVFCPUFDest: TDBEdit
+            DataField = 'TOT_VFCPUFDEST'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 8
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblTotVICMSUFDest: TLabel
+            Caption = 'ICMS UF Destino'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtTotVICMSUFDest
+            ParentColor = False
+          end
+          object edtTotVICMSUFDest: TDBEdit
+            DataField = 'TOT_VICMSUFDEST'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 9
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblTotVICMSUFRemet: TLabel
+            Caption = 'ICMS UF Remetente'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtTotVICMSUFRemet
+            ParentColor = False
+          end
+          object edtTotVICMSUFRemet: TDBEdit
+            DataField = 'TOT_VICMSUFREMET'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 10
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblTotVProd: TLabel
+            Caption = 'Produtos'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtTotVProd
+            ParentColor = False
+          end
+          object edtTotVProd: TDBEdit
+            DataField = 'TOT_VPROD'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 11
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblTotVFrete: TLabel
+            Caption = 'Frete'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtTotVFrete
+            ParentColor = False
+          end
+          object edtTotVFrete: TDBEdit
+            DataField = 'TOT_VFRETE'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 12
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblTotVSeg: TLabel
+            Caption = 'Seguro'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtTotVSeg
+            ParentColor = False
+          end
+          object edtTotVSeg: TDBEdit
+            DataField = 'TOT_VSEG'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 13
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblTotVDesc: TLabel
+            Caption = 'Desconto'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtTotVDesc
+            ParentColor = False
+          end
+          object edtTotVDesc: TDBEdit
+            DataField = 'TOT_VDESC'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 14
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblTotVOutro: TLabel
+            Caption = 'Outras Despesas'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtTotVOutro
+            ParentColor = False
+          end
+          object edtTotVOutro: TDBEdit
+            DataField = 'TOT_VOUTRO'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 15
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblTotVII: TLabel
+            Caption = 'II'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtTotVII
+            ParentColor = False
+          end
+          object edtTotVII: TDBEdit
+            DataField = 'TOT_VII'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 16
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblTotVIPI: TLabel
+            Caption = 'IPI'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtTotVIPI
+            ParentColor = False
+          end
+          object edtTotVIPI: TDBEdit
+            DataField = 'TOT_VIPI'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 17
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblTotVIPIDevol: TLabel
+            Caption = 'IPI Devolvido'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtTotVIPIDevol
+            ParentColor = False
+          end
+          object edtTotVIPIDevol: TDBEdit
+            DataField = 'TOT_VIPIDEVOL'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 18
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblTotVPIS: TLabel
+            Caption = 'PIS'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtTotVPIS
+            ParentColor = False
+          end
+          object edtTotVPIS: TDBEdit
+            DataField = 'TOT_VPIS'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 19
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblTotVCOFINS: TLabel
+            Caption = 'COFINS'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtTotVCOFINS
+            ParentColor = False
+          end
+          object edtTotVCOFINS: TDBEdit
+            DataField = 'TOT_VCOFINS'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 20
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblTotVTotTrib: TLabel
+            Caption = 'Total Tributos'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtTotVTotTrib
+            ParentColor = False
+          end
+          object edtTotVTotTrib: TDBEdit
+            DataField = 'TOT_VTOTTRIB'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 21
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblTotQBCMono: TLabel
+            Caption = 'Qtd. BC Monof'#225'sico'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtTotQBCMono
+            ParentColor = False
+          end
+          object edtTotQBCMono: TDBEdit
+            DataField = 'TOT_QBCMONO'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 22
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblTotVICMSMono: TLabel
+            Caption = 'ICMS Monof'#225'sico'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtTotVICMSMono
+            ParentColor = False
+          end
+          object edtTotVICMSMono: TDBEdit
+            DataField = 'TOT_VICMSMONO'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 23
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblTotQBCMonoReten: TLabel
+            Caption = 'Qtd. BC Mono Reten'#231#227'o'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtTotQBCMonoReten
+            ParentColor = False
+          end
+          object edtTotQBCMonoReten: TDBEdit
+            DataField = 'TOT_QBCMONORETEN'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 24
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblTotVICMSMonoReten: TLabel
+            Caption = 'ICMS Mono Reten'#231#227'o'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtTotVICMSMonoReten
+            ParentColor = False
+          end
+          object edtTotVICMSMonoReten: TDBEdit
+            DataField = 'TOT_VICMSMONORETEN'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 25
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblTotQBCMonoRet: TLabel
+            Caption = 'Qtd. BC Mono Retido'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtTotQBCMonoRet
+            ParentColor = False
+          end
+          object edtTotQBCMonoRet: TDBEdit
+            DataField = 'TOT_QBCMONORET'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 26
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblTotVICMSMonoRet: TLabel
+            Caption = 'ICMS Mono Retido'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtTotVICMSMonoRet
+            ParentColor = False
+          end
+          object edtTotVICMSMonoRet: TDBEdit
+            DataField = 'TOT_VICMSMONORET'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 27
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblTotVNF: TLabel
+            Caption = 'Total da NF'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtTotVNF
+            ParentColor = False
+          end
+          object edtTotVNF: TDBEdit
+            DataField = 'TOT_VNF'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 28
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+        end
+      end
+      object tabTotaisISSQN: TTabSheet
+        Caption = 'Totais ISSQN'
+        object sbxTotaisISSQN: TScrollBox
+          Align = alClient
+          BorderStyle = bsNone
+          HorzScrollBar.Page = 1
+          VertScrollBar.Page = 1
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 8
+          ChildSizing.HorizontalSpacing = 6
+          ChildSizing.VerticalSpacing = 4
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 8
+          TabOrder = 0
+          object lblISSQNTotVServ: TLabel
+            Caption = 'Servi'#231'os'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtISSQNTotVServ
+            ParentColor = False
+          end
+          object edtISSQNTotVServ: TDBEdit
+            DataField = 'ISSQNTOT_VSERV'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 0
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblISSQNTotVBC: TLabel
+            Caption = 'Base ISS'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtISSQNTotVBC
+            ParentColor = False
+          end
+          object edtISSQNTotVBC: TDBEdit
+            DataField = 'ISSQNTOT_VBC'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 1
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblISSQNTotVISS: TLabel
+            Caption = 'ISS'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtISSQNTotVISS
+            ParentColor = False
+          end
+          object edtISSQNTotVISS: TDBEdit
+            DataField = 'ISSQNTOT_VISS'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 2
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblISSQNTotVISSRet: TLabel
+            Caption = 'ISS Retido'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtISSQNTotVISSRet
+            ParentColor = False
+          end
+          object edtISSQNTotVISSRet: TDBEdit
+            DataField = 'ISSQNTOT_VISSRET'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 3
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblISSQNTotVPIS: TLabel
+            Caption = 'PIS Servi'#231'os'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtISSQNTotVPIS
+            ParentColor = False
+          end
+          object edtISSQNTotVPIS: TDBEdit
+            DataField = 'ISSQNTOT_VPIS'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 4
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblISSQNTotVCOFINS: TLabel
+            Caption = 'COFINS Servi'#231'os'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtISSQNTotVCOFINS
+            ParentColor = False
+          end
+          object edtISSQNTotVCOFINS: TDBEdit
+            DataField = 'ISSQNTOT_VCOFINS'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 5
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblISSQNTotVDeducao: TLabel
+            Caption = 'Dedu'#231#227'o'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtISSQNTotVDeducao
+            ParentColor = False
+          end
+          object edtISSQNTotVDeducao: TDBEdit
+            DataField = 'ISSQNTOT_VDEDUCAO'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 6
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblISSQNTotVOutro: TLabel
+            Caption = 'Outras Reten'#231#245'es'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtISSQNTotVOutro
+            ParentColor = False
+          end
+          object edtISSQNTotVOutro: TDBEdit
+            DataField = 'ISSQNTOT_VOUTRO'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 7
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblISSQNTotVDescIncond: TLabel
+            Caption = 'Desc. Incondicionado'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtISSQNTotVDescIncond
+            ParentColor = False
+          end
+          object edtISSQNTotVDescIncond: TDBEdit
+            DataField = 'ISSQNTOT_VDESCINCOND'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 8
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblISSQNTotVDescCond: TLabel
+            Caption = 'Desc. Condicionado'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtISSQNTotVDescCond
+            ParentColor = False
+          end
+          object edtISSQNTotVDescCond: TDBEdit
+            DataField = 'ISSQNTOT_VDESCCOND'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 9
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblISSQNTotDCompet: TLabel
+            Caption = 'Compet'#234'ncia'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtISSQNTotDCompet
+            ParentColor = False
+          end
+          object edtISSQNTotDCompet: TDBEdit
+            DataField = 'ISSQNTOT_DCOMPET'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 10
+            Width = 140
+            Constraints.MinWidth = 140
+          end
+          object lblISSQNTotCRegTrib: TLabel
+            Caption = 'Regime Tributa'#231#227'o'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtISSQNTotCRegTrib
+            ParentColor = False
+          end
+          object edtISSQNTotCRegTrib: TDBEdit
+            DataField = 'ISSQNTOT_CREGTRIB'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 11
+            Width = 140
+            Constraints.MinWidth = 140
+          end
+        end
+      end
+      object tabRetencoes: TTabSheet
+        Caption = 'Reten'#231#245'es'
+        object sbxRetencoes: TScrollBox
+          Align = alClient
+          BorderStyle = bsNone
+          HorzScrollBar.Page = 1
+          VertScrollBar.Page = 1
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 8
+          ChildSizing.HorizontalSpacing = 6
+          ChildSizing.VerticalSpacing = 4
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 8
+          TabOrder = 0
+          object lblRetTribVRetPIS: TLabel
+            Caption = 'PIS Retido'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtRetTribVRetPIS
+            ParentColor = False
+          end
+          object edtRetTribVRetPIS: TDBEdit
+            DataField = 'RETTRIB_VRETPIS'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 0
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblRetTribVRetCOFINS: TLabel
+            Caption = 'COFINS Retido'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtRetTribVRetCOFINS
+            ParentColor = False
+          end
+          object edtRetTribVRetCOFINS: TDBEdit
+            DataField = 'RETTRIB_VRETCOFINS'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 1
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblRetTribVRetCSLL: TLabel
+            Caption = 'CSLL Retido'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtRetTribVRetCSLL
+            ParentColor = False
+          end
+          object edtRetTribVRetCSLL: TDBEdit
+            DataField = 'RETTRIB_VRETCSLL'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 2
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblRetTribVBCIRRF: TLabel
+            Caption = 'Base IRRF'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtRetTribVBCIRRF
+            ParentColor = False
+          end
+          object edtRetTribVBCIRRF: TDBEdit
+            DataField = 'RETTRIB_VBCIRRF'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 3
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblRetTribVIRRF: TLabel
+            Caption = 'IRRF Retido'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtRetTribVIRRF
+            ParentColor = False
+          end
+          object edtRetTribVIRRF: TDBEdit
+            DataField = 'RETTRIB_VIRRF'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 4
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblRetTribVBCRetPrev: TLabel
+            Caption = 'Base Previd'#234'ncia'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtRetTribVBCRetPrev
+            ParentColor = False
+          end
+          object edtRetTribVBCRetPrev: TDBEdit
+            DataField = 'RETTRIB_VBCRETPREV'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 5
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblRetTribVRetPrev: TLabel
+            Caption = 'Previd'#234'ncia Retida'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtRetTribVRetPrev
+            ParentColor = False
+          end
+          object edtRetTribVRetPrev: TDBEdit
+            DataField = 'RETTRIB_VRETPREV'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 6
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+        end
+      end
+      object tabTotaisIBSCBS: TTabSheet
+        Caption = 'Totais IBS/CBS/IS'
+        object sbxTotaisIBSCBS: TScrollBox
+          Align = alClient
+          BorderStyle = bsNone
+          HorzScrollBar.Page = 1
+          VertScrollBar.Page = 1
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 8
+          ChildSizing.HorizontalSpacing = 6
+          ChildSizing.VerticalSpacing = 4
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 8
+          TabOrder = 0
+          object lblISTotVIS: TLabel
+            Caption = 'Imposto Seletivo'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtISTotVIS
+            ParentColor = False
+          end
+          object edtISTotVIS: TDBEdit
+            DataField = 'ISTOT_VIS'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 0
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblIBSCBSTotVBCIBSCBS: TLabel
+            Caption = 'Base IBS/CBS'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtIBSCBSTotVBCIBSCBS
+            ParentColor = False
+          end
+          object edtIBSCBSTotVBCIBSCBS: TDBEdit
+            DataField = 'IBSCBSTOT_VBCIBSCBS'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 1
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblIBSTotVIBS: TLabel
+            Caption = 'IBS Total'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtIBSTotVIBS
+            ParentColor = False
+          end
+          object edtIBSTotVIBS: TDBEdit
+            DataField = 'IBSTOT_VIBS'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 2
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblCBSTotVCBS: TLabel
+            Caption = 'CBS Total'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtCBSTotVCBS
+            ParentColor = False
+          end
+          object edtCBSTotVCBS: TDBEdit
+            DataField = 'CBSTOT_VCBS'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 3
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblIBSUFTotVIBSUF: TLabel
+            Caption = 'IBS UF'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtIBSUFTotVIBSUF
+            ParentColor = False
+          end
+          object edtIBSUFTotVIBSUF: TDBEdit
+            DataField = 'IBSUFTOT_VIBSUF'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 4
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblIBSUFTotVDif: TLabel
+            Caption = 'IBS UF Diferido'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtIBSUFTotVDif
+            ParentColor = False
+          end
+          object edtIBSUFTotVDif: TDBEdit
+            DataField = 'IBSUFTOT_VDIF'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 5
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblIBSUFTotVDevTrib: TLabel
+            Caption = 'IBS UF Devolvido'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtIBSUFTotVDevTrib
+            ParentColor = False
+          end
+          object edtIBSUFTotVDevTrib: TDBEdit
+            DataField = 'IBSUFTOT_VDEVTRIB'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 6
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblIBSTotVCredPres: TLabel
+            Caption = 'IBS Cr'#233'd. Presumido'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtIBSTotVCredPres
+            ParentColor = False
+          end
+          object edtIBSTotVCredPres: TDBEdit
+            DataField = 'IBSTOT_VCREDPRES'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 7
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblIBSMunTotVIBSMun: TLabel
+            Caption = 'IBS Municipal'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtIBSMunTotVIBSMun
+            ParentColor = False
+          end
+          object edtIBSMunTotVIBSMun: TDBEdit
+            DataField = 'IBSMUNTOT_VIBSMUN'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 8
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblIBSMunTotVDif: TLabel
+            Caption = 'IBS Mun. Diferido'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtIBSMunTotVDif
+            ParentColor = False
+          end
+          object edtIBSMunTotVDif: TDBEdit
+            DataField = 'IBSMUNTOT_VDIF'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 9
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblIBSMunTotVDevTrib: TLabel
+            Caption = 'IBS Mun. Devolvido'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtIBSMunTotVDevTrib
+            ParentColor = False
+          end
+          object edtIBSMunTotVDevTrib: TDBEdit
+            DataField = 'IBSMUNTOT_VDEVTRIB'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 10
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblIBSTotVCredPresCondSus: TLabel
+            Caption = 'IBS Cr'#233'd. Pres. Susp.'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtIBSTotVCredPresCondSus
+            ParentColor = False
+          end
+          object edtIBSTotVCredPresCondSus: TDBEdit
+            DataField = 'IBSTOT_VCREDPRESCONDSUS'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 11
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblCBSTotVDif: TLabel
+            Caption = 'CBS Diferido'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtCBSTotVDif
+            ParentColor = False
+          end
+          object edtCBSTotVDif: TDBEdit
+            DataField = 'CBSTOT_VDIF'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 12
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblCBSTotVDevTrib: TLabel
+            Caption = 'CBS Devolvido'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtCBSTotVDevTrib
+            ParentColor = False
+          end
+          object edtCBSTotVDevTrib: TDBEdit
+            DataField = 'CBSTOT_VDEVTRIB'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 13
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblCBSTotVCredPres: TLabel
+            Caption = 'CBS Cr'#233'd. Presumido'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtCBSTotVCredPres
+            ParentColor = False
+          end
+          object edtCBSTotVCredPres: TDBEdit
+            DataField = 'CBSTOT_VCREDPRES'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 14
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblCBSTotVCredPresCondSus: TLabel
+            Caption = 'CBS Cr'#233'd. Pres. Susp.'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtCBSTotVCredPresCondSus
+            ParentColor = False
+          end
+          object edtCBSTotVCredPresCondSus: TDBEdit
+            DataField = 'CBSTOT_VCREDPRESCONDSUS'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 15
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblMonoTotVIBSMono: TLabel
+            Caption = 'IBS Monof'#225'sico'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtMonoTotVIBSMono
+            ParentColor = False
+          end
+          object edtMonoTotVIBSMono: TDBEdit
+            DataField = 'MONOTOT_VIBSMONO'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 16
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblMonoTotVCBSMono: TLabel
+            Caption = 'CBS Monof'#225'sico'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtMonoTotVCBSMono
+            ParentColor = False
+          end
+          object edtMonoTotVCBSMono: TDBEdit
+            DataField = 'MONOTOT_VCBSMONO'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 17
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblMonoTotVIBSMonoReten: TLabel
+            Caption = 'IBS Mono Reten'#231#227'o'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtMonoTotVIBSMonoReten
+            ParentColor = False
+          end
+          object edtMonoTotVIBSMonoReten: TDBEdit
+            DataField = 'MONOTOT_VIBSMONORETEN'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 18
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblMonoTotVCBSMonoReten: TLabel
+            Caption = 'CBS Mono Reten'#231#227'o'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtMonoTotVCBSMonoReten
+            ParentColor = False
+          end
+          object edtMonoTotVCBSMonoReten: TDBEdit
+            DataField = 'MONOTOT_VCBSMONORETEN'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 19
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblMonoTotVIBSMonoRet: TLabel
+            Caption = 'IBS Mono Retido'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtMonoTotVIBSMonoRet
+            ParentColor = False
+          end
+          object edtMonoTotVIBSMonoRet: TDBEdit
+            DataField = 'MONOTOT_VIBSMONORET'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 20
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblMonoTotVCBSMonoRet: TLabel
+            Caption = 'CBS Mono Retido'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtMonoTotVCBSMonoRet
+            ParentColor = False
+          end
+          object edtMonoTotVCBSMonoRet: TDBEdit
+            DataField = 'MONOTOT_VCBSMONORET'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 21
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+          object lblTotVNFTot: TLabel
+            Caption = 'Total NF c/ IBS/CBS'
+            Alignment = taRightJustify
+            Layout = tlCenter
+            FocusControl = edtTotVNFTot
+            ParentColor = False
+          end
+          object edtTotVNFTot: TDBEdit
+            DataField = 'TOT_VNFTOT'
+            DataSource = dsNFeCab
+            ReadOnly = True
+            MaxLength = 0
+            TabOrder = 22
+            Width = 140
+            Constraints.MinWidth = 140
+            Alignment = taRightJustify
+          end
+        end
+      end
+    end
   end
   object StatusBar1: TStatusBar
     Left = 0
