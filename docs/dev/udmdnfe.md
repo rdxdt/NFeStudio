@@ -82,6 +82,27 @@ Campos decimais exibem sempre ao menos duas casas, e as casas extras só aparece
   configurações regionais do sistema (no Linux, pela unit `clocale` no `uses` do `nfestudio.lpr`).
   `R$ 1.234,50` e `07/11/2026` só são exibidos com o sistema em pt-BR.
 
+### Máscaras de CNPJ/CPF e CEP
+
+Aplicadas somente na exibição (`DisplayText`), via `OnGetText`; `Text`/`AsString` continuam sem máscara,
+como gravados no banco e no XML.
+
+| Handler               | Campos                                                                    | Exemplo                |
+|-----------------------|---------------------------------------------------------------------------|------------------------|
+| `CampoCNPJCPFGetText` | `*_CNPJCPF`, `*_CNPJ`, `CNPJFAB`, `IPI_CNPJPROD`, `CNPJ`, `CNPJPAG`, `CNPJRECEB` | `12.345.678/0001-95`, `012.345.678-90` |
+| `CampoCEPGetText`     | `EMIT_CEP`, `DEST_CEP`, `RETIRADA_CEP`, `ENTREGA_CEP`                      | `01310-100`            |
+
+```pascal
+procedure CampoCNPJCPFGetText(Sender: TField; var AText: string; DisplayText: boolean);
+procedure CampoCEPGetText(Sender: TField; var AText: string; DisplayText: boolean);
+```
+
+- `CampoCNPJCPFGetText` usa `FormatarCNPJouCPF` (`ACBrValidador`): até 11 caracteres formata como CPF,
+  acima como CNPJ, aceitando o CNPJ alfanumérico.
+- `CampoCEPGetText`: o CEP é `INTEGER` e perde os zeros à esquerda (`01310100` → `1310100`), por isso o
+  valor é completado com zeros até 8 dígitos antes do `FormatarCEP`. O `FormatarCEP` do ACBr não é
+  chamado com o inteiro direto porque completaria valores de 5 dígitos à direita.
+
 ### sqlCreateTables
 
 Contém o DDL derivado das classes de `TACBrNFe.NotasFiscais[i].NFe` (`ACBrNFe.Classes.pas`).

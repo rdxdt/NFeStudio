@@ -5,7 +5,7 @@ unit udmdnfe;
 interface
 
 uses
-  Classes, SysUtils, DB, ZDataset, ZAbstractRODataset, ZSqlStrings, ZSqlProcessor;
+  Classes, SysUtils, DB, ZDataset, ZAbstractRODataset, ZSqlStrings, ZSqlProcessor, ACBrValidador;
 
 type
 
@@ -599,6 +599,8 @@ type
     qryNFeFatVLIQ: TZDoubleField;
     dtsNFeCab: TDataSource;
     sqlCreateTables: TZSQLProcessor;
+    procedure CampoCNPJCPFGetText(Sender: TField; var AText: string; DisplayText: boolean);
+    procedure CampoCEPGetText(Sender: TField; var AText: string; DisplayText: boolean);
   private
 
   public
@@ -617,6 +619,27 @@ implementation
 procedure TdmdNFe.CriarTabelas;
 begin
   sqlCreateTables.Execute;
+end;
+
+procedure TdmdNFe.CampoCNPJCPFGetText(Sender: TField; var AText: string;
+  DisplayText: boolean);
+begin
+  if DisplayText then
+    AText := FormatarCNPJouCPF(Sender.AsString)
+  else
+    AText := Sender.AsString;
+end;
+
+procedure TdmdNFe.CampoCEPGetText(Sender: TField; var AText: string;
+  DisplayText: boolean);
+begin
+  // CEP gravado como INTEGER perde os zeros à esquerda (01310100 -> 1310100)
+  if Sender.IsNull then
+    AText := ''
+  else if DisplayText then
+    AText := FormatarCEP(Format('%.8d', [Sender.AsInteger]))
+  else
+    AText := Sender.AsString;
 end;
 
 end.

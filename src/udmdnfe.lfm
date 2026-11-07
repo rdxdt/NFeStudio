@@ -358,6 +358,7 @@ object dmdNFe: TdmdNFe
       ReadOnly = False
       Required = False
       Size = 14
+      OnGetText = CampoCNPJCPFGetText
     end
     object qryNFeCabEMIT_XNOME: TZRawStringField
       FieldKind = fkData
@@ -456,6 +457,7 @@ object dmdNFe: TdmdNFe
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      OnGetText = CampoCEPGetText
     end
     object qryNFeCabEMIT_CPAIS: TZInt64Field
       FieldKind = fkData
@@ -545,6 +547,7 @@ object dmdNFe: TdmdNFe
       ReadOnly = False
       Required = False
       Size = 14
+      OnGetText = CampoCNPJCPFGetText
     end
     object qryNFeCabAVULSA_XORGAO: TZRawStringField
       FieldKind = fkData
@@ -656,6 +659,7 @@ object dmdNFe: TdmdNFe
       ReadOnly = False
       Required = False
       Size = 14
+      OnGetText = CampoCNPJCPFGetText
     end
     object qryNFeCabDEST_IDESTRANGEIRO: TZRawStringField
       FieldKind = fkData
@@ -754,6 +758,7 @@ object dmdNFe: TdmdNFe
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      OnGetText = CampoCEPGetText
     end
     object qryNFeCabDEST_CPAIS: TZInt64Field
       FieldKind = fkData
@@ -843,6 +848,7 @@ object dmdNFe: TdmdNFe
       ReadOnly = False
       Required = False
       Size = 14
+      OnGetText = CampoCNPJCPFGetText
     end
     object qryNFeCabRETIRADA_XNOME: TZRawStringField
       FieldKind = fkData
@@ -931,6 +937,7 @@ object dmdNFe: TdmdNFe
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      OnGetText = CampoCEPGetText
     end
     object qryNFeCabRETIRADA_CPAIS: TZInt64Field
       FieldKind = fkData
@@ -990,6 +997,7 @@ object dmdNFe: TdmdNFe
       ReadOnly = False
       Required = False
       Size = 14
+      OnGetText = CampoCNPJCPFGetText
     end
     object qryNFeCabENTREGA_XNOME: TZRawStringField
       FieldKind = fkData
@@ -1078,6 +1086,7 @@ object dmdNFe: TdmdNFe
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      OnGetText = CampoCEPGetText
     end
     object qryNFeCabENTREGA_CPAIS: TZInt64Field
       FieldKind = fkData
@@ -1926,6 +1935,7 @@ object dmdNFe: TdmdNFe
       ReadOnly = False
       Required = False
       Size = 14
+      OnGetText = CampoCNPJCPFGetText
     end
     object qryNFeCabTRANSPORTA_XNOME: TZRawStringField
       FieldKind = fkData
@@ -2110,6 +2120,7 @@ object dmdNFe: TdmdNFe
       ReadOnly = False
       Required = False
       Size = 14
+      OnGetText = CampoCNPJCPFGetText
     end
     object qryNFeCabINTERMED_IDCADINTTRAN: TZRawStringField
       FieldKind = fkData
@@ -2376,6 +2387,7 @@ object dmdNFe: TdmdNFe
       ReadOnly = False
       Required = False
       Size = 14
+      OnGetText = CampoCNPJCPFGetText
     end
     object qryNFeCabRESPTEC_XCONTATO: TZRawStringField
       FieldKind = fkData
@@ -2839,6 +2851,7 @@ object dmdNFe: TdmdNFe
       ReadOnly = False
       Required = False
       Size = 14
+      OnGetText = CampoCNPJCPFGetText
     end
     object qryNFeDetCBENEF: TZRawStringField
       FieldKind = fkData
@@ -4091,6 +4104,7 @@ object dmdNFe: TdmdNFe
       ReadOnly = False
       Required = False
       Size = 14
+      OnGetText = CampoCNPJCPFGetText
     end
     object qryNFeDetIPI_CSELO: TZRawStringField
       FieldKind = fkData
@@ -5843,6 +5857,7 @@ object dmdNFe: TdmdNFe
       ReadOnly = False
       Required = False
       Size = 14
+      OnGetText = CampoCNPJCPFGetText
     end
     object qryNFePgtTBAND: TZRawStringField
       FieldKind = fkData
@@ -5883,6 +5898,7 @@ object dmdNFe: TdmdNFe
       ReadOnly = False
       Required = False
       Size = 14
+      OnGetText = CampoCNPJCPFGetText
     end
     object qryNFePgtUFPAG: TZRawStringField
       FieldKind = fkData
@@ -5903,6 +5919,7 @@ object dmdNFe: TdmdNFe
       ReadOnly = False
       Required = False
       Size = 14
+      OnGetText = CampoCNPJCPFGetText
     end
     object qryNFePgtIDTERMPAG: TZRawStringField
       FieldKind = fkData
