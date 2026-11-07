@@ -6173,6 +6173,3255 @@ object dmdNFe: TdmdNFe
     Left = 136
     Top = 88
   end
+  object cmdInsNFeCab: TZQuery
+    Connection = frmMain.ZConnection1
+    SQL.Strings = (
+      'INSERT INTO NFE_CAB ('
+      '  CHNFE, VERSAO, IDE_CUF, IDE_CNF, IDE_NATOP, IDE_INDPAG,'
+      '  IDE_MOD, IDE_SERIE, IDE_NNF, IDE_DHEMI, IDE_DHSAIENT, IDE_HSAIENT,'
+      '  IDE_TPNF, IDE_IDDEST, IDE_CMUNFG, IDE_TPIMP, IDE_TPEMIS, IDE_CDV,'
+      '  IDE_TPAMB, IDE_FINNFE, IDE_INDFINAL, IDE_INDPRES, IDE_INDINTERMED, IDE_PROCEMI,'
+      '  IDE_VERPROC, IDE_DHCONT, IDE_XJUST, IDE_CMUNFGIBS, IDE_TPNFDEBITO, IDE_TPNFCREDITO,'
+      '  COMPRAGOV_TPENTEGOV, COMPRAGOV_PREDUTOR, COMPRAGOV_TPOPERGOV, EMIT_CNPJCPF, EMIT_XNOME, EMIT_XFANT,'
+      '  EMIT_XLGR, EMIT_NRO, EMIT_XCPL, EMIT_XBAIRRO, EMIT_CMUN, EMIT_XMUN,'
+      '  EMIT_UF, EMIT_CEP, EMIT_CPAIS, EMIT_XPAIS, EMIT_FONE, EMIT_IE,'
+      '  EMIT_IEST, EMIT_IM, EMIT_CNAE, EMIT_CRT, AVULSA_CNPJ, AVULSA_XORGAO,'
+      '  AVULSA_MATR, AVULSA_XAGENTE, AVULSA_FONE, AVULSA_UF, AVULSA_NDAR, AVULSA_DEMI,'
+      '  AVULSA_VDAR, AVULSA_REPEMI, AVULSA_DPAG, DEST_CNPJCPF, DEST_IDESTRANGEIRO, DEST_XNOME,'
+      '  DEST_XLGR, DEST_NRO, DEST_XCPL, DEST_XBAIRRO, DEST_CMUN, DEST_XMUN,'
+      '  DEST_UF, DEST_CEP, DEST_CPAIS, DEST_XPAIS, DEST_FONE, DEST_INDIEDEST,'
+      '  DEST_IE, DEST_ISUF, DEST_IM, DEST_EMAIL, RETIRADA_CNPJCPF, RETIRADA_XNOME,'
+      '  RETIRADA_XLGR, RETIRADA_NRO, RETIRADA_XCPL, RETIRADA_XBAIRRO, RETIRADA_CMUN, RETIRADA_XMUN,'
+      '  RETIRADA_UF, RETIRADA_CEP, RETIRADA_CPAIS, RETIRADA_XPAIS, RETIRADA_FONE, RETIRADA_EMAIL,'
+      '  RETIRADA_IE, ENTREGA_CNPJCPF, ENTREGA_XNOME, ENTREGA_XLGR, ENTREGA_NRO, ENTREGA_XCPL,'
+      '  ENTREGA_XBAIRRO, ENTREGA_CMUN, ENTREGA_XMUN, ENTREGA_UF, ENTREGA_CEP, ENTREGA_CPAIS,'
+      '  ENTREGA_XPAIS, ENTREGA_FONE, ENTREGA_EMAIL, ENTREGA_IE, TOT_VBC, TOT_VICMS,'
+      '  TOT_VICMSDESON, TOT_VFCPUFDEST, TOT_VICMSUFDEST, TOT_VICMSUFREMET, TOT_VFCP, TOT_VBCST,'
+      '  TOT_VST, TOT_VFCPST, TOT_VFCPSTRET, TOT_VPROD, TOT_VFRETE, TOT_VSEG,'
+      '  TOT_VDESC, TOT_VII, TOT_VIPI, TOT_VIPIDEVOL, TOT_VPIS, TOT_VCOFINS,'
+      '  TOT_VOUTRO, TOT_VNF, TOT_VTOTTRIB, TOT_VICMSMONO, TOT_VICMSMONORETEN, TOT_VICMSMONORET,'
+      '  TOT_QBCMONO, TOT_QBCMONORETEN, TOT_QBCMONORET, TOT_VNFTOT, ISSQNTOT_VSERV, ISSQNTOT_VBC,'
+      '  ISSQNTOT_VISS, ISSQNTOT_VPIS, ISSQNTOT_VCOFINS, ISSQNTOT_DCOMPET, ISSQNTOT_VDEDUCAO, ISSQNTOT_VOUTRO,'
+      '  ISSQNTOT_VDESCINCOND, ISSQNTOT_VDESCCOND, ISSQNTOT_VISSRET, ISSQNTOT_CREGTRIB, RETTRIB_VRETPIS, RETTRIB_VRETCOFINS,'
+      '  RETTRIB_VRETCSLL, RETTRIB_VBCIRRF, RETTRIB_VIRRF, RETTRIB_VBCRETPREV, RETTRIB_VRETPREV, ISTOT_VIS,'
+      '  IBSCBSTOT_VBCIBSCBS, IBSUFTOT_VDIF, IBSUFTOT_VDEVTRIB, IBSUFTOT_VIBSUF, IBSMUNTOT_VDIF, IBSMUNTOT_VDEVTRIB,'
+      '  IBSMUNTOT_VIBSMUN, IBSTOT_VIBS, IBSTOT_VCREDPRES, IBSTOT_VCREDPRESCONDSUS, CBSTOT_VDIF, CBSTOT_VDEVTRIB,'
+      '  CBSTOT_VCBS, CBSTOT_VCREDPRES, CBSTOT_VCREDPRESCONDSUS, MONOTOT_VIBSMONO, MONOTOT_VCBSMONO, MONOTOT_VIBSMONORETEN,'
+      '  MONOTOT_VCBSMONORETEN, MONOTOT_VIBSMONORET, MONOTOT_VCBSMONORET, TRANSP_MODFRETE, TRANSPORTA_CNPJCPF, TRANSPORTA_XNOME,'
+      '  TRANSPORTA_IE, TRANSPORTA_XENDER, TRANSPORTA_XMUN, TRANSPORTA_UF, RETTRANSP_VSERV, RETTRANSP_VBCRET,'
+      '  RETTRANSP_PICMSRET, RETTRANSP_VICMSRET, RETTRANSP_CFOP, RETTRANSP_CMUNFG, VEICTRANSP_PLACA, VEICTRANSP_UF,'
+      '  VEICTRANSP_RNTC, TRANSP_VAGAO, TRANSP_BALSA, PAG_VTROCO, INTERMED_CNPJ, INTERMED_IDCADINTTRAN,'
+      '  INFADIC_INFADFISCO, INFADIC_INFCPL, EXPORTA_UFEMBARQ, EXPORTA_XLOCEMBARQ, EXPORTA_UFSAIDAPAIS, EXPORTA_XLOCEXPORTA,'
+      '  EXPORTA_XLOCDESPACHO, COMPRA_XNEMP, COMPRA_XPED, COMPRA_XCONT, CANA_SAFRA, CANA_REF,'
+      '  CANA_QTOTMES, CANA_QTOTANT, CANA_QTOTGER, CANA_VFOR, CANA_VTOTDED, CANA_VLIQFOR,'
+      '  AGRO_UFGUIA, AGRO_TPGUIA, AGRO_SERIEGUIA, AGRO_NGUIA, SUPL_QRCODE, SUPL_URLCHAVE,'
+      '  RESPTEC_CNPJ, RESPTEC_XCONTATO, RESPTEC_EMAIL, RESPTEC_FONE, RESPTEC_IDCSRT, RESPTEC_HASHCSRT,'
+      '  PROT_TPAMB, PROT_VERAPLIC, PROT_DHRECBTO, PROT_NPROT, PROT_DIGVAL, PROT_CSTAT,'
+      '  PROT_XMOTIVO, PROT_CMSG, PROT_XMSG'
+      ') VALUES ('
+      '  :CHNFE, :VERSAO, :IDE_CUF, :IDE_CNF, :IDE_NATOP, :IDE_INDPAG,'
+      '  :IDE_MOD, :IDE_SERIE, :IDE_NNF, :IDE_DHEMI, :IDE_DHSAIENT, :IDE_HSAIENT,'
+      '  :IDE_TPNF, :IDE_IDDEST, :IDE_CMUNFG, :IDE_TPIMP, :IDE_TPEMIS, :IDE_CDV,'
+      '  :IDE_TPAMB, :IDE_FINNFE, :IDE_INDFINAL, :IDE_INDPRES, :IDE_INDINTERMED, :IDE_PROCEMI,'
+      '  :IDE_VERPROC, :IDE_DHCONT, :IDE_XJUST, :IDE_CMUNFGIBS, :IDE_TPNFDEBITO, :IDE_TPNFCREDITO,'
+      '  :COMPRAGOV_TPENTEGOV, :COMPRAGOV_PREDUTOR, :COMPRAGOV_TPOPERGOV, :EMIT_CNPJCPF, :EMIT_XNOME, :EMIT_XFANT,'
+      '  :EMIT_XLGR, :EMIT_NRO, :EMIT_XCPL, :EMIT_XBAIRRO, :EMIT_CMUN, :EMIT_XMUN,'
+      '  :EMIT_UF, :EMIT_CEP, :EMIT_CPAIS, :EMIT_XPAIS, :EMIT_FONE, :EMIT_IE,'
+      '  :EMIT_IEST, :EMIT_IM, :EMIT_CNAE, :EMIT_CRT, :AVULSA_CNPJ, :AVULSA_XORGAO,'
+      '  :AVULSA_MATR, :AVULSA_XAGENTE, :AVULSA_FONE, :AVULSA_UF, :AVULSA_NDAR, :AVULSA_DEMI,'
+      '  :AVULSA_VDAR, :AVULSA_REPEMI, :AVULSA_DPAG, :DEST_CNPJCPF, :DEST_IDESTRANGEIRO, :DEST_XNOME,'
+      '  :DEST_XLGR, :DEST_NRO, :DEST_XCPL, :DEST_XBAIRRO, :DEST_CMUN, :DEST_XMUN,'
+      '  :DEST_UF, :DEST_CEP, :DEST_CPAIS, :DEST_XPAIS, :DEST_FONE, :DEST_INDIEDEST,'
+      '  :DEST_IE, :DEST_ISUF, :DEST_IM, :DEST_EMAIL, :RETIRADA_CNPJCPF, :RETIRADA_XNOME,'
+      '  :RETIRADA_XLGR, :RETIRADA_NRO, :RETIRADA_XCPL, :RETIRADA_XBAIRRO, :RETIRADA_CMUN, :RETIRADA_XMUN,'
+      '  :RETIRADA_UF, :RETIRADA_CEP, :RETIRADA_CPAIS, :RETIRADA_XPAIS, :RETIRADA_FONE, :RETIRADA_EMAIL,'
+      '  :RETIRADA_IE, :ENTREGA_CNPJCPF, :ENTREGA_XNOME, :ENTREGA_XLGR, :ENTREGA_NRO, :ENTREGA_XCPL,'
+      '  :ENTREGA_XBAIRRO, :ENTREGA_CMUN, :ENTREGA_XMUN, :ENTREGA_UF, :ENTREGA_CEP, :ENTREGA_CPAIS,'
+      '  :ENTREGA_XPAIS, :ENTREGA_FONE, :ENTREGA_EMAIL, :ENTREGA_IE, :TOT_VBC, :TOT_VICMS,'
+      '  :TOT_VICMSDESON, :TOT_VFCPUFDEST, :TOT_VICMSUFDEST, :TOT_VICMSUFREMET, :TOT_VFCP, :TOT_VBCST,'
+      '  :TOT_VST, :TOT_VFCPST, :TOT_VFCPSTRET, :TOT_VPROD, :TOT_VFRETE, :TOT_VSEG,'
+      '  :TOT_VDESC, :TOT_VII, :TOT_VIPI, :TOT_VIPIDEVOL, :TOT_VPIS, :TOT_VCOFINS,'
+      '  :TOT_VOUTRO, :TOT_VNF, :TOT_VTOTTRIB, :TOT_VICMSMONO, :TOT_VICMSMONORETEN, :TOT_VICMSMONORET,'
+      '  :TOT_QBCMONO, :TOT_QBCMONORETEN, :TOT_QBCMONORET, :TOT_VNFTOT, :ISSQNTOT_VSERV, :ISSQNTOT_VBC,'
+      '  :ISSQNTOT_VISS, :ISSQNTOT_VPIS, :ISSQNTOT_VCOFINS, :ISSQNTOT_DCOMPET, :ISSQNTOT_VDEDUCAO, :ISSQNTOT_VOUTRO,'
+      '  :ISSQNTOT_VDESCINCOND, :ISSQNTOT_VDESCCOND, :ISSQNTOT_VISSRET, :ISSQNTOT_CREGTRIB, :RETTRIB_VRETPIS, :RETTRIB_VRETCOFINS,'
+      '  :RETTRIB_VRETCSLL, :RETTRIB_VBCIRRF, :RETTRIB_VIRRF, :RETTRIB_VBCRETPREV, :RETTRIB_VRETPREV, :ISTOT_VIS,'
+      '  :IBSCBSTOT_VBCIBSCBS, :IBSUFTOT_VDIF, :IBSUFTOT_VDEVTRIB, :IBSUFTOT_VIBSUF, :IBSMUNTOT_VDIF, :IBSMUNTOT_VDEVTRIB,'
+      '  :IBSMUNTOT_VIBSMUN, :IBSTOT_VIBS, :IBSTOT_VCREDPRES, :IBSTOT_VCREDPRESCONDSUS, :CBSTOT_VDIF, :CBSTOT_VDEVTRIB,'
+      '  :CBSTOT_VCBS, :CBSTOT_VCREDPRES, :CBSTOT_VCREDPRESCONDSUS, :MONOTOT_VIBSMONO, :MONOTOT_VCBSMONO, :MONOTOT_VIBSMONORETEN,'
+      '  :MONOTOT_VCBSMONORETEN, :MONOTOT_VIBSMONORET, :MONOTOT_VCBSMONORET, :TRANSP_MODFRETE, :TRANSPORTA_CNPJCPF, :TRANSPORTA_XNOME,'
+      '  :TRANSPORTA_IE, :TRANSPORTA_XENDER, :TRANSPORTA_XMUN, :TRANSPORTA_UF, :RETTRANSP_VSERV, :RETTRANSP_VBCRET,'
+      '  :RETTRANSP_PICMSRET, :RETTRANSP_VICMSRET, :RETTRANSP_CFOP, :RETTRANSP_CMUNFG, :VEICTRANSP_PLACA, :VEICTRANSP_UF,'
+      '  :VEICTRANSP_RNTC, :TRANSP_VAGAO, :TRANSP_BALSA, :PAG_VTROCO, :INTERMED_CNPJ, :INTERMED_IDCADINTTRAN,'
+      '  :INFADIC_INFADFISCO, :INFADIC_INFCPL, :EXPORTA_UFEMBARQ, :EXPORTA_XLOCEMBARQ, :EXPORTA_UFSAIDAPAIS, :EXPORTA_XLOCEXPORTA,'
+      '  :EXPORTA_XLOCDESPACHO, :COMPRA_XNEMP, :COMPRA_XPED, :COMPRA_XCONT, :CANA_SAFRA, :CANA_REF,'
+      '  :CANA_QTOTMES, :CANA_QTOTANT, :CANA_QTOTGER, :CANA_VFOR, :CANA_VTOTDED, :CANA_VLIQFOR,'
+      '  :AGRO_UFGUIA, :AGRO_TPGUIA, :AGRO_SERIEGUIA, :AGRO_NGUIA, :SUPL_QRCODE, :SUPL_URLCHAVE,'
+      '  :RESPTEC_CNPJ, :RESPTEC_XCONTATO, :RESPTEC_EMAIL, :RESPTEC_FONE, :RESPTEC_IDCSRT, :RESPTEC_HASHCSRT,'
+      '  :PROT_TPAMB, :PROT_VERAPLIC, :PROT_DHRECBTO, :PROT_NPROT, :PROT_DIGVAL, :PROT_CSTAT,'
+      '  :PROT_XMOTIVO, :PROT_CMSG, :PROT_XMSG'
+      ')'
+    )
+    Params = <
+      item
+        DataType = ftString
+        Name = 'CHNFE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'VERSAO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'IDE_CUF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'IDE_CNF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IDE_NATOP'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IDE_INDPAG'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'IDE_MOD'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'IDE_SERIE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'IDE_NNF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftDateTime
+        Name = 'IDE_DHEMI'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftDateTime
+        Name = 'IDE_DHSAIENT'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftTime
+        Name = 'IDE_HSAIENT'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IDE_TPNF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IDE_IDDEST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'IDE_CMUNFG'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IDE_TPIMP'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IDE_TPEMIS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'IDE_CDV'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IDE_TPAMB'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IDE_FINNFE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IDE_INDFINAL'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IDE_INDPRES'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IDE_INDINTERMED'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IDE_PROCEMI'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IDE_VERPROC'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftDateTime
+        Name = 'IDE_DHCONT'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IDE_XJUST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'IDE_CMUNFGIBS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IDE_TPNFDEBITO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IDE_TPNFCREDITO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'COMPRAGOV_TPENTEGOV'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'COMPRAGOV_PREDUTOR'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'COMPRAGOV_TPOPERGOV'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'EMIT_CNPJCPF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'EMIT_XNOME'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'EMIT_XFANT'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'EMIT_XLGR'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'EMIT_NRO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'EMIT_XCPL'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'EMIT_XBAIRRO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'EMIT_CMUN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'EMIT_XMUN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'EMIT_UF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'EMIT_CEP'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'EMIT_CPAIS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'EMIT_XPAIS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'EMIT_FONE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'EMIT_IE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'EMIT_IEST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'EMIT_IM'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'EMIT_CNAE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'EMIT_CRT'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'AVULSA_CNPJ'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'AVULSA_XORGAO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'AVULSA_MATR'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'AVULSA_XAGENTE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'AVULSA_FONE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'AVULSA_UF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'AVULSA_NDAR'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftDate
+        Name = 'AVULSA_DEMI'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'AVULSA_VDAR'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'AVULSA_REPEMI'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftDate
+        Name = 'AVULSA_DPAG'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'DEST_CNPJCPF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'DEST_IDESTRANGEIRO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'DEST_XNOME'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'DEST_XLGR'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'DEST_NRO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'DEST_XCPL'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'DEST_XBAIRRO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'DEST_CMUN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'DEST_XMUN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'DEST_UF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'DEST_CEP'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'DEST_CPAIS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'DEST_XPAIS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'DEST_FONE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'DEST_INDIEDEST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'DEST_IE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'DEST_ISUF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'DEST_IM'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'DEST_EMAIL'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'RETIRADA_CNPJCPF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'RETIRADA_XNOME'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'RETIRADA_XLGR'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'RETIRADA_NRO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'RETIRADA_XCPL'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'RETIRADA_XBAIRRO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'RETIRADA_CMUN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'RETIRADA_XMUN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'RETIRADA_UF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'RETIRADA_CEP'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'RETIRADA_CPAIS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'RETIRADA_XPAIS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'RETIRADA_FONE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'RETIRADA_EMAIL'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'RETIRADA_IE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ENTREGA_CNPJCPF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ENTREGA_XNOME'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ENTREGA_XLGR'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ENTREGA_NRO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ENTREGA_XCPL'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ENTREGA_XBAIRRO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'ENTREGA_CMUN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ENTREGA_XMUN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ENTREGA_UF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'ENTREGA_CEP'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'ENTREGA_CPAIS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ENTREGA_XPAIS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ENTREGA_FONE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ENTREGA_EMAIL'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ENTREGA_IE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TOT_VBC'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TOT_VICMS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TOT_VICMSDESON'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TOT_VFCPUFDEST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TOT_VICMSUFDEST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TOT_VICMSUFREMET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TOT_VFCP'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TOT_VBCST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TOT_VST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TOT_VFCPST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TOT_VFCPSTRET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TOT_VPROD'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TOT_VFRETE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TOT_VSEG'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TOT_VDESC'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TOT_VII'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TOT_VIPI'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TOT_VIPIDEVOL'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TOT_VPIS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TOT_VCOFINS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TOT_VOUTRO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TOT_VNF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TOT_VTOTTRIB'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TOT_VICMSMONO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TOT_VICMSMONORETEN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TOT_VICMSMONORET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TOT_QBCMONO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TOT_QBCMONORETEN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TOT_QBCMONORET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TOT_VNFTOT'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ISSQNTOT_VSERV'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ISSQNTOT_VBC'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ISSQNTOT_VISS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ISSQNTOT_VPIS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ISSQNTOT_VCOFINS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftDate
+        Name = 'ISSQNTOT_DCOMPET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ISSQNTOT_VDEDUCAO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ISSQNTOT_VOUTRO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ISSQNTOT_VDESCINCOND'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ISSQNTOT_VDESCCOND'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ISSQNTOT_VISSRET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ISSQNTOT_CREGTRIB'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'RETTRIB_VRETPIS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'RETTRIB_VRETCOFINS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'RETTRIB_VRETCSLL'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'RETTRIB_VBCIRRF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'RETTRIB_VIRRF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'RETTRIB_VBCRETPREV'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'RETTRIB_VRETPREV'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ISTOT_VIS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IBSCBSTOT_VBCIBSCBS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IBSUFTOT_VDIF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IBSUFTOT_VDEVTRIB'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IBSUFTOT_VIBSUF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IBSMUNTOT_VDIF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IBSMUNTOT_VDEVTRIB'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IBSMUNTOT_VIBSMUN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IBSTOT_VIBS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IBSTOT_VCREDPRES'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IBSTOT_VCREDPRESCONDSUS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'CBSTOT_VDIF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'CBSTOT_VDEVTRIB'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'CBSTOT_VCBS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'CBSTOT_VCREDPRES'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'CBSTOT_VCREDPRESCONDSUS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'MONOTOT_VIBSMONO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'MONOTOT_VCBSMONO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'MONOTOT_VIBSMONORETEN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'MONOTOT_VCBSMONORETEN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'MONOTOT_VIBSMONORET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'MONOTOT_VCBSMONORET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'TRANSP_MODFRETE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'TRANSPORTA_CNPJCPF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'TRANSPORTA_XNOME'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'TRANSPORTA_IE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'TRANSPORTA_XENDER'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'TRANSPORTA_XMUN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'TRANSPORTA_UF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'RETTRANSP_VSERV'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'RETTRANSP_VBCRET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'RETTRANSP_PICMSRET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'RETTRANSP_VICMSRET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'RETTRANSP_CFOP'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'RETTRANSP_CMUNFG'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'VEICTRANSP_PLACA'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'VEICTRANSP_UF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'VEICTRANSP_RNTC'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'TRANSP_VAGAO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'TRANSP_BALSA'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'PAG_VTROCO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'INTERMED_CNPJ'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'INTERMED_IDCADINTTRAN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'INFADIC_INFADFISCO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'INFADIC_INFCPL'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'EXPORTA_UFEMBARQ'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'EXPORTA_XLOCEMBARQ'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'EXPORTA_UFSAIDAPAIS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'EXPORTA_XLOCEXPORTA'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'EXPORTA_XLOCDESPACHO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'COMPRA_XNEMP'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'COMPRA_XPED'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'COMPRA_XCONT'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'CANA_SAFRA'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'CANA_REF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'CANA_QTOTMES'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'CANA_QTOTANT'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'CANA_QTOTGER'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'CANA_VFOR'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'CANA_VTOTDED'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'CANA_VLIQFOR'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'AGRO_UFGUIA'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'AGRO_TPGUIA'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'AGRO_SERIEGUIA'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'AGRO_NGUIA'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'SUPL_QRCODE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'SUPL_URLCHAVE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'RESPTEC_CNPJ'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'RESPTEC_XCONTATO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'RESPTEC_EMAIL'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'RESPTEC_FONE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'RESPTEC_IDCSRT'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'RESPTEC_HASHCSRT'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'PROT_TPAMB'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'PROT_VERAPLIC'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftDateTime
+        Name = 'PROT_DHRECBTO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'PROT_NPROT'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'PROT_DIGVAL'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'PROT_CSTAT'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'PROT_XMOTIVO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'PROT_CMSG'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'PROT_XMSG'
+        ParamType = ptInput
+      end>
+    Left = 32
+    Top = 160
+  end
+  object cmdDelNFeCab: TZQuery
+    Connection = frmMain.ZConnection1
+    SQL.Strings = (
+      'DELETE FROM NFE_CAB'
+      ' WHERE CHNFE = :CHNFE'
+    )
+    Params = <
+      item
+        DataType = ftString
+        Name = 'CHNFE'
+        ParamType = ptInput
+      end>
+    Left = 32
+    Top = 230
+  end
+  object cmdInsNFeDet: TZQuery
+    Connection = frmMain.ZConnection1
+    SQL.Strings = (
+      'INSERT INTO NFE_DET ('
+      '  CHNFE, NITEM, CPROD, CEAN, CBARRA, XPROD,'
+      '  NCM, EXTIPI, CFOP, UCOM, QCOM, VUNCOM,'
+      '  VPROD, CEANTRIB, CBARRATRIB, UTRIB, QTRIB, VUNTRIB,'
+      '  VFRETE, VSEG, VDESC, VOUTRO, INDTOT, XPED,'
+      '  NITEMPED, NRECOPI, NFCI, CEST, INDESCALA, CNPJFAB,'
+      '  CBENEF, INDBEMMOVELUSADO, VEIC_TPOP, VEIC_CHASSI, VEIC_CCOR, VEIC_XCOR,'
+      '  VEIC_POT, VEIC_CILIN, VEIC_PESOL, VEIC_PESOB, VEIC_NSERIE, VEIC_TPCOMB,'
+      '  VEIC_NMOTOR, VEIC_CMT, VEIC_DIST, VEIC_ANOMOD, VEIC_ANOFAB, VEIC_TPPINT,'
+      '  VEIC_TPVEIC, VEIC_ESPVEIC, VEIC_VIN, VEIC_CONDVEIC, VEIC_CMOD, VEIC_CCORDENATRAN,'
+      '  VEIC_LOTA, VEIC_TPREST, COMB_CPRODANP, COMB_PMIXGN, COMB_DESCANP, COMB_PGLP,'
+      '  COMB_PGNN, COMB_PGNI, COMB_VPART, COMB_CODIF, COMB_QTEMP, COMB_UFCONS,'
+      '  COMB_PBIO, CIDE_QBCPROD, CIDE_VALIQPROD, CIDE_VCIDE, COMB_VBCICMS, COMB_VICMS,'
+      '  COMB_VBCICMSST, COMB_VICMSST, COMB_VBCICMSSTDEST, COMB_VICMSSTDEST, COMB_VBCICMSSTCONS, COMB_VICMSSTCONS,'
+      '  COMB_UFCONSST, ENCERRANTE_NBICO, ENCERRANTE_NBOMBA, ENCERRANTE_NTANQUE, ENCERRANTE_VENCINI, ENCERRANTE_VENCFIN,'
+      '  VTOTTRIB, ICMS_ORIG, ICMS_CST, ICMS_CSOSN, ICMS_MODBC, ICMS_PREDBC,'
+      '  ICMS_VBC, ICMS_PICMS, ICMS_VICMS, ICMS_MODBCST, ICMS_PMVAST, ICMS_PREDBCST,'
+      '  ICMS_VBCST, ICMS_PICMSST, ICMS_VICMSST, ICMS_UFST, ICMS_PBCOP, ICMS_VBCSTRET,'
+      '  ICMS_VICMSSTRET, ICMS_MOTDESICMS, ICMS_PCREDSN, ICMS_VCREDICMSSN, ICMS_VBCSTDEST, ICMS_VICMSSTDEST,'
+      '  ICMS_VICMSDESON, ICMS_VICMSOP, ICMS_PDIF, ICMS_VICMSDIF, ICMS_VBCFCP, ICMS_PFCP,'
+      '  ICMS_VFCP, ICMS_VBCFCPST, ICMS_PFCPST, ICMS_VFCPST, ICMS_VBCFCPSTRET, ICMS_PFCPSTRET,'
+      '  ICMS_VFCPSTRET, ICMS_PST, ICMS_PREDBCEFET, ICMS_VBCEFET, ICMS_PICMSEFET, ICMS_VICMSEFET,'
+      '  ICMS_VICMSSUBSTITUTO, ICMS_VICMSSTDESON, ICMS_MOTDESICMSST, ICMS_PFCPDIF, ICMS_VFCPDIF, ICMS_VFCPEFET,'
+      '  ICMS_ADREMICMS, ICMS_VICMSMONO, ICMS_QBCMONO, ICMS_ADREMICMSRETEN, ICMS_VICMSMONORETEN, ICMS_QBCMONORETEN,'
+      '  ICMS_PREDADREM, ICMS_MOTREDADREM, ICMS_VICMSMONOOP, ICMS_VICMSMONODIF, ICMS_ADREMICMSRET, ICMS_VICMSMONORET,'
+      '  ICMS_QBCMONORET, ICMS_INDDEDUZDESON, ICMS_CBENEFRBC, IPI_CLENQ, IPI_CNPJPROD, IPI_CSELO,'
+      '  IPI_QSELO, IPI_CENQ, IPI_CST, IPI_VBC, IPI_QUNID, IPI_VUNID,'
+      '  IPI_PIPI, IPI_VIPI, II_VBC, II_VDESPADU, II_VII, II_VIOF,'
+      '  PIS_CST, PIS_VBC, PIS_PPIS, PIS_VPIS, PIS_QBCPROD, PIS_VALIQPROD,'
+      '  PISST_VBC, PISST_PPIS, PISST_QBCPROD, PISST_VALIQPROD, PISST_VPIS, PISST_INDSOMAPISST,'
+      '  COFINS_CST, COFINS_VBC, COFINS_PCOFINS, COFINS_VCOFINS, COFINS_VBCPROD, COFINS_QBCPROD,'
+      '  COFINS_VALIQPROD, COFINSST_VBC, COFINSST_PCOFINS, COFINSST_QBCPROD, COFINSST_VALIQPROD, COFINSST_VCOFINS,'
+      '  COFINSST_INDSOMACOFINSST, ISSQN_VBC, ISSQN_VALIQ, ISSQN_VISSQN, ISSQN_CMUNFG, ISSQN_CLISTSERV,'
+      '  ISSQN_CSITTRIB, ISSQN_VDEDUCAO, ISSQN_VOUTRO, ISSQN_VDESCINCOND, ISSQN_VDESCCOND, ISSQN_INDISSRET,'
+      '  ISSQN_VISSRET, ISSQN_INDISS, ISSQN_CSERVICO, ISSQN_CMUN, ISSQN_CPAIS, ISSQN_NPROCESSO,'
+      '  ISSQN_INDINCENTIVO, ICMSUFDEST_VBCUFDEST, ICMSUFDEST_VBCFCPUFDEST, ICMSUFDEST_PFCPUFDEST, ICMSUFDEST_PICMSUFDEST, ICMSUFDEST_PICMSINTER,'
+      '  ICMSUFDEST_PICMSINTERPART, ICMSUFDEST_VFCPUFDEST, ICMSUFDEST_VICMSUFDEST, ICMSUFDEST_VICMSUFREMET, IS_CSTIS, IS_CCLASSTRIBIS,'
+      '  IS_VBCIS, IS_PIS, IS_PISESPEC, IS_UTRIB, IS_QTRIB, IS_VIS,'
+      '  IBSCBS_CST, IBSCBS_CCLASSTRIB, IBSCBS_VBC, IBSUF_PIBSUF, IBSUF_PDIF, IBSUF_VDIF,'
+      '  IBSUF_VDEVTRIB, IBSUF_PREDALIQ, IBSUF_PALIQEFET, IBSUF_VIBSUF, IBSMUN_PIBSMUN, IBSMUN_PDIF,'
+      '  IBSMUN_VDIF, IBSMUN_VDEVTRIB, IBSMUN_PREDALIQ, IBSMUN_PALIQEFET, IBSMUN_VIBSMUN, CBS_PCBS,'
+      '  CBS_PDIF, CBS_VDIF, CBS_VDEVTRIB, CBS_PREDALIQ, CBS_PALIQEFET, CBS_VCBS,'
+      '  TRIBREG_CSTREG, TRIBREG_CCLASSTRIBREG, TRIBREG_PALIQEFETREGIBSUF, TRIBREG_VTRIBREGIBSUF, TRIBREG_PALIQEFETREGIBSMUN, TRIBREG_VTRIBREGIBSMUN,'
+      '  TRIBREG_PALIQEFETREGCBS, TRIBREG_VTRIBREGCBS, IBSCREDPRES_CCREDPRES, IBSCREDPRES_PCREDPRES, IBSCREDPRES_VCREDPRES, IBSCREDPRES_VCREDPRESCONDSUS,'
+      '  CBSCREDPRES_CCREDPRES, CBSCREDPRES_PCREDPRES, CBSCREDPRES_VCREDPRES, CBSCREDPRES_VCREDPRESCONDSUS, TRIBCOMPRAGOV_PALIQIBSUF, TRIBCOMPRAGOV_VTRIBIBSUF,'
+      '  TRIBCOMPRAGOV_PALIQIBSMUN, TRIBCOMPRAGOV_VTRIBIBSMUN, TRIBCOMPRAGOV_PALIQCBS, TRIBCOMPRAGOV_VTRIBCBS, MONO_QBCMONO, MONO_ADREMIBS,'
+      '  MONO_ADREMCBS, MONO_VIBSMONO, MONO_VCBSMONO, MONO_QBCMONORETEN, MONO_ADREMIBSRETEN, MONO_VIBSMONORETEN,'
+      '  MONO_ADREMCBSRETEN, MONO_VCBSMONORETEN, MONO_QBCMONORET, MONO_ADREMIBSRET, MONO_VIBSMONORET, MONO_ADREMCBSRET,'
+      '  MONO_VCBSMONORET, MONO_PDIFIBS, MONO_VIBSMONODIF, MONO_PDIFCBS, MONO_VCBSMONODIF, MONO_VTOTIBSMONOITEM,'
+      '  MONO_VTOTCBSMONOITEM, TRANSFCRED_VIBS, TRANSFCRED_VCBS, CREDPRESIBSZFM_TPCREDPRESIBSZFM, CREDPRESIBSZFM_VCREDPRESIBSZFM, PDEVOL,'
+      '  VIPIDEVOL, INFADPROD, OBSCONT_XCAMPO, OBSCONT_XTEXTO, OBSFISCO_XCAMPO, OBSFISCO_XTEXTO,'
+      '  VITEM, DFEREF_CHAVEACESSO, DFEREF_NITEM'
+      ') VALUES ('
+      '  :CHNFE, :NITEM, :CPROD, :CEAN, :CBARRA, :XPROD,'
+      '  :NCM, :EXTIPI, :CFOP, :UCOM, :QCOM, :VUNCOM,'
+      '  :VPROD, :CEANTRIB, :CBARRATRIB, :UTRIB, :QTRIB, :VUNTRIB,'
+      '  :VFRETE, :VSEG, :VDESC, :VOUTRO, :INDTOT, :XPED,'
+      '  :NITEMPED, :NRECOPI, :NFCI, :CEST, :INDESCALA, :CNPJFAB,'
+      '  :CBENEF, :INDBEMMOVELUSADO, :VEIC_TPOP, :VEIC_CHASSI, :VEIC_CCOR, :VEIC_XCOR,'
+      '  :VEIC_POT, :VEIC_CILIN, :VEIC_PESOL, :VEIC_PESOB, :VEIC_NSERIE, :VEIC_TPCOMB,'
+      '  :VEIC_NMOTOR, :VEIC_CMT, :VEIC_DIST, :VEIC_ANOMOD, :VEIC_ANOFAB, :VEIC_TPPINT,'
+      '  :VEIC_TPVEIC, :VEIC_ESPVEIC, :VEIC_VIN, :VEIC_CONDVEIC, :VEIC_CMOD, :VEIC_CCORDENATRAN,'
+      '  :VEIC_LOTA, :VEIC_TPREST, :COMB_CPRODANP, :COMB_PMIXGN, :COMB_DESCANP, :COMB_PGLP,'
+      '  :COMB_PGNN, :COMB_PGNI, :COMB_VPART, :COMB_CODIF, :COMB_QTEMP, :COMB_UFCONS,'
+      '  :COMB_PBIO, :CIDE_QBCPROD, :CIDE_VALIQPROD, :CIDE_VCIDE, :COMB_VBCICMS, :COMB_VICMS,'
+      '  :COMB_VBCICMSST, :COMB_VICMSST, :COMB_VBCICMSSTDEST, :COMB_VICMSSTDEST, :COMB_VBCICMSSTCONS, :COMB_VICMSSTCONS,'
+      '  :COMB_UFCONSST, :ENCERRANTE_NBICO, :ENCERRANTE_NBOMBA, :ENCERRANTE_NTANQUE, :ENCERRANTE_VENCINI, :ENCERRANTE_VENCFIN,'
+      '  :VTOTTRIB, :ICMS_ORIG, :ICMS_CST, :ICMS_CSOSN, :ICMS_MODBC, :ICMS_PREDBC,'
+      '  :ICMS_VBC, :ICMS_PICMS, :ICMS_VICMS, :ICMS_MODBCST, :ICMS_PMVAST, :ICMS_PREDBCST,'
+      '  :ICMS_VBCST, :ICMS_PICMSST, :ICMS_VICMSST, :ICMS_UFST, :ICMS_PBCOP, :ICMS_VBCSTRET,'
+      '  :ICMS_VICMSSTRET, :ICMS_MOTDESICMS, :ICMS_PCREDSN, :ICMS_VCREDICMSSN, :ICMS_VBCSTDEST, :ICMS_VICMSSTDEST,'
+      '  :ICMS_VICMSDESON, :ICMS_VICMSOP, :ICMS_PDIF, :ICMS_VICMSDIF, :ICMS_VBCFCP, :ICMS_PFCP,'
+      '  :ICMS_VFCP, :ICMS_VBCFCPST, :ICMS_PFCPST, :ICMS_VFCPST, :ICMS_VBCFCPSTRET, :ICMS_PFCPSTRET,'
+      '  :ICMS_VFCPSTRET, :ICMS_PST, :ICMS_PREDBCEFET, :ICMS_VBCEFET, :ICMS_PICMSEFET, :ICMS_VICMSEFET,'
+      '  :ICMS_VICMSSUBSTITUTO, :ICMS_VICMSSTDESON, :ICMS_MOTDESICMSST, :ICMS_PFCPDIF, :ICMS_VFCPDIF, :ICMS_VFCPEFET,'
+      '  :ICMS_ADREMICMS, :ICMS_VICMSMONO, :ICMS_QBCMONO, :ICMS_ADREMICMSRETEN, :ICMS_VICMSMONORETEN, :ICMS_QBCMONORETEN,'
+      '  :ICMS_PREDADREM, :ICMS_MOTREDADREM, :ICMS_VICMSMONOOP, :ICMS_VICMSMONODIF, :ICMS_ADREMICMSRET, :ICMS_VICMSMONORET,'
+      '  :ICMS_QBCMONORET, :ICMS_INDDEDUZDESON, :ICMS_CBENEFRBC, :IPI_CLENQ, :IPI_CNPJPROD, :IPI_CSELO,'
+      '  :IPI_QSELO, :IPI_CENQ, :IPI_CST, :IPI_VBC, :IPI_QUNID, :IPI_VUNID,'
+      '  :IPI_PIPI, :IPI_VIPI, :II_VBC, :II_VDESPADU, :II_VII, :II_VIOF,'
+      '  :PIS_CST, :PIS_VBC, :PIS_PPIS, :PIS_VPIS, :PIS_QBCPROD, :PIS_VALIQPROD,'
+      '  :PISST_VBC, :PISST_PPIS, :PISST_QBCPROD, :PISST_VALIQPROD, :PISST_VPIS, :PISST_INDSOMAPISST,'
+      '  :COFINS_CST, :COFINS_VBC, :COFINS_PCOFINS, :COFINS_VCOFINS, :COFINS_VBCPROD, :COFINS_QBCPROD,'
+      '  :COFINS_VALIQPROD, :COFINSST_VBC, :COFINSST_PCOFINS, :COFINSST_QBCPROD, :COFINSST_VALIQPROD, :COFINSST_VCOFINS,'
+      '  :COFINSST_INDSOMACOFINSST, :ISSQN_VBC, :ISSQN_VALIQ, :ISSQN_VISSQN, :ISSQN_CMUNFG, :ISSQN_CLISTSERV,'
+      '  :ISSQN_CSITTRIB, :ISSQN_VDEDUCAO, :ISSQN_VOUTRO, :ISSQN_VDESCINCOND, :ISSQN_VDESCCOND, :ISSQN_INDISSRET,'
+      '  :ISSQN_VISSRET, :ISSQN_INDISS, :ISSQN_CSERVICO, :ISSQN_CMUN, :ISSQN_CPAIS, :ISSQN_NPROCESSO,'
+      '  :ISSQN_INDINCENTIVO, :ICMSUFDEST_VBCUFDEST, :ICMSUFDEST_VBCFCPUFDEST, :ICMSUFDEST_PFCPUFDEST, :ICMSUFDEST_PICMSUFDEST, :ICMSUFDEST_PICMSINTER,'
+      '  :ICMSUFDEST_PICMSINTERPART, :ICMSUFDEST_VFCPUFDEST, :ICMSUFDEST_VICMSUFDEST, :ICMSUFDEST_VICMSUFREMET, :IS_CSTIS, :IS_CCLASSTRIBIS,'
+      '  :IS_VBCIS, :IS_PIS, :IS_PISESPEC, :IS_UTRIB, :IS_QTRIB, :IS_VIS,'
+      '  :IBSCBS_CST, :IBSCBS_CCLASSTRIB, :IBSCBS_VBC, :IBSUF_PIBSUF, :IBSUF_PDIF, :IBSUF_VDIF,'
+      '  :IBSUF_VDEVTRIB, :IBSUF_PREDALIQ, :IBSUF_PALIQEFET, :IBSUF_VIBSUF, :IBSMUN_PIBSMUN, :IBSMUN_PDIF,'
+      '  :IBSMUN_VDIF, :IBSMUN_VDEVTRIB, :IBSMUN_PREDALIQ, :IBSMUN_PALIQEFET, :IBSMUN_VIBSMUN, :CBS_PCBS,'
+      '  :CBS_PDIF, :CBS_VDIF, :CBS_VDEVTRIB, :CBS_PREDALIQ, :CBS_PALIQEFET, :CBS_VCBS,'
+      '  :TRIBREG_CSTREG, :TRIBREG_CCLASSTRIBREG, :TRIBREG_PALIQEFETREGIBSUF, :TRIBREG_VTRIBREGIBSUF, :TRIBREG_PALIQEFETREGIBSMUN, :TRIBREG_VTRIBREGIBSMUN,'
+      '  :TRIBREG_PALIQEFETREGCBS, :TRIBREG_VTRIBREGCBS, :IBSCREDPRES_CCREDPRES, :IBSCREDPRES_PCREDPRES, :IBSCREDPRES_VCREDPRES, :IBSCREDPRES_VCREDPRESCONDSUS,'
+      '  :CBSCREDPRES_CCREDPRES, :CBSCREDPRES_PCREDPRES, :CBSCREDPRES_VCREDPRES, :CBSCREDPRES_VCREDPRESCONDSUS, :TRIBCOMPRAGOV_PALIQIBSUF, :TRIBCOMPRAGOV_VTRIBIBSUF,'
+      '  :TRIBCOMPRAGOV_PALIQIBSMUN, :TRIBCOMPRAGOV_VTRIBIBSMUN, :TRIBCOMPRAGOV_PALIQCBS, :TRIBCOMPRAGOV_VTRIBCBS, :MONO_QBCMONO, :MONO_ADREMIBS,'
+      '  :MONO_ADREMCBS, :MONO_VIBSMONO, :MONO_VCBSMONO, :MONO_QBCMONORETEN, :MONO_ADREMIBSRETEN, :MONO_VIBSMONORETEN,'
+      '  :MONO_ADREMCBSRETEN, :MONO_VCBSMONORETEN, :MONO_QBCMONORET, :MONO_ADREMIBSRET, :MONO_VIBSMONORET, :MONO_ADREMCBSRET,'
+      '  :MONO_VCBSMONORET, :MONO_PDIFIBS, :MONO_VIBSMONODIF, :MONO_PDIFCBS, :MONO_VCBSMONODIF, :MONO_VTOTIBSMONOITEM,'
+      '  :MONO_VTOTCBSMONOITEM, :TRANSFCRED_VIBS, :TRANSFCRED_VCBS, :CREDPRESIBSZFM_TPCREDPRESIBSZFM, :CREDPRESIBSZFM_VCREDPRESIBSZFM, :PDEVOL,'
+      '  :VIPIDEVOL, :INFADPROD, :OBSCONT_XCAMPO, :OBSCONT_XTEXTO, :OBSFISCO_XCAMPO, :OBSFISCO_XTEXTO,'
+      '  :VITEM, :DFEREF_CHAVEACESSO, :DFEREF_NITEM'
+      ')'
+    )
+    Params = <
+      item
+        DataType = ftString
+        Name = 'CHNFE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'NITEM'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'CPROD'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'CEAN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'CBARRA'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'XPROD'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'NCM'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'EXTIPI'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'CFOP'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'UCOM'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'QCOM'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'VUNCOM'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'VPROD'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'CEANTRIB'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'CBARRATRIB'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'UTRIB'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'QTRIB'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'VUNTRIB'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'VFRETE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'VSEG'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'VDESC'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'VOUTRO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'INDTOT'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'XPED'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'NITEMPED'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'NRECOPI'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'NFCI'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'CEST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'INDESCALA'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'CNPJFAB'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'CBENEF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'INDBEMMOVELUSADO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'VEIC_TPOP'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'VEIC_CHASSI'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'VEIC_CCOR'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'VEIC_XCOR'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'VEIC_POT'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'VEIC_CILIN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'VEIC_PESOL'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'VEIC_PESOB'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'VEIC_NSERIE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'VEIC_TPCOMB'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'VEIC_NMOTOR'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'VEIC_CMT'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'VEIC_DIST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'VEIC_ANOMOD'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'VEIC_ANOFAB'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'VEIC_TPPINT'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'VEIC_TPVEIC'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'VEIC_ESPVEIC'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'VEIC_VIN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'VEIC_CONDVEIC'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'VEIC_CMOD'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'VEIC_CCORDENATRAN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'VEIC_LOTA'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'VEIC_TPREST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'COMB_CPRODANP'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'COMB_PMIXGN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'COMB_DESCANP'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'COMB_PGLP'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'COMB_PGNN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'COMB_PGNI'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'COMB_VPART'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'COMB_CODIF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'COMB_QTEMP'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'COMB_UFCONS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'COMB_PBIO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'CIDE_QBCPROD'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'CIDE_VALIQPROD'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'CIDE_VCIDE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'COMB_VBCICMS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'COMB_VICMS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'COMB_VBCICMSST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'COMB_VICMSST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'COMB_VBCICMSSTDEST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'COMB_VICMSSTDEST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'COMB_VBCICMSSTCONS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'COMB_VICMSSTCONS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'COMB_UFCONSST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'ENCERRANTE_NBICO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'ENCERRANTE_NBOMBA'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'ENCERRANTE_NTANQUE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ENCERRANTE_VENCINI'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ENCERRANTE_VENCFIN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'VTOTTRIB'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ICMS_ORIG'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ICMS_CST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ICMS_CSOSN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ICMS_MODBC'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_PREDBC'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_VBC'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_PICMS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_VICMS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ICMS_MODBCST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_PMVAST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_PREDBCST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_VBCST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_PICMSST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_VICMSST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ICMS_UFST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_PBCOP'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_VBCSTRET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_VICMSSTRET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ICMS_MOTDESICMS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_PCREDSN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_VCREDICMSSN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_VBCSTDEST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_VICMSSTDEST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_VICMSDESON'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_VICMSOP'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_PDIF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_VICMSDIF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_VBCFCP'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_PFCP'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_VFCP'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_VBCFCPST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_PFCPST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_VFCPST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_VBCFCPSTRET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_PFCPSTRET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_VFCPSTRET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_PST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_PREDBCEFET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_VBCEFET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_PICMSEFET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_VICMSEFET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_VICMSSUBSTITUTO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_VICMSSTDESON'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ICMS_MOTDESICMSST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_PFCPDIF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_VFCPDIF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_VFCPEFET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_ADREMICMS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_VICMSMONO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_QBCMONO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_ADREMICMSRETEN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_VICMSMONORETEN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_QBCMONORETEN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_PREDADREM'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ICMS_MOTREDADREM'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_VICMSMONOOP'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_VICMSMONODIF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_ADREMICMSRET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_VICMSMONORET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMS_QBCMONORET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ICMS_INDDEDUZDESON'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ICMS_CBENEFRBC'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IPI_CLENQ'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IPI_CNPJPROD'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IPI_CSELO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'IPI_QSELO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IPI_CENQ'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IPI_CST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IPI_VBC'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IPI_QUNID'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IPI_VUNID'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IPI_PIPI'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IPI_VIPI'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'II_VBC'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'II_VDESPADU'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'II_VII'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'II_VIOF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'PIS_CST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'PIS_VBC'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'PIS_PPIS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'PIS_VPIS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'PIS_QBCPROD'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'PIS_VALIQPROD'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'PISST_VBC'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'PISST_PPIS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'PISST_QBCPROD'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'PISST_VALIQPROD'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'PISST_VPIS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'PISST_INDSOMAPISST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'COFINS_CST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'COFINS_VBC'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'COFINS_PCOFINS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'COFINS_VCOFINS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'COFINS_VBCPROD'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'COFINS_QBCPROD'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'COFINS_VALIQPROD'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'COFINSST_VBC'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'COFINSST_PCOFINS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'COFINSST_QBCPROD'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'COFINSST_VALIQPROD'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'COFINSST_VCOFINS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'COFINSST_INDSOMACOFINSST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ISSQN_VBC'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ISSQN_VALIQ'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ISSQN_VISSQN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'ISSQN_CMUNFG'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ISSQN_CLISTSERV'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ISSQN_CSITTRIB'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ISSQN_VDEDUCAO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ISSQN_VOUTRO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ISSQN_VDESCINCOND'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ISSQN_VDESCCOND'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ISSQN_INDISSRET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ISSQN_VISSRET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ISSQN_INDISS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ISSQN_CSERVICO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'ISSQN_CMUN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'ISSQN_CPAIS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ISSQN_NPROCESSO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ISSQN_INDINCENTIVO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMSUFDEST_VBCUFDEST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMSUFDEST_VBCFCPUFDEST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMSUFDEST_PFCPUFDEST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMSUFDEST_PICMSUFDEST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMSUFDEST_PICMSINTER'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMSUFDEST_PICMSINTERPART'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMSUFDEST_VFCPUFDEST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMSUFDEST_VICMSUFDEST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'ICMSUFDEST_VICMSUFREMET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IS_CSTIS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IS_CCLASSTRIBIS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IS_VBCIS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IS_PIS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IS_PISESPEC'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IS_UTRIB'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IS_QTRIB'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IS_VIS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IBSCBS_CST'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IBSCBS_CCLASSTRIB'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IBSCBS_VBC'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IBSUF_PIBSUF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IBSUF_PDIF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IBSUF_VDIF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IBSUF_VDEVTRIB'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IBSUF_PREDALIQ'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IBSUF_PALIQEFET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IBSUF_VIBSUF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IBSMUN_PIBSMUN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IBSMUN_PDIF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IBSMUN_VDIF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IBSMUN_VDEVTRIB'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IBSMUN_PREDALIQ'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IBSMUN_PALIQEFET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IBSMUN_VIBSMUN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'CBS_PCBS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'CBS_PDIF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'CBS_VDIF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'CBS_VDEVTRIB'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'CBS_PREDALIQ'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'CBS_PALIQEFET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'CBS_VCBS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'TRIBREG_CSTREG'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'TRIBREG_CCLASSTRIBREG'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TRIBREG_PALIQEFETREGIBSUF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TRIBREG_VTRIBREGIBSUF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TRIBREG_PALIQEFETREGIBSMUN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TRIBREG_VTRIBREGIBSMUN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TRIBREG_PALIQEFETREGCBS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TRIBREG_VTRIBREGCBS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IBSCREDPRES_CCREDPRES'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IBSCREDPRES_PCREDPRES'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IBSCREDPRES_VCREDPRES'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'IBSCREDPRES_VCREDPRESCONDSUS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'CBSCREDPRES_CCREDPRES'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'CBSCREDPRES_PCREDPRES'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'CBSCREDPRES_VCREDPRES'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'CBSCREDPRES_VCREDPRESCONDSUS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TRIBCOMPRAGOV_PALIQIBSUF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TRIBCOMPRAGOV_VTRIBIBSUF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TRIBCOMPRAGOV_PALIQIBSMUN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TRIBCOMPRAGOV_VTRIBIBSMUN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TRIBCOMPRAGOV_PALIQCBS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TRIBCOMPRAGOV_VTRIBCBS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'MONO_QBCMONO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'MONO_ADREMIBS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'MONO_ADREMCBS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'MONO_VIBSMONO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'MONO_VCBSMONO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'MONO_QBCMONORETEN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'MONO_ADREMIBSRETEN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'MONO_VIBSMONORETEN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'MONO_ADREMCBSRETEN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'MONO_VCBSMONORETEN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'MONO_QBCMONORET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'MONO_ADREMIBSRET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'MONO_VIBSMONORET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'MONO_ADREMCBSRET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'MONO_VCBSMONORET'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'MONO_PDIFIBS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'MONO_VIBSMONODIF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'MONO_PDIFCBS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'MONO_VCBSMONODIF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'MONO_VTOTIBSMONOITEM'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'MONO_VTOTCBSMONOITEM'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TRANSFCRED_VIBS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'TRANSFCRED_VCBS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'CREDPRESIBSZFM_TPCREDPRESIBSZFM'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'CREDPRESIBSZFM_VCREDPRESIBSZFM'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'PDEVOL'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'VIPIDEVOL'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'INFADPROD'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'OBSCONT_XCAMPO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'OBSCONT_XTEXTO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'OBSFISCO_XCAMPO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'OBSFISCO_XTEXTO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'VITEM'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'DFEREF_CHAVEACESSO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'DFEREF_NITEM'
+        ParamType = ptInput
+      end>
+    Left = 120
+    Top = 160
+  end
+  object cmdDelNFeDet: TZQuery
+    Connection = frmMain.ZConnection1
+    SQL.Strings = (
+      'DELETE FROM NFE_DET'
+      ' WHERE CHNFE = :CHNFE'
+    )
+    Params = <
+      item
+        DataType = ftString
+        Name = 'CHNFE'
+        ParamType = ptInput
+      end>
+    Left = 120
+    Top = 230
+  end
+  object cmdInsNFeFat: TZQuery
+    Connection = frmMain.ZConnection1
+    SQL.Strings = (
+      'INSERT INTO NFE_FAT ('
+      '  CHNFE, NFAT, VORIG, VDESC, VLIQ'
+      ') VALUES ('
+      '  :CHNFE, :NFAT, :VORIG, :VDESC, :VLIQ'
+      ')'
+    )
+    Params = <
+      item
+        DataType = ftString
+        Name = 'CHNFE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'NFAT'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'VORIG'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'VDESC'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'VLIQ'
+        ParamType = ptInput
+      end>
+    Left = 208
+    Top = 160
+  end
+  object cmdDelNFeFat: TZQuery
+    Connection = frmMain.ZConnection1
+    SQL.Strings = (
+      'DELETE FROM NFE_FAT'
+      ' WHERE CHNFE = :CHNFE'
+    )
+    Params = <
+      item
+        DataType = ftString
+        Name = 'CHNFE'
+        ParamType = ptInput
+      end>
+    Left = 208
+    Top = 230
+  end
+  object cmdInsNFeDup: TZQuery
+    Connection = frmMain.ZConnection1
+    SQL.Strings = (
+      'INSERT INTO NFE_DUP ('
+      '  CHNFE, SEQ, NDUP, DVENC, VDUP'
+      ') VALUES ('
+      '  :CHNFE, :SEQ, :NDUP, :DVENC, :VDUP'
+      ')'
+    )
+    Params = <
+      item
+        DataType = ftString
+        Name = 'CHNFE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'SEQ'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'NDUP'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftDate
+        Name = 'DVENC'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'VDUP'
+        ParamType = ptInput
+      end>
+    Left = 296
+    Top = 160
+  end
+  object cmdDelNFeDup: TZQuery
+    Connection = frmMain.ZConnection1
+    SQL.Strings = (
+      'DELETE FROM NFE_DUP'
+      ' WHERE CHNFE = :CHNFE'
+    )
+    Params = <
+      item
+        DataType = ftString
+        Name = 'CHNFE'
+        ParamType = ptInput
+      end>
+    Left = 296
+    Top = 230
+  end
+  object cmdInsNFeVol: TZQuery
+    Connection = frmMain.ZConnection1
+    SQL.Strings = (
+      'INSERT INTO NFE_VOL ('
+      '  CHNFE, SEQ, QVOL, ESP, MARCA, NVOL,'
+      '  PESOL, PESOB'
+      ') VALUES ('
+      '  :CHNFE, :SEQ, :QVOL, :ESP, :MARCA, :NVOL,'
+      '  :PESOL, :PESOB'
+      ')'
+    )
+    Params = <
+      item
+        DataType = ftString
+        Name = 'CHNFE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'SEQ'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'QVOL'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ESP'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'MARCA'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'NVOL'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'PESOL'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'PESOB'
+        ParamType = ptInput
+      end>
+    Left = 384
+    Top = 160
+  end
+  object cmdDelNFeVol: TZQuery
+    Connection = frmMain.ZConnection1
+    SQL.Strings = (
+      'DELETE FROM NFE_VOL'
+      ' WHERE CHNFE = :CHNFE'
+    )
+    Params = <
+      item
+        DataType = ftString
+        Name = 'CHNFE'
+        ParamType = ptInput
+      end>
+    Left = 384
+    Top = 230
+  end
+  object cmdInsNFePgt: TZQuery
+    Connection = frmMain.ZConnection1
+    SQL.Strings = (
+      'INSERT INTO NFE_PAG ('
+      '  CHNFE, SEQ, INDPAG, TPAG, XPAG, VPAG,'
+      '  TPINTEGRA, CNPJ, TBAND, CAUT, DPAG, CNPJPAG,'
+      '  UFPAG, CNPJRECEB, IDTERMPAG'
+      ') VALUES ('
+      '  :CHNFE, :SEQ, :INDPAG, :TPAG, :XPAG, :VPAG,'
+      '  :TPINTEGRA, :CNPJ, :TBAND, :CAUT, :DPAG, :CNPJPAG,'
+      '  :UFPAG, :CNPJRECEB, :IDTERMPAG'
+      ')'
+    )
+    Params = <
+      item
+        DataType = ftString
+        Name = 'CHNFE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'SEQ'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'INDPAG'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'TPAG'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'XPAG'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'VPAG'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'TPINTEGRA'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'CNPJ'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'TBAND'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'CAUT'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftDate
+        Name = 'DPAG'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'CNPJPAG'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'UFPAG'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'CNPJRECEB'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IDTERMPAG'
+        ParamType = ptInput
+      end>
+    Left = 472
+    Top = 160
+  end
+  object cmdDelNFePgt: TZQuery
+    Connection = frmMain.ZConnection1
+    SQL.Strings = (
+      'DELETE FROM NFE_PAG'
+      ' WHERE CHNFE = :CHNFE'
+    )
+    Params = <
+      item
+        DataType = ftString
+        Name = 'CHNFE'
+        ParamType = ptInput
+      end>
+    Left = 472
+    Top = 230
+  end
   object sqlCreateTables: TZSQLProcessor
     Params = <>
     Script.Strings = (

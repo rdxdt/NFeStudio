@@ -8,6 +8,7 @@
 - `bin/`: Binários montados por plataformas
 - `packaging/`: Estrutura de arquivos para empacotamento em linux
 - `dist/`: Pacotes gerados para instalação
+- `tests/`: Projeto de testes (FPCUnit) e arquivos de apoio em `tests/fixtures`
 
 ## Componentes/bibliotecas utilizados
 - ACBr

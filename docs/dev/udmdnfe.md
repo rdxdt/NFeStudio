@@ -14,6 +14,8 @@ Datamodule com as queries de persistência das notas fiscais (banco SQLite via Z
 | `qryNFeVol`       | TZQuery        | Volumes transportados (`NFE_VOL`) — detalhe  |
 | `qryNFePgt`       | TZQuery        | Formas de pagamento (`NFE_PAG`) — detalhe    |
 | `sqlCreateTables` | TZSQLProcessor | DDL de criação das tabelas e índices         |
+| `cmdInsNFe<Tab>`  | TZQuery        | INSERT em cada tabela (usado pelo `TProcessadorNFe`) |
+| `cmdDelNFe<Tab>`  | TZQuery        | DELETE por `CHNFE` em cada tabela (usado pelo `TProcessadorNFe`) |
 
 ### qryNFeCab
 
@@ -102,6 +104,17 @@ procedure CampoCEPGetText(Sender: TField; var AText: string; DisplayText: boolea
 - `CampoCEPGetText`: o CEP é `INTEGER` e perde os zeros à esquerda (`01310100` → `1310100`), por isso o
   valor é completado com zeros até 8 dígitos antes do `FormatarCEP`. O `FormatarCEP` do ACBr não é
   chamado com o inteiro direto porque completaria valores de 5 dígitos à direita.
+
+### Comandos de gravação (`cmdInsNFe*` / `cmdDelNFe*`)
+
+Um par por tabela, com `<Tab>` = `Cab`, `Det`, `Fat`, `Dup`, `Vol` e `Pgt` (`NFE_PAG`):
+
+- `cmdInsNFe<Tab>`: `INSERT` com todas as colunas da tabela; cada parâmetro tem o mesmo nome da coluna
+  e o `DataType` correspondente ao DDL.
+- `cmdDelNFe<Tab>`: `DELETE ... WHERE CHNFE = :CHNFE`.
+
+São usados pelo `TProcessadorNFe` (`uprocessadornfe`). Ao incluir colunas no DDL, inclua também a
+coluna/parâmetro no `cmdInsNFe<Tab>` correspondente e o mapeamento em `uprocessadornfe`.
 
 ### sqlCreateTables
 

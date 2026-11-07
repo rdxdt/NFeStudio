@@ -599,6 +599,18 @@ type
     qryNFeFatVLIQ: TZDoubleField;
     dtsNFeCab: TDataSource;
     sqlCreateTables: TZSQLProcessor;
+    cmdInsNFeCab: TZQuery;
+    cmdDelNFeCab: TZQuery;
+    cmdInsNFeDet: TZQuery;
+    cmdDelNFeDet: TZQuery;
+    cmdInsNFeFat: TZQuery;
+    cmdDelNFeFat: TZQuery;
+    cmdInsNFeDup: TZQuery;
+    cmdDelNFeDup: TZQuery;
+    cmdInsNFeVol: TZQuery;
+    cmdDelNFeVol: TZQuery;
+    cmdInsNFePgt: TZQuery;
+    cmdDelNFePgt: TZQuery;
     procedure CampoCNPJCPFGetText(Sender: TField; var AText: string; DisplayText: boolean);
     procedure CampoCEPGetText(Sender: TField; var AText: string; DisplayText: boolean);
   private
