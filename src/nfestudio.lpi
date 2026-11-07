@@ -13,9 +13,15 @@
       </XPManifest>
       <Icon Value="0"/>
     </General>
+    <MacroValues Count="1">
+      <Macro1 Name="LCLWidgetType" Value="qt6"/>
+    </MacroValues>
     <BuildModes>
       <Item Name="Debug-Linux64" Default="True"/>
       <Item Name="Debug-Win64">
+        <MacroValues Count="1">
+          <Macro2 Name="LCLWidgetType" Value="win32"/>
+        </MacroValues>
         <CompilerOptions>
           <Version Value="11"/>
           <Target>
@@ -31,8 +37,6 @@
             </SyntaxOptions>
           </Parsing>
           <CodeGeneration>
-            <TargetCPU Value="x86_64"/>
-            <TargetOS Value="win64"/>
             <Checks>
               <IOChecks Value="True"/>
               <RangeChecks Value="True"/>
@@ -40,6 +44,8 @@
               <StackChecks Value="True"/>
             </Checks>
             <VerifyObjMethodCallValidity Value="True"/>
+            <TargetCPU Value="x86_64"/>
+            <TargetOS Value="win64"/>
             <Optimizations>
               <OptimizationLevel Value="0"/>
             </Optimizations>
@@ -62,6 +68,9 @@
         </CompilerOptions>
       </Item>
       <Item Name="Release-Linux64">
+        <MacroValues Count="1">
+          <Macro1 Name="LCLWidgetType" Value="qt6"/>
+        </MacroValues>
         <CompilerOptions>
           <Version Value="11"/>
           <Target>
@@ -98,6 +107,9 @@
         </CompilerOptions>
       </Item>
       <Item Name="Release-Win64">
+        <MacroValues Count="1">
+          <Macro2 Name="LCLWidgetType" Value="win32"/>
+        </MacroValues>
         <CompilerOptions>
           <Version Value="11"/>
           <Target>
@@ -186,12 +198,14 @@
         <Filename Value="ufrmmain.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmMain"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
       <Unit>
         <Filename Value="udmdnfe.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="dmdNFe"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
       </Unit>
       <Unit>
@@ -204,48 +218,48 @@
     </Units>
   </ProjectOptions>
   <CompilerOptions>
-  <Version Value="11"/>
-  <Target>
-    <Filename Value="../bin/linux64/debug/nfestudio"/>
-  </Target>
-  <SearchPaths>
-    <IncludeFiles Value="$(ProjOutDir)"/>
-    <UnitOutputDirectory Value="../build/linux64/debug"/>
-  </SearchPaths>
-  <Parsing>
-    <SyntaxOptions>
-      <IncludeAssertionCode Value="True"/>
-    </SyntaxOptions>
-  </Parsing>
-  <CodeGeneration>
-    <TargetCPU Value="x86_64"/>
-    <TargetOS Value="linux"/>
-    <Checks>
-      <IOChecks Value="True"/>
-      <RangeChecks Value="True"/>
-      <OverflowChecks Value="True"/>
-      <StackChecks Value="True"/>
-    </Checks>
-    <VerifyObjMethodCallValidity Value="True"/>
-    <Optimizations>
-      <OptimizationLevel Value="0"/>
-    </Optimizations>
-  </CodeGeneration>
-  <Linking>
-    <Debugging>
-      <DebugInfoType Value="dsDwarf3"/>
-      <UseHeaptrc Value="True"/>
-      <TrashVariables Value="True"/>
-    </Debugging>
-    <Options>
-      <Win32>
-        <GraphicApplication Value="True"/>
-      </Win32>
-    </Options>
-  </Linking>
-  <Other>
-    <CustomOptions Value="-dDEBUG"/>
-  </Other>
+    <Version Value="11"/>
+    <Target>
+      <Filename Value="../bin/linux64/debug/nfestudio"/>
+    </Target>
+    <SearchPaths>
+      <IncludeFiles Value="$(ProjOutDir)"/>
+      <UnitOutputDirectory Value="../build/linux64/debug"/>
+    </SearchPaths>
+    <Parsing>
+      <SyntaxOptions>
+        <IncludeAssertionCode Value="True"/>
+      </SyntaxOptions>
+    </Parsing>
+    <CodeGeneration>
+      <Checks>
+        <IOChecks Value="True"/>
+        <RangeChecks Value="True"/>
+        <OverflowChecks Value="True"/>
+        <StackChecks Value="True"/>
+      </Checks>
+      <VerifyObjMethodCallValidity Value="True"/>
+      <TargetCPU Value="x86_64"/>
+      <TargetOS Value="linux"/>
+      <Optimizations>
+        <OptimizationLevel Value="0"/>
+      </Optimizations>
+    </CodeGeneration>
+    <Linking>
+      <Debugging>
+        <DebugInfoType Value="dsDwarf3"/>
+        <UseHeaptrc Value="True"/>
+        <TrashVariables Value="True"/>
+      </Debugging>
+      <Options>
+        <Win32>
+          <GraphicApplication Value="True"/>
+        </Win32>
+      </Options>
+    </Linking>
+    <Other>
+      <CustomOptions Value="-dDEBUG"/>
+    </Other>
   </CompilerOptions>
   <Debugging>
     <Exceptions>

@@ -33,6 +33,7 @@
 - `TZConnection`: con
 - `TZQuery`: qry
 - `TZQuery com comandos diferentes de SELECT`:cmd
+- `TDataSource`: dts
 - `TComboBox`: cbx
 - `TCheckBox`: chk
 - `TSpinEdit`: spe

@@ -22,7 +22,9 @@ type
     ACBrNFeDANFeRL1: TACBrNFeDANFeRL;
     ACBrPosPrinter1: TACBrPosPrinter;
     btnAbrir: TButton;
-    DataSource1: TDataSource;
+    Button1: TButton;
+    Button2: TButton;
+    dsNFeCab: TDataSource;
     dtpInicial: TDateTimePicker;
     dtpFinal: TDateTimePicker;
     DBGrid1: TDBGrid;

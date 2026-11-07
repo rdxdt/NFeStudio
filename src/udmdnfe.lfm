@@ -6,43 +6,6159 @@ object dmdNFe: TdmdNFe
   Width = 561
   object qryNFeCab: TZQuery
     Connection = frmMain.ZConnection1
-    Params = <>
+    SQL.Strings = (
+      'SELECT *'
+      '  FROM NFE_CAB'
+      ' WHERE IDE_DHEMI >= :DATA_INICIAL'
+      '   AND IDE_DHEMI < DATE(:DATA_FINAL, ''+1 day'')'
+      ' ORDER BY IDE_DHEMI, IDE_SERIE, IDE_NNF'
+    )
+    Params = <
+      item
+        DataType = ftDate
+        Name = 'DATA_INICIAL'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftDate
+        Name = 'DATA_FINAL'
+        ParamType = ptInput
+      end>
     Left = 32
     Top = 17
+    object qryNFeCabCHNFE: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'CHNFE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 44
+    end
+    object qryNFeCabVERSAO: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'VERSAO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00'
+    end
+    object qryNFeCabIDE_CUF: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'IDE_CUF'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeCabIDE_CNF: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'IDE_CNF'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeCabIDE_NATOP: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'IDE_NATOP'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabIDE_INDPAG: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'IDE_INDPAG'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeCabIDE_MOD: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'IDE_MOD'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeCabIDE_SERIE: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'IDE_SERIE'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeCabIDE_NNF: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'IDE_NNF'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeCabIDE_DHEMI: TZDateTimeField
+      FieldKind = fkData
+      FieldName = 'IDE_DHEMI'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat.Format = 'dd/mm/yyyy hh:nn:ss'
+    end
+    object qryNFeCabIDE_DHSAIENT: TZDateTimeField
+      FieldKind = fkData
+      FieldName = 'IDE_DHSAIENT'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat.Format = 'dd/mm/yyyy hh:nn:ss'
+    end
+    object qryNFeCabIDE_HSAIENT: TZTimeField
+      FieldKind = fkData
+      FieldName = 'IDE_HSAIENT'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat.Format = 'hh:nn:ss'
+    end
+    object qryNFeCabIDE_TPNF: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'IDE_TPNF'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeCabIDE_IDDEST: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'IDE_IDDEST'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeCabIDE_CMUNFG: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'IDE_CMUNFG'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeCabIDE_TPIMP: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'IDE_TPIMP'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeCabIDE_TPEMIS: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'IDE_TPEMIS'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeCabIDE_CDV: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'IDE_CDV'
+      Index = 17
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeCabIDE_TPAMB: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'IDE_TPAMB'
+      Index = 18
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeCabIDE_FINNFE: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'IDE_FINNFE'
+      Index = 19
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeCabIDE_INDFINAL: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'IDE_INDFINAL'
+      Index = 20
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeCabIDE_INDPRES: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'IDE_INDPRES'
+      Index = 21
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeCabIDE_INDINTERMED: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'IDE_INDINTERMED'
+      Index = 22
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeCabIDE_PROCEMI: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'IDE_PROCEMI'
+      Index = 23
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeCabIDE_VERPROC: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'IDE_VERPROC'
+      Index = 24
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 20
+    end
+    object qryNFeCabIDE_DHCONT: TZDateTimeField
+      FieldKind = fkData
+      FieldName = 'IDE_DHCONT'
+      Index = 25
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat.Format = 'dd/mm/yyyy hh:nn:ss'
+    end
+    object qryNFeCabIDE_XJUST: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'IDE_XJUST'
+      Index = 26
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 256
+    end
+    object qryNFeCabIDE_CMUNFGIBS: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'IDE_CMUNFGIBS'
+      Index = 27
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeCabIDE_TPNFDEBITO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'IDE_TPNFDEBITO'
+      Index = 28
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object qryNFeCabIDE_TPNFCREDITO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'IDE_TPNFCREDITO'
+      Index = 29
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object qryNFeCabCOMPRAGOV_TPENTEGOV: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'COMPRAGOV_TPENTEGOV'
+      Index = 30
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeCabCOMPRAGOV_PREDUTOR: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'COMPRAGOV_PREDUTOR'
+      Index = 31
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeCabCOMPRAGOV_TPOPERGOV: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'COMPRAGOV_TPOPERGOV'
+      Index = 32
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeCabEMIT_CNPJCPF: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'EMIT_CNPJCPF'
+      Index = 33
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 14
+    end
+    object qryNFeCabEMIT_XNOME: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'EMIT_XNOME'
+      Index = 34
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabEMIT_XFANT: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'EMIT_XFANT'
+      Index = 35
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabEMIT_XLGR: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'EMIT_XLGR'
+      Index = 36
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabEMIT_NRO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'EMIT_NRO'
+      Index = 37
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabEMIT_XCPL: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'EMIT_XCPL'
+      Index = 38
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabEMIT_XBAIRRO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'EMIT_XBAIRRO'
+      Index = 39
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabEMIT_CMUN: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'EMIT_CMUN'
+      Index = 40
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeCabEMIT_XMUN: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'EMIT_XMUN'
+      Index = 41
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabEMIT_UF: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'EMIT_UF'
+      Index = 42
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object qryNFeCabEMIT_CEP: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'EMIT_CEP'
+      Index = 43
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeCabEMIT_CPAIS: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'EMIT_CPAIS'
+      Index = 44
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeCabEMIT_XPAIS: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'EMIT_XPAIS'
+      Index = 45
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabEMIT_FONE: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'EMIT_FONE'
+      Index = 46
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 14
+    end
+    object qryNFeCabEMIT_IE: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'EMIT_IE'
+      Index = 47
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 14
+    end
+    object qryNFeCabEMIT_IEST: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'EMIT_IEST'
+      Index = 48
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 14
+    end
+    object qryNFeCabEMIT_IM: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'EMIT_IM'
+      Index = 49
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 15
+    end
+    object qryNFeCabEMIT_CNAE: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'EMIT_CNAE'
+      Index = 50
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 7
+    end
+    object qryNFeCabEMIT_CRT: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'EMIT_CRT'
+      Index = 51
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeCabAVULSA_CNPJ: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'AVULSA_CNPJ'
+      Index = 52
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 14
+    end
+    object qryNFeCabAVULSA_XORGAO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'AVULSA_XORGAO'
+      Index = 53
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabAVULSA_MATR: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'AVULSA_MATR'
+      Index = 54
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabAVULSA_XAGENTE: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'AVULSA_XAGENTE'
+      Index = 55
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabAVULSA_FONE: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'AVULSA_FONE'
+      Index = 56
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 14
+    end
+    object qryNFeCabAVULSA_UF: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'AVULSA_UF'
+      Index = 57
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object qryNFeCabAVULSA_NDAR: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'AVULSA_NDAR'
+      Index = 58
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabAVULSA_DEMI: TZDateField
+      FieldKind = fkData
+      FieldName = 'AVULSA_DEMI'
+      Index = 59
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat.Format = 'dd/mm/yyyy'
+    end
+    object qryNFeCabAVULSA_VDAR: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'AVULSA_VDAR'
+      Index = 60
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabAVULSA_REPEMI: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'AVULSA_REPEMI'
+      Index = 61
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabAVULSA_DPAG: TZDateField
+      FieldKind = fkData
+      FieldName = 'AVULSA_DPAG'
+      Index = 62
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat.Format = 'dd/mm/yyyy'
+    end
+    object qryNFeCabDEST_CNPJCPF: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'DEST_CNPJCPF'
+      Index = 63
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 14
+    end
+    object qryNFeCabDEST_IDESTRANGEIRO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'DEST_IDESTRANGEIRO'
+      Index = 64
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 20
+    end
+    object qryNFeCabDEST_XNOME: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'DEST_XNOME'
+      Index = 65
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabDEST_XLGR: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'DEST_XLGR'
+      Index = 66
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabDEST_NRO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'DEST_NRO'
+      Index = 67
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabDEST_XCPL: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'DEST_XCPL'
+      Index = 68
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabDEST_XBAIRRO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'DEST_XBAIRRO'
+      Index = 69
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabDEST_CMUN: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'DEST_CMUN'
+      Index = 70
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeCabDEST_XMUN: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'DEST_XMUN'
+      Index = 71
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabDEST_UF: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'DEST_UF'
+      Index = 72
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object qryNFeCabDEST_CEP: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'DEST_CEP'
+      Index = 73
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeCabDEST_CPAIS: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'DEST_CPAIS'
+      Index = 74
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeCabDEST_XPAIS: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'DEST_XPAIS'
+      Index = 75
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabDEST_FONE: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'DEST_FONE'
+      Index = 76
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 14
+    end
+    object qryNFeCabDEST_INDIEDEST: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'DEST_INDIEDEST'
+      Index = 77
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeCabDEST_IE: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'DEST_IE'
+      Index = 78
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 14
+    end
+    object qryNFeCabDEST_ISUF: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'DEST_ISUF'
+      Index = 79
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 9
+    end
+    object qryNFeCabDEST_IM: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'DEST_IM'
+      Index = 80
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 15
+    end
+    object qryNFeCabDEST_EMAIL: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'DEST_EMAIL'
+      Index = 81
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabRETIRADA_CNPJCPF: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'RETIRADA_CNPJCPF'
+      Index = 82
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 14
+    end
+    object qryNFeCabRETIRADA_XNOME: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'RETIRADA_XNOME'
+      Index = 83
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabRETIRADA_XLGR: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'RETIRADA_XLGR'
+      Index = 84
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabRETIRADA_NRO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'RETIRADA_NRO'
+      Index = 85
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabRETIRADA_XCPL: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'RETIRADA_XCPL'
+      Index = 86
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabRETIRADA_XBAIRRO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'RETIRADA_XBAIRRO'
+      Index = 87
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabRETIRADA_CMUN: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'RETIRADA_CMUN'
+      Index = 88
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeCabRETIRADA_XMUN: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'RETIRADA_XMUN'
+      Index = 89
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabRETIRADA_UF: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'RETIRADA_UF'
+      Index = 90
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object qryNFeCabRETIRADA_CEP: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'RETIRADA_CEP'
+      Index = 91
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeCabRETIRADA_CPAIS: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'RETIRADA_CPAIS'
+      Index = 92
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeCabRETIRADA_XPAIS: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'RETIRADA_XPAIS'
+      Index = 93
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabRETIRADA_FONE: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'RETIRADA_FONE'
+      Index = 94
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 14
+    end
+    object qryNFeCabRETIRADA_EMAIL: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'RETIRADA_EMAIL'
+      Index = 95
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabRETIRADA_IE: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'RETIRADA_IE'
+      Index = 96
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 14
+    end
+    object qryNFeCabENTREGA_CNPJCPF: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ENTREGA_CNPJCPF'
+      Index = 97
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 14
+    end
+    object qryNFeCabENTREGA_XNOME: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ENTREGA_XNOME'
+      Index = 98
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabENTREGA_XLGR: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ENTREGA_XLGR'
+      Index = 99
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabENTREGA_NRO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ENTREGA_NRO'
+      Index = 100
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabENTREGA_XCPL: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ENTREGA_XCPL'
+      Index = 101
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabENTREGA_XBAIRRO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ENTREGA_XBAIRRO'
+      Index = 102
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabENTREGA_CMUN: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'ENTREGA_CMUN'
+      Index = 103
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeCabENTREGA_XMUN: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ENTREGA_XMUN'
+      Index = 104
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabENTREGA_UF: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ENTREGA_UF'
+      Index = 105
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object qryNFeCabENTREGA_CEP: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'ENTREGA_CEP'
+      Index = 106
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeCabENTREGA_CPAIS: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'ENTREGA_CPAIS'
+      Index = 107
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeCabENTREGA_XPAIS: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ENTREGA_XPAIS'
+      Index = 108
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabENTREGA_FONE: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ENTREGA_FONE'
+      Index = 109
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 14
+    end
+    object qryNFeCabENTREGA_EMAIL: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ENTREGA_EMAIL'
+      Index = 110
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabENTREGA_IE: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ENTREGA_IE'
+      Index = 111
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 14
+    end
+    object qryNFeCabTOT_VBC: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TOT_VBC'
+      Index = 112
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabTOT_VICMS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TOT_VICMS'
+      Index = 113
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabTOT_VICMSDESON: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TOT_VICMSDESON'
+      Index = 114
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabTOT_VFCPUFDEST: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TOT_VFCPUFDEST'
+      Index = 115
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabTOT_VICMSUFDEST: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TOT_VICMSUFDEST'
+      Index = 116
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabTOT_VICMSUFREMET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TOT_VICMSUFREMET'
+      Index = 117
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabTOT_VFCP: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TOT_VFCP'
+      Index = 118
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabTOT_VBCST: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TOT_VBCST'
+      Index = 119
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabTOT_VST: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TOT_VST'
+      Index = 120
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabTOT_VFCPST: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TOT_VFCPST'
+      Index = 121
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabTOT_VFCPSTRET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TOT_VFCPSTRET'
+      Index = 122
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabTOT_VPROD: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TOT_VPROD'
+      Index = 123
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabTOT_VFRETE: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TOT_VFRETE'
+      Index = 124
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabTOT_VSEG: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TOT_VSEG'
+      Index = 125
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabTOT_VDESC: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TOT_VDESC'
+      Index = 126
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabTOT_VII: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TOT_VII'
+      Index = 127
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabTOT_VIPI: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TOT_VIPI'
+      Index = 128
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabTOT_VIPIDEVOL: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TOT_VIPIDEVOL'
+      Index = 129
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabTOT_VPIS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TOT_VPIS'
+      Index = 130
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabTOT_VCOFINS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TOT_VCOFINS'
+      Index = 131
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabTOT_VOUTRO: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TOT_VOUTRO'
+      Index = 132
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabTOT_VNF: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TOT_VNF'
+      Index = 133
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabTOT_VTOTTRIB: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TOT_VTOTTRIB'
+      Index = 134
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabTOT_VICMSMONO: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TOT_VICMSMONO'
+      Index = 135
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabTOT_VICMSMONORETEN: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TOT_VICMSMONORETEN'
+      Index = 136
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabTOT_VICMSMONORET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TOT_VICMSMONORET'
+      Index = 137
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabTOT_QBCMONO: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TOT_QBCMONO'
+      Index = 138
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeCabTOT_QBCMONORETEN: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TOT_QBCMONORETEN'
+      Index = 139
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeCabTOT_QBCMONORET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TOT_QBCMONORET'
+      Index = 140
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeCabTOT_VNFTOT: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TOT_VNFTOT'
+      Index = 141
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabISSQNTOT_VSERV: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ISSQNTOT_VSERV'
+      Index = 142
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabISSQNTOT_VBC: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ISSQNTOT_VBC'
+      Index = 143
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabISSQNTOT_VISS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ISSQNTOT_VISS'
+      Index = 144
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabISSQNTOT_VPIS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ISSQNTOT_VPIS'
+      Index = 145
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabISSQNTOT_VCOFINS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ISSQNTOT_VCOFINS'
+      Index = 146
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabISSQNTOT_DCOMPET: TZDateField
+      FieldKind = fkData
+      FieldName = 'ISSQNTOT_DCOMPET'
+      Index = 147
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat.Format = 'dd/mm/yyyy'
+    end
+    object qryNFeCabISSQNTOT_VDEDUCAO: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ISSQNTOT_VDEDUCAO'
+      Index = 148
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabISSQNTOT_VOUTRO: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ISSQNTOT_VOUTRO'
+      Index = 149
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabISSQNTOT_VDESCINCOND: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ISSQNTOT_VDESCINCOND'
+      Index = 150
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabISSQNTOT_VDESCCOND: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ISSQNTOT_VDESCCOND'
+      Index = 151
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabISSQNTOT_VISSRET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ISSQNTOT_VISSRET'
+      Index = 152
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabISSQNTOT_CREGTRIB: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ISSQNTOT_CREGTRIB'
+      Index = 153
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeCabRETTRIB_VRETPIS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'RETTRIB_VRETPIS'
+      Index = 154
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabRETTRIB_VRETCOFINS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'RETTRIB_VRETCOFINS'
+      Index = 155
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabRETTRIB_VRETCSLL: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'RETTRIB_VRETCSLL'
+      Index = 156
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabRETTRIB_VBCIRRF: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'RETTRIB_VBCIRRF'
+      Index = 157
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabRETTRIB_VIRRF: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'RETTRIB_VIRRF'
+      Index = 158
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabRETTRIB_VBCRETPREV: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'RETTRIB_VBCRETPREV'
+      Index = 159
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabRETTRIB_VRETPREV: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'RETTRIB_VRETPREV'
+      Index = 160
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabISTOT_VIS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ISTOT_VIS'
+      Index = 161
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabIBSCBSTOT_VBCIBSCBS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IBSCBSTOT_VBCIBSCBS'
+      Index = 162
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabIBSUFTOT_VDIF: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IBSUFTOT_VDIF'
+      Index = 163
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabIBSUFTOT_VDEVTRIB: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IBSUFTOT_VDEVTRIB'
+      Index = 164
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabIBSUFTOT_VIBSUF: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IBSUFTOT_VIBSUF'
+      Index = 165
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabIBSMUNTOT_VDIF: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IBSMUNTOT_VDIF'
+      Index = 166
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabIBSMUNTOT_VDEVTRIB: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IBSMUNTOT_VDEVTRIB'
+      Index = 167
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabIBSMUNTOT_VIBSMUN: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IBSMUNTOT_VIBSMUN'
+      Index = 168
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabIBSTOT_VIBS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IBSTOT_VIBS'
+      Index = 169
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabIBSTOT_VCREDPRES: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IBSTOT_VCREDPRES'
+      Index = 170
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabIBSTOT_VCREDPRESCONDSUS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IBSTOT_VCREDPRESCONDSUS'
+      Index = 171
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabCBSTOT_VDIF: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'CBSTOT_VDIF'
+      Index = 172
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabCBSTOT_VDEVTRIB: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'CBSTOT_VDEVTRIB'
+      Index = 173
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabCBSTOT_VCBS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'CBSTOT_VCBS'
+      Index = 174
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabCBSTOT_VCREDPRES: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'CBSTOT_VCREDPRES'
+      Index = 175
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabCBSTOT_VCREDPRESCONDSUS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'CBSTOT_VCREDPRESCONDSUS'
+      Index = 176
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabMONOTOT_VIBSMONO: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'MONOTOT_VIBSMONO'
+      Index = 177
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabMONOTOT_VCBSMONO: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'MONOTOT_VCBSMONO'
+      Index = 178
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabMONOTOT_VIBSMONORETEN: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'MONOTOT_VIBSMONORETEN'
+      Index = 179
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabMONOTOT_VCBSMONORETEN: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'MONOTOT_VCBSMONORETEN'
+      Index = 180
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabMONOTOT_VIBSMONORET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'MONOTOT_VIBSMONORET'
+      Index = 181
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabMONOTOT_VCBSMONORET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'MONOTOT_VCBSMONORET'
+      Index = 182
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabTRANSP_MODFRETE: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'TRANSP_MODFRETE'
+      Index = 183
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeCabTRANSPORTA_CNPJCPF: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'TRANSPORTA_CNPJCPF'
+      Index = 184
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 14
+    end
+    object qryNFeCabTRANSPORTA_XNOME: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'TRANSPORTA_XNOME'
+      Index = 185
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabTRANSPORTA_IE: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'TRANSPORTA_IE'
+      Index = 186
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 14
+    end
+    object qryNFeCabTRANSPORTA_XENDER: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'TRANSPORTA_XENDER'
+      Index = 187
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabTRANSPORTA_XMUN: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'TRANSPORTA_XMUN'
+      Index = 188
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabTRANSPORTA_UF: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'TRANSPORTA_UF'
+      Index = 189
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object qryNFeCabRETTRANSP_VSERV: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'RETTRANSP_VSERV'
+      Index = 190
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabRETTRANSP_VBCRET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'RETTRANSP_VBCRET'
+      Index = 191
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabRETTRANSP_PICMSRET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'RETTRANSP_PICMSRET'
+      Index = 192
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeCabRETTRANSP_VICMSRET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'RETTRANSP_VICMSRET'
+      Index = 193
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabRETTRANSP_CFOP: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'RETTRANSP_CFOP'
+      Index = 194
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 4
+    end
+    object qryNFeCabRETTRANSP_CMUNFG: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'RETTRANSP_CMUNFG'
+      Index = 195
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeCabVEICTRANSP_PLACA: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'VEICTRANSP_PLACA'
+      Index = 196
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 7
+    end
+    object qryNFeCabVEICTRANSP_UF: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'VEICTRANSP_UF'
+      Index = 197
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object qryNFeCabVEICTRANSP_RNTC: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'VEICTRANSP_RNTC'
+      Index = 198
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 20
+    end
+    object qryNFeCabTRANSP_VAGAO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'TRANSP_VAGAO'
+      Index = 199
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 20
+    end
+    object qryNFeCabTRANSP_BALSA: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'TRANSP_BALSA'
+      Index = 200
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 20
+    end
+    object qryNFeCabPAG_VTROCO: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'PAG_VTROCO'
+      Index = 201
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabINTERMED_CNPJ: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'INTERMED_CNPJ'
+      Index = 202
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 14
+    end
+    object qryNFeCabINTERMED_IDCADINTTRAN: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'INTERMED_IDCADINTTRAN'
+      Index = 203
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabINFADIC_INFADFISCO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'INFADIC_INFADFISCO'
+      Index = 204
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2000
+    end
+    object qryNFeCabINFADIC_INFCPL: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'INFADIC_INFCPL'
+      Index = 205
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 5000
+    end
+    object qryNFeCabEXPORTA_UFEMBARQ: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'EXPORTA_UFEMBARQ'
+      Index = 206
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object qryNFeCabEXPORTA_XLOCEMBARQ: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'EXPORTA_XLOCEMBARQ'
+      Index = 207
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabEXPORTA_UFSAIDAPAIS: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'EXPORTA_UFSAIDAPAIS'
+      Index = 208
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object qryNFeCabEXPORTA_XLOCEXPORTA: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'EXPORTA_XLOCEXPORTA'
+      Index = 209
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabEXPORTA_XLOCDESPACHO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'EXPORTA_XLOCDESPACHO'
+      Index = 210
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabCOMPRA_XNEMP: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'COMPRA_XNEMP'
+      Index = 211
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 22
+    end
+    object qryNFeCabCOMPRA_XPED: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'COMPRA_XPED'
+      Index = 212
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabCOMPRA_XCONT: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'COMPRA_XCONT'
+      Index = 213
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabCANA_SAFRA: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'CANA_SAFRA'
+      Index = 214
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 9
+    end
+    object qryNFeCabCANA_REF: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'CANA_REF'
+      Index = 215
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 7
+    end
+    object qryNFeCabCANA_QTOTMES: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'CANA_QTOTMES'
+      Index = 216
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00########'
+      EditFormat = '0.00########'
+    end
+    object qryNFeCabCANA_QTOTANT: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'CANA_QTOTANT'
+      Index = 217
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00########'
+      EditFormat = '0.00########'
+    end
+    object qryNFeCabCANA_QTOTGER: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'CANA_QTOTGER'
+      Index = 218
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00########'
+      EditFormat = '0.00########'
+    end
+    object qryNFeCabCANA_VFOR: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'CANA_VFOR'
+      Index = 219
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabCANA_VTOTDED: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'CANA_VTOTDED'
+      Index = 220
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabCANA_VLIQFOR: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'CANA_VLIQFOR'
+      Index = 221
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeCabAGRO_UFGUIA: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'AGRO_UFGUIA'
+      Index = 222
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object qryNFeCabAGRO_TPGUIA: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'AGRO_TPGUIA'
+      Index = 223
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeCabAGRO_SERIEGUIA: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'AGRO_SERIEGUIA'
+      Index = 224
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 9
+    end
+    object qryNFeCabAGRO_NGUIA: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'AGRO_NGUIA'
+      Index = 225
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 9
+    end
+    object qryNFeCabSUPL_QRCODE: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'SUPL_QRCODE'
+      Index = 226
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 600
+    end
+    object qryNFeCabSUPL_URLCHAVE: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'SUPL_URLCHAVE'
+      Index = 227
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 85
+    end
+    object qryNFeCabRESPTEC_CNPJ: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'RESPTEC_CNPJ'
+      Index = 228
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 14
+    end
+    object qryNFeCabRESPTEC_XCONTATO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'RESPTEC_XCONTATO'
+      Index = 229
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabRESPTEC_EMAIL: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'RESPTEC_EMAIL'
+      Index = 230
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeCabRESPTEC_FONE: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'RESPTEC_FONE'
+      Index = 231
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 14
+    end
+    object qryNFeCabRESPTEC_IDCSRT: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'RESPTEC_IDCSRT'
+      Index = 232
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeCabRESPTEC_HASHCSRT: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'RESPTEC_HASHCSRT'
+      Index = 233
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 28
+    end
+    object qryNFeCabPROT_TPAMB: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'PROT_TPAMB'
+      Index = 234
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeCabPROT_VERAPLIC: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'PROT_VERAPLIC'
+      Index = 235
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 20
+    end
+    object qryNFeCabPROT_DHRECBTO: TZDateTimeField
+      FieldKind = fkData
+      FieldName = 'PROT_DHRECBTO'
+      Index = 236
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat.Format = 'dd/mm/yyyy hh:nn:ss'
+    end
+    object qryNFeCabPROT_NPROT: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'PROT_NPROT'
+      Index = 237
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 15
+    end
+    object qryNFeCabPROT_DIGVAL: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'PROT_DIGVAL'
+      Index = 238
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 28
+    end
+    object qryNFeCabPROT_CSTAT: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'PROT_CSTAT'
+      Index = 239
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeCabPROT_XMOTIVO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'PROT_XMOTIVO'
+      Index = 240
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 255
+    end
+    object qryNFeCabPROT_CMSG: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'PROT_CMSG'
+      Index = 241
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeCabPROT_XMSG: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'PROT_XMSG'
+      Index = 242
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 200
+    end
   end
   object qryNFeDet: TZQuery
     Connection = frmMain.ZConnection1
-    Params = <>
+    SQL.Strings = (
+      'SELECT *'
+      '  FROM NFE_DET'
+      ' WHERE CHNFE = :CHNFE'
+      ' ORDER BY NITEM'
+    )
+    Params = <
+      item
+        DataType = ftString
+        Name = 'CHNFE'
+        ParamType = ptInput
+      end>
+    DataSource = dtsNFeCab
     Left = 136
     Top = 17
+    object qryNFeDetCHNFE: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'CHNFE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 44
+    end
+    object qryNFeDetNITEM: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'NITEM'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryNFeDetCPROD: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'CPROD'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeDetCEAN: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'CEAN'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 14
+    end
+    object qryNFeDetCBARRA: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'CBARRA'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object qryNFeDetXPROD: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'XPROD'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 120
+    end
+    object qryNFeDetNCM: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'NCM'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 8
+    end
+    object qryNFeDetEXTIPI: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'EXTIPI'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 3
+    end
+    object qryNFeDetCFOP: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'CFOP'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 4
+    end
+    object qryNFeDetUCOM: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'UCOM'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 6
+    end
+    object qryNFeDetQCOM: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'QCOM'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetVUNCOM: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'VUNCOM'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00########'
+      EditFormat = '0.00########'
+    end
+    object qryNFeDetVPROD: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'VPROD'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetCEANTRIB: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'CEANTRIB'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 14
+    end
+    object qryNFeDetCBARRATRIB: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'CBARRATRIB'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object qryNFeDetUTRIB: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'UTRIB'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 6
+    end
+    object qryNFeDetQTRIB: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'QTRIB'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetVUNTRIB: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'VUNTRIB'
+      Index = 17
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00########'
+      EditFormat = '0.00########'
+    end
+    object qryNFeDetVFRETE: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'VFRETE'
+      Index = 18
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetVSEG: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'VSEG'
+      Index = 19
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetVDESC: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'VDESC'
+      Index = 20
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetVOUTRO: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'VOUTRO'
+      Index = 21
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetINDTOT: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'INDTOT'
+      Index = 22
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeDetXPED: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'XPED'
+      Index = 23
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 15
+    end
+    object qryNFeDetNITEMPED: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'NITEMPED'
+      Index = 24
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 6
+    end
+    object qryNFeDetNRECOPI: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'NRECOPI'
+      Index = 25
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 20
+    end
+    object qryNFeDetNFCI: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'NFCI'
+      Index = 26
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 36
+    end
+    object qryNFeDetCEST: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'CEST'
+      Index = 27
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 7
+    end
+    object qryNFeDetINDESCALA: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'INDESCALA'
+      Index = 28
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeDetCNPJFAB: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'CNPJFAB'
+      Index = 29
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 14
+    end
+    object qryNFeDetCBENEF: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'CBENEF'
+      Index = 30
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 10
+    end
+    object qryNFeDetINDBEMMOVELUSADO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'INDBEMMOVELUSADO'
+      Index = 31
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeDetVEIC_TPOP: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'VEIC_TPOP'
+      Index = 32
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeDetVEIC_CHASSI: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'VEIC_CHASSI'
+      Index = 33
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 17
+    end
+    object qryNFeDetVEIC_CCOR: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'VEIC_CCOR'
+      Index = 34
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 4
+    end
+    object qryNFeDetVEIC_XCOR: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'VEIC_XCOR'
+      Index = 35
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object qryNFeDetVEIC_POT: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'VEIC_POT'
+      Index = 36
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 4
+    end
+    object qryNFeDetVEIC_CILIN: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'VEIC_CILIN'
+      Index = 37
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 4
+    end
+    object qryNFeDetVEIC_PESOL: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'VEIC_PESOL'
+      Index = 38
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 9
+    end
+    object qryNFeDetVEIC_PESOB: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'VEIC_PESOB'
+      Index = 39
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 9
+    end
+    object qryNFeDetVEIC_NSERIE: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'VEIC_NSERIE'
+      Index = 40
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 9
+    end
+    object qryNFeDetVEIC_TPCOMB: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'VEIC_TPCOMB'
+      Index = 41
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object qryNFeDetVEIC_NMOTOR: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'VEIC_NMOTOR'
+      Index = 42
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 21
+    end
+    object qryNFeDetVEIC_CMT: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'VEIC_CMT'
+      Index = 43
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 9
+    end
+    object qryNFeDetVEIC_DIST: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'VEIC_DIST'
+      Index = 44
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 4
+    end
+    object qryNFeDetVEIC_ANOMOD: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'VEIC_ANOMOD'
+      Index = 45
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeDetVEIC_ANOFAB: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'VEIC_ANOFAB'
+      Index = 46
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeDetVEIC_TPPINT: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'VEIC_TPPINT'
+      Index = 47
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeDetVEIC_TPVEIC: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'VEIC_TPVEIC'
+      Index = 48
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeDetVEIC_ESPVEIC: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'VEIC_ESPVEIC'
+      Index = 49
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeDetVEIC_VIN: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'VEIC_VIN'
+      Index = 50
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeDetVEIC_CONDVEIC: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'VEIC_CONDVEIC'
+      Index = 51
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeDetVEIC_CMOD: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'VEIC_CMOD'
+      Index = 52
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 6
+    end
+    object qryNFeDetVEIC_CCORDENATRAN: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'VEIC_CCORDENATRAN'
+      Index = 53
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object qryNFeDetVEIC_LOTA: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'VEIC_LOTA'
+      Index = 54
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeDetVEIC_TPREST: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'VEIC_TPREST'
+      Index = 55
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeDetCOMB_CPRODANP: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'COMB_CPRODANP'
+      Index = 56
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeDetCOMB_PMIXGN: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'COMB_PMIXGN'
+      Index = 57
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetCOMB_DESCANP: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'COMB_DESCANP'
+      Index = 58
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 95
+    end
+    object qryNFeDetCOMB_PGLP: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'COMB_PGLP'
+      Index = 59
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetCOMB_PGNN: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'COMB_PGNN'
+      Index = 60
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetCOMB_PGNI: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'COMB_PGNI'
+      Index = 61
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetCOMB_VPART: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'COMB_VPART'
+      Index = 62
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetCOMB_CODIF: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'COMB_CODIF'
+      Index = 63
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 21
+    end
+    object qryNFeDetCOMB_QTEMP: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'COMB_QTEMP'
+      Index = 64
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetCOMB_UFCONS: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'COMB_UFCONS'
+      Index = 65
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object qryNFeDetCOMB_PBIO: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'COMB_PBIO'
+      Index = 66
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetCIDE_QBCPROD: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'CIDE_QBCPROD'
+      Index = 67
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetCIDE_VALIQPROD: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'CIDE_VALIQPROD'
+      Index = 68
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetCIDE_VCIDE: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'CIDE_VCIDE'
+      Index = 69
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetCOMB_VBCICMS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'COMB_VBCICMS'
+      Index = 70
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetCOMB_VICMS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'COMB_VICMS'
+      Index = 71
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetCOMB_VBCICMSST: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'COMB_VBCICMSST'
+      Index = 72
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetCOMB_VICMSST: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'COMB_VICMSST'
+      Index = 73
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetCOMB_VBCICMSSTDEST: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'COMB_VBCICMSSTDEST'
+      Index = 74
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetCOMB_VICMSSTDEST: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'COMB_VICMSSTDEST'
+      Index = 75
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetCOMB_VBCICMSSTCONS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'COMB_VBCICMSSTCONS'
+      Index = 76
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetCOMB_VICMSSTCONS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'COMB_VICMSSTCONS'
+      Index = 77
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetCOMB_UFCONSST: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'COMB_UFCONSST'
+      Index = 78
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object qryNFeDetENCERRANTE_NBICO: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'ENCERRANTE_NBICO'
+      Index = 79
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeDetENCERRANTE_NBOMBA: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'ENCERRANTE_NBOMBA'
+      Index = 80
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeDetENCERRANTE_NTANQUE: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'ENCERRANTE_NTANQUE'
+      Index = 81
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeDetENCERRANTE_VENCINI: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ENCERRANTE_VENCINI'
+      Index = 82
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00#'
+      EditFormat = '0.00#'
+    end
+    object qryNFeDetENCERRANTE_VENCFIN: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ENCERRANTE_VENCFIN'
+      Index = 83
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00#'
+      EditFormat = '0.00#'
+    end
+    object qryNFeDetVTOTTRIB: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'VTOTTRIB'
+      Index = 84
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMS_ORIG: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ICMS_ORIG'
+      Index = 85
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeDetICMS_CST: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ICMS_CST'
+      Index = 86
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 3
+    end
+    object qryNFeDetICMS_CSOSN: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ICMS_CSOSN'
+      Index = 87
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 3
+    end
+    object qryNFeDetICMS_MODBC: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ICMS_MODBC'
+      Index = 88
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeDetICMS_PREDBC: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_PREDBC'
+      Index = 89
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetICMS_VBC: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_VBC'
+      Index = 90
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMS_PICMS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_PICMS'
+      Index = 91
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetICMS_VICMS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_VICMS'
+      Index = 92
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMS_MODBCST: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ICMS_MODBCST'
+      Index = 93
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeDetICMS_PMVAST: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_PMVAST'
+      Index = 94
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetICMS_PREDBCST: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_PREDBCST'
+      Index = 95
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetICMS_VBCST: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_VBCST'
+      Index = 96
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMS_PICMSST: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_PICMSST'
+      Index = 97
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetICMS_VICMSST: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_VICMSST'
+      Index = 98
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMS_UFST: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ICMS_UFST'
+      Index = 99
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object qryNFeDetICMS_PBCOP: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_PBCOP'
+      Index = 100
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetICMS_VBCSTRET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_VBCSTRET'
+      Index = 101
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMS_VICMSSTRET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_VICMSSTRET'
+      Index = 102
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMS_MOTDESICMS: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ICMS_MOTDESICMS'
+      Index = 103
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object qryNFeDetICMS_PCREDSN: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_PCREDSN'
+      Index = 104
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetICMS_VCREDICMSSN: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_VCREDICMSSN'
+      Index = 105
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMS_VBCSTDEST: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_VBCSTDEST'
+      Index = 106
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMS_VICMSSTDEST: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_VICMSSTDEST'
+      Index = 107
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMS_VICMSDESON: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_VICMSDESON'
+      Index = 108
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMS_VICMSOP: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_VICMSOP'
+      Index = 109
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMS_PDIF: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_PDIF'
+      Index = 110
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetICMS_VICMSDIF: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_VICMSDIF'
+      Index = 111
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMS_VBCFCP: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_VBCFCP'
+      Index = 112
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMS_PFCP: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_PFCP'
+      Index = 113
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetICMS_VFCP: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_VFCP'
+      Index = 114
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMS_VBCFCPST: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_VBCFCPST'
+      Index = 115
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMS_PFCPST: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_PFCPST'
+      Index = 116
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetICMS_VFCPST: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_VFCPST'
+      Index = 117
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMS_VBCFCPSTRET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_VBCFCPSTRET'
+      Index = 118
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMS_PFCPSTRET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_PFCPSTRET'
+      Index = 119
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetICMS_VFCPSTRET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_VFCPSTRET'
+      Index = 120
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMS_PST: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_PST'
+      Index = 121
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetICMS_PREDBCEFET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_PREDBCEFET'
+      Index = 122
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetICMS_VBCEFET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_VBCEFET'
+      Index = 123
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMS_PICMSEFET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_PICMSEFET'
+      Index = 124
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetICMS_VICMSEFET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_VICMSEFET'
+      Index = 125
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMS_VICMSSUBSTITUTO: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_VICMSSUBSTITUTO'
+      Index = 126
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMS_VICMSSTDESON: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_VICMSSTDESON'
+      Index = 127
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMS_MOTDESICMSST: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ICMS_MOTDESICMSST'
+      Index = 128
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object qryNFeDetICMS_PFCPDIF: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_PFCPDIF'
+      Index = 129
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetICMS_VFCPDIF: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_VFCPDIF'
+      Index = 130
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMS_VFCPEFET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_VFCPEFET'
+      Index = 131
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMS_ADREMICMS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_ADREMICMS'
+      Index = 132
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetICMS_VICMSMONO: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_VICMSMONO'
+      Index = 133
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMS_QBCMONO: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_QBCMONO'
+      Index = 134
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetICMS_ADREMICMSRETEN: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_ADREMICMSRETEN'
+      Index = 135
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetICMS_VICMSMONORETEN: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_VICMSMONORETEN'
+      Index = 136
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMS_QBCMONORETEN: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_QBCMONORETEN'
+      Index = 137
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetICMS_PREDADREM: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_PREDADREM'
+      Index = 138
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetICMS_MOTREDADREM: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ICMS_MOTREDADREM'
+      Index = 139
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeDetICMS_VICMSMONOOP: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_VICMSMONOOP'
+      Index = 140
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMS_VICMSMONODIF: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_VICMSMONODIF'
+      Index = 141
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMS_ADREMICMSRET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_ADREMICMSRET'
+      Index = 142
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetICMS_VICMSMONORET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_VICMSMONORET'
+      Index = 143
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMS_QBCMONORET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMS_QBCMONORET'
+      Index = 144
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetICMS_INDDEDUZDESON: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ICMS_INDDEDUZDESON'
+      Index = 145
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeDetICMS_CBENEFRBC: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ICMS_CBENEFRBC'
+      Index = 146
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 10
+    end
+    object qryNFeDetIPI_CLENQ: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'IPI_CLENQ'
+      Index = 147
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 5
+    end
+    object qryNFeDetIPI_CNPJPROD: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'IPI_CNPJPROD'
+      Index = 148
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 14
+    end
+    object qryNFeDetIPI_CSELO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'IPI_CSELO'
+      Index = 149
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeDetIPI_QSELO: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'IPI_QSELO'
+      Index = 150
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeDetIPI_CENQ: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'IPI_CENQ'
+      Index = 151
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 3
+    end
+    object qryNFeDetIPI_CST: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'IPI_CST'
+      Index = 152
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object qryNFeDetIPI_VBC: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IPI_VBC'
+      Index = 153
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetIPI_QUNID: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IPI_QUNID'
+      Index = 154
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetIPI_VUNID: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IPI_VUNID'
+      Index = 155
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetIPI_PIPI: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IPI_PIPI'
+      Index = 156
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetIPI_VIPI: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IPI_VIPI'
+      Index = 157
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetII_VBC: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'II_VBC'
+      Index = 158
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetII_VDESPADU: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'II_VDESPADU'
+      Index = 159
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetII_VII: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'II_VII'
+      Index = 160
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetII_VIOF: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'II_VIOF'
+      Index = 161
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetPIS_CST: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'PIS_CST'
+      Index = 162
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object qryNFeDetPIS_VBC: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'PIS_VBC'
+      Index = 163
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetPIS_PPIS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'PIS_PPIS'
+      Index = 164
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetPIS_VPIS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'PIS_VPIS'
+      Index = 165
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetPIS_QBCPROD: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'PIS_QBCPROD'
+      Index = 166
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetPIS_VALIQPROD: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'PIS_VALIQPROD'
+      Index = 167
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetPISST_VBC: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'PISST_VBC'
+      Index = 168
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetPISST_PPIS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'PISST_PPIS'
+      Index = 169
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetPISST_QBCPROD: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'PISST_QBCPROD'
+      Index = 170
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetPISST_VALIQPROD: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'PISST_VALIQPROD'
+      Index = 171
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetPISST_VPIS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'PISST_VPIS'
+      Index = 172
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetPISST_INDSOMAPISST: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'PISST_INDSOMAPISST'
+      Index = 173
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeDetCOFINS_CST: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'COFINS_CST'
+      Index = 174
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object qryNFeDetCOFINS_VBC: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'COFINS_VBC'
+      Index = 175
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetCOFINS_PCOFINS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'COFINS_PCOFINS'
+      Index = 176
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetCOFINS_VCOFINS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'COFINS_VCOFINS'
+      Index = 177
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetCOFINS_VBCPROD: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'COFINS_VBCPROD'
+      Index = 178
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetCOFINS_QBCPROD: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'COFINS_QBCPROD'
+      Index = 179
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetCOFINS_VALIQPROD: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'COFINS_VALIQPROD'
+      Index = 180
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetCOFINSST_VBC: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'COFINSST_VBC'
+      Index = 181
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetCOFINSST_PCOFINS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'COFINSST_PCOFINS'
+      Index = 182
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetCOFINSST_QBCPROD: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'COFINSST_QBCPROD'
+      Index = 183
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetCOFINSST_VALIQPROD: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'COFINSST_VALIQPROD'
+      Index = 184
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetCOFINSST_VCOFINS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'COFINSST_VCOFINS'
+      Index = 185
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetCOFINSST_INDSOMACOFINSST: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'COFINSST_INDSOMACOFINSST'
+      Index = 186
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeDetISSQN_VBC: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ISSQN_VBC'
+      Index = 187
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetISSQN_VALIQ: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ISSQN_VALIQ'
+      Index = 188
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetISSQN_VISSQN: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ISSQN_VISSQN'
+      Index = 189
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetISSQN_CMUNFG: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'ISSQN_CMUNFG'
+      Index = 190
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeDetISSQN_CLISTSERV: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ISSQN_CLISTSERV'
+      Index = 191
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 5
+    end
+    object qryNFeDetISSQN_CSITTRIB: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ISSQN_CSITTRIB'
+      Index = 192
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeDetISSQN_VDEDUCAO: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ISSQN_VDEDUCAO'
+      Index = 193
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetISSQN_VOUTRO: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ISSQN_VOUTRO'
+      Index = 194
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetISSQN_VDESCINCOND: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ISSQN_VDESCINCOND'
+      Index = 195
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetISSQN_VDESCCOND: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ISSQN_VDESCCOND'
+      Index = 196
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetISSQN_INDISSRET: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ISSQN_INDISSRET'
+      Index = 197
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeDetISSQN_VISSRET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ISSQN_VISSRET'
+      Index = 198
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetISSQN_INDISS: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ISSQN_INDISS'
+      Index = 199
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeDetISSQN_CSERVICO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ISSQN_CSERVICO'
+      Index = 200
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 20
+    end
+    object qryNFeDetISSQN_CMUN: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'ISSQN_CMUN'
+      Index = 201
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeDetISSQN_CPAIS: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'ISSQN_CPAIS'
+      Index = 202
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeDetISSQN_NPROCESSO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ISSQN_NPROCESSO'
+      Index = 203
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object qryNFeDetISSQN_INDINCENTIVO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ISSQN_INDINCENTIVO'
+      Index = 204
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeDetICMSUFDEST_VBCUFDEST: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMSUFDEST_VBCUFDEST'
+      Index = 205
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMSUFDEST_VBCFCPUFDEST: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMSUFDEST_VBCFCPUFDEST'
+      Index = 206
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMSUFDEST_PFCPUFDEST: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMSUFDEST_PFCPUFDEST'
+      Index = 207
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetICMSUFDEST_PICMSUFDEST: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMSUFDEST_PICMSUFDEST'
+      Index = 208
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetICMSUFDEST_PICMSINTER: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMSUFDEST_PICMSINTER'
+      Index = 209
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetICMSUFDEST_PICMSINTERPART: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMSUFDEST_PICMSINTERPART'
+      Index = 210
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetICMSUFDEST_VFCPUFDEST: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMSUFDEST_VFCPUFDEST'
+      Index = 211
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMSUFDEST_VICMSUFDEST: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMSUFDEST_VICMSUFDEST'
+      Index = 212
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetICMSUFDEST_VICMSUFREMET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'ICMSUFDEST_VICMSUFREMET'
+      Index = 213
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetIS_CSTIS: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'IS_CSTIS'
+      Index = 214
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 3
+    end
+    object qryNFeDetIS_CCLASSTRIBIS: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'IS_CCLASSTRIBIS'
+      Index = 215
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 6
+    end
+    object qryNFeDetIS_VBCIS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IS_VBCIS'
+      Index = 216
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetIS_PIS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IS_PIS'
+      Index = 217
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetIS_PISESPEC: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IS_PISESPEC'
+      Index = 218
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetIS_UTRIB: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'IS_UTRIB'
+      Index = 219
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 6
+    end
+    object qryNFeDetIS_QTRIB: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IS_QTRIB'
+      Index = 220
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetIS_VIS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IS_VIS'
+      Index = 221
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetIBSCBS_CST: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'IBSCBS_CST'
+      Index = 222
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 3
+    end
+    object qryNFeDetIBSCBS_CCLASSTRIB: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'IBSCBS_CCLASSTRIB'
+      Index = 223
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 6
+    end
+    object qryNFeDetIBSCBS_VBC: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IBSCBS_VBC'
+      Index = 224
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetIBSUF_PIBSUF: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IBSUF_PIBSUF'
+      Index = 225
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetIBSUF_PDIF: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IBSUF_PDIF'
+      Index = 226
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetIBSUF_VDIF: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IBSUF_VDIF'
+      Index = 227
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetIBSUF_VDEVTRIB: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IBSUF_VDEVTRIB'
+      Index = 228
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetIBSUF_PREDALIQ: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IBSUF_PREDALIQ'
+      Index = 229
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetIBSUF_PALIQEFET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IBSUF_PALIQEFET'
+      Index = 230
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetIBSUF_VIBSUF: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IBSUF_VIBSUF'
+      Index = 231
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetIBSMUN_PIBSMUN: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IBSMUN_PIBSMUN'
+      Index = 232
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetIBSMUN_PDIF: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IBSMUN_PDIF'
+      Index = 233
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetIBSMUN_VDIF: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IBSMUN_VDIF'
+      Index = 234
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetIBSMUN_VDEVTRIB: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IBSMUN_VDEVTRIB'
+      Index = 235
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetIBSMUN_PREDALIQ: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IBSMUN_PREDALIQ'
+      Index = 236
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetIBSMUN_PALIQEFET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IBSMUN_PALIQEFET'
+      Index = 237
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetIBSMUN_VIBSMUN: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IBSMUN_VIBSMUN'
+      Index = 238
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetCBS_PCBS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'CBS_PCBS'
+      Index = 239
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetCBS_PDIF: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'CBS_PDIF'
+      Index = 240
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetCBS_VDIF: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'CBS_VDIF'
+      Index = 241
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetCBS_VDEVTRIB: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'CBS_VDEVTRIB'
+      Index = 242
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetCBS_PREDALIQ: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'CBS_PREDALIQ'
+      Index = 243
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetCBS_PALIQEFET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'CBS_PALIQEFET'
+      Index = 244
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetCBS_VCBS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'CBS_VCBS'
+      Index = 245
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetTRIBREG_CSTREG: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'TRIBREG_CSTREG'
+      Index = 246
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 3
+    end
+    object qryNFeDetTRIBREG_CCLASSTRIBREG: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'TRIBREG_CCLASSTRIBREG'
+      Index = 247
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 6
+    end
+    object qryNFeDetTRIBREG_PALIQEFETREGIBSUF: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TRIBREG_PALIQEFETREGIBSUF'
+      Index = 248
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetTRIBREG_VTRIBREGIBSUF: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TRIBREG_VTRIBREGIBSUF'
+      Index = 249
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetTRIBREG_PALIQEFETREGIBSMUN: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TRIBREG_PALIQEFETREGIBSMUN'
+      Index = 250
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetTRIBREG_VTRIBREGIBSMUN: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TRIBREG_VTRIBREGIBSMUN'
+      Index = 251
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetTRIBREG_PALIQEFETREGCBS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TRIBREG_PALIQEFETREGCBS'
+      Index = 252
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetTRIBREG_VTRIBREGCBS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TRIBREG_VTRIBREGCBS'
+      Index = 253
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetIBSCREDPRES_CCREDPRES: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'IBSCREDPRES_CCREDPRES'
+      Index = 254
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object qryNFeDetIBSCREDPRES_PCREDPRES: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IBSCREDPRES_PCREDPRES'
+      Index = 255
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetIBSCREDPRES_VCREDPRES: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IBSCREDPRES_VCREDPRES'
+      Index = 256
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetIBSCREDPRES_VCREDPRESCONDSUS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'IBSCREDPRES_VCREDPRESCONDSUS'
+      Index = 257
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetCBSCREDPRES_CCREDPRES: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'CBSCREDPRES_CCREDPRES'
+      Index = 258
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object qryNFeDetCBSCREDPRES_PCREDPRES: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'CBSCREDPRES_PCREDPRES'
+      Index = 259
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetCBSCREDPRES_VCREDPRES: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'CBSCREDPRES_VCREDPRES'
+      Index = 260
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetCBSCREDPRES_VCREDPRESCONDSUS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'CBSCREDPRES_VCREDPRESCONDSUS'
+      Index = 261
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetTRIBCOMPRAGOV_PALIQIBSUF: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TRIBCOMPRAGOV_PALIQIBSUF'
+      Index = 262
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetTRIBCOMPRAGOV_VTRIBIBSUF: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TRIBCOMPRAGOV_VTRIBIBSUF'
+      Index = 263
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetTRIBCOMPRAGOV_PALIQIBSMUN: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TRIBCOMPRAGOV_PALIQIBSMUN'
+      Index = 264
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetTRIBCOMPRAGOV_VTRIBIBSMUN: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TRIBCOMPRAGOV_VTRIBIBSMUN'
+      Index = 265
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetTRIBCOMPRAGOV_PALIQCBS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TRIBCOMPRAGOV_PALIQCBS'
+      Index = 266
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetTRIBCOMPRAGOV_VTRIBCBS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TRIBCOMPRAGOV_VTRIBCBS'
+      Index = 267
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetMONO_QBCMONO: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'MONO_QBCMONO'
+      Index = 268
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetMONO_ADREMIBS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'MONO_ADREMIBS'
+      Index = 269
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetMONO_ADREMCBS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'MONO_ADREMCBS'
+      Index = 270
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetMONO_VIBSMONO: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'MONO_VIBSMONO'
+      Index = 271
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetMONO_VCBSMONO: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'MONO_VCBSMONO'
+      Index = 272
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetMONO_QBCMONORETEN: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'MONO_QBCMONORETEN'
+      Index = 273
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetMONO_ADREMIBSRETEN: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'MONO_ADREMIBSRETEN'
+      Index = 274
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetMONO_VIBSMONORETEN: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'MONO_VIBSMONORETEN'
+      Index = 275
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetMONO_ADREMCBSRETEN: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'MONO_ADREMCBSRETEN'
+      Index = 276
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetMONO_VCBSMONORETEN: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'MONO_VCBSMONORETEN'
+      Index = 277
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetMONO_QBCMONORET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'MONO_QBCMONORET'
+      Index = 278
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetMONO_ADREMIBSRET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'MONO_ADREMIBSRET'
+      Index = 279
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetMONO_VIBSMONORET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'MONO_VIBSMONORET'
+      Index = 280
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetMONO_ADREMCBSRET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'MONO_ADREMCBSRET'
+      Index = 281
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00##'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetMONO_VCBSMONORET: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'MONO_VCBSMONORET'
+      Index = 282
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetMONO_PDIFIBS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'MONO_PDIFIBS'
+      Index = 283
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetMONO_VIBSMONODIF: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'MONO_VIBSMONODIF'
+      Index = 284
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetMONO_PDIFCBS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'MONO_PDIFCBS'
+      Index = 285
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetMONO_VCBSMONODIF: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'MONO_VCBSMONODIF'
+      Index = 286
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetMONO_VTOTIBSMONOITEM: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'MONO_VTOTIBSMONOITEM'
+      Index = 287
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetMONO_VTOTCBSMONOITEM: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'MONO_VTOTCBSMONOITEM'
+      Index = 288
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetTRANSFCRED_VIBS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TRANSFCRED_VIBS'
+      Index = 289
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetTRANSFCRED_VCBS: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'TRANSFCRED_VCBS'
+      Index = 290
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetCREDPRESIBSZFM_TPCREDPRESIBSZFM: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'CREDPRESIBSZFM_TPCREDPRESIBSZFM'
+      Index = 291
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFeDetCREDPRESIBSZFM_VCREDPRESIBSZFM: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'CREDPRESIBSZFM_VCREDPRESIBSZFM'
+      Index = 292
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetPDEVOL: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'PDEVOL'
+      Index = 293
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00##" %"'
+      EditFormat = '0.00##'
+    end
+    object qryNFeDetVIPIDEVOL: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'VIPIDEVOL'
+      Index = 294
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetINFADPROD: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'INFADPROD'
+      Index = 295
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 500
+    end
+    object qryNFeDetOBSCONT_XCAMPO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'OBSCONT_XCAMPO'
+      Index = 296
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 20
+    end
+    object qryNFeDetOBSCONT_XTEXTO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'OBSCONT_XTEXTO'
+      Index = 297
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeDetOBSFISCO_XCAMPO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'OBSFISCO_XCAMPO'
+      Index = 298
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 20
+    end
+    object qryNFeDetOBSFISCO_XTEXTO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'OBSFISCO_XTEXTO'
+      Index = 299
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeDetVITEM: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'VITEM'
+      Index = 300
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeDetDFEREF_CHAVEACESSO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'DFEREF_CHAVEACESSO'
+      Index = 301
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 44
+    end
+    object qryNFeDetDFEREF_NITEM: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'DFEREF_NITEM'
+      Index = 302
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
   end
   object qryNFePgt: TZQuery
     Connection = frmMain.ZConnection1
-    Params = <>
+    SQL.Strings = (
+      'SELECT *'
+      '  FROM NFE_PAG'
+      ' WHERE CHNFE = :CHNFE'
+      ' ORDER BY SEQ'
+    )
+    Params = <
+      item
+        DataType = ftString
+        Name = 'CHNFE'
+        ParamType = ptInput
+      end>
+    DataSource = dtsNFeCab
     Left = 226
     Top = 16
+    object qryNFePgtCHNFE: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'CHNFE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 44
+    end
+    object qryNFePgtSEQ: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'SEQ'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryNFePgtINDPAG: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'INDPAG'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFePgtTPAG: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'TPAG'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object qryNFePgtXPAG: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'XPAG'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFePgtVPAG: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'VPAG'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFePgtTPINTEGRA: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'TPINTEGRA'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryNFePgtCNPJ: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'CNPJ'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 14
+    end
+    object qryNFePgtTBAND: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'TBAND'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object qryNFePgtCAUT: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'CAUT'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 128
+    end
+    object qryNFePgtDPAG: TZDateField
+      FieldKind = fkData
+      FieldName = 'DPAG'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat.Format = 'dd/mm/yyyy'
+    end
+    object qryNFePgtCNPJPAG: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'CNPJPAG'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 14
+    end
+    object qryNFePgtUFPAG: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'UFPAG'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object qryNFePgtCNPJRECEB: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'CNPJRECEB'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 14
+    end
+    object qryNFePgtIDTERMPAG: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'IDTERMPAG'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
   end
   object qryNFeVol: TZQuery
     Connection = frmMain.ZConnection1
-    Params = <>
+    SQL.Strings = (
+      'SELECT *'
+      '  FROM NFE_VOL'
+      ' WHERE CHNFE = :CHNFE'
+      ' ORDER BY SEQ'
+    )
+    Params = <
+      item
+        DataType = ftString
+        Name = 'CHNFE'
+        ParamType = ptInput
+      end>
+    DataSource = dtsNFeCab
     Left = 312
     Top = 16
+    object qryNFeVolCHNFE: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'CHNFE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 44
+    end
+    object qryNFeVolSEQ: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'SEQ'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryNFeVolQVOL: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'QVOL'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryNFeVolESP: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ESP'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeVolMARCA: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'MARCA'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeVolNVOL: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'NVOL'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeVolPESOL: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'PESOL'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00#'
+      EditFormat = '0.00#'
+    end
+    object qryNFeVolPESOB: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'PESOB'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00#'
+      EditFormat = '0.00#'
+    end
   end
   object qryNFeDup: TZQuery
     Connection = frmMain.ZConnection1
-    Params = <>
+    SQL.Strings = (
+      'SELECT *'
+      '  FROM NFE_DUP'
+      ' WHERE CHNFE = :CHNFE'
+      ' ORDER BY SEQ'
+    )
+    Params = <
+      item
+        DataType = ftString
+        Name = 'CHNFE'
+        ParamType = ptInput
+      end>
+    DataSource = dtsNFeCab
     Left = 392
     Top = 16
+    object qryNFeDupCHNFE: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'CHNFE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 44
+    end
+    object qryNFeDupSEQ: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'SEQ'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryNFeDupNDUP: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'NDUP'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeDupDVENC: TZDateField
+      FieldKind = fkData
+      FieldName = 'DVENC'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat.Format = 'dd/mm/yyyy'
+    end
+    object qryNFeDupVDUP: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'VDUP'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
   end
   object qryNFeFat: TZQuery
     Connection = frmMain.ZConnection1
-    Params = <>
+    SQL.Strings = (
+      'SELECT *'
+      '  FROM NFE_FAT'
+      ' WHERE CHNFE = :CHNFE'
+    )
+    Params = <
+      item
+        DataType = ftString
+        Name = 'CHNFE'
+        ParamType = ptInput
+      end>
+    DataSource = dtsNFeCab
     Left = 32
     Top = 88
+    object qryNFeFatCHNFE: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'CHNFE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 44
+    end
+    object qryNFeFatNFAT: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'NFAT'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qryNFeFatVORIG: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'VORIG'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeFatVDESC: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'VDESC'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
+    object qryNFeFatVLIQ: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'VLIQ'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '"R$ "#,##0.00'
+      EditFormat = '0.00'
+    end
   end
-  object cmdCreateTables: TZQuery
-    Connection = frmMain.ZConnection1
-    SQL.Strings = (
+  object dtsNFeCab: TDataSource
+    DataSet = qryNFeCab
+    Left = 136
+    Top = 88
+  end
+  object sqlCreateTables: TZSQLProcessor
+    Params = <>
+    Script.Strings = (
       'CREATE TABLE IF NOT EXISTS NFE_CAB ('
       '  CHNFE VARCHAR(44) NOT NULL PRIMARY KEY,'
       '  VERSAO NUMERIC(4,2),'
@@ -647,8 +6763,9 @@ object dmdNFe: TdmdNFe
       '  FOREIGN KEY (CHNFE) REFERENCES NFE_CAB (CHNFE) ON DELETE CASCADE'
       ');'
     )
-    Params = <>
-    Left = 136
+    Connection = frmMain.ZConnection1
+    Delimiter = ';'
+    Left = 272
     Top = 88
   end
 end
