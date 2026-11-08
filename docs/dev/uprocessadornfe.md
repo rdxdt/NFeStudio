@@ -15,6 +15,7 @@ TProcessadorNFe = class(TComponent)
 |-------------|------------|------------------------------------------------------------------------|
 | `ACBrNFe`   | `TACBrNFe` | Componente usado para ler os XMLs. Obrigatório para `Importar`; o vínculo é desfeito automaticamente se o componente for destruído (`FreeNotification`). |
 | `Log`       | `TStrings` | Arquivos e notas ignorados ou com erro na última importação, uma linha por ocorrência. |
+| `ExibirProgresso` | `Boolean` | Padrão `False`. Quando `True`, `Importar` exibe o diálogo de espera com progresso (ver abaixo). |
 
 ### Importar
 
@@ -29,6 +30,19 @@ maiúsculas/minúsculas). Retorna a quantidade de notas gravadas.
 - Links simbólicos de diretório não são seguidos, evitando recursão infinita.
 - Um arquivo de lote (`enviNFe`) com várias notas tem todas elas importadas.
 - `NotasFiscais` do `ACBrNFe` é limpo ao final.
+
+### Progresso (`ExibirProgresso`)
+
+Com `ExibirProgresso = True`, `Importar`:
+
+1. Cria e exibe um `TfrmAguarde` (ver [ufrmaguarde](../dev/ufrmaguarde.md)), que desabilita o form principal.
+2. Conta os arquivos `.xml` com `ContarArquivos`, que segue os mesmos critérios de `ImportarDiretorio`
+   (recursivo, sem seguir links simbólicos), para obter o total Y.
+3. Antes de cada arquivo, `AtualizarProgresso` incrementa o arquivo atual X, atualiza a barra e o texto
+   "X de Y arquivos" e chama `Application.ProcessMessages`, mantendo a interface responsiva.
+4. Libera o diálogo ao final, inclusive em caso de exceção.
+
+Com `ExibirProgresso = False` (padrão, usado nos testes) nenhum form é criado e `ProcessMessages` não é chamado.
 
 Situações que não interrompem a importação e são registradas em `Log`:
 

@@ -5,7 +5,7 @@ unit udmdnfe;
 interface
 
 uses
-  Classes, SysUtils, DB, ZDataset, ZAbstractRODataset, ZSqlStrings, ZSqlProcessor, ACBrValidador;
+  Classes, SysUtils, DateUtils, DB, ZDataset, ZAbstractRODataset, ZSqlStrings, ZSqlProcessor, ACBrValidador;
 
 type
 
@@ -598,6 +598,7 @@ type
     qryNFeFatVDESC: TZDoubleField;
     qryNFeFatVLIQ: TZDoubleField;
     dtsNFeCab: TDataSource;
+    qryNFeCabPeriodo: TZQuery;
     sqlCreateTables: TZSQLProcessor;
     cmdInsNFeCab: TZQuery;
     cmdDelNFeCab: TZQuery;
@@ -617,6 +618,8 @@ type
 
   public
     procedure CriarTabelas;
+    procedure FiltrarNFeCab(DataInicial, DataFinal: TDateTime);
+    function ObterPeriodoNFeCab(out DataInicial, DataFinal: TDateTime): Boolean;
   end;
 
 var
@@ -626,11 +629,41 @@ implementation
 
 {$R *.lfm}
 
+const
+  FORMATO_DATA_SQLITE = 'yyyy-mm-dd';
+
 { TdmdNFe }
 
 procedure TdmdNFe.CriarTabelas;
 begin
   sqlCreateTables.Execute;
+end;
+
+procedure TdmdNFe.FiltrarNFeCab(DataInicial, DataFinal: TDateTime);
+begin
+  qryNFeCab.Close;
+  // a hora é descartada: a query compara por dia, incluindo o dia final inteiro
+  qryNFeCab.ParamByName('DATA_INICIAL').AsDate := DateOf(DataInicial);
+  qryNFeCab.ParamByName('DATA_FINAL').AsDate := DateOf(DataFinal);
+  qryNFeCab.Open;
+end;
+
+function TdmdNFe.ObterPeriodoNFeCab(out DataInicial, DataFinal: TDateTime): Boolean;
+begin
+  DataInicial := 0;
+  DataFinal := 0;
+  qryNFeCabPeriodo.Open;
+  try
+    Result := not qryNFeCabPeriodo.FieldByName('DATA_INICIAL').IsNull;
+    if Result then
+    begin
+      // colunas calculadas vêm do Zeos como texto; DATE() do SQLite garante o formato
+      DataInicial := ScanDateTime(FORMATO_DATA_SQLITE, qryNFeCabPeriodo.FieldByName('DATA_INICIAL').AsString);
+      DataFinal := ScanDateTime(FORMATO_DATA_SQLITE, qryNFeCabPeriodo.FieldByName('DATA_FINAL').AsString);
+    end;
+  finally
+    qryNFeCabPeriodo.Close;
+  end;
 end;
 
 procedure TdmdNFe.CampoCNPJCPFGetText(Sender: TField; var AText: string;

@@ -14,7 +14,7 @@ O `dmdNFe` é criado antes do `frmMain` em `nfestudio.lpr`, pois é usado no `Fo
 
 ### Listagem de notas (`DBGrid1`)
 
-Ligado a `dsNFeCab` (`dmdNFe.qryNFeCab`). Colunas:
+Ligado a `dmdNFe.dtsNFeCab` (`dmdNFe.qryNFeCab`). Colunas:
 
 | Campo          | Título          | Largura                     |
 |----------------|-----------------|-----------------------------|
@@ -27,10 +27,30 @@ Ligado a `dsNFeCab` (`dmdNFe.qryNFeCab`). Colunas:
 `AutoFillColumns = True` com `SizePriority = 1` somente em `DEST_XNOME`; as demais colunas mantêm a
 largura definida.
 
+### Importação de XML (`btnImportarXMLClick`)
+
+Seleciona o diretório em `dlgSelDir` e chama `ProcessadorNFe.Importar`. O `ProcessadorNFe` é criado no
+`FormCreate` com `ExibirProgresso = True`, então ele próprio exibe o `TfrmAguarde` com o progresso
+(ver [uprocessadornfe](uprocessadornfe.md)) e o libera antes de qualquer mensagem de erro.
+
+Ao final, mesmo após erro (parte das notas pode ter sido gravada), `AjustarPeriodoFiltro` consulta a menor e a
+maior data de emissão de `NFE_CAB` (`dmdNFe.ObterPeriodoNFeCab`), atribui a `dtpInicial`/`dtpFinal` e aplica o
+filtro, deixando visíveis todas as notas do banco, inclusive as recém-importadas. Com a tabela vazia, nada muda.
+
+### Filtro por período (`btnFiltrarClick`)
+
+Chama `dmdNFe.FiltrarNFeCab(dtpInicial.Date, dtpFinal.Date)`. A hora dos pickers é ignorada: são listadas as
+notas emitidas do início do dia inicial até o fim do dia final (ver [udmdnfe](udmdnfe.md)).
+
+### Configurações (`btnConfigClick`)
+
+Abre o `TfrmConfig` via `TfrmConfig.Executar(ArquivoIni)` (ver [ufrmconfig](ufrmconfig.md)); se o usuário
+salvar, chama `CarregarConfiguracoes` para aplicar o INI gravado.
+
 ### Painel de detalhes (`pnlDetalhes`)
 
 Painel alinhado ao rodapé com o `pgcDetalhes`. Todos os campos são `TDBEdit` somente leitura ligados a
-`dsNFeCab`, acompanhando o registro selecionado no grid.
+`dmdNFe.dtsNFeCab` (o mesmo DataSource do grid), acompanhando o registro selecionado.
 
 | Aba                  | Conteúdo                                                     |
 |----------------------|--------------------------------------------------------------|
@@ -108,3 +128,4 @@ As pastas acima são criadas (`ForceDirectories`) a cada inicialização, com os
 | `CriarArquivoIni`         | Grava o INI inicial com paths e configurações padrão              |
 | `CarregarConfiguracoes`   | Cria (se necessário) e lê o INI                                   |
 | `InicializarBanco`        | Conecta ao banco e cria as tabelas                                |
+| `AjustarPeriodoFiltro`    | Ajusta os pickers à menor/maior emissão em `NFE_CAB` e filtra     |

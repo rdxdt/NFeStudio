@@ -42,6 +42,7 @@
 - `TPageControl`: pgc
 - `TTabSheet`: tab
 - `TScrollBox`: sbx
+- `TProgressBar`: pgb
 
 Deduza e adicione a lista outros componentes LCL.
 

@@ -6,9 +6,9 @@ interface
 
 uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, ExtCtrls, Buttons,
-  StdCtrls, DBGrids, DBCtrls, ComCtrls, ACBrNFe, ACBrNFeDANFeRLClass, ACBrPosPrinter,
-  ACBrNFeDANFeESCPOS, ACBrDANFCeFortesFrA4, ACBrDANFCeFortesFr, ZConnection,
-  DateTimePicker, IniFiles;
+  StdCtrls, DBGrids, DBCtrls, ComCtrls, Menus, ACBrNFe, ACBrNFeDANFeRLClass,
+  ACBrPosPrinter, ACBrNFeDANFeESCPOS, ACBrDANFCeFortesFrA4, ACBrDANFCeFortesFr,
+  ZConnection, DateTimePicker, IniFiles,uprocessadornfe;
 
 type
 
@@ -21,10 +21,7 @@ type
     ACBrNFeDANFeESCPOS1: TACBrNFeDANFeESCPOS;
     ACBrNFeDANFeRL1: TACBrNFeDANFeRL;
     ACBrPosPrinter1: TACBrPosPrinter;
-    btnAbrir: TButton;
-    Button1: TButton;
-    Button2: TButton;
-    dsNFeCab: TDataSource;
+    btnFiltrar: TButton;
     dtpInicial: TDateTimePicker;
     dtpFinal: TDateTimePicker;
     DBGrid1: TDBGrid;
@@ -33,6 +30,11 @@ type
     pnlTopBar: TPanel;
     pnlMenu: TPanel;
     btnMenu: TSpeedButton;
+    dlgSelDir: TSelectDirectoryDialog;
+    popRelatorios: TPopupMenu;
+    btnImportarXML: TSpeedButton;
+    btnRelatorios: TSpeedButton;
+    btnConfig: TSpeedButton;
     StatusBar1: TStatusBar;
     ZConnection1: TZConnection;
     pnlDetalhes: TPanel;
@@ -227,7 +229,13 @@ type
     edtMonoTotVCBSMonoRet: TDBEdit;
     lblTotVNFTot: TLabel;
     edtTotVNFTot: TDBEdit;
+    ProcessadorNFe : TProcessadorNFe;
+    procedure btnFiltrarClick(Sender: TObject);
+    procedure btnImportarXMLClick(Sender: TObject);
+    procedure btnMenuClick(Sender: TObject);
+    procedure btnRelatoriosClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure btnConfigClick(Sender: TObject);
   private
     function ArquivoIni: string;
     function PastaDocumentos: string;
@@ -240,6 +248,7 @@ type
     procedure CriarArquivoIni(Ini: TCustomIniFile);
     procedure CarregarConfiguracoes;
     procedure InicializarBanco;
+    procedure AjustarPeriodoFiltro;
   public
 
   end;
@@ -253,7 +262,7 @@ uses
   {$IFDEF MSWINDOWS}
   WinDirs,
   {$ENDIF}
-  udmdnfe;
+  udmdnfe, ufrmconfig;
 
 {$R *.lfm}
 
@@ -271,6 +280,46 @@ procedure TfrmMain.FormCreate(Sender: TObject);
 begin
   CarregarConfiguracoes;
   InicializarBanco;
+  dlgSelDir.InitialDir:= ACBrNFe1.Configuracoes.Arquivos.GetPathNFe(Now);
+  ProcessadorNFe := TProcessadorNFe.Create(frmMain);
+  ProcessadorNFe.ACBrNFe:= ACBrNFe1;
+  ProcessadorNFe.ExibirProgresso := True;
+end;
+
+procedure TfrmMain.btnConfigClick(Sender: TObject);
+begin
+  if TfrmConfig.Executar(ArquivoIni) then
+    CarregarConfiguracoes;
+  pnlMenu.Visible := False;
+end;
+
+procedure TfrmMain.btnMenuClick(Sender: TObject);
+begin
+  pnlMenu.Visible := not pnlMenu.Visible;
+end;
+
+procedure TfrmMain.btnImportarXMLClick(Sender: TObject);
+begin
+  if not dlgSelDir.Execute then
+    Exit;
+  try
+    ProcessadorNFe.Importar(dlgSelDir.FileName);
+  except on E:Exception do
+    MessageDlg(E.Message,mtError,[mbOK],0);
+  end;
+  // mesmo com erro, parte das notas pode ter sido gravada
+  AjustarPeriodoFiltro;
+  pnlMenu.Visible := False;
+end;
+
+procedure TfrmMain.btnFiltrarClick(Sender: TObject);
+begin
+  dmdNFe.FiltrarNFeCab(dtpInicial.Date, dtpFinal.Date);
+end;
+
+procedure TfrmMain.btnRelatoriosClick(Sender: TObject);
+begin
+  pnlMenu.Visible := False;
 end;
 
 function TfrmMain.ArquivoIni: string;
@@ -478,6 +527,17 @@ procedure TfrmMain.InicializarBanco;
 begin
   ZConnection1.Connect;
   dmdNFe.CriarTabelas;
+end;
+
+procedure TfrmMain.AjustarPeriodoFiltro;
+var
+  DataInicial, DataFinal: TDateTime;
+begin
+  if not dmdNFe.ObterPeriodoNFeCab(DataInicial, DataFinal) then
+    Exit;
+  dtpInicial.Date := DataInicial;
+  dtpFinal.Date := DataFinal;
+  btnFiltrarClick(btnFiltrar);
 end;
 
 end.

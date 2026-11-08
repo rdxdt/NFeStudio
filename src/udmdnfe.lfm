@@ -6173,6 +6173,17 @@ object dmdNFe: TdmdNFe
     Left = 136
     Top = 88
   end
+  object qryNFeCabPeriodo: TZQuery
+    Connection = frmMain.ZConnection1
+    SQL.Strings = (
+      'SELECT DATE(MIN(IDE_DHEMI)) AS DATA_INICIAL,'
+      '       DATE(MAX(IDE_DHEMI)) AS DATA_FINAL'
+      '  FROM NFE_CAB'
+    )
+    Params = <>
+    Left = 392
+    Top = 88
+  end
   object cmdInsNFeCab: TZQuery
     Connection = frmMain.ZConnection1
     SQL.Strings = (

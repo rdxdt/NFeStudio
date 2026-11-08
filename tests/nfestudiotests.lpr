@@ -7,7 +7,7 @@ uses
   cthreads,
   clocale,
   {$ENDIF}
-  Interfaces, Classes, Math, consoletestrunner, tstprocessadornfe;
+  Interfaces, Classes, Math, consoletestrunner, tstprocessadornfe, tstdmdnfe;
 
 type
 

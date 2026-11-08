@@ -8,6 +8,7 @@ Datamodule com as queries de persistência das notas fiscais (banco SQLite via Z
 |-------------------|----------------|----------------------------------------------|
 | `qryNFeCab`       | TZQuery        | Cabeçalho da nota (`NFE_CAB`) — mestre       |
 | `dtsNFeCab`       | TDataSource    | Liga `qryNFeCab` às queries de detalhe       |
+| `qryNFeCabPeriodo`| TZQuery        | Menor e maior data de emissão em `NFE_CAB`   |
 | `qryNFeDet`       | TZQuery        | Itens da nota (`NFE_DET`) — detalhe          |
 | `qryNFeFat`       | TZQuery        | Fatura (`NFE_FAT`) — detalhe                 |
 | `qryNFeDup`       | TZQuery        | Duplicatas (`NFE_DUP`) — detalhe             |
@@ -30,12 +31,26 @@ ordenadas por emissão, série e número.
 O filtro usa `IDE_DHEMI < DATE(:DATA_FINAL, '+1 day')` para incluir as notas emitidas em qualquer
 horário do último dia, mantendo o uso do índice `IDX_NFE_CAB_DHEMI`.
 
+Para filtrar use `FiltrarNFeCab`:
+
 ```pascal
-dmdNFe.qryNFeCab.Close;
-dmdNFe.qryNFeCab.ParamByName('DATA_INICIAL').AsDate := dtpInicial.Date;
-dmdNFe.qryNFeCab.ParamByName('DATA_FINAL').AsDate := dtpFinal.Date;
-dmdNFe.qryNFeCab.Open;
+procedure FiltrarNFeCab(DataInicial, DataFinal: TDateTime);
 ```
+
+Fecha a query, atribui os parâmetros e reabre. A hora de `DataInicial` e `DataFinal` é descartada
+(`DateOf`), então o período sempre vai do início do dia inicial até o fim do dia final.
+
+### qryNFeCabPeriodo
+
+`SELECT DATE(MIN(IDE_DHEMI)), DATE(MAX(IDE_DHEMI)) FROM NFE_CAB`, usada por `ObterPeriodoNFeCab`:
+
+```pascal
+function ObterPeriodoNFeCab(out DataInicial, DataFinal: TDateTime): Boolean;
+```
+
+Retorna `False` se a tabela estiver vazia (ou sem `IDE_DHEMI`); caso contrário devolve a menor e a maior
+data de emissão, sem a hora. Colunas calculadas (`MIN`/`MAX`) chegam do Zeos como texto e `AsDateTime`
+falharia; por isso a query usa `DATE()`, que garante o formato `yyyy-mm-dd`, convertido com `ScanDateTime`.
 
 ### Mestre-detalhe
 
@@ -179,3 +194,9 @@ As coleções abaixo não possuem tabela própria neste DDL:
 `Ide.NFref`, `Ide.gPagAntecipado`, `autXML`, `Prod.NVE`, `Prod.DI` (+ `adi`), `Prod.detExport`, `Prod.rastro`,
 `Prod.med`, `Prod.arma`, `Prod.CredPresumido`, `comb.origComb`, `Vol.Lacres`, `Transp.Reboque`,
 `InfAdic.obsCont`, `InfAdic.obsFisco`, `InfAdic.procRef`, `cana.fordia`, `cana.deduc` e `agropecuario.defensivo`.
+
+## Testes
+
+`tests/tstdmdnfe.pas` (projeto `tests/nfestudiotests.lpi`). Usa um banco SQLite temporário com notas
+gravadas por parâmetro `AsDateTime`, no mesmo formato do `TProcessadorNFe`, e verifica que o filtro
+ignora a hora dos parâmetros e que `ObterPeriodoNFeCab` devolve a menor e a maior data.

@@ -5,7 +5,7 @@ unit uprocessadornfe;
 interface
 
 uses
-  Classes, SysUtils, ZDataset, ACBrNFe, ACBrNFe.Classes;
+  Classes, SysUtils, ZDataset, ACBrNFe, ACBrNFe.Classes, ufrmaguarde;
 
 type
 
@@ -15,7 +15,13 @@ type
   private
     FACBrNFe: TACBrNFe;
     FLog: TStringList;
+    FExibirProgresso: Boolean;
+    FAguarde: TfrmAguarde;
+    FArquivoAtual: integer;
+    FTotalArquivos: integer;
     function GetLog: TStrings;
+    function ContarArquivos(const Diretorio: string): integer;
+    procedure AtualizarProgresso;
     procedure SetACBrNFe(AValue: TACBrNFe);
     procedure ImportarDiretorio(const Diretorio: string; var Quantidade: integer);
     procedure ImportarArquivo(const Arquivo: string; var Quantidade: integer);
@@ -37,12 +43,13 @@ type
     property Log: TStrings read GetLog;
   published
     property ACBrNFe: TACBrNFe read FACBrNFe write SetACBrNFe;
+    property ExibirProgresso: Boolean read FExibirProgresso write FExibirProgresso default False;
   end;
 
 implementation
 
 uses
-  StrUtils, ZAbstractConnection, pcnConversao, pcnConversaoNFe, ACBrDFe.Conversao,
+  StrUtils, Forms, ZAbstractConnection, pcnConversao, pcnConversaoNFe, ACBrDFe.Conversao,
   udmdnfe;
 
 const
@@ -162,11 +169,56 @@ begin
 
   FLog.Clear;
   Result := 0;
+  FArquivoAtual := 0;
+  FTotalArquivos := 0;
   try
+    if FExibirProgresso then
+    begin
+      FAguarde := TfrmAguarde.Create(nil);
+      FAguarde.Exibir;
+      FTotalArquivos := ContarArquivos(Diretorio);
+    end;
     ImportarDiretorio(Diretorio, Result);
   finally
+    FreeAndNil(FAguarde);
     FACBrNFe.NotasFiscais.Clear;
   end;
+end;
+
+function TProcessadorNFe.ContarArquivos(const Diretorio: string): integer;
+var
+  Busca: TSearchRec;
+  Caminho: string;
+begin
+  // deve seguir os mesmos critérios de ImportarDiretorio para o total bater com o progresso
+  Result := 0;
+  Caminho := IncludeTrailingPathDelimiter(Diretorio);
+  if FindFirst(Caminho + '*', faAnyFile, Busca) <> 0 then
+    Exit;
+  try
+    repeat
+      if (Busca.Name = '.') or (Busca.Name = '..') then
+        Continue;
+      if (Busca.Attr and faDirectory) <> 0 then
+      begin
+        if (Busca.Attr and faSymLink{%H-}) = 0 then
+          Inc(Result, ContarArquivos(Caminho + Busca.Name));
+      end
+      else if SameText(ExtractFileExt(Busca.Name), EXTENSAO_XML) then
+        Inc(Result);
+    until FindNext(Busca) <> 0;
+  finally
+    FindClose(Busca);
+  end;
+end;
+
+procedure TProcessadorNFe.AtualizarProgresso;
+begin
+  Inc(FArquivoAtual);
+  if not Assigned(FAguarde) then
+    Exit;
+  FAguarde.AtualizarProgresso(FArquivoAtual, FTotalArquivos);
+  Application.ProcessMessages;
 end;
 
 procedure TProcessadorNFe.ImportarDiretorio(const Diretorio: string; var Quantidade: integer);
@@ -188,7 +240,10 @@ begin
           ImportarDiretorio(Caminho + Busca.Name, Quantidade);
       end
       else if SameText(ExtractFileExt(Busca.Name), EXTENSAO_XML) then
+      begin
+        AtualizarProgresso;
         ImportarArquivo(Caminho + Busca.Name, Quantidade);
+      end;
     until FindNext(Busca) <> 0;
   finally
     FindClose(Busca);
