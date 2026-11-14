@@ -24,7 +24,7 @@ class procedure Exibir;
 3. Cria o form, mostra o preview do Fortes (`rlrTotaisSintetico.Preview`) e o libera ao fechar.
 4. Fecha `qryTotaisSintetico` ao final.
 
-Chamado pelo item `mniTotaisSintetico` do `popRelatorios` no [frmMain](ufrmmain.md).
+Chamado pelo botão `btnTotaisSintetico` do [frmRelatorios](ufrmrelatorios.md).
 
 ### Bandas
 

@@ -8,7 +8,8 @@ uses
   clocale,
   {$ENDIF}
   Interfaces, Classes, Math, consoletestrunner, tstprocessadornfe, tstdmdnfe,
-  tstfrmnfedetalhes, tstfrmimprimirdanfe, tstreltotalsintetico;
+  tstfrmnfedetalhes, tstfrmimprimirdanfe, tstreltotalsintetico,
+  tstfrmrelatorios;
 
 type
 

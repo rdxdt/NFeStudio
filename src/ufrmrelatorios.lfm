@@ -1,0 +1,63 @@
+object frmRelatorios: TfrmRelatorios
+  Left = 500
+  Height = 160
+  Top = 300
+  Width = 380
+  AutoSize = True
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Relatórios'
+  Position = poMainFormCenter
+  object grpRelatorios: TGroupBox
+    Left = 12
+    Height = 60
+    Top = 12
+    Width = 356
+    Align = alTop
+    AutoSize = True
+    BorderSpacing.Left = 12
+    BorderSpacing.Top = 12
+    BorderSpacing.Right = 12
+    Caption = 'Relatórios disponíveis'
+    ChildSizing.LeftRightSpacing = 12
+    ChildSizing.TopBottomSpacing = 8
+    ChildSizing.VerticalSpacing = 6
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 1
+    TabOrder = 0
+    object btnTotaisSintetico: TButton
+      Left = 12
+      Height = 32
+      Top = 8
+      Width = 332
+      Caption = 'Totais sintético por dia'
+      OnClick = btnTotaisSinteticoClick
+      TabOrder = 0
+    end
+  end
+  object pnlBotoes: TPanel
+    Left = 12
+    Height = 44
+    Top = 84
+    Width = 356
+    Align = alTop
+    BorderSpacing.Around = 12
+    BevelOuter = bvNone
+    ClientHeight = 44
+    ClientWidth = 356
+    TabOrder = 1
+    object btnFechar: TButton
+      Left = 246
+      Height = 32
+      Top = 6
+      Width = 110
+      Align = alRight
+      BorderSpacing.Top = 6
+      Cancel = True
+      Caption = 'Fechar'
+      ModalResult = 2
+      TabOrder = 0
+    end
+  end
+end

@@ -2556,7 +2556,6 @@ object frmMain: TfrmMain
       BorderSpacing.Around = 8
       Caption = 'Relatórios'
       Flat = True
-      PopupMenu = popRelatorios
       OnClick = btnRelatoriosClick
     end
     object btnConfig: TSpeedButton
@@ -2600,7 +2599,6 @@ object frmMain: TfrmMain
   end
   object ACBrNFeDANFeESCPOS1: TACBrNFeDANFeESCPOS
     Sistema = 'Projeto ACBr - www.projetoacbr.com.br'
-    PosPrinter = ACBrPosPrinter1
     MargemInferior = 8
     MargemSuperior = 8
     MargemEsquerda = 6
@@ -2618,6 +2616,7 @@ object frmMain: TfrmMain
     CasasDecimais.MaskvUnCom = ',0.00'
     CasasDecimais.Aliquota = 2
     CasasDecimais.MaskAliquota = ',0.00'
+    PosPrinter = ACBrPosPrinter1
     Left = 268
     Top = 245
   end
@@ -2704,13 +2703,5 @@ object frmMain: TfrmMain
   object dlgSelDir: TSelectDirectoryDialog
     Left = 597
     Top = 171
-  end
-  object popRelatorios: TPopupMenu
-    Left = 592
-    Top = 257
-    object mniTotaisSintetico: TMenuItem
-      Caption = 'Totais sintético por dia'
-      OnClick = mniTotaisSinteticoClick
-    end
   end
 end

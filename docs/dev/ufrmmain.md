@@ -66,11 +66,8 @@ procedure ImprimirDANFE(const Chave: string);
 
 ### Relatórios (`btnRelatoriosClick`)
 
-O botão abre o `popRelatorios` ao lado dele, escondendo o `pnlMenu`. Itens:
-
-| Item                 | Ação                                                         |
-|----------------------|--------------------------------------------------------------|
-| `mniTotaisSintetico` | `TrelTotaisSintetico.Exibir` (ver [ureltotalsintetico](ureltotalsintetico.md)) |
+Esconde o `pnlMenu` e abre o form de opções de relatório com `TfrmRelatorios.Exibir`
+(ver [ufrmrelatorios](ufrmrelatorios.md)).
 
 ### Filtro por período (`btnFiltrarClick`)
 

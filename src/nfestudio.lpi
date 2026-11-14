@@ -250,6 +250,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
+      <Unit>
+        <Filename Value="ufrmrelatorios.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmRelatorios"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

@@ -32,8 +32,6 @@ type
     pnlMenu: TPanel;
     btnMenu: TSpeedButton;
     dlgSelDir: TSelectDirectoryDialog;
-    popRelatorios: TPopupMenu;
-    mniTotaisSintetico: TMenuItem;
     btnImportarXML: TSpeedButton;
     btnRelatorios: TSpeedButton;
     btnConfig: TSpeedButton;
@@ -237,7 +235,6 @@ type
     procedure btnImportarXMLClick(Sender: TObject);
     procedure btnMenuClick(Sender: TObject);
     procedure btnRelatoriosClick(Sender: TObject);
-    procedure mniTotaisSinteticoClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnConfigClick(Sender: TObject);
   private
@@ -269,7 +266,7 @@ uses
   {$IFDEF MSWINDOWS}
   WinDirs,
   {$ENDIF}
-  udmdnfe, ufrmconfig, ufrmnfedetalhes, ureltotalsintetico;
+  udmdnfe, ufrmconfig, ufrmnfedetalhes, ufrmrelatorios;
 
 {$R *.lfm}
 
@@ -333,17 +330,9 @@ begin
 end;
 
 procedure TfrmMain.btnRelatoriosClick(Sender: TObject);
-var
-  Posicao: TPoint;
 begin
-  Posicao := btnRelatorios.ClientToScreen(Point(btnRelatorios.Width, 0));
   pnlMenu.Visible := False;
-  popRelatorios.PopUp(Posicao.X, Posicao.Y);
-end;
-
-procedure TfrmMain.mniTotaisSinteticoClick(Sender: TObject);
-begin
-  TrelTotaisSintetico.Exibir;
+  TfrmRelatorios.Exibir;
 end;
 
 function TfrmMain.ArquivoIni: string;
