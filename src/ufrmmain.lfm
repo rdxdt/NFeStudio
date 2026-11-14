@@ -236,6 +236,7 @@ object frmMain: TfrmMain
     DataSource = dmdNFe.dtsNFeCab
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
     TabOrder = 1
+    OnDblClick = DBGrid1DblClick
   end
   object pnlDetalhes: TPanel
     Left = 0
@@ -2599,6 +2600,7 @@ object frmMain: TfrmMain
   end
   object ACBrNFeDANFeESCPOS1: TACBrNFeDANFeESCPOS
     Sistema = 'Projeto ACBr - www.projetoacbr.com.br'
+    PosPrinter = ACBrPosPrinter1
     MargemInferior = 8
     MargemSuperior = 8
     MargemEsquerda = 6
@@ -2706,5 +2708,9 @@ object frmMain: TfrmMain
   object popRelatorios: TPopupMenu
     Left = 592
     Top = 257
+    object mniTotaisSintetico: TMenuItem
+      Caption = 'Totais sintético por dia'
+      OnClick = mniTotaisSinteticoClick
+    end
   end
 end

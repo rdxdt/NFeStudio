@@ -8,7 +8,8 @@ uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, ExtCtrls, Buttons,
   StdCtrls, DBGrids, DBCtrls, ComCtrls, Menus, ACBrNFe, ACBrNFeDANFeRLClass,
   ACBrPosPrinter, ACBrNFeDANFeESCPOS, ACBrDANFCeFortesFrA4, ACBrDANFCeFortesFr,
-  ZConnection, DateTimePicker, IniFiles,uprocessadornfe;
+  ZConnection, DateTimePicker, IniFiles,uprocessadornfe, ACBrDFeDANFeReport,
+  ufrmimprimirdanfe;
 
 type
 
@@ -32,6 +33,7 @@ type
     btnMenu: TSpeedButton;
     dlgSelDir: TSelectDirectoryDialog;
     popRelatorios: TPopupMenu;
+    mniTotaisSintetico: TMenuItem;
     btnImportarXML: TSpeedButton;
     btnRelatorios: TSpeedButton;
     btnConfig: TSpeedButton;
@@ -231,9 +233,11 @@ type
     edtTotVNFTot: TDBEdit;
     ProcessadorNFe : TProcessadorNFe;
     procedure btnFiltrarClick(Sender: TObject);
+    procedure DBGrid1DblClick(Sender: TObject);
     procedure btnImportarXMLClick(Sender: TObject);
     procedure btnMenuClick(Sender: TObject);
     procedure btnRelatoriosClick(Sender: TObject);
+    procedure mniTotaisSinteticoClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnConfigClick(Sender: TObject);
   private
@@ -249,7 +253,10 @@ type
     procedure CarregarConfiguracoes;
     procedure InicializarBanco;
     procedure AjustarPeriodoFiltro;
+    function TipoDANFEPadrao: TTipoDANFE;
+    function ComponenteDANFE(Tipo: TTipoDANFE; Modelo: integer): TACBrDFeDANFeReport;
   public
+    procedure ImprimirDANFE(const Chave: string);
 
   end;
 
@@ -262,7 +269,7 @@ uses
   {$IFDEF MSWINDOWS}
   WinDirs,
   {$ENDIF}
-  udmdnfe, ufrmconfig;
+  udmdnfe, ufrmconfig, ufrmnfedetalhes, ureltotalsintetico;
 
 {$R *.lfm}
 
@@ -273,6 +280,9 @@ const
   DANFE_ESCPOS = 'ESCPOS';
   DANFE_FORTES = 'FORTES';
   DANFE_FORTESA4 = 'FORTESA4';
+  MSG_SEM_XML = 'XML da NFe %s n'#227'o encontrado no banco. Reimporte a nota para imprimir a DANFE.';
+  MSG_ERRO_CONSULTA = 'Não foi possível consultar o protocolo da NFe %s na SEFAZ:'#10'%s'#10#10 +
+    'A DANFE será impressa sem protocolo.';
 
 { TfrmMain }
 
@@ -317,9 +327,23 @@ begin
   dmdNFe.FiltrarNFeCab(dtpInicial.Date, dtpFinal.Date);
 end;
 
-procedure TfrmMain.btnRelatoriosClick(Sender: TObject);
+procedure TfrmMain.DBGrid1DblClick(Sender: TObject);
 begin
+  TfrmNFeDetalhes.Exibir(@ImprimirDANFE);
+end;
+
+procedure TfrmMain.btnRelatoriosClick(Sender: TObject);
+var
+  Posicao: TPoint;
+begin
+  Posicao := btnRelatorios.ClientToScreen(Point(btnRelatorios.Width, 0));
   pnlMenu.Visible := False;
+  popRelatorios.PopUp(Posicao.X, Posicao.Y);
+end;
+
+procedure TfrmMain.mniTotaisSinteticoClick(Sender: TObject);
+begin
+  TrelTotaisSintetico.Exibir;
 end;
 
 function TfrmMain.ArquivoIni: string;
@@ -527,6 +551,73 @@ procedure TfrmMain.InicializarBanco;
 begin
   ZConnection1.Connect;
   dmdNFe.CriarTabelas;
+end;
+
+procedure TfrmMain.ImprimirDANFE(const Chave: string);
+var
+  XML: string;
+  Modelo: integer;
+  Tipo: TTipoDANFE;
+  DANFEConfigurada: TACBrDFeDANFeReport;
+begin
+  // XML importado sem nfeProc (somente assinado) sairia como "não enviada para SEFAZ"
+  Screen.Cursor := crHourGlass;
+  try
+    try
+      ProcessadorNFe.AtualizarProtocolo(Chave);
+    finally
+      Screen.Cursor := crDefault;
+    end;
+  except
+    on E: Exception do
+      MessageDlg(Format(MSG_ERRO_CONSULTA, [Chave, E.Message]), mtWarning, [mbOK], 0);
+  end;
+
+  XML := dmdNFe.ObterXMLNFe(Chave);
+  if XML = '' then
+    raise Exception.CreateFmt(MSG_SEM_XML, [Chave]);
+  ACBrNFe1.NotasFiscais.Clear;
+  try
+    ACBrNFe1.NotasFiscais.LoadFromString(XML);
+    Modelo := ACBrNFe1.NotasFiscais[0].NFe.Ide.modelo;
+    if not TfrmImprimirDANFE.Selecionar(Modelo, TipoDANFEPadrao, Tipo) then
+      Exit;
+    // troca temporária: a DANFE das configurações continua sendo a padrão do ACBrNFe1
+    DANFEConfigurada := ACBrNFe1.DANFE;
+    try
+      ACBrNFe1.DANFE := ComponenteDANFE(Tipo, Modelo);
+      ACBrNFe1.NotasFiscais.Imprimir;
+    finally
+      ACBrNFe1.DANFE := DANFEConfigurada;
+    end;
+  finally
+    ACBrNFe1.NotasFiscais.Clear;
+  end;
+end;
+
+function TfrmMain.TipoDANFEPadrao: TTipoDANFE;
+begin
+  // ACBrNFe1.DANFE é definido por SelecionarDANFE a partir de [DANFE] Componente
+  if ACBrNFe1.DANFE = ACBrNFeDANFeESCPOS1 then
+    Result := tdPOS
+  else if ACBrNFe1.DANFE = ACBrNFeDANFCeFortes1 then
+    Result := tdBobina
+  else
+    Result := tdA4;
+end;
+
+function TfrmMain.ComponenteDANFE(Tipo: TTipoDANFE; Modelo: integer): TACBrDFeDANFeReport;
+begin
+  case Tipo of
+    tdPOS: Result := ACBrNFeDANFeESCPOS1;
+    tdBobina: Result := ACBrNFeDANFCeFortes1;
+  else
+    // em A4 a NFC-e usa o layout de DANFCe; o DANFE RL é exclusivo da NF-e
+    if Modelo = MODELO_NFCE then
+      Result := ACBrNFeDANFCeFortesA4_1
+    else
+      Result := ACBrNFeDANFeRL1;
+  end;
 end;
 
 procedure TfrmMain.AjustarPeriodoFiltro;

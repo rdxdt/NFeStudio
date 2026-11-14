@@ -1,0 +1,545 @@
+object relTotaisSintetico: TrelTotaisSintetico
+  Left = 0
+  Height = 820
+  Top = 0
+  Width = 1140
+  Caption = 'Totais Sintético'
+  ClientHeight = 820
+  ClientWidth = 1140
+  OnCreate = FormCreate
+  object rlrTotaisSintetico: TRLReport
+    Left = 0
+    Height = 794
+    Top = 0
+    Width = 1123
+    DataSource = dmdNFe.dtsTotaisSintetico
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Arial'
+    PageSetup.Orientation = poLandscape
+    Title = 'Totais Sintético'
+    object rlbCabecalho: TRLBand
+      Left = 38
+      Height = 56
+      Top = 38
+      Width = 1047
+      BandType = btHeader
+      object rllTitulo: TRLLabel
+        Left = 0
+        Height = 19
+        Top = 4
+        Width = 600
+        AutoSize = False
+        Caption = 'Totais Sintético por Dia'
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object rllPeriodo: TRLLabel
+        Left = 0
+        Height = 14
+        Top = 30
+        Width = 600
+        AutoSize = False
+        Caption = 'Período'
+      end
+      object rsiDataHora: TRLSystemInfo
+        Left = 747
+        Height = 14
+        Top = 4
+        Width = 300
+        Alignment = taRightJustify
+        AutoSize = False
+        Info = itNow
+        Text = 'Emitido em: '
+      end
+      object rsiPagina: TRLSystemInfo
+        Left = 747
+        Height = 14
+        Top = 30
+        Width = 300
+        Alignment = taRightJustify
+        AutoSize = False
+        Info = itPageNumber
+        Text = 'Página: '
+      end
+    end
+    object rlbTitulos: TRLBand
+      Left = 38
+      Height = 20
+      Top = 94
+      Width = 1047
+      BandType = btColumnHeader
+      Borders.Sides = sdCustom
+      Borders.DrawLeft = False
+      Borders.DrawTop = True
+      Borders.DrawRight = False
+      Borders.DrawBottom = True
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      object rllDia: TRLLabel
+        Left = 2
+        Height = 14
+        Top = 3
+        Width = 65
+        AutoSize = False
+        Caption = 'Dia'
+      end
+      object rllQtdVendas: TRLLabel
+        Left = 71
+        Height = 14
+        Top = 3
+        Width = 78
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = 'Qtd. Vendas'
+      end
+      object rllTotVendas: TRLLabel
+        Left = 153
+        Height = 14
+        Top = 3
+        Width = 95
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = 'Total Vendas'
+      end
+      object rllQtdProdutos: TRLLabel
+        Left = 252
+        Height = 14
+        Top = 3
+        Width = 91
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = 'Qtd. Produtos'
+      end
+      object rllICMS: TRLLabel
+        Left = 347
+        Height = 14
+        Top = 3
+        Width = 74
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = 'ICMS'
+      end
+      object rllPIS: TRLLabel
+        Left = 425
+        Height = 14
+        Top = 3
+        Width = 74
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = 'PIS'
+      end
+      object rllCOFINS: TRLLabel
+        Left = 503
+        Height = 14
+        Top = 3
+        Width = 74
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = 'COFINS'
+      end
+      object rllIPI: TRLLabel
+        Left = 581
+        Height = 14
+        Top = 3
+        Width = 74
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = 'IPI'
+      end
+      object rllII: TRLLabel
+        Left = 659
+        Height = 14
+        Top = 3
+        Width = 74
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = 'II'
+      end
+      object rllIS: TRLLabel
+        Left = 737
+        Height = 14
+        Top = 3
+        Width = 74
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = 'IS'
+      end
+      object rllCBS: TRLLabel
+        Left = 815
+        Height = 14
+        Top = 3
+        Width = 74
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = 'CBS'
+      end
+      object rllIBSMun: TRLLabel
+        Left = 893
+        Height = 14
+        Top = 3
+        Width = 74
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = 'IBS Municipal'
+      end
+      object rllIBSUF: TRLLabel
+        Left = 971
+        Height = 14
+        Top = 3
+        Width = 74
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = 'IBS Estadual'
+      end
+    end
+    object rlbDetalhe: TRLBand
+      Left = 38
+      Height = 16
+      Top = 114
+      Width = 1047
+      object rdtDia: TRLDBText
+        Left = 2
+        Height = 14
+        Top = 1
+        Width = 65
+        AutoSize = False
+        DataField = 'DIA'
+        DataSource = dmdNFe.dtsTotaisSintetico
+        Text = ''
+      end
+      object rdtQtdVendas: TRLDBText
+        Left = 71
+        Height = 14
+        Top = 1
+        Width = 78
+        Alignment = taRightJustify
+        AutoSize = False
+        DataField = 'QTD_VENDAS'
+        DataSource = dmdNFe.dtsTotaisSintetico
+        DisplayMask = '#,##0'
+        Text = ''
+      end
+      object rdtTotVendas: TRLDBText
+        Left = 153
+        Height = 14
+        Top = 1
+        Width = 95
+        Alignment = taRightJustify
+        AutoSize = False
+        DataField = 'TOT_VNF'
+        DataSource = dmdNFe.dtsTotaisSintetico
+        DisplayMask = '#,##0.00'
+        Text = ''
+      end
+      object rdtQtdProdutos: TRLDBText
+        Left = 252
+        Height = 14
+        Top = 1
+        Width = 91
+        Alignment = taRightJustify
+        AutoSize = False
+        DataField = 'QTD_PRODUTOS'
+        DataSource = dmdNFe.dtsTotaisSintetico
+        DisplayMask = '#,##0.####'
+        Text = ''
+      end
+      object rdtICMS: TRLDBText
+        Left = 347
+        Height = 14
+        Top = 1
+        Width = 74
+        Alignment = taRightJustify
+        AutoSize = False
+        DataField = 'TOT_VICMS'
+        DataSource = dmdNFe.dtsTotaisSintetico
+        DisplayMask = '#,##0.00'
+        Text = ''
+      end
+      object rdtPIS: TRLDBText
+        Left = 425
+        Height = 14
+        Top = 1
+        Width = 74
+        Alignment = taRightJustify
+        AutoSize = False
+        DataField = 'TOT_VPIS'
+        DataSource = dmdNFe.dtsTotaisSintetico
+        DisplayMask = '#,##0.00'
+        Text = ''
+      end
+      object rdtCOFINS: TRLDBText
+        Left = 503
+        Height = 14
+        Top = 1
+        Width = 74
+        Alignment = taRightJustify
+        AutoSize = False
+        DataField = 'TOT_VCOFINS'
+        DataSource = dmdNFe.dtsTotaisSintetico
+        DisplayMask = '#,##0.00'
+        Text = ''
+      end
+      object rdtIPI: TRLDBText
+        Left = 581
+        Height = 14
+        Top = 1
+        Width = 74
+        Alignment = taRightJustify
+        AutoSize = False
+        DataField = 'TOT_VIPI'
+        DataSource = dmdNFe.dtsTotaisSintetico
+        DisplayMask = '#,##0.00'
+        Text = ''
+      end
+      object rdtII: TRLDBText
+        Left = 659
+        Height = 14
+        Top = 1
+        Width = 74
+        Alignment = taRightJustify
+        AutoSize = False
+        DataField = 'TOT_VII'
+        DataSource = dmdNFe.dtsTotaisSintetico
+        DisplayMask = '#,##0.00'
+        Text = ''
+      end
+      object rdtIS: TRLDBText
+        Left = 737
+        Height = 14
+        Top = 1
+        Width = 74
+        Alignment = taRightJustify
+        AutoSize = False
+        DataField = 'TOT_VIS'
+        DataSource = dmdNFe.dtsTotaisSintetico
+        DisplayMask = '#,##0.00'
+        Text = ''
+      end
+      object rdtCBS: TRLDBText
+        Left = 815
+        Height = 14
+        Top = 1
+        Width = 74
+        Alignment = taRightJustify
+        AutoSize = False
+        DataField = 'TOT_VCBS'
+        DataSource = dmdNFe.dtsTotaisSintetico
+        DisplayMask = '#,##0.00'
+        Text = ''
+      end
+      object rdtIBSMun: TRLDBText
+        Left = 893
+        Height = 14
+        Top = 1
+        Width = 74
+        Alignment = taRightJustify
+        AutoSize = False
+        DataField = 'TOT_VIBSMUN'
+        DataSource = dmdNFe.dtsTotaisSintetico
+        DisplayMask = '#,##0.00'
+        Text = ''
+      end
+      object rdtIBSUF: TRLDBText
+        Left = 971
+        Height = 14
+        Top = 1
+        Width = 74
+        Alignment = taRightJustify
+        AutoSize = False
+        DataField = 'TOT_VIBSUF'
+        DataSource = dmdNFe.dtsTotaisSintetico
+        DisplayMask = '#,##0.00'
+        Text = ''
+      end
+    end
+    object rlbTotal: TRLBand
+      Left = 38
+      Height = 22
+      Top = 130
+      Width = 1047
+      BandType = btSummary
+      Borders.Sides = sdCustom
+      Borders.DrawLeft = False
+      Borders.DrawTop = True
+      Borders.DrawRight = False
+      Borders.DrawBottom = False
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      object rllTotal: TRLLabel
+        Left = 2
+        Height = 14
+        Top = 4
+        Width = 65
+        AutoSize = False
+        Caption = 'Total'
+      end
+      object rdrQtdVendas: TRLDBResult
+        Left = 71
+        Height = 14
+        Top = 4
+        Width = 78
+        Alignment = taRightJustify
+        AutoSize = False
+        DataField = 'QTD_VENDAS'
+        DataSource = dmdNFe.dtsTotaisSintetico
+        DisplayMask = '#,##0'
+        Info = riSum
+        Text = ''
+        OnCompute = rdrQtdVendasCompute
+      end
+      object rdrTotVendas: TRLDBResult
+        Left = 153
+        Height = 14
+        Top = 4
+        Width = 95
+        Alignment = taRightJustify
+        AutoSize = False
+        DataField = 'TOT_VNF'
+        DataSource = dmdNFe.dtsTotaisSintetico
+        DisplayMask = '#,##0.00'
+        Info = riSum
+        Text = ''
+      end
+      object rdrQtdProdutos: TRLDBResult
+        Left = 252
+        Height = 14
+        Top = 4
+        Width = 91
+        Alignment = taRightJustify
+        AutoSize = False
+        DataField = 'QTD_PRODUTOS'
+        DataSource = dmdNFe.dtsTotaisSintetico
+        DisplayMask = '#,##0.####'
+        Info = riSum
+        Text = ''
+      end
+      object rdrICMS: TRLDBResult
+        Left = 347
+        Height = 14
+        Top = 4
+        Width = 74
+        Alignment = taRightJustify
+        AutoSize = False
+        DataField = 'TOT_VICMS'
+        DataSource = dmdNFe.dtsTotaisSintetico
+        DisplayMask = '#,##0.00'
+        Info = riSum
+        Text = ''
+      end
+      object rdrPIS: TRLDBResult
+        Left = 425
+        Height = 14
+        Top = 4
+        Width = 74
+        Alignment = taRightJustify
+        AutoSize = False
+        DataField = 'TOT_VPIS'
+        DataSource = dmdNFe.dtsTotaisSintetico
+        DisplayMask = '#,##0.00'
+        Info = riSum
+        Text = ''
+      end
+      object rdrCOFINS: TRLDBResult
+        Left = 503
+        Height = 14
+        Top = 4
+        Width = 74
+        Alignment = taRightJustify
+        AutoSize = False
+        DataField = 'TOT_VCOFINS'
+        DataSource = dmdNFe.dtsTotaisSintetico
+        DisplayMask = '#,##0.00'
+        Info = riSum
+        Text = ''
+      end
+      object rdrIPI: TRLDBResult
+        Left = 581
+        Height = 14
+        Top = 4
+        Width = 74
+        Alignment = taRightJustify
+        AutoSize = False
+        DataField = 'TOT_VIPI'
+        DataSource = dmdNFe.dtsTotaisSintetico
+        DisplayMask = '#,##0.00'
+        Info = riSum
+        Text = ''
+      end
+      object rdrII: TRLDBResult
+        Left = 659
+        Height = 14
+        Top = 4
+        Width = 74
+        Alignment = taRightJustify
+        AutoSize = False
+        DataField = 'TOT_VII'
+        DataSource = dmdNFe.dtsTotaisSintetico
+        DisplayMask = '#,##0.00'
+        Info = riSum
+        Text = ''
+      end
+      object rdrIS: TRLDBResult
+        Left = 737
+        Height = 14
+        Top = 4
+        Width = 74
+        Alignment = taRightJustify
+        AutoSize = False
+        DataField = 'TOT_VIS'
+        DataSource = dmdNFe.dtsTotaisSintetico
+        DisplayMask = '#,##0.00'
+        Info = riSum
+        Text = ''
+      end
+      object rdrCBS: TRLDBResult
+        Left = 815
+        Height = 14
+        Top = 4
+        Width = 74
+        Alignment = taRightJustify
+        AutoSize = False
+        DataField = 'TOT_VCBS'
+        DataSource = dmdNFe.dtsTotaisSintetico
+        DisplayMask = '#,##0.00'
+        Info = riSum
+        Text = ''
+      end
+      object rdrIBSMun: TRLDBResult
+        Left = 893
+        Height = 14
+        Top = 4
+        Width = 74
+        Alignment = taRightJustify
+        AutoSize = False
+        DataField = 'TOT_VIBSMUN'
+        DataSource = dmdNFe.dtsTotaisSintetico
+        DisplayMask = '#,##0.00'
+        Info = riSum
+        Text = ''
+      end
+      object rdrIBSUF: TRLDBResult
+        Left = 971
+        Height = 14
+        Top = 4
+        Width = 74
+        Alignment = taRightJustify
+        AutoSize = False
+        DataField = 'TOT_VIBSUF'
+        DataSource = dmdNFe.dtsTotaisSintetico
+        DisplayMask = '#,##0.00'
+        Info = riSum
+        Text = ''
+      end
+    end
+  end
+end

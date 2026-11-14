@@ -599,6 +599,9 @@ type
     qryNFeFatVLIQ: TZDoubleField;
     dtsNFeCab: TDataSource;
     qryNFeCabPeriodo: TZQuery;
+    qryNFeXML: TZQuery;
+    qryTotaisSintetico: TZQuery;
+    dtsTotaisSintetico: TDataSource;
     sqlCreateTables: TZSQLProcessor;
     cmdInsNFeCab: TZQuery;
     cmdDelNFeCab: TZQuery;
@@ -620,6 +623,8 @@ type
     procedure CriarTabelas;
     procedure FiltrarNFeCab(DataInicial, DataFinal: TDateTime);
     function ObterPeriodoNFeCab(out DataInicial, DataFinal: TDateTime): Boolean;
+    function ObterXMLNFe(const Chave: string): string;
+    procedure AbrirTotaisSintetico;
   end;
 
 var
@@ -664,6 +669,29 @@ begin
   finally
     qryNFeCabPeriodo.Close;
   end;
+end;
+
+function TdmdNFe.ObterXMLNFe(const Chave: string): string;
+begin
+  qryNFeXML.ParamByName('CHNFE').AsString := Chave;
+  qryNFeXML.Open;
+  try
+    Result := qryNFeXML.FieldByName('XML').AsString;
+  finally
+    qryNFeXML.Close;
+  end;
+end;
+
+procedure TdmdNFe.AbrirTotaisSintetico;
+begin
+  qryTotaisSintetico.Close;
+  // mesmo período do último FiltrarNFeCab, para o relatório refletir as notas do grid.
+  // No SQL, TOTAL() em vez de SUM(): o Zeos tipa colunas calculadas pela primeira linha e o
+  // SQLite guarda NUMERIC sem casas (ex.: 100.00) como INTEGER; um SUM() inteiro no primeiro dia
+  // virava campo Int64 e truncava os demais. TOTAL() sempre retorna REAL (0.0 sem valores).
+  qryTotaisSintetico.ParamByName('DATA_INICIAL').Value := qryNFeCab.ParamByName('DATA_INICIAL').Value;
+  qryTotaisSintetico.ParamByName('DATA_FINAL').Value := qryNFeCab.ParamByName('DATA_FINAL').Value;
+  qryTotaisSintetico.Open;
 end;
 
 procedure TdmdNFe.CampoCNPJCPFGetText(Sender: TField; var AText: string;

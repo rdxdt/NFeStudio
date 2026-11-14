@@ -19,6 +19,7 @@ type
     FAguarde: TfrmAguarde;
     FArquivoAtual: integer;
     FTotalArquivos: integer;
+    FXMLNFe: string;
     function GetLog: TStrings;
     function ContarArquivos(const Diretorio: string): integer;
     procedure AtualizarProgresso;
@@ -36,10 +37,12 @@ type
     procedure GravarPagamentos(NFe: TNFe; const Chave: string);
   protected
     procedure Notification(AComponent: TComponent; Operation: TOperation); override;
+    procedure ConsultarSEFAZ; virtual;
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     function Importar(const Diretorio: string): integer;
+    function AtualizarProtocolo(const Chave: string): Boolean;
     property Log: TStrings read GetLog;
   published
     property ACBrNFe: TACBrNFe read FACBrNFe write SetACBrNFe;
@@ -49,7 +52,7 @@ type
 implementation
 
 uses
-  StrUtils, Forms, ZAbstractConnection, pcnConversao, pcnConversaoNFe, ACBrDFe.Conversao,
+  StrUtils, Forms, ZAbstractConnection, pcnConversao, pcnConversaoNFe, ACBrDFe.Conversao, ACBrNFeNotasFiscais,
   udmdnfe;
 
 const
@@ -185,6 +188,46 @@ begin
   end;
 end;
 
+function TProcessadorNFe.AtualizarProtocolo(const Chave: string): Boolean;
+var
+  XML: string;
+  Nota: NotaFiscal;
+begin
+  Result := False;
+  if not Assigned(FACBrNFe) then
+    raise Exception.Create(MSG_SEM_ACBRNFE);
+  XML := dmdNFe.ObterXMLNFe(Chave);
+  if XML = '' then
+    Exit;
+
+  FACBrNFe.NotasFiscais.Clear;
+  try
+    FACBrNFe.NotasFiscais.LoadFromString(XML);
+    if FACBrNFe.NotasFiscais.Count = 0 then
+      Exit;
+    if FACBrNFe.NotasFiscais[0].NFe.procNFe.nProt <> '' then
+      Exit;
+
+    ConsultarSEFAZ;
+
+    Nota := FACBrNFe.NotasFiscais[0];
+    // nota não autorizada (ex.: 217, não consta na base) volta sem nProt e não é regravada
+    if Nota.NFe.procNFe.nProt = '' then
+      Exit;
+    FXMLNFe := Nota.XMLOriginal;
+    GravarNFe(Nota.NFe, Chave);
+    Result := True;
+  finally
+    FACBrNFe.NotasFiscais.Clear;
+  end;
+end;
+
+procedure TProcessadorNFe.ConsultarSEFAZ;
+begin
+  // com a nota carregada, o ACBr preenche procNFe e troca o XMLOriginal pelo nfeProc
+  FACBrNFe.Consultar;
+end;
+
 function TProcessadorNFe.ContarArquivos(const Diretorio: string): integer;
 var
   Busca: TSearchRec;
@@ -284,6 +327,8 @@ begin
       Continue;
     end;
     try
+      // gravado em NFE_CAB.XML por GravarCabecalho, para reimpressão da DANFE
+      FXMLNFe := FACBrNFe.NotasFiscais[I].XMLOriginal;
       GravarNFe(NFe, Chave);
       Inc(Quantidade);
     except
@@ -619,6 +664,7 @@ begin
     AtribuirInteiroOpcional(Q, 'PROT_CMSG', NFe.procNFe.cMsg);
     AtribuirTexto(Q, 'PROT_XMSG', NFe.procNFe.xMsg);
   end;
+  AtribuirTexto(Q, 'XML', FXMLNFe);
   Q.ExecSQL;
 end;
 

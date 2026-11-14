@@ -30,6 +30,32 @@ maiúsculas/minúsculas). Retorna a quantidade de notas gravadas.
 - Links simbólicos de diretório não são seguidos, evitando recursão infinita.
 - Um arquivo de lote (`enviNFe`) com várias notas tem todas elas importadas.
 - `NotasFiscais` do `ACBrNFe` é limpo ao final.
+- O XML original de cada nota (`NotasFiscais[I].XMLOriginal`, com o protocolo quando for `nfeProc`) é gravado em
+  `NFE_CAB.XML`, para reimpressão da DANFE. Em lote (`enviNFe`) cada nota recebe somente o seu XML.
+
+### AtualizarProtocolo
+
+```pascal
+function AtualizarProtocolo(const Chave: string): Boolean;
+```
+
+Completa com o protocolo de autorização uma nota importada somente assinada (XML sem `nfeProc`), que
+na DANFE sairia como "não enviada para SEFAZ". Retorna `True` se a nota foi regravada com protocolo.
+
+1. Lê o XML gravado em `NFE_CAB.XML`; sem XML retorna `False`.
+2. Carrega a nota no `ACBrNFe`. Se ela já tiver protocolo (`procNFe.nProt`), retorna `False` sem consultar a SEFAZ.
+3. Chama `ConsultarSEFAZ` (protegido e virtual), que executa `ACBrNFe.Consultar`. Com a nota carregada, o ACBr
+   preenche `procNFe` e troca o `XMLOriginal` pelo `nfeProc`. A URL do webservice é definida pela chave
+   (modelo e UF), independentemente de `Configuracoes.Geral.ModeloDF`.
+4. Se a consulta devolver protocolo, regrava a nota pelo mesmo caminho da importação (substitui a versão
+   gravada, atualizando `XML` e os campos `PROT_*`). Nota não autorizada (ex.: `cStat` 217, não consta na
+   base) volta sem `nProt` e não é regravada.
+5. `NotasFiscais` é limpo ao final.
+
+- Gera exceção se `ACBrNFe` não estiver atribuído.
+- Erros da consulta (certificado, comunicação, configuração) são propagados como exceção.
+
+`ConsultarSEFAZ` existe para ser sobrescrito nos testes, que usam um mock no lugar do webservice real.
 
 ### Progresso (`ExibirProgresso`)
 
@@ -95,6 +121,10 @@ LibXml2" e todos os arquivos são registrados como ignorados.
 `tests/tstprocessadornfe.pas` (projeto `tests/nfestudiotests.lpi`, executável em `bin/linux64/tests`).
 Os testes usam um banco SQLite temporário, o XML de exemplo em `tests/fixtures` (nfeProc 3.10) e uma NFe 4.00
 do Simples Nacional com IBS/CBS gerada pelo próprio ACBr durante o teste.
+
+`AtualizarProtocolo` é testado com `TProcessadorNFeMock`, que sobrescreve `ConsultarSEFAZ` e, em vez de acessar
+a SEFAZ, carrega `ArquivoRetorno` (o nfeProc da fixture) como nota atualizada. Com `ArquivoRetorno` vazio, ele
+simula uma consulta sem protocolo. A nota sem protocolo é a própria fixture recortada até `</NFe>`.
 
 ```sh
 lazbuild tests/nfestudiotests.lpi

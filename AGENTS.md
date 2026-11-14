@@ -43,6 +43,18 @@
 - `TTabSheet`: tab
 - `TScrollBox`: sbx
 - `TProgressBar`: pgb
+- `TMemo`, `TDBMemo`: mmo
+- `TSplitter`: spl
+- `TRadioButton`: rbt
+- `TPopupMenu`: pop
+- `TMenuItem`: mni
+- Form de relatório (Fortes Report): rel
+- `TRLReport`: rlr
+- `TRLBand`: rlb
+- `TRLLabel`: rll
+- `TRLDBText`: rdt
+- `TRLDBResult`: rdr
+- `TRLSystemInfo`: rsi
 
 Deduza e adicione a lista outros componentes LCL.
 

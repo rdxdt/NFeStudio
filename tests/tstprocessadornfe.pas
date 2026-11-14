@@ -10,6 +10,20 @@ uses
 
 type
 
+  { TProcessadorNFeMock }
+
+  // substitui o webservice da SEFAZ: carrega ArquivoRetorno como se fosse a nota atualizada pela consulta
+  TProcessadorNFeMock = class(TProcessadorNFe)
+  private
+    FConsultas: integer;
+    FArquivoRetorno: string;
+  protected
+    procedure ConsultarSEFAZ; override;
+  public
+    property Consultas: integer read FConsultas;
+    property ArquivoRetorno: string read FArquivoRetorno write FArquivoRetorno;
+  end;
+
   { TTesteProcessadorNFe }
 
   TTesteProcessadorNFe = class(TTestCase)
@@ -25,6 +39,8 @@ type
     function Contar(const Tabela: string): integer;
     procedure ImportarSemACBrNFe;
     procedure ImportarDiretorioInexistente;
+    procedure ImportarNFeSemProtocolo;
+    function CriarProcessadorMock: TProcessadorNFeMock;
   protected
     procedure SetUp; override;
     procedure TearDown; override;
@@ -36,8 +52,13 @@ type
     procedure TestSimplesNacionalComIBSCBS;
     procedure TestPagamentoCartao;
     procedure TestReimportacaoSubstituiNota;
+    procedure TestXMLOriginalGravado;
     procedure TestSemACBrNFeGeraExcecao;
     procedure TestDiretorioInexistenteGeraExcecao;
+    procedure TestAtualizarProtocoloConsultaSEFAZ;
+    procedure TestAtualizarProtocoloNotaJaProtocolada;
+    procedure TestAtualizarProtocoloNotaNaoAutorizada;
+    procedure TestAtualizarProtocoloChaveInexistente;
   end;
 
 implementation
@@ -48,11 +69,23 @@ uses
 const
   CHAVE_PROCNFE = '35150905481336000137550010000111291000111298';
   ARQUIVO_PROCNFE = CHAVE_PROCNFE + '-nfe.xml';
+  SQL_PROT_NPROT = 'SELECT PROT_NPROT FROM NFE_CAB WHERE CHNFE = ''' + CHAVE_PROCNFE + '''';
 
 function PastaFixtures: string;
 begin
   // o executável é gerado em bin/linux64/tests e as fixtures ficam em tests/fixtures
   Result := ExpandFileName(ExtractFilePath(ParamStr(0)) + '../../../tests/fixtures') + PathDelim;
+end;
+
+{ TProcessadorNFeMock }
+
+procedure TProcessadorNFeMock.ConsultarSEFAZ;
+begin
+  Inc(FConsultas);
+  if FArquivoRetorno = '' then
+    Exit;
+  ACBrNFe.NotasFiscais.Clear;
+  ACBrNFe.NotasFiscais.LoadFromFile(FArquivoRetorno);
 end;
 
 { TTesteProcessadorNFe }
@@ -346,6 +379,22 @@ begin
   AssertEquals('NFE_DUP', 2, Contar('NFE_DUP'));
 end;
 
+procedure TTesteProcessadorNFe.TestXMLOriginalGravado;
+var
+  XML: string;
+begin
+  MontarPastaNotas;
+  FProcessador.Importar(FPasta + 'notas');
+  XML := dmdNFe.ObterXMLNFe(CHAVE_PROCNFE);
+  AssertTrue('XML com protocolo', Pos('<nfeProc', XML) > 0);
+  // o XML gravado deve ser suficiente para recarregar a nota (reimpressão da DANFE)
+  FACBrNFe.NotasFiscais.Clear;
+  FACBrNFe.NotasFiscais.LoadFromString(XML);
+  AssertEquals('notas carregadas', 1, FACBrNFe.NotasFiscais.Count);
+  AssertEquals('chave', 'NFe' + CHAVE_PROCNFE, FACBrNFe.NotasFiscais[0].NFe.infNFe.ID);
+  AssertTrue('protocolo', FACBrNFe.NotasFiscais[0].NFe.procNFe.nProt <> '');
+end;
+
 procedure TTesteProcessadorNFe.ImportarSemACBrNFe;
 begin
   FProcessador.ACBrNFe := nil;
@@ -365,6 +414,101 @@ end;
 procedure TTesteProcessadorNFe.TestDiretorioInexistenteGeraExcecao;
 begin
   AssertException(Exception, @ImportarDiretorioInexistente);
+end;
+
+procedure TTesteProcessadorNFe.ImportarNFeSemProtocolo;
+var
+  Lista: TStringList;
+  XML: string;
+  Inicio: integer;
+begin
+  // mesma nota da fixture, mas somente assinada (sem nfeProc/protNFe)
+  Lista := TStringList.Create;
+  try
+    Lista.LoadFromFile(PastaFixtures + ARQUIVO_PROCNFE);
+    XML := Lista.Text;
+  finally
+    Lista.Free;
+  end;
+  Inicio := Pos('<NFe ', XML);
+  XML := '<?xml version="1.0" encoding="UTF-8"?>' +
+    Copy(XML, Inicio, Pos('</NFe>', XML) + Length('</NFe>') - Inicio);
+  GravarArquivo(FPasta + 'notas' + PathDelim + CHAVE_PROCNFE + '.xml', XML);
+  FProcessador.Importar(FPasta + 'notas');
+end;
+
+function TTesteProcessadorNFe.CriarProcessadorMock: TProcessadorNFeMock;
+begin
+  Result := TProcessadorNFeMock.Create(nil);
+  Result.ACBrNFe := FACBrNFe;
+end;
+
+procedure TTesteProcessadorNFe.TestAtualizarProtocoloConsultaSEFAZ;
+var
+  Mock: TProcessadorNFeMock;
+  Itens: integer;
+begin
+  ImportarNFeSemProtocolo;
+  AssertEquals('sem protocolo antes', '<null>', Consultar(SQL_PROT_NPROT));
+  Itens := Contar('NFE_DET');
+  Mock := CriarProcessadorMock;
+  try
+    Mock.ArquivoRetorno := PastaFixtures + ARQUIVO_PROCNFE;
+    AssertTrue('atualizada', Mock.AtualizarProtocolo(CHAVE_PROCNFE));
+    AssertEquals('consultas', 1, Mock.Consultas);
+  finally
+    Mock.Free;
+  end;
+  AssertTrue('XML com protocolo', Pos('<nfeProc', dmdNFe.ObterXMLNFe(CHAVE_PROCNFE)) > 0);
+  AssertEquals('PROT_NPROT', '135150003833609', Consultar(SQL_PROT_NPROT));
+  AssertEquals('NFE_CAB', 1, Contar('NFE_CAB'));
+  AssertEquals('NFE_DET', Itens, Contar('NFE_DET'));
+  AssertEquals('NotasFiscais limpo', 0, FACBrNFe.NotasFiscais.Count);
+end;
+
+procedure TTesteProcessadorNFe.TestAtualizarProtocoloNotaJaProtocolada;
+var
+  Mock: TProcessadorNFeMock;
+begin
+  CopyFile(PastaFixtures + ARQUIVO_PROCNFE, FPasta + 'notas' + PathDelim + ARQUIVO_PROCNFE);
+  FProcessador.Importar(FPasta + 'notas');
+  Mock := CriarProcessadorMock;
+  try
+    AssertFalse('nada a atualizar', Mock.AtualizarProtocolo(CHAVE_PROCNFE));
+    AssertEquals('SEFAZ não consultada', 0, Mock.Consultas);
+  finally
+    Mock.Free;
+  end;
+end;
+
+procedure TTesteProcessadorNFe.TestAtualizarProtocoloNotaNaoAutorizada;
+var
+  Mock: TProcessadorNFeMock;
+begin
+  ImportarNFeSemProtocolo;
+  Mock := CriarProcessadorMock;
+  try
+    // ArquivoRetorno vazio: a SEFAZ não devolve protocolo (ex.: nota não consta na base)
+    AssertFalse('não atualizada', Mock.AtualizarProtocolo(CHAVE_PROCNFE));
+    AssertEquals('consultas', 1, Mock.Consultas);
+  finally
+    Mock.Free;
+  end;
+  AssertEquals('XML mantido', 0, Pos('<nfeProc', dmdNFe.ObterXMLNFe(CHAVE_PROCNFE)));
+  AssertEquals('PROT_NPROT', '<null>', Consultar(SQL_PROT_NPROT));
+end;
+
+procedure TTesteProcessadorNFe.TestAtualizarProtocoloChaveInexistente;
+var
+  Mock: TProcessadorNFeMock;
+begin
+  Mock := CriarProcessadorMock;
+  try
+    AssertFalse('sem nota', Mock.AtualizarProtocolo(CHAVE_PROCNFE));
+    AssertEquals('SEFAZ não consultada', 0, Mock.Consultas);
+  finally
+    Mock.Free;
+  end;
 end;
 
 initialization

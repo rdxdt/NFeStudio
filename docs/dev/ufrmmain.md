@@ -37,6 +37,41 @@ Ao final, mesmo após erro (parte das notas pode ter sido gravada), `AjustarPeri
 maior data de emissão de `NFE_CAB` (`dmdNFe.ObterPeriodoNFeCab`), atribui a `dtpInicial`/`dtpFinal` e aplica o
 filtro, deixando visíveis todas as notas do banco, inclusive as recém-importadas. Com a tabela vazia, nada muda.
 
+### Detalhes da NFe (`DBGrid1DblClick`)
+
+O duplo clique no grid abre o `TfrmNFeDetalhes` com a nota selecionada (ver [ufrmnfedetalhes](ufrmnfedetalhes.md)),
+passando `ImprimirDANFE` para o botão de impressão.
+
+### Impressão da DANFE (`ImprimirDANFE`)
+
+```pascal
+procedure ImprimirDANFE(const Chave: string);
+```
+
+1. Chama `ProcessadorNFe.AtualizarProtocolo` (ver [uprocessadornfe](uprocessadornfe.md)): se a nota gravada
+   não tiver protocolo, consulta a SEFAZ e, havendo autorização, regrava a nota com o `nfeProc`. Se a consulta
+   falhar (certificado, comunicação), exibe um aviso e segue a impressão sem protocolo.
+   Os campos `PROT_*` já exibidos no grid/detalhes só refletem a atualização quando a consulta for reaberta.
+2. Lê o XML gravado em `NFE_CAB.XML` (`dmdNFe.ObterXMLNFe`); sem XML gera exceção pedindo a reimportação.
+3. Carrega a nota em `ACBrNFe1.NotasFiscais` e pergunta o modelo de impressão com
+   `TfrmImprimirDANFE.Selecionar` (ver [ufrmimprimirdanfe](ufrmimprimirdanfe.md)).
+4. O padrão vem de `TipoDANFEPadrao`, derivado do `ACBrNFe1.DANFE` atual, que `SelecionarDANFE` define a partir
+   de `[DANFE] Componente` (`ESCPOS` → POS, `FORTES` → bobina, `RL`/`FORTESA4` → A4).
+5. `ComponenteDANFE` converte a escolha no componente; em A4, NFC-e usa `ACBrNFeDANFCeFortesA4_1` e NF-e
+   `ACBrNFeDANFeRL1`.
+6. Atribui o componente a `ACBrNFe1.DANFE` somente durante a impressão, restaurando o configurado ao final,
+   e limpa `NotasFiscais`.
+
+`ACBrNFeDANFeESCPOS1.PosPrinter` aponta para `ACBrPosPrinter1`.
+
+### Relatórios (`btnRelatoriosClick`)
+
+O botão abre o `popRelatorios` ao lado dele, escondendo o `pnlMenu`. Itens:
+
+| Item                 | Ação                                                         |
+|----------------------|--------------------------------------------------------------|
+| `mniTotaisSintetico` | `TrelTotaisSintetico.Exibir` (ver [ureltotalsintetico](ureltotalsintetico.md)) |
+
 ### Filtro por período (`btnFiltrarClick`)
 
 Chama `dmdNFe.FiltrarNFeCab(dtpInicial.Date, dtpFinal.Date)`. A hora dos pickers é ignorada: são listadas as
@@ -129,3 +164,5 @@ As pastas acima são criadas (`ForceDirectories`) a cada inicialização, com os
 | `CarregarConfiguracoes`   | Cria (se necessário) e lê o INI                                   |
 | `InicializarBanco`        | Conecta ao banco e cria as tabelas                                |
 | `AjustarPeriodoFiltro`    | Ajusta os pickers à menor/maior emissão em `NFE_CAB` e filtra     |
+| `TipoDANFEPadrao`         | Opção de impressão correspondente à DANFE configurada             |
+| `ComponenteDANFE`         | Componente de DANFE para a opção escolhida e o modelo da nota     |

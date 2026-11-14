@@ -1,0 +1,105 @@
+object frmImprimirDANFE: TfrmImprimirDANFE
+  Left = 500
+  Height = 230
+  Top = 300
+  Width = 380
+  AutoSize = True
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Imprimir DANFE'
+  Position = poMainFormCenter
+  object lblModelo: TLabel
+    Left = 12
+    Height = 20
+    Top = 12
+    Width = 356
+    Align = alTop
+    BorderSpacing.Left = 12
+    BorderSpacing.Top = 12
+    BorderSpacing.Right = 12
+    Caption = 'NF-e (modelo 55)'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object grpDANFE: TGroupBox
+    Left = 12
+    Height = 120
+    Top = 40
+    Width = 356
+    Align = alTop
+    AutoSize = True
+    BorderSpacing.Left = 12
+    BorderSpacing.Top = 8
+    BorderSpacing.Right = 12
+    Caption = 'Modelo de impress'#227'o'
+    ChildSizing.LeftRightSpacing = 12
+    ChildSizing.TopBottomSpacing = 8
+    ChildSizing.VerticalSpacing = 6
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 1
+    TabOrder = 0
+    object rbtPOS: TRadioButton
+      Left = 12
+      Height = 24
+      Top = 8
+      Width = 300
+      Caption = 'DANFCe na impressora POS (ESC/POS)'
+      TabOrder = 0
+    end
+    object rbtBobina: TRadioButton
+      Left = 12
+      Height = 24
+      Top = 38
+      Width = 300
+      Caption = 'DANFCe em bobina (Fortes)'
+      TabOrder = 1
+    end
+    object rbtA4: TRadioButton
+      Left = 12
+      Height = 24
+      Top = 68
+      Width = 300
+      Caption = 'DANFE em A4'
+      Checked = True
+      TabOrder = 2
+      TabStop = True
+    end
+  end
+  object pnlBotoes: TPanel
+    Left = 12
+    Height = 44
+    Top = 172
+    Width = 356
+    Align = alTop
+    BorderSpacing.Around = 12
+    BevelOuter = bvNone
+    ClientHeight = 44
+    ClientWidth = 356
+    TabOrder = 1
+    object btnCancelar: TButton
+      Left = 246
+      Height = 32
+      Top = 6
+      Width = 110
+      Align = alRight
+      BorderSpacing.Top = 6
+      Cancel = True
+      Caption = 'Cancelar'
+      ModalResult = 2
+      TabOrder = 1
+    end
+    object btnImprimir: TButton
+      Left = 130
+      Height = 32
+      Top = 6
+      Width = 110
+      Align = alRight
+      BorderSpacing.Top = 6
+      BorderSpacing.Right = 6
+      Caption = 'Imprimir'
+      Default = True
+      ModalResult = 1
+      TabOrder = 0
+    end
+  end
+end

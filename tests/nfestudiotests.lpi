@@ -21,6 +21,9 @@
         <PackageName Value="zcomponent"/>
       </Item>
       <Item>
+        <PackageName Value="frce"/>
+      </Item>
+      <Item>
         <PackageName Value="FCL"/>
       </Item>
       <Item>
@@ -38,6 +41,18 @@
       </Unit>
       <Unit>
         <Filename Value="tstdmdnfe.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="tstfrmnfedetalhes.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="tstfrmimprimirdanfe.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="tstreltotalsintetico.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
     </Units>

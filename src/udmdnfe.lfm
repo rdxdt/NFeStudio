@@ -6184,6 +6184,66 @@ object dmdNFe: TdmdNFe
     Left = 392
     Top = 88
   end
+  object qryNFeXML: TZQuery
+    Connection = frmMain.ZConnection1
+    SQL.Strings = (
+      'SELECT XML'
+      '  FROM NFE_CAB'
+      ' WHERE CHNFE = :CHNFE'
+    )
+    Params = <
+      item
+        DataType = ftString
+        Name = 'CHNFE'
+        ParamType = ptInput
+      end>
+    Left = 480
+    Top = 88
+  end
+  object qryTotaisSintetico: TZQuery
+    Connection = frmMain.ZConnection1
+    SQL.Strings = (
+      'SELECT STRFTIME(''%d/%m/%Y'', C.IDE_DHEMI) AS DIA,'
+      '       COUNT(*) AS QTD_VENDAS,'
+      '       TOTAL(C.TOT_VNF) AS TOT_VNF,'
+      '       TOTAL(D.QCOM) AS QTD_PRODUTOS,'
+      '       TOTAL(C.TOT_VICMS) AS TOT_VICMS,'
+      '       TOTAL(C.TOT_VPIS) AS TOT_VPIS,'
+      '       TOTAL(C.TOT_VCOFINS) AS TOT_VCOFINS,'
+      '       TOTAL(C.TOT_VIPI) AS TOT_VIPI,'
+      '       TOTAL(C.TOT_VII) AS TOT_VII,'
+      '       TOTAL(C.ISTOT_VIS) AS TOT_VIS,'
+      '       TOTAL(C.CBSTOT_VCBS) AS TOT_VCBS,'
+      '       TOTAL(C.IBSMUNTOT_VIBSMUN) AS TOT_VIBSMUN,'
+      '       TOTAL(C.IBSUFTOT_VIBSUF) AS TOT_VIBSUF'
+      '  FROM NFE_CAB C'
+      '  LEFT JOIN (SELECT CHNFE, TOTAL(QCOM) AS QCOM'
+      '               FROM NFE_DET'
+      '              GROUP BY CHNFE) D ON D.CHNFE = C.CHNFE'
+      ' WHERE C.IDE_DHEMI >= :DATA_INICIAL'
+      '   AND C.IDE_DHEMI < DATE(:DATA_FINAL, ''+1 day'')'
+      ' GROUP BY DATE(C.IDE_DHEMI)'
+      ' ORDER BY DATE(C.IDE_DHEMI)'
+    )
+    Params = <
+      item
+        DataType = ftDate
+        Name = 'DATA_INICIAL'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftDate
+        Name = 'DATA_FINAL'
+        ParamType = ptInput
+      end>
+    Left = 32
+    Top = 232
+  end
+  object dtsTotaisSintetico: TDataSource
+    DataSet = qryTotaisSintetico
+    Left = 160
+    Top = 232
+  end
   object cmdInsNFeCab: TZQuery
     Connection = frmMain.ZConnection1
     SQL.Strings = (
@@ -6228,7 +6288,7 @@ object dmdNFe: TdmdNFe
       '  AGRO_UFGUIA, AGRO_TPGUIA, AGRO_SERIEGUIA, AGRO_NGUIA, SUPL_QRCODE, SUPL_URLCHAVE,'
       '  RESPTEC_CNPJ, RESPTEC_XCONTATO, RESPTEC_EMAIL, RESPTEC_FONE, RESPTEC_IDCSRT, RESPTEC_HASHCSRT,'
       '  PROT_TPAMB, PROT_VERAPLIC, PROT_DHRECBTO, PROT_NPROT, PROT_DIGVAL, PROT_CSTAT,'
-      '  PROT_XMOTIVO, PROT_CMSG, PROT_XMSG'
+      '  PROT_XMOTIVO, PROT_CMSG, PROT_XMSG, XML'
       ') VALUES ('
       '  :CHNFE, :VERSAO, :IDE_CUF, :IDE_CNF, :IDE_NATOP, :IDE_INDPAG,'
       '  :IDE_MOD, :IDE_SERIE, :IDE_NNF, :IDE_DHEMI, :IDE_DHSAIENT, :IDE_HSAIENT,'
@@ -6270,7 +6330,7 @@ object dmdNFe: TdmdNFe
       '  :AGRO_UFGUIA, :AGRO_TPGUIA, :AGRO_SERIEGUIA, :AGRO_NGUIA, :SUPL_QRCODE, :SUPL_URLCHAVE,'
       '  :RESPTEC_CNPJ, :RESPTEC_XCONTATO, :RESPTEC_EMAIL, :RESPTEC_FONE, :RESPTEC_IDCSRT, :RESPTEC_HASHCSRT,'
       '  :PROT_TPAMB, :PROT_VERAPLIC, :PROT_DHRECBTO, :PROT_NPROT, :PROT_DIGVAL, :PROT_CSTAT,'
-      '  :PROT_XMOTIVO, :PROT_CMSG, :PROT_XMSG'
+      '  :PROT_XMOTIVO, :PROT_CMSG, :PROT_XMSG, :XML'
       ')'
     )
     Params = <
@@ -7487,6 +7547,11 @@ object dmdNFe: TdmdNFe
       item
         DataType = ftString
         Name = 'PROT_XMSG'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftMemo
+        Name = 'XML'
         ParamType = ptInput
       end>
     Left = 32
@@ -9679,7 +9744,8 @@ object dmdNFe: TdmdNFe
       '  PROT_CSTAT INTEGER,'
       '  PROT_XMOTIVO VARCHAR(255),'
       '  PROT_CMSG INTEGER,'
-      '  PROT_XMSG VARCHAR(200)'
+      '  PROT_XMSG VARCHAR(200),'
+      '  XML TEXT'
       ');'
       'CREATE INDEX IF NOT EXISTS IDX_NFE_CAB_DHEMI ON NFE_CAB (IDE_DHEMI);'
       'CREATE INDEX IF NOT EXISTS IDX_NFE_CAB_EMIT ON NFE_CAB (EMIT_CNPJCPF);'

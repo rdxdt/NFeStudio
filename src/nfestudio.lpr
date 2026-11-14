@@ -11,7 +11,8 @@ uses
   athreads,
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, zcomponent, ufrmmain, datetimectrls, udmdnfe, ufrmconfig, uprocessadornfe, ufrmaguarde
+  Forms, zcomponent, ufrmmain, datetimectrls, udmdnfe, ufrmconfig, uprocessadornfe, ufrmaguarde,
+  ufrmnfedetalhes, ufrmimprimirdanfe, ureltotalsintetico
   { you can add units after this };
 
 {$R *.res}

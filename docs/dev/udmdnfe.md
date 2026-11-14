@@ -9,6 +9,9 @@ Datamodule com as queries de persistência das notas fiscais (banco SQLite via Z
 | `qryNFeCab`       | TZQuery        | Cabeçalho da nota (`NFE_CAB`) — mestre       |
 | `dtsNFeCab`       | TDataSource    | Liga `qryNFeCab` às queries de detalhe       |
 | `qryNFeCabPeriodo`| TZQuery        | Menor e maior data de emissão em `NFE_CAB`   |
+| `qryNFeXML`       | TZQuery        | XML original de uma nota (`NFE_CAB.XML`)     |
+| `qryTotaisSintetico` | TZQuery     | Totais por dia das notas do filtro (relatório `relTotaisSintetico`) |
+| `dtsTotaisSintetico` | TDataSource | Liga `qryTotaisSintetico` ao relatório       |
 | `qryNFeDet`       | TZQuery        | Itens da nota (`NFE_DET`) — detalhe          |
 | `qryNFeFat`       | TZQuery        | Fatura (`NFE_FAT`) — detalhe                 |
 | `qryNFeDup`       | TZQuery        | Duplicatas (`NFE_DUP`) — detalhe             |
@@ -51,6 +54,53 @@ function ObterPeriodoNFeCab(out DataInicial, DataFinal: TDateTime): Boolean;
 Retorna `False` se a tabela estiver vazia (ou sem `IDE_DHEMI`); caso contrário devolve a menor e a maior
 data de emissão, sem a hora. Colunas calculadas (`MIN`/`MAX`) chegam do Zeos como texto e `AsDateTime`
 falharia; por isso a query usa `DATE()`, que garante o formato `yyyy-mm-dd`, convertido com `ScanDateTime`.
+
+### qryNFeXML
+
+`SELECT XML FROM NFE_CAB WHERE CHNFE = :CHNFE`, usada por:
+
+```pascal
+function ObterXMLNFe(const Chave: string): string;
+```
+
+Retorna o XML gravado na importação (vazio se a nota não existir ou não tiver XML). A coluna `XML` (TEXT)
+fica fora dos campos persistentes de `qryNFeCab`, que a ignora.
+
+A coluna foi incluída no `CREATE TABLE IF NOT EXISTS`; um banco já existente em arquivo não a recebe e
+precisaria ser recriado.
+
+### qryTotaisSintetico
+
+```pascal
+procedure AbrirTotaisSintetico;
+```
+
+Abre `qryTotaisSintetico` com o mesmo período do último `FiltrarNFeCab` (copia `DATA_INICIAL`/`DATA_FINAL`
+de `qryNFeCab`), para o relatório refletir as notas do grid. Sem filtro aplicado, os parâmetros ficam nulos
+e a query volta vazia. Usada pelo [relTotaisSintetico](ureltotalsintetico.md).
+
+Uma linha por dia de emissão (`GROUP BY DATE(IDE_DHEMI)`, em ordem cronológica):
+
+| Coluna         | Origem                                                    |
+|----------------|-----------------------------------------------------------|
+| `DIA`          | `STRFTIME('%d/%m/%Y', IDE_DHEMI)` — texto já formatado    |
+| `QTD_VENDAS`   | `COUNT(*)` — número de notas                              |
+| `TOT_VNF`      | `TOT_VNF` — total das notas                               |
+| `QTD_PRODUTOS` | soma de `NFE_DET.QCOM` (quantidade comercial dos itens)   |
+| `TOT_VICMS`, `TOT_VPIS`, `TOT_VCOFINS`, `TOT_VIPI`, `TOT_VII` | colunas homônimas de `NFE_CAB` |
+| `TOT_VIS`      | `ISTOT_VIS` — Imposto Seletivo                            |
+| `TOT_VCBS`     | `CBSTOT_VCBS`                                             |
+| `TOT_VIBSMUN`  | `IBSMUNTOT_VIBSMUN` — IBS municipal                       |
+| `TOT_VIBSUF`   | `IBSUFTOT_VIBSUF` — IBS estadual                          |
+
+- Os itens são somados em uma subquery por `CHNFE` antes do `LEFT JOIN`, para não multiplicar os totais do
+  cabeçalho pelo número de itens; nota sem itens conta 0 produtos.
+- As somas usam `TOTAL()` em vez de `SUM()`. O Zeos tipa colunas calculadas pela primeira linha retornada, e o
+  SQLite grava `NUMERIC` sem casas decimais (ex.: `100.00`) como `INTEGER`. Com `SUM()`, um primeiro dia de
+  valores inteiros tornava o campo `Int64` e truncava os dias seguintes. `TOTAL()` sempre retorna `REAL`
+  (`0.0` sem valores), e os campos ficam `TZDoubleField`.
+- Não há campos persistentes: `DIA` vem como memo (`TZRawCLobField`) e `QTD_VENDAS` como `TZInt64Field`.
+  A formatação fica no relatório (`DisplayMask`).
 
 ### Mestre-detalhe
 
@@ -200,3 +250,7 @@ As coleções abaixo não possuem tabela própria neste DDL:
 `tests/tstdmdnfe.pas` (projeto `tests/nfestudiotests.lpi`). Usa um banco SQLite temporário com notas
 gravadas por parâmetro `AsDateTime`, no mesmo formato do `TProcessadorNFe`, e verifica que o filtro
 ignora a hora dos parâmetros e que `ObterPeriodoNFeCab` devolve a menor e a maior data.
+
+`TestTotaisSinteticoPorDia` grava notas em três dias, com valores distintos por coluna para detectar colunas
+trocadas, e filtra dois deles. Confere as somas por dia, a nota sem itens e o primeiro dia com valores
+inteiros (caso do `TOTAL()`). `TestTotaisSinteticoSemFiltro` confirma que, sem filtro, a query volta vazia.

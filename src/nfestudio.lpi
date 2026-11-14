@@ -162,6 +162,9 @@
         <PackageName Value="FCL"/>
       </Item>
       <Item>
+        <PackageName Value="frce"/>
+      </Item>
+      <Item>
         <PackageName Value="ACBrSerial"/>
       </Item>
       <Item>
@@ -223,6 +226,27 @@
         <Filename Value="ufrmaguarde.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmAguarde"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ufrmnfedetalhes.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmNFeDetalhes"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ufrmimprimirdanfe.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmImprimirDANFE"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ureltotalsintetico.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="relTotaisSintetico"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
