@@ -12,7 +12,8 @@ uses
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, zcomponent, ufrmmain, datetimectrls, udmdnfe, ufrmconfig, uprocessadornfe, ufrmaguarde,
-  ufrmnfedetalhes, ufrmimprimirdanfe, ureltotalsintetico, ufrmrelatorios
+  ufrmnfedetalhes, ufrmimprimirdanfe, ureltotalsintetico, ufrmrelatorios,
+  uemissaonfe, ufrmemissaonfe
   { you can add units after this };
 
 {$R *.res}

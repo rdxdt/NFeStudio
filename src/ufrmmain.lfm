@@ -2547,10 +2547,21 @@ object frmMain: TfrmMain
       Flat = True
       OnClick = btnImportarXMLClick
     end
-    object btnRelatorios: TSpeedButton
+    object btnEmissao: TSpeedButton
       Left = 9
       Height = 22
       Top = 39
+      Width = 152
+      Align = alTop
+      BorderSpacing.Around = 8
+      Caption = 'Emitir NF-e/NFC-e'
+      Flat = True
+      OnClick = btnEmissaoClick
+    end
+    object btnRelatorios: TSpeedButton
+      Left = 9
+      Height = 22
+      Top = 69
       Width = 152
       Align = alTop
       BorderSpacing.Around = 8
@@ -2561,7 +2572,7 @@ object frmMain: TfrmMain
     object btnConfig: TSpeedButton
       Left = 9
       Height = 22
-      Top = 69
+      Top = 99
       Width = 152
       Align = alTop
       BorderSpacing.Around = 8

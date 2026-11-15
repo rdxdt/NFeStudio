@@ -9,7 +9,7 @@ uses
   {$ENDIF}
   Interfaces, Classes, Math, consoletestrunner, tstprocessadornfe, tstdmdnfe,
   tstfrmnfedetalhes, tstfrmimprimirdanfe, tstreltotalsintetico,
-  tstfrmrelatorios;
+  tstfrmrelatorios, tstfrmconfig, tstemissaonfe, tstfrmemissaonfe;
 
 type
 

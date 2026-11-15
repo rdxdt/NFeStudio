@@ -1,0 +1,4991 @@
+object frmEmissaoNFe: TfrmEmissaoNFe
+  Left = 200
+  Height = 780
+  Top = 80
+  Width = 1120
+  Caption = 'Emissão de NF-e / NFC-e'
+  Constraints.MinHeight = 560
+  Constraints.MinWidth = 900
+  Position = poOwnerFormCenter
+  OnCreate = FormCreate
+  object tbrAcoes: TToolBar
+    Top = 0
+    AutoSize = True
+    ButtonHeight = 32
+    EdgeBorders = [ebBottom]
+    List = True
+    ShowCaptions = True
+    TabOrder = 0
+    object tbtNovo: TToolButton
+      AutoSize = True
+      Caption = 'Nova nota'
+      OnClick = tbtNovoClick
+    end
+    object tbtAbrir: TToolButton
+      AutoSize = True
+      Caption = 'Abrir XML'
+      OnClick = tbtAbrirClick
+    end
+    object tbtSalvar: TToolButton
+      AutoSize = True
+      Caption = 'Salvar XML'
+      OnClick = tbtSalvarClick
+    end
+    object tbtValidar: TToolButton
+      AutoSize = True
+      Caption = 'Validar'
+      OnClick = tbtValidarClick
+    end
+    object tbtEmitir: TToolButton
+      AutoSize = True
+      Caption = 'Emitir'
+      OnClick = tbtEmitirClick
+    end
+  end
+  object pnlRodape: TPanel
+    Left = 0
+    Height = 48
+    Top = 732
+    Width = 1120
+    Align = alBottom
+    BevelOuter = bvNone
+    TabOrder = 2
+    object lblSituacao: TLabel
+      Left = 12
+      Height = 36
+      Top = 6
+      Width = 800
+      Align = alClient
+      BorderSpacing.Around = 6
+      Caption = ''
+      Layout = tlCenter
+      ParentColor = False
+    end
+    object btnFechar: TButton
+      Left = 1010
+      Height = 36
+      Top = 6
+      Width = 104
+      Align = alRight
+      BorderSpacing.Around = 6
+      Cancel = True
+      Caption = 'Fechar'
+      ModalResult = 11
+      TabOrder = 0
+    end
+  end
+  object pgcNFe: TPageControl
+    Left = 0
+    Height = 680
+    Top = 50
+    Width = 1120
+    ActivePage = tabIdentificacao
+    Align = alClient
+    BorderSpacing.Around = 4
+    TabIndex = 0
+    TabOrder = 1
+    OnChange = pgcNFeChange
+    object tabIdentificacao: TTabSheet
+      Caption = 'Identificação'
+      object sbxIdentificacao: TScrollBox
+        Left = 0
+        Top = 0
+        HorzScrollBar.Page = 1
+        HorzScrollBar.Visible = False
+        VertScrollBar.Page = 1
+        Align = alClient
+        BorderStyle = bsNone
+        TabOrder = 0
+        object grpIde: TGroupBox
+          Left = 0
+          Top = 0
+          Width = 1000
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'Identificação'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 4
+          TabOrder = 0
+          object lblIdeModelo: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Modelo'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxIdeModelo: TComboBox
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            ItemHeight = 0
+            Items.Strings = (
+              '55 - NF-e'
+              '65 - NFC-e'
+            )
+            Style = csDropDownList
+            OnChange = cbxIdeModeloChange
+            TabOrder = 0
+          end
+          object lblIdeSerie: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Série'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speIdeSerie: TSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxValue = 999
+            TabOrder = 1
+          end
+          object lblIdeNNF: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Número'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speIdeNNF: TSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxValue = 999999999
+            TabOrder = 2
+          end
+          object lblIdeCNF: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Código numérico (0 = automático)'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speIdeCNF: TSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxValue = 99999999
+            TabOrder = 3
+          end
+          object lblIdeNatOp: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Natureza da operação'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtIdeNatOp: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 60
+            Text = ''
+            TabOrder = 4
+          end
+          object lblIdeDhEmi: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Emissão'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object dtpIdeDhEmi: TDateTimePicker
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            CenturyFrom = 1941
+            MaxDate = 2958465
+            MinDate = -53780
+            TrailingSeparator = False
+            TextForNullDate = ''
+            LeadingZeros = True
+            Kind = dtkDateTime
+            TimeFormat = tf24
+            TimeDisplay = tdHMS
+            DateMode = dmComboBox
+            UseDefaultSeparators = True
+            HideDateTimeParts = []
+            MonthNames = 'Long'
+            TabOrder = 5
+          end
+          object lblIdeDhSaiEnt: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Saída/entrada'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object dtpIdeDhSaiEnt: TDateTimePicker
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            CenturyFrom = 1941
+            MaxDate = 2958465
+            MinDate = -53780
+            TrailingSeparator = False
+            TextForNullDate = ''
+            LeadingZeros = True
+            Kind = dtkDateTime
+            TimeFormat = tf24
+            TimeDisplay = tdHMS
+            DateMode = dmComboBox
+            UseDefaultSeparators = True
+            HideDateTimeParts = []
+            MonthNames = 'Long'
+            ShowCheckBox = True
+            Checked = False
+            TabOrder = 6
+          end
+          object lblIdeTpNF: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Tipo'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxIdeTpNF: TComboBox
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            ItemHeight = 0
+            Items.Strings = (
+              '0 - Entrada'
+              '1 - Saída'
+            )
+            Style = csDropDownList
+            TabOrder = 7
+          end
+          object lblIdeFinNFe: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Finalidade'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxIdeFinNFe: TComboBox
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            ItemHeight = 0
+            Items.Strings = (
+              '1 - Normal'
+              '2 - Complementar'
+              '3 - Ajuste'
+              '4 - Devolução de mercadoria'
+              '5 - Nota de crédito'
+              '6 - Nota de débito'
+            )
+            Style = csDropDownList
+            OnChange = cbxIdeFinNFeChange
+            TabOrder = 8
+          end
+          object lblIdeIdDest: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Destino da operação'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxIdeIdDest: TComboBox
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            ItemHeight = 0
+            Items.Strings = (
+              '1 - Operação interna'
+              '2 - Operação interestadual'
+              '3 - Operação com exterior'
+            )
+            Style = csDropDownList
+            TabOrder = 9
+          end
+          object lblIdeIndFinal: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Consumidor final'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxIdeIndFinal: TComboBox
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            ItemHeight = 0
+            Items.Strings = (
+              '0 - Normal'
+              '1 - Consumidor final'
+            )
+            Style = csDropDownList
+            TabOrder = 10
+          end
+          object lblIdeIndPres: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Presença do comprador'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxIdeIndPres: TComboBox
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            ItemHeight = 0
+            Items.Strings = (
+              '0 - Não se aplica'
+              '1 - Operação presencial'
+              '2 - Internet'
+              '3 - Teleatendimento'
+              '4 - NFC-e com entrega a domicílio'
+              '5 - Presencial, fora do estabelecimento'
+              '9 - Outros'
+            )
+            Style = csDropDownList
+            TabOrder = 11
+          end
+          object lblIdeTpImp: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Formato do DANFE'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxIdeTpImp: TComboBox
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            ItemHeight = 0
+            Items.Strings = (
+              '0 - Sem geração de DANFE'
+              '1 - DANFE retrato'
+              '2 - DANFE paisagem'
+              '3 - DANFE simplificado'
+              '4 - DANFE NFC-e'
+              '5 - DANFE NFC-e em mensagem eletrônica'
+            )
+            Style = csDropDownList
+            TabOrder = 12
+          end
+          object lblIdeTpEmis: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Tipo de emissão'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxIdeTpEmis: TComboBox
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            ItemHeight = 0
+            Items.Strings = (
+              '1 - Normal'
+              '2 - Contingência FS-IA'
+              '3 - Contingência SCAN'
+              '4 - Contingência EPEC'
+              '5 - Contingência FS-DA'
+              '6 - Contingência SVC-AN'
+              '7 - Contingência SVC-RS'
+              '9 - Contingência off-line da NFC-e'
+            )
+            Style = csDropDownList
+            OnChange = cbxAjustarTelaChange
+            TabOrder = 13
+          end
+          object lblIdeTpAmb: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Ambiente'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxIdeTpAmb: TComboBox
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            ItemHeight = 0
+            Items.Strings = (
+              '1 - Produção'
+              '2 - Homologação'
+            )
+            Style = csDropDownList
+            TabOrder = 14
+          end
+          object lblIdeCMunFG: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Município do fato gerador (IBGE)'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speIdeCMunFG: TSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxValue = 9999999
+            TabOrder = 15
+          end
+        end
+        object grpIdeContingencia: TGroupBox
+          Left = 0
+          Top = 1000
+          Width = 1000
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'Contingência'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 4
+          TabOrder = 1
+          object lblIdeDhCont: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Entrada em contingência'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object dtpIdeDhCont: TDateTimePicker
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            CenturyFrom = 1941
+            MaxDate = 2958465
+            MinDate = -53780
+            TrailingSeparator = False
+            TextForNullDate = ''
+            LeadingZeros = True
+            Kind = dtkDateTime
+            TimeFormat = tf24
+            TimeDisplay = tdHMS
+            DateMode = dmComboBox
+            UseDefaultSeparators = True
+            HideDateTimeParts = []
+            MonthNames = 'Long'
+            ShowCheckBox = True
+            Checked = False
+            TabOrder = 0
+          end
+          object lblIdeXJust: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Justificativa'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtIdeXJust: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 256
+            Text = ''
+            TabOrder = 1
+          end
+        end
+        object grpIdeIntermediador: TGroupBox
+          Left = 0
+          Top = 2000
+          Width = 1000
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'Intermediador da transação'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 4
+          TabOrder = 2
+          object lblIdeIndIntermed: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Indicador'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxIdeIndIntermed: TComboBox
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            ItemHeight = 0
+            Items.Strings = (
+              'Não informado'
+              '0 - Sem intermediador (site/plataforma própria)'
+              '1 - Com intermediador (plataforma de terceiros)'
+            )
+            Style = csDropDownList
+            OnChange = cbxAjustarTelaChange
+            TabOrder = 0
+          end
+          object lblIntermedCNPJ: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'CNPJ do intermediador'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtIntermedCNPJ: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 18
+            Text = ''
+            TabOrder = 1
+          end
+          object lblIntermedIdCadIntTran: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Identificador no intermediador'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtIntermedIdCadIntTran: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 60
+            Text = ''
+            TabOrder = 2
+          end
+        end
+        object grpIdeReforma: TGroupBox
+          Left = 0
+          Top = 3000
+          Width = 1000
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'Reforma tributária'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 4
+          TabOrder = 3
+          object lblIdeTpNFCredito: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Tipo de nota de crédito'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxIdeTpNFCredito: TComboBox
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            ItemHeight = 0
+            Items.Strings = (
+              'Não se aplica'
+              '01 - Multa e juros'
+              '02 - Apropriação de crédito presumido de IBS sobre o saldo devedor na ZFM'
+            )
+            Style = csDropDownList
+            TabOrder = 0
+          end
+          object lblIdeTpNFDebito: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Tipo de nota de débito'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxIdeTpNFDebito: TComboBox
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            ItemHeight = 0
+            Items.Strings = (
+              'Não se aplica'
+              '01 - Transferência de créditos para cooperativas'
+              '02 - Anulação de crédito por saídas imunes/isentas'
+              '03 - Débitos de notas fiscais não processadas na apuração'
+              '04 - Multa e juros'
+              '05 - Transferência de crédito de sucessão'
+              '06 - Pagamento antecipado'
+              '07 - Perda em estoque'
+            )
+            Style = csDropDownList
+            TabOrder = 1
+          end
+          object lblIdeCMunFGIBS: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Município de consumo do IBS (IBGE)'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speIdeCMunFGIBS: TSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxValue = 9999999
+            TabOrder = 2
+          end
+        end
+      end
+    end
+    object tabEmitente: TTabSheet
+      Caption = 'Emitente'
+      object pnlEmitBotoes: TPanel
+        Left = 0
+        Top = 0
+        Height = 40
+        Width = 1000
+        Align = alTop
+        BevelOuter = bvNone
+        TabOrder = 0
+        object btnEmitRecarregar: TButton
+          Left = 6
+          Height = 30
+          Top = 5
+          Width = 190
+          Align = alLeft
+          AutoSize = True
+          BorderSpacing.Around = 5
+          Caption = 'Recarregar dados da configuração'
+          Constraints.MinWidth = 120
+          OnClick = btnEmitRecarregarClick
+          TabOrder = 0
+        end
+      end
+      object sbxEmitente: TScrollBox
+        Left = 0
+        Top = 0
+        HorzScrollBar.Page = 1
+        HorzScrollBar.Visible = False
+        VertScrollBar.Page = 1
+        Align = alClient
+        BorderStyle = bsNone
+        TabOrder = 0
+        object grpEmit: TGroupBox
+          Left = 0
+          Top = 0
+          Width = 1000
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'Identificação'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 4
+          TabOrder = 0
+          object lblEmitCNPJCPF: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'CNPJ/CPF'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtEmitCNPJCPF: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 18
+            Text = ''
+            TabOrder = 0
+          end
+          object lblEmitIE: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Inscrição estadual'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtEmitIE: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 14
+            Text = ''
+            TabOrder = 1
+          end
+          object lblEmitIEST: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'IE do substituto tributário'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtEmitIEST: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 14
+            Text = ''
+            TabOrder = 2
+          end
+          object lblEmitIM: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Inscrição municipal'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtEmitIM: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 15
+            Text = ''
+            TabOrder = 3
+          end
+          object lblEmitCNAE: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'CNAE fiscal'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtEmitCNAE: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 7
+            Text = ''
+            TabOrder = 4
+          end
+          object lblEmitXNome: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Razão social'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtEmitXNome: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 60
+            Text = ''
+            TabOrder = 5
+          end
+          object lblEmitXFant: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Nome fantasia'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtEmitXFant: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 60
+            Text = ''
+            TabOrder = 6
+          end
+          object lblEmitCRT: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Regime tributário (CRT)'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxEmitCRT: TComboBox
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            ItemHeight = 0
+            Items.Strings = (
+              '1 - Simples Nacional'
+              '2 - Simples Nacional - excesso de sublimite de receita bruta'
+              '3 - Regime normal'
+              '4 - Simples Nacional - MEI'
+            )
+            Style = csDropDownList
+            OnChange = cbxEmitCRTChange
+            TabOrder = 7
+          end
+        end
+        object grpEmitEndereco: TGroupBox
+          Left = 0
+          Top = 1000
+          Width = 1000
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'Endereço'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 4
+          TabOrder = 1
+          object lblEmitXLgr: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Logradouro'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtEmitXLgr: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 60
+            Text = ''
+            TabOrder = 0
+          end
+          object lblEmitNro: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Número'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtEmitNro: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 60
+            Text = ''
+            TabOrder = 1
+          end
+          object lblEmitXCpl: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Complemento'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtEmitXCpl: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 60
+            Text = ''
+            TabOrder = 2
+          end
+          object lblEmitXBairro: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Bairro'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtEmitXBairro: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 60
+            Text = ''
+            TabOrder = 3
+          end
+          object lblEmitCMun: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Código do município (IBGE)'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speEmitCMun: TSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxValue = 9999999
+            TabOrder = 4
+          end
+          object lblEmitXMun: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Município'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtEmitXMun: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 60
+            Text = ''
+            TabOrder = 5
+          end
+          object lblEmitUF: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'UF'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxEmitUF: TComboBox
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            ItemHeight = 0
+            Items.Strings = (
+              'AC'
+              'AL'
+              'AP'
+              'AM'
+              'BA'
+              'CE'
+              'DF'
+              'ES'
+              'GO'
+              'MA'
+              'MT'
+              'MS'
+              'MG'
+              'PA'
+              'PB'
+              'PR'
+              'PE'
+              'PI'
+              'RJ'
+              'RN'
+              'RS'
+              'RO'
+              'RR'
+              'SC'
+              'SP'
+              'SE'
+              'TO'
+            )
+            Style = csDropDownList
+            TabOrder = 6
+          end
+          object lblEmitCEP: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'CEP'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtEmitCEP: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 9
+            Text = ''
+            TabOrder = 7
+          end
+          object lblEmitFone: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Telefone'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtEmitFone: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 14
+            Text = ''
+            TabOrder = 8
+          end
+        end
+      end
+    end
+    object tabDestinatario: TTabSheet
+      Caption = 'Destinatário'
+      object sbxDestinatario: TScrollBox
+        Left = 0
+        Top = 0
+        HorzScrollBar.Page = 1
+        HorzScrollBar.Visible = False
+        VertScrollBar.Page = 1
+        Align = alClient
+        BorderStyle = bsNone
+        TabOrder = 0
+        object grpDest: TGroupBox
+          Left = 0
+          Top = 0
+          Width = 1000
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'Identificação'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 4
+          TabOrder = 0
+          object lblDestCNPJCPF: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'CNPJ/CPF'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtDestCNPJCPF: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 18
+            Text = ''
+            TabOrder = 0
+          end
+          object lblDestIdEstrangeiro: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Identificação do estrangeiro'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtDestIdEstrangeiro: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 20
+            Text = ''
+            TabOrder = 1
+          end
+          object lblDestXNome: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Nome/razão social'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtDestXNome: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 60
+            Text = ''
+            TabOrder = 2
+          end
+          object lblDestIndIEDest: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Indicador da IE'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxDestIndIEDest: TComboBox
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            ItemHeight = 0
+            Items.Strings = (
+              '1 - Contribuinte do ICMS'
+              '2 - Contribuinte isento de inscrição'
+              '9 - Não contribuinte'
+            )
+            Style = csDropDownList
+            OnChange = cbxAjustarTelaChange
+            TabOrder = 3
+          end
+          object lblDestIE: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Inscrição estadual'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtDestIE: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 14
+            Text = ''
+            TabOrder = 4
+          end
+          object lblDestISUF: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Inscrição SUFRAMA'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtDestISUF: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 9
+            Text = ''
+            TabOrder = 5
+          end
+          object lblDestIM: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Inscrição municipal'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtDestIM: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 15
+            Text = ''
+            TabOrder = 6
+          end
+          object lblDestEmail: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'E-mail'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtDestEmail: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 60
+            Text = ''
+            TabOrder = 7
+          end
+        end
+        object grpDestEndereco: TGroupBox
+          Left = 0
+          Top = 1000
+          Width = 1000
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'Endereço'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 4
+          TabOrder = 1
+          object lblDestXLgr: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Logradouro'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtDestXLgr: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 60
+            Text = ''
+            TabOrder = 0
+          end
+          object lblDestNro: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Número'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtDestNro: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 60
+            Text = ''
+            TabOrder = 1
+          end
+          object lblDestXCpl: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Complemento'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtDestXCpl: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 60
+            Text = ''
+            TabOrder = 2
+          end
+          object lblDestXBairro: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Bairro'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtDestXBairro: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 60
+            Text = ''
+            TabOrder = 3
+          end
+          object lblDestCMun: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Código do município (IBGE)'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speDestCMun: TSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxValue = 9999999
+            TabOrder = 4
+          end
+          object lblDestXMun: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Município'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtDestXMun: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 60
+            Text = ''
+            TabOrder = 5
+          end
+          object lblDestUF: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'UF'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxDestUF: TComboBox
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            ItemHeight = 0
+            Items.Strings = (
+              ''
+              'AC'
+              'AL'
+              'AP'
+              'AM'
+              'BA'
+              'CE'
+              'DF'
+              'ES'
+              'GO'
+              'MA'
+              'MT'
+              'MS'
+              'MG'
+              'PA'
+              'PB'
+              'PR'
+              'PE'
+              'PI'
+              'RJ'
+              'RN'
+              'RS'
+              'RO'
+              'RR'
+              'SC'
+              'SP'
+              'SE'
+              'TO'
+              'EX'
+            )
+            Style = csDropDownList
+            OnChange = cbxDestUFChange
+            TabOrder = 6
+          end
+          object lblDestCEP: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'CEP'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtDestCEP: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 9
+            Text = ''
+            TabOrder = 7
+          end
+          object lblDestCPais: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Código do país'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speDestCPais: TSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxValue = 9999
+            TabOrder = 8
+          end
+          object lblDestXPais: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'País'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtDestXPais: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 60
+            Text = ''
+            TabOrder = 9
+          end
+          object lblDestFone: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Telefone'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtDestFone: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 14
+            Text = ''
+            TabOrder = 10
+          end
+        end
+      end
+    end
+    object tabItens: TTabSheet
+      Caption = 'Itens'
+      object pnlItensBotoes: TPanel
+        Left = 0
+        Top = 0
+        Height = 40
+        Width = 1000
+        Align = alTop
+        BevelOuter = bvNone
+        TabOrder = 0
+        object btnItemNovo: TButton
+          Left = 6
+          Height = 30
+          Top = 5
+          Width = 190
+          Align = alLeft
+          AutoSize = True
+          BorderSpacing.Around = 5
+          Caption = 'Novo item'
+          Constraints.MinWidth = 120
+          OnClick = btnItemNovoClick
+          TabOrder = 0
+        end
+        object btnItemExcluir: TButton
+          Left = 206
+          Height = 30
+          Top = 5
+          Width = 190
+          Align = alLeft
+          AutoSize = True
+          BorderSpacing.Around = 5
+          Caption = 'Excluir item'
+          Constraints.MinWidth = 120
+          OnClick = btnItemExcluirClick
+          TabOrder = 1
+        end
+        object btnItemCalcular: TButton
+          Left = 406
+          Height = 30
+          Top = 5
+          Width = 190
+          Align = alLeft
+          AutoSize = True
+          BorderSpacing.Around = 5
+          Caption = 'Calcular impostos do item'
+          Constraints.MinWidth = 120
+          OnClick = btnItemCalcularClick
+          TabOrder = 2
+        end
+      end
+      object grdItens: TStringGrid
+        Left = 0
+        Top = 40
+        Width = 1000
+        Height = 170
+        Align = alTop
+        AutoFillColumns = False
+        BorderSpacing.Around = 4
+        ColCount = 9
+        Columns = <
+          item
+            Title.Caption = 'Item'
+            Width = 40
+          end
+          item
+            Title.Caption = 'Código'
+            Width = 90
+          end
+          item
+            Title.Caption = 'Descrição'
+            Width = 300
+          end
+          item
+            Title.Caption = 'NCM'
+            Width = 80
+          end
+          item
+            Title.Caption = 'CFOP'
+            Width = 55
+          end
+          item
+            Title.Caption = 'Un.'
+            Width = 45
+          end
+          item
+            Title.Caption = 'Quantidade'
+            Width = 90
+          end
+          item
+            Title.Caption = 'Vl. unitário'
+            Width = 95
+          end
+          item
+            Title.Caption = 'Vl. total'
+            Width = 95
+          end
+        >
+        FixedCols = 0
+        RowCount = 1
+        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSelect, goSmoothScroll]
+        OnBeforeSelection = grdItensBeforeSelection
+        OnSelection = grdItensSelection
+        TabOrder = 1
+      end
+      object pgcItem: TPageControl
+        Left = 0
+        Top = 214
+        Width = 1000
+        ActivePage = tabItemProduto
+        Align = alClient
+        TabIndex = 0
+        TabOrder = 2
+        object tabItemProduto: TTabSheet
+          Caption = 'Produto'
+          object sbxItemProduto: TScrollBox
+            Left = 0
+            Top = 0
+            HorzScrollBar.Page = 1
+            HorzScrollBar.Visible = False
+            VertScrollBar.Page = 1
+            Align = alClient
+            BorderStyle = bsNone
+            TabOrder = 0
+            object grpProd: TGroupBox
+              Left = 0
+              Top = 0
+              Width = 1000
+              Align = alTop
+              AutoSize = True
+              BorderSpacing.Around = 6
+              Caption = 'Produto'
+              ChildSizing.LeftRightSpacing = 8
+              ChildSizing.TopBottomSpacing = 6
+              ChildSizing.HorizontalSpacing = 12
+              ChildSizing.VerticalSpacing = 6
+              ChildSizing.EnlargeHorizontal = crsScaleChilds
+              ChildSizing.Layout = cclLeftToRightThenTopToBottom
+              ChildSizing.ControlsPerLine = 4
+              TabOrder = 0
+              object lblProdCProd: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Código'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object edtProdCProd: TEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                MaxLength = 60
+                Text = ''
+                TabOrder = 0
+              end
+              object lblProdCEAN: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'GTIN'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object edtProdCEAN: TEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                MaxLength = 14
+                Text = ''
+                TabOrder = 1
+              end
+              object lblProdXProd: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Descrição'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object edtProdXProd: TEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                MaxLength = 120
+                Text = ''
+                TabOrder = 2
+              end
+              object lblProdNCM: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'NCM'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object edtProdNCM: TEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                MaxLength = 8
+                Text = ''
+                TabOrder = 3
+              end
+              object lblProdCEST: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'CEST'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object edtProdCEST: TEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                MaxLength = 7
+                Text = ''
+                TabOrder = 4
+              end
+              object lblProdCFOP: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'CFOP'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object edtProdCFOP: TEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                MaxLength = 4
+                Text = ''
+                TabOrder = 5
+              end
+              object lblProdUCom: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Unidade comercial'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object edtProdUCom: TEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                MaxLength = 6
+                Text = ''
+                TabOrder = 6
+              end
+              object lblProdQCom: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Quantidade'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speProdQCom: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 4
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 7
+              end
+              object lblProdVUnCom: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Valor unitário'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speProdVUnCom: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 4
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 8
+              end
+              object lblProdVProd: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Valor total'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speProdVProd: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 2
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 9
+              end
+              object lblProdCBenef: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Código de benefício fiscal'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object edtProdCBenef: TEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                MaxLength = 10
+                Text = ''
+                TabOrder = 10
+              end
+              object lblProdIndTot: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = ''
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object chkProdIndTot: TCheckBox
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Caption = 'Compõe o total da nota'
+                TabOrder = 11
+              end
+            end
+            object grpProdTributavel: TGroupBox
+              Left = 0
+              Top = 1000
+              Width = 1000
+              Align = alTop
+              AutoSize = True
+              BorderSpacing.Around = 6
+              Caption = 'Unidade tributável'
+              ChildSizing.LeftRightSpacing = 8
+              ChildSizing.TopBottomSpacing = 6
+              ChildSizing.HorizontalSpacing = 12
+              ChildSizing.VerticalSpacing = 6
+              ChildSizing.EnlargeHorizontal = crsScaleChilds
+              ChildSizing.Layout = cclLeftToRightThenTopToBottom
+              ChildSizing.ControlsPerLine = 4
+              TabOrder = 1
+              object lblProdCEANTrib: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'GTIN tributável'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object edtProdCEANTrib: TEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                MaxLength = 14
+                Text = ''
+                TabOrder = 0
+              end
+              object lblProdUTrib: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Unidade tributável'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object edtProdUTrib: TEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                MaxLength = 6
+                Text = ''
+                TabOrder = 1
+              end
+              object lblProdQTrib: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Quantidade tributável'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speProdQTrib: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 4
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 2
+              end
+              object lblProdVUnTrib: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Valor unitário tributável'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speProdVUnTrib: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 4
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 3
+              end
+            end
+            object grpProdValores: TGroupBox
+              Left = 0
+              Top = 2000
+              Width = 1000
+              Align = alTop
+              AutoSize = True
+              BorderSpacing.Around = 6
+              Caption = 'Valores acessórios e pedido'
+              ChildSizing.LeftRightSpacing = 8
+              ChildSizing.TopBottomSpacing = 6
+              ChildSizing.HorizontalSpacing = 12
+              ChildSizing.VerticalSpacing = 6
+              ChildSizing.EnlargeHorizontal = crsScaleChilds
+              ChildSizing.Layout = cclLeftToRightThenTopToBottom
+              ChildSizing.ControlsPerLine = 4
+              TabOrder = 2
+              object lblProdVFrete: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Frete'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speProdVFrete: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 2
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 0
+              end
+              object lblProdVSeg: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Seguro'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speProdVSeg: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 2
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 1
+              end
+              object lblProdVDesc: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Desconto'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speProdVDesc: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 2
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 2
+              end
+              object lblProdVOutro: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Outras despesas'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speProdVOutro: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 2
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 3
+              end
+              object lblProdXPed: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Pedido de compra'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object edtProdXPed: TEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                MaxLength = 15
+                Text = ''
+                TabOrder = 4
+              end
+              object lblProdNItemPed: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Item do pedido'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object edtProdNItemPed: TEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                MaxLength = 6
+                Text = ''
+                TabOrder = 5
+              end
+              object lblProdInfAdProd: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Informações adicionais do item'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object edtProdInfAdProd: TEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                MaxLength = 500
+                Text = ''
+                TabOrder = 6
+              end
+            end
+          end
+        end
+        object tabItemICMS: TTabSheet
+          Caption = 'ICMS'
+          object sbxItemICMS: TScrollBox
+            Left = 0
+            Top = 0
+            HorzScrollBar.Page = 1
+            HorzScrollBar.Visible = False
+            VertScrollBar.Page = 1
+            Align = alClient
+            BorderStyle = bsNone
+            TabOrder = 0
+            object grpICMS: TGroupBox
+              Left = 0
+              Top = 0
+              Width = 1000
+              Align = alTop
+              AutoSize = True
+              BorderSpacing.Around = 6
+              Caption = 'ICMS'
+              ChildSizing.LeftRightSpacing = 8
+              ChildSizing.TopBottomSpacing = 6
+              ChildSizing.HorizontalSpacing = 12
+              ChildSizing.VerticalSpacing = 6
+              ChildSizing.EnlargeHorizontal = crsScaleChilds
+              ChildSizing.Layout = cclLeftToRightThenTopToBottom
+              ChildSizing.ControlsPerLine = 4
+              TabOrder = 0
+              object lblICMSOrig: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Origem'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object cbxICMSOrig: TComboBox
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                ItemHeight = 0
+                Items.Strings = (
+                  '0 - Nacional'
+                  '1 - Estrangeira - importação direta'
+                  '2 - Estrangeira - adquirida no mercado interno'
+                  '3 - Nacional, conteúdo de importação superior a 40%'
+                  '4 - Nacional, processos produtivos básicos'
+                  '5 - Nacional, conteúdo de importação até 40%'
+                  '6 - Estrangeira - importação direta, sem similar nacional'
+                  '7 - Estrangeira - mercado interno, sem similar nacional'
+                  '8 - Nacional, conteúdo de importação superior a 70%'
+                )
+                Style = csDropDownList
+                TabOrder = 0
+              end
+              object lblICMSCST: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'CST'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object cbxICMSCST: TComboBox
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                ItemHeight = 0
+                Items.Strings = (
+                  '00 - Tributada integralmente'
+                  '02 - Monofásica própria sobre combustíveis'
+                  '10 - Tributada e com cobrança por ST'
+                  '15 - Monofásica própria e com retenção'
+                  '20 - Com redução de base de cálculo'
+                  '30 - Isenta/não tributada e com cobrança por ST'
+                  '40 - Isenta'
+                  '41 - Não tributada'
+                  '50 - Suspensão'
+                  '51 - Diferimento'
+                  '53 - Monofásica com recolhimento diferido'
+                  '60 - Cobrado anteriormente por ST'
+                  '61 - Monofásica cobrada anteriormente'
+                  '70 - Redução de base e cobrança por ST'
+                  '90 - Outras'
+                )
+                Style = csDropDownList
+                TabOrder = 1
+              end
+              object lblICMSCSOSN: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'CSOSN'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object cbxICMSCSOSN: TComboBox
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                ItemHeight = 0
+                Items.Strings = (
+                  '101 - Tributada com permissão de crédito'
+                  '102 - Tributada sem permissão de crédito'
+                  '103 - Isenção por faixa de receita bruta'
+                  '201 - Com permissão de crédito e com ST'
+                  '202 - Sem permissão de crédito e com ST'
+                  '203 - Isenção por faixa de receita e com ST'
+                  '300 - Imune'
+                  '400 - Não tributada'
+                  '500 - Cobrado anteriormente por ST ou antecipação'
+                  '900 - Outros'
+                )
+                Style = csDropDownList
+                TabOrder = 2
+              end
+              object lblICMSModBC: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Modalidade da base'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object cbxICMSModBC: TComboBox
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                ItemHeight = 0
+                Items.Strings = (
+                  '0 - Margem de valor agregado'
+                  '1 - Pauta'
+                  '2 - Preço tabelado máximo'
+                  '3 - Valor da operação'
+                )
+                Style = csDropDownList
+                TabOrder = 3
+              end
+              object lblICMSPRedBC: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Redução da base (%)'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speICMSPRedBC: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 4
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 4
+              end
+              object lblICMSVBC: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Base de cálculo'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speICMSVBC: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 2
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 5
+              end
+              object lblICMSPICMS: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Alíquota (%)'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speICMSPICMS: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 4
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 6
+              end
+              object lblICMSVICMS: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Valor do ICMS'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speICMSVICMS: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 2
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 7
+              end
+              object lblICMSPFCP: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'FCP (%)'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speICMSPFCP: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 4
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 8
+              end
+              object lblICMSVFCP: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Valor do FCP'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speICMSVFCP: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 2
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 9
+              end
+            end
+            object grpICMSST: TGroupBox
+              Left = 0
+              Top = 1000
+              Width = 1000
+              Align = alTop
+              AutoSize = True
+              BorderSpacing.Around = 6
+              Caption = 'Substituição tributária'
+              ChildSizing.LeftRightSpacing = 8
+              ChildSizing.TopBottomSpacing = 6
+              ChildSizing.HorizontalSpacing = 12
+              ChildSizing.VerticalSpacing = 6
+              ChildSizing.EnlargeHorizontal = crsScaleChilds
+              ChildSizing.Layout = cclLeftToRightThenTopToBottom
+              ChildSizing.ControlsPerLine = 4
+              TabOrder = 1
+              object lblICMSModBCST: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Modalidade da base ST'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object cbxICMSModBCST: TComboBox
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                ItemHeight = 0
+                Items.Strings = (
+                  '0 - Preço tabelado ou máximo sugerido'
+                  '1 - Lista negativa'
+                  '2 - Lista positiva'
+                  '3 - Lista neutra'
+                  '4 - Margem de valor agregado'
+                  '5 - Pauta'
+                  '6 - Valor da operação'
+                )
+                Style = csDropDownList
+                TabOrder = 0
+              end
+              object lblICMSPMVAST: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'MVA (%)'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speICMSPMVAST: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 4
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 1
+              end
+              object lblICMSPRedBCST: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Redução da base ST (%)'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speICMSPRedBCST: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 4
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 2
+              end
+              object lblICMSVBCST: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Base de cálculo ST'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speICMSVBCST: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 2
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 3
+              end
+              object lblICMSPICMSST: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Alíquota ST (%)'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speICMSPICMSST: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 4
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 4
+              end
+              object lblICMSVICMSST: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Valor do ICMS ST'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speICMSVICMSST: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 2
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 5
+              end
+            end
+            object grpICMSOutros: TGroupBox
+              Left = 0
+              Top = 2000
+              Width = 1000
+              Align = alTop
+              AutoSize = True
+              BorderSpacing.Around = 6
+              Caption = 'Simples Nacional e desoneração'
+              ChildSizing.LeftRightSpacing = 8
+              ChildSizing.TopBottomSpacing = 6
+              ChildSizing.HorizontalSpacing = 12
+              ChildSizing.VerticalSpacing = 6
+              ChildSizing.EnlargeHorizontal = crsScaleChilds
+              ChildSizing.Layout = cclLeftToRightThenTopToBottom
+              ChildSizing.ControlsPerLine = 4
+              TabOrder = 2
+              object lblICMSPCredSN: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Crédito do Simples (%)'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speICMSPCredSN: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 4
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 0
+              end
+              object lblICMSVCredICMSSN: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Valor do crédito do Simples'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speICMSVCredICMSSN: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 2
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 1
+              end
+              object lblICMSVICMSDeson: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'ICMS desonerado'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speICMSVICMSDeson: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 2
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 2
+              end
+              object lblICMSMotDesICMS: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Motivo da desoneração'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object cbxICMSMotDesICMS: TComboBox
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                ItemHeight = 0
+                Items.Strings = (
+                  'Não informado'
+                  '1 - Táxi'
+                  '3 - Produtor agropecuário'
+                  '4 - Frotista/locadora'
+                  '5 - Diplomático/consular'
+                  '6 - Utilitários e motocicletas da Amazônia Ocidental e ALC'
+                  '7 - SUFRAMA'
+                  '8 - Venda a órgão público'
+                  '9 - Outros'
+                  '10 - Deficiente condutor'
+                  '11 - Deficiente não condutor'
+                  '12 - Órgão de fomento e desenvolvimento agropecuário'
+                  '16 - Olimpíadas Rio 2016'
+                  '90 - Solicitado pelo Fisco'
+                )
+                Style = csDropDownList
+                TabOrder = 3
+              end
+            end
+          end
+        end
+        object tabItemIPI: TTabSheet
+          Caption = 'IPI'
+          object sbxItemIPI: TScrollBox
+            Left = 0
+            Top = 0
+            HorzScrollBar.Page = 1
+            HorzScrollBar.Visible = False
+            VertScrollBar.Page = 1
+            Align = alClient
+            BorderStyle = bsNone
+            TabOrder = 0
+            object grpIPI: TGroupBox
+              Left = 0
+              Top = 0
+              Width = 1000
+              Align = alTop
+              AutoSize = True
+              BorderSpacing.Around = 6
+              Caption = 'IPI (somente NF-e)'
+              ChildSizing.LeftRightSpacing = 8
+              ChildSizing.TopBottomSpacing = 6
+              ChildSizing.HorizontalSpacing = 12
+              ChildSizing.VerticalSpacing = 6
+              ChildSizing.EnlargeHorizontal = crsScaleChilds
+              ChildSizing.Layout = cclLeftToRightThenTopToBottom
+              ChildSizing.ControlsPerLine = 4
+              TabOrder = 0
+              object lblIPICEnq: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Código de enquadramento'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object edtIPICEnq: TEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                MaxLength = 3
+                Text = ''
+                TabOrder = 0
+              end
+              object lblIPICST: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'CST'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object cbxIPICST: TComboBox
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                ItemHeight = 0
+                Items.Strings = (
+                  '00 - Entrada com recuperação de crédito'
+                  '01 - Entrada tributada com alíquota zero'
+                  '02 - Entrada isenta'
+                  '03 - Entrada não tributada'
+                  '04 - Entrada imune'
+                  '05 - Entrada com suspensão'
+                  '49 - Outras entradas'
+                  '50 - Saída tributada'
+                  '51 - Saída tributada com alíquota zero'
+                  '52 - Saída isenta'
+                  '53 - Saída não tributada'
+                  '54 - Saída imune'
+                  '55 - Saída com suspensão'
+                  '99 - Outras saídas'
+                )
+                Style = csDropDownList
+                TabOrder = 1
+              end
+              object lblIPIVBC: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Base de cálculo'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speIPIVBC: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 2
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 2
+              end
+              object lblIPIPIPI: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Alíquota (%)'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speIPIPIPI: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 4
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 3
+              end
+              object lblIPIVIPI: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Valor do IPI'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speIPIVIPI: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 2
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 4
+              end
+            end
+          end
+        end
+        object tabItemPISCOFINS: TTabSheet
+          Caption = 'PIS/COFINS'
+          object sbxItemPISCOFINS: TScrollBox
+            Left = 0
+            Top = 0
+            HorzScrollBar.Page = 1
+            HorzScrollBar.Visible = False
+            VertScrollBar.Page = 1
+            Align = alClient
+            BorderStyle = bsNone
+            TabOrder = 0
+            object grpPIS: TGroupBox
+              Left = 0
+              Top = 0
+              Width = 1000
+              Align = alTop
+              AutoSize = True
+              BorderSpacing.Around = 6
+              Caption = 'PIS'
+              ChildSizing.LeftRightSpacing = 8
+              ChildSizing.TopBottomSpacing = 6
+              ChildSizing.HorizontalSpacing = 12
+              ChildSizing.VerticalSpacing = 6
+              ChildSizing.EnlargeHorizontal = crsScaleChilds
+              ChildSizing.Layout = cclLeftToRightThenTopToBottom
+              ChildSizing.ControlsPerLine = 4
+              TabOrder = 0
+              object lblPISCST: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'CST'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object cbxPISCST: TComboBox
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                ItemHeight = 0
+                Items.Strings = (
+                  '01 - Tributável - alíquota básica'
+                  '02 - Tributável - alíquota diferenciada'
+                  '03 - Tributável - alíquota por unidade'
+                  '04 - Monofásica - revenda a alíquota zero'
+                  '05 - Substituição tributária'
+                  '06 - Alíquota zero'
+                  '07 - Isenta'
+                  '08 - Sem incidência'
+                  '09 - Suspensão'
+                  '49 - Outras operações de saída'
+                  '50 - Crédito vinculado a receita tributada no mercado interno'
+                  '51 - Crédito vinculado a receita não tributada no mercado interno'
+                  '52 - Crédito vinculado a receita de exportação'
+                  '53 - Crédito vinculado a receitas tributadas e não tributadas'
+                  '54 - Crédito vinculado a receitas tributadas e de exportação'
+                  '55 - Crédito vinculado a receitas não tributadas e de exportação'
+                  '56 - Crédito vinculado a receitas tributadas, não tributadas e de exportação'
+                  '60 - Crédito presumido - receita tributada no mercado interno'
+                  '61 - Crédito presumido - receita não tributada no mercado interno'
+                  '62 - Crédito presumido - receita de exportação'
+                  '63 - Crédito presumido - receitas tributadas e não tributadas'
+                  '64 - Crédito presumido - receitas tributadas e de exportação'
+                  '65 - Crédito presumido - receitas não tributadas e de exportação'
+                  '66 - Crédito presumido - receitas tributadas, não tributadas e de exportação'
+                  '67 - Crédito presumido - outras operações'
+                  '70 - Aquisição sem direito a crédito'
+                  '71 - Aquisição com isenção'
+                  '72 - Aquisição com suspensão'
+                  '73 - Aquisição a alíquota zero'
+                  '74 - Aquisição sem incidência'
+                  '75 - Aquisição por substituição tributária'
+                  '98 - Outras operações de entrada'
+                  '99 - Outras operações'
+                )
+                Style = csDropDownList
+                TabOrder = 0
+              end
+              object lblPISVBC: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Base de cálculo'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object spePISVBC: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 2
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 1
+              end
+              object lblPISPPIS: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Alíquota (%)'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object spePISPPIS: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 4
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 2
+              end
+              object lblPISVPIS: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Valor do PIS'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object spePISVPIS: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 2
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 3
+              end
+            end
+            object grpCOFINS: TGroupBox
+              Left = 0
+              Top = 1000
+              Width = 1000
+              Align = alTop
+              AutoSize = True
+              BorderSpacing.Around = 6
+              Caption = 'COFINS'
+              ChildSizing.LeftRightSpacing = 8
+              ChildSizing.TopBottomSpacing = 6
+              ChildSizing.HorizontalSpacing = 12
+              ChildSizing.VerticalSpacing = 6
+              ChildSizing.EnlargeHorizontal = crsScaleChilds
+              ChildSizing.Layout = cclLeftToRightThenTopToBottom
+              ChildSizing.ControlsPerLine = 4
+              TabOrder = 1
+              object lblCOFINSCST: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'CST'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object cbxCOFINSCST: TComboBox
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                ItemHeight = 0
+                Items.Strings = (
+                  '01 - Tributável - alíquota básica'
+                  '02 - Tributável - alíquota diferenciada'
+                  '03 - Tributável - alíquota por unidade'
+                  '04 - Monofásica - revenda a alíquota zero'
+                  '05 - Substituição tributária'
+                  '06 - Alíquota zero'
+                  '07 - Isenta'
+                  '08 - Sem incidência'
+                  '09 - Suspensão'
+                  '49 - Outras operações de saída'
+                  '50 - Crédito vinculado a receita tributada no mercado interno'
+                  '51 - Crédito vinculado a receita não tributada no mercado interno'
+                  '52 - Crédito vinculado a receita de exportação'
+                  '53 - Crédito vinculado a receitas tributadas e não tributadas'
+                  '54 - Crédito vinculado a receitas tributadas e de exportação'
+                  '55 - Crédito vinculado a receitas não tributadas e de exportação'
+                  '56 - Crédito vinculado a receitas tributadas, não tributadas e de exportação'
+                  '60 - Crédito presumido - receita tributada no mercado interno'
+                  '61 - Crédito presumido - receita não tributada no mercado interno'
+                  '62 - Crédito presumido - receita de exportação'
+                  '63 - Crédito presumido - receitas tributadas e não tributadas'
+                  '64 - Crédito presumido - receitas tributadas e de exportação'
+                  '65 - Crédito presumido - receitas não tributadas e de exportação'
+                  '66 - Crédito presumido - receitas tributadas, não tributadas e de exportação'
+                  '67 - Crédito presumido - outras operações'
+                  '70 - Aquisição sem direito a crédito'
+                  '71 - Aquisição com isenção'
+                  '72 - Aquisição com suspensão'
+                  '73 - Aquisição a alíquota zero'
+                  '74 - Aquisição sem incidência'
+                  '75 - Aquisição por substituição tributária'
+                  '98 - Outras operações de entrada'
+                  '99 - Outras operações'
+                )
+                Style = csDropDownList
+                TabOrder = 0
+              end
+              object lblCOFINSVBC: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Base de cálculo'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speCOFINSVBC: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 2
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 1
+              end
+              object lblCOFINSPCOFINS: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Alíquota (%)'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speCOFINSPCOFINS: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 4
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 2
+              end
+              object lblCOFINSVCOFINS: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Valor da COFINS'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speCOFINSVCOFINS: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 2
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 3
+              end
+            end
+          end
+        end
+        object tabItemIBSCBS: TTabSheet
+          Caption = 'IBS/CBS'
+          object sbxItemIBSCBS: TScrollBox
+            Left = 0
+            Top = 0
+            HorzScrollBar.Page = 1
+            HorzScrollBar.Visible = False
+            VertScrollBar.Page = 1
+            Align = alClient
+            BorderStyle = bsNone
+            TabOrder = 0
+            object grpIBSCBS: TGroupBox
+              Left = 0
+              Top = 0
+              Width = 1000
+              Align = alTop
+              AutoSize = True
+              BorderSpacing.Around = 6
+              Caption = 'IBS e CBS'
+              ChildSizing.LeftRightSpacing = 8
+              ChildSizing.TopBottomSpacing = 6
+              ChildSizing.HorizontalSpacing = 12
+              ChildSizing.VerticalSpacing = 6
+              ChildSizing.EnlargeHorizontal = crsScaleChilds
+              ChildSizing.Layout = cclLeftToRightThenTopToBottom
+              ChildSizing.ControlsPerLine = 4
+              TabOrder = 0
+              object lblIBSCBSCST: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'CST'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object cbxIBSCBSCST: TComboBox
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                ItemHeight = 0
+                Items.Strings = (
+                  'Não informado'
+                  '000 - Tributação integral'
+                  '010 - Tributação com alíquotas uniformes'
+                  '011 - Tributação com alíquotas uniformes reduzidas'
+                  '200 - Alíquota reduzida'
+                  '210 - Redução de alíquota com redutor de base de cálculo'
+                  '220 - Alíquota fixa'
+                  '221 - Alíquota fixa proporcional'
+                  '222 - Redução de base de cálculo'
+                  '400 - Isenção'
+                  '410 - Imunidade e não incidência'
+                  '510 - Diferimento'
+                  '550 - Suspensão'
+                  '620 - Tributação monofásica'
+                  '800 - Transferência de crédito'
+                  '810 - Ajustes'
+                  '820 - Tributação em declaração de regime específico'
+                  '830 - Exclusão da base de cálculo'
+                )
+                Style = csDropDownList
+                TabOrder = 0
+              end
+              object lblIBSCBSCClassTrib: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Classificação tributária'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object edtIBSCBSCClassTrib: TEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                MaxLength = 6
+                Text = ''
+                TabOrder = 1
+              end
+              object lblIBSCBSVBC: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Base de cálculo'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speIBSCBSVBC: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 2
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 2
+              end
+              object lblIBSUFPIBSUF: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'IBS estadual (%)'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speIBSUFPIBSUF: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 4
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 3
+              end
+              object lblIBSUFVIBSUF: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Valor do IBS estadual'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speIBSUFVIBSUF: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 2
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 4
+              end
+              object lblIBSMunPIBSMun: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'IBS municipal (%)'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speIBSMunPIBSMun: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 4
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 5
+              end
+              object lblIBSMunVIBSMun: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Valor do IBS municipal'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speIBSMunVIBSMun: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 2
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 6
+              end
+              object lblCBSPCBS: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'CBS (%)'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speCBSPCBS: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 4
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 7
+              end
+              object lblCBSVCBS: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Valor da CBS'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speCBSVCBS: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 2
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 8
+              end
+            end
+          end
+        end
+        object tabItemDevolucao: TTabSheet
+          Caption = 'Devolução'
+          object sbxItemDevolucao: TScrollBox
+            Left = 0
+            Top = 0
+            HorzScrollBar.Page = 1
+            HorzScrollBar.Visible = False
+            VertScrollBar.Page = 1
+            Align = alClient
+            BorderStyle = bsNone
+            TabOrder = 0
+            object grpDevolucao: TGroupBox
+              Left = 0
+              Top = 0
+              Width = 1000
+              Align = alTop
+              AutoSize = True
+              BorderSpacing.Around = 6
+              Caption = 'Devolução (finalidade 4)'
+              ChildSizing.LeftRightSpacing = 8
+              ChildSizing.TopBottomSpacing = 6
+              ChildSizing.HorizontalSpacing = 12
+              ChildSizing.VerticalSpacing = 6
+              ChildSizing.EnlargeHorizontal = crsScaleChilds
+              ChildSizing.Layout = cclLeftToRightThenTopToBottom
+              ChildSizing.ControlsPerLine = 4
+              TabOrder = 0
+              object lblDevolPDevol: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'Percentual devolvido (%)'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speDevolPDevol: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 2
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 0
+              end
+              object lblDevolVIPIDevol: TLabel
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 170
+                Caption = 'IPI devolvido'
+                Layout = tlCenter
+                ParentColor = False
+              end
+              object speDevolVIPIDevol: TFloatSpinEdit
+                Left = 0
+                Top = 0
+                Height = 28
+                Width = 260
+                Constraints.MinWidth = 260
+                DecimalPlaces = 2
+                MaxValue = 999999999999
+                MinValue = -999999999999
+                TabOrder = 1
+              end
+            end
+          end
+        end
+      end
+    end
+    object tabTransporte: TTabSheet
+      Caption = 'Transporte'
+      object sbxTransporte: TScrollBox
+        Left = 0
+        Top = 0
+        HorzScrollBar.Page = 1
+        HorzScrollBar.Visible = False
+        VertScrollBar.Page = 1
+        Align = alClient
+        BorderStyle = bsNone
+        TabOrder = 0
+        object grpTransp: TGroupBox
+          Left = 0
+          Top = 0
+          Width = 1000
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'Frete'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 4
+          TabOrder = 0
+          object lblTranspModFrete: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Modalidade do frete'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxTranspModFrete: TComboBox
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            ItemHeight = 0
+            Items.Strings = (
+              '0 - Por conta do remetente (CIF)'
+              '1 - Por conta do destinatário (FOB)'
+              '2 - Por conta de terceiros'
+              '3 - Transporte próprio por conta do remetente'
+              '4 - Transporte próprio por conta do destinatário'
+              '9 - Sem ocorrência de transporte'
+            )
+            Style = csDropDownList
+            TabOrder = 0
+          end
+        end
+        object grpTransportadora: TGroupBox
+          Left = 0
+          Top = 1000
+          Width = 1000
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'Transportadora'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 4
+          TabOrder = 1
+          object lblTranspCNPJCPF: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'CNPJ/CPF'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtTranspCNPJCPF: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 18
+            Text = ''
+            TabOrder = 0
+          end
+          object lblTranspXNome: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Nome/razão social'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtTranspXNome: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 60
+            Text = ''
+            TabOrder = 1
+          end
+          object lblTranspIE: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Inscrição estadual'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtTranspIE: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 14
+            Text = ''
+            TabOrder = 2
+          end
+          object lblTranspXEnder: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Endereço'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtTranspXEnder: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 60
+            Text = ''
+            TabOrder = 3
+          end
+          object lblTranspXMun: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Município'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtTranspXMun: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 60
+            Text = ''
+            TabOrder = 4
+          end
+          object lblTranspUF: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'UF'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxTranspUF: TComboBox
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            ItemHeight = 0
+            Items.Strings = (
+              ''
+              'AC'
+              'AL'
+              'AP'
+              'AM'
+              'BA'
+              'CE'
+              'DF'
+              'ES'
+              'GO'
+              'MA'
+              'MT'
+              'MS'
+              'MG'
+              'PA'
+              'PB'
+              'PR'
+              'PE'
+              'PI'
+              'RJ'
+              'RN'
+              'RS'
+              'RO'
+              'RR'
+              'SC'
+              'SP'
+              'SE'
+              'TO'
+            )
+            Style = csDropDownList
+            TabOrder = 5
+          end
+        end
+        object grpVeiculo: TGroupBox
+          Left = 0
+          Top = 2000
+          Width = 1000
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'Veículo'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 4
+          TabOrder = 2
+          object lblVeicPlaca: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Placa'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtVeicPlaca: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 7
+            Text = ''
+            TabOrder = 0
+          end
+          object lblVeicUF: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'UF'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxVeicUF: TComboBox
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            ItemHeight = 0
+            Items.Strings = (
+              ''
+              'AC'
+              'AL'
+              'AP'
+              'AM'
+              'BA'
+              'CE'
+              'DF'
+              'ES'
+              'GO'
+              'MA'
+              'MT'
+              'MS'
+              'MG'
+              'PA'
+              'PB'
+              'PR'
+              'PE'
+              'PI'
+              'RJ'
+              'RN'
+              'RS'
+              'RO'
+              'RR'
+              'SC'
+              'SP'
+              'SE'
+              'TO'
+            )
+            Style = csDropDownList
+            TabOrder = 1
+          end
+          object lblVeicRNTC: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'RNTC'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtVeicRNTC: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 20
+            Text = ''
+            TabOrder = 2
+          end
+        end
+        object grpVolumes: TGroupBox
+          Left = 0
+          Top = 3000
+          Width = 1000
+          Height = 200
+          Align = alTop
+          BorderSpacing.Around = 6
+          Caption = 'Volumes'
+          TabOrder = 9
+          object pnlVolBotoes: TPanel
+            Left = 0
+            Top = 0
+            Height = 40
+            Width = 1000
+            Align = alTop
+            BevelOuter = bvNone
+            TabOrder = 0
+            object btnVolAdicionar: TButton
+              Left = 6
+              Height = 30
+              Top = 5
+              Width = 190
+              Align = alLeft
+              AutoSize = True
+              BorderSpacing.Around = 5
+              Caption = 'Adicionar volume'
+              Constraints.MinWidth = 120
+              OnClick = btnVolAdicionarClick
+              TabOrder = 0
+            end
+            object btnVolRemover: TButton
+              Left = 206
+              Height = 30
+              Top = 5
+              Width = 190
+              Align = alLeft
+              AutoSize = True
+              BorderSpacing.Around = 5
+              Caption = 'Remover volume'
+              Constraints.MinWidth = 120
+              OnClick = btnVolRemoverClick
+              TabOrder = 1
+            end
+          end
+          object grdVolumes: TStringGrid
+            Left = 0
+            Top = 40
+            Width = 1000
+            Align = alClient
+            AutoFillColumns = False
+            BorderSpacing.Around = 4
+            ColCount = 6
+            Columns = <
+              item
+                Title.Caption = 'Quantidade'
+                Width = 90
+              end
+              item
+                Title.Caption = 'Espécie'
+                Width = 150
+              end
+              item
+                Title.Caption = 'Marca'
+                Width = 150
+              end
+              item
+                Title.Caption = 'Numeração'
+                Width = 120
+              end
+              item
+                Title.Caption = 'Peso líquido'
+                Width = 100
+              end
+              item
+                Title.Caption = 'Peso bruto'
+                Width = 100
+              end
+            >
+            FixedCols = 0
+            RowCount = 1
+            Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goTabs, goAlwaysShowEditor, goSmoothScroll]
+            TabOrder = 1
+          end
+        end
+      end
+    end
+    object tabPagamento: TTabSheet
+      Caption = 'Pagamento e cobrança'
+      object sbxPagamento: TScrollBox
+        Left = 0
+        Top = 0
+        HorzScrollBar.Page = 1
+        HorzScrollBar.Visible = False
+        VertScrollBar.Page = 1
+        Align = alClient
+        BorderStyle = bsNone
+        TabOrder = 0
+        object grpPagamentos: TGroupBox
+          Left = 0
+          Top = 0
+          Width = 1000
+          Height = 200
+          Align = alTop
+          BorderSpacing.Around = 6
+          Caption = 'Formas de pagamento'
+          TabOrder = 9
+          object pnlPagBotoes: TPanel
+            Left = 0
+            Top = 0
+            Height = 40
+            Width = 1000
+            Align = alTop
+            BevelOuter = bvNone
+            TabOrder = 0
+            object btnPagAdicionar: TButton
+              Left = 6
+              Height = 30
+              Top = 5
+              Width = 190
+              Align = alLeft
+              AutoSize = True
+              BorderSpacing.Around = 5
+              Caption = 'Adicionar pagamento'
+              Constraints.MinWidth = 120
+              OnClick = btnPagAdicionarClick
+              TabOrder = 0
+            end
+            object btnPagRemover: TButton
+              Left = 206
+              Height = 30
+              Top = 5
+              Width = 190
+              Align = alLeft
+              AutoSize = True
+              BorderSpacing.Around = 5
+              Caption = 'Remover pagamento'
+              Constraints.MinWidth = 120
+              OnClick = btnPagRemoverClick
+              TabOrder = 1
+            end
+          end
+          object grdPagamentos: TStringGrid
+            Left = 0
+            Top = 40
+            Width = 1000
+            Align = alClient
+            AutoFillColumns = False
+            BorderSpacing.Around = 4
+            ColCount = 8
+            Columns = <
+              item
+                ButtonStyle = cbsPickList
+                PickList.Strings = (
+                  '0 - À vista'
+                  '1 - A prazo'
+                )
+                Title.Caption = 'Indicador'
+                Width = 110
+              end
+              item
+                ButtonStyle = cbsPickList
+                PickList.Strings = (
+                  '01 - Dinheiro'
+                  '02 - Cheque'
+                  '03 - Cartão de crédito'
+                  '04 - Cartão de débito'
+                  '05 - Crédito loja'
+                  '10 - Vale alimentação'
+                  '11 - Vale refeição'
+                  '12 - Vale presente'
+                  '13 - Vale combustível'
+                  '14 - Duplicata mercantil'
+                  '15 - Boleto bancário'
+                  '16 - Depósito bancário'
+                  '17 - PIX dinâmico'
+                  '18 - Transferência bancária, carteira digital'
+                  '19 - Programa de fidelidade, cashback, crédito virtual'
+                  '20 - PIX estático'
+                  '21 - Crédito em loja por devolução'
+                  '22 - Falha de hardware do sistema emissor'
+                  '90 - Sem pagamento'
+                  '99 - Outros'
+                )
+                Title.Caption = 'Forma'
+                Width = 230
+              end
+              item
+                Title.Caption = 'Descrição (99 - Outros)'
+                Width = 170
+              end
+              item
+                Title.Caption = 'Valor'
+                Width = 90
+              end
+              item
+                ButtonStyle = cbsPickList
+                PickList.Strings = (
+                  '1 - Integrado'
+                  '2 - Não integrado'
+                )
+                Title.Caption = 'Integração'
+                Width = 130
+              end
+              item
+                Title.Caption = 'CNPJ credenciadora'
+                Width = 140
+              end
+              item
+                ButtonStyle = cbsPickList
+                PickList.Strings = (
+                  '01 - Visa'
+                  '02 - Mastercard'
+                  '03 - American Express'
+                  '04 - Sorocred'
+                  '05 - Diners Club'
+                  '06 - Elo'
+                  '07 - Hipercard'
+                  '08 - Aura'
+                  '09 - Cabal'
+                  '10 - Alelo'
+                  '11 - Banes Card'
+                  '12 - CalCard'
+                  '13 - Credz'
+                  '14 - Discover'
+                  '15 - GoodCard'
+                  '16 - GreenCard'
+                  '17 - Hiper'
+                  '18 - JCB'
+                  '19 - Mais'
+                  '20 - MaxVan'
+                  '21 - Policard'
+                  '22 - RedeCompras'
+                  '23 - Sodexo'
+                  '24 - ValeCard'
+                  '25 - Verocheque'
+                  '26 - VR'
+                  '27 - Ticket'
+                  '99 - Outros'
+                )
+                Title.Caption = 'Bandeira'
+                Width = 140
+              end
+              item
+                Title.Caption = 'Autorização'
+                Width = 120
+              end
+            >
+            FixedCols = 0
+            RowCount = 1
+            Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goTabs, goAlwaysShowEditor, goSmoothScroll]
+            TabOrder = 1
+          end
+        end
+        object grpFatura: TGroupBox
+          Left = 0
+          Top = 1000
+          Width = 1000
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'Fatura'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 4
+          TabOrder = 1
+          object lblCobrNFat: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Número da fatura'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtCobrNFat: TEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            MaxLength = 60
+            Text = ''
+            TabOrder = 0
+          end
+          object lblCobrVOrig: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Valor original'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speCobrVOrig: TFloatSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            DecimalPlaces = 2
+            MaxValue = 999999999999
+            MinValue = -999999999999
+            TabOrder = 1
+          end
+          object lblCobrVDesc: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Desconto'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speCobrVDesc: TFloatSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            DecimalPlaces = 2
+            MaxValue = 999999999999
+            MinValue = -999999999999
+            TabOrder = 2
+          end
+          object lblCobrVLiq: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Valor líquido'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speCobrVLiq: TFloatSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            DecimalPlaces = 2
+            MaxValue = 999999999999
+            MinValue = -999999999999
+            TabOrder = 3
+          end
+        end
+        object grpDuplicatas: TGroupBox
+          Left = 0
+          Top = 2000
+          Width = 1000
+          Height = 200
+          Align = alTop
+          BorderSpacing.Around = 6
+          Caption = 'Duplicatas'
+          TabOrder = 9
+          object pnlDupBotoes: TPanel
+            Left = 0
+            Top = 0
+            Height = 40
+            Width = 1000
+            Align = alTop
+            BevelOuter = bvNone
+            TabOrder = 0
+            object btnDupAdicionar: TButton
+              Left = 6
+              Height = 30
+              Top = 5
+              Width = 190
+              Align = alLeft
+              AutoSize = True
+              BorderSpacing.Around = 5
+              Caption = 'Adicionar duplicata'
+              Constraints.MinWidth = 120
+              OnClick = btnDupAdicionarClick
+              TabOrder = 0
+            end
+            object btnDupRemover: TButton
+              Left = 206
+              Height = 30
+              Top = 5
+              Width = 190
+              Align = alLeft
+              AutoSize = True
+              BorderSpacing.Around = 5
+              Caption = 'Remover duplicata'
+              Constraints.MinWidth = 120
+              OnClick = btnDupRemoverClick
+              TabOrder = 1
+            end
+          end
+          object grdDuplicatas: TStringGrid
+            Left = 0
+            Top = 40
+            Width = 1000
+            Align = alClient
+            AutoFillColumns = False
+            BorderSpacing.Around = 4
+            ColCount = 3
+            Columns = <
+              item
+                Title.Caption = 'Número'
+                Width = 120
+              end
+              item
+                Title.Caption = 'Vencimento (dd/mm/aaaa)'
+                Width = 170
+              end
+              item
+                Title.Caption = 'Valor'
+                Width = 100
+              end
+            >
+            FixedCols = 0
+            RowCount = 1
+            Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goTabs, goAlwaysShowEditor, goSmoothScroll]
+            TabOrder = 1
+          end
+        end
+      end
+    end
+    object tabReferencias: TTabSheet
+      Caption = 'Referências'
+      object grpReferencias: TGroupBox
+        Left = 0
+        Top = 0
+        Width = 1000
+        Align = alClient
+        BorderSpacing.Around = 6
+        Caption = 'Documentos referenciados (obrigatório em complementar e devolução)'
+        TabOrder = 9
+        object pnlRefBotoes: TPanel
+          Left = 0
+          Top = 0
+          Height = 40
+          Width = 1000
+          Align = alTop
+          BevelOuter = bvNone
+          TabOrder = 0
+          object btnRefAdicionar: TButton
+            Left = 6
+            Height = 30
+            Top = 5
+            Width = 190
+            Align = alLeft
+            AutoSize = True
+            BorderSpacing.Around = 5
+            Caption = 'Adicionar referência'
+            Constraints.MinWidth = 120
+            OnClick = btnRefAdicionarClick
+            TabOrder = 0
+          end
+          object btnRefRemover: TButton
+            Left = 206
+            Height = 30
+            Top = 5
+            Width = 190
+            Align = alLeft
+            AutoSize = True
+            BorderSpacing.Around = 5
+            Caption = 'Remover referência'
+            Constraints.MinWidth = 120
+            OnClick = btnRefRemoverClick
+            TabOrder = 1
+          end
+        end
+        object grdReferencias: TStringGrid
+          Left = 0
+          Top = 40
+          Width = 1000
+          Align = alClient
+          AutoFillColumns = False
+          BorderSpacing.Around = 4
+          ColCount = 11
+          Columns = <
+            item
+              ButtonStyle = cbsPickList
+              PickList.Strings = (
+                'NF-e / NFC-e'
+                'CT-e'
+                'NF modelo 1/1A'
+                'NF de produtor rural'
+                'Cupom fiscal (ECF)'
+              )
+              Title.Caption = 'Tipo'
+              Width = 170
+            end
+            item
+              Title.Caption = 'Chave de acesso'
+              Width = 330
+            end
+            item
+              Title.Caption = 'UF (código)'
+              Width = 80
+            end
+            item
+              Title.Caption = 'AAMM'
+              Width = 60
+            end
+            item
+              Title.Caption = 'CNPJ/CPF'
+              Width = 130
+            end
+            item
+              Title.Caption = 'IE'
+              Width = 110
+            end
+            item
+              Title.Caption = 'Modelo'
+              Width = 60
+            end
+            item
+              Title.Caption = 'Série'
+              Width = 50
+            end
+            item
+              Title.Caption = 'Número'
+              Width = 80
+            end
+            item
+              Title.Caption = 'Nº do ECF'
+              Width = 70
+            end
+            item
+              Title.Caption = 'COO'
+              Width = 70
+            end
+          >
+          FixedCols = 0
+          RowCount = 1
+          Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goTabs, goAlwaysShowEditor, goSmoothScroll]
+          TabOrder = 1
+        end
+      end
+    end
+    object tabInfAdicionais: TTabSheet
+      Caption = 'Informações adicionais'
+      object grpInfAdFisco: TGroupBox
+        Left = 0
+        Top = 0
+        Width = 1000
+        Align = alTop
+        BorderSpacing.Around = 6
+        Caption = 'Informações de interesse do Fisco'
+        TabOrder = 0
+        Height = 150
+        object mmoInfAdFisco: TMemo
+          Left = 6
+          Top = 6
+          Width = 980
+          Align = alClient
+          BorderSpacing.Around = 6
+          ScrollBars = ssAutoVertical
+          TabOrder = 0
+          MaxLength = 5000
+        end
+      end
+      object grpInfCpl: TGroupBox
+        Left = 0
+        Top = 1000
+        Width = 1000
+        Align = alClient
+        BorderSpacing.Around = 6
+        Caption = 'Informações complementares (contribuinte)'
+        TabOrder = 0
+        object mmoInfCpl: TMemo
+          Left = 6
+          Top = 6
+          Width = 980
+          Align = alClient
+          BorderSpacing.Around = 6
+          ScrollBars = ssAutoVertical
+          TabOrder = 0
+          MaxLength = 5000
+        end
+      end
+    end
+    object tabTotais: TTabSheet
+      Caption = 'Totais'
+      object sbxTotais: TScrollBox
+        Left = 0
+        Top = 0
+        HorzScrollBar.Page = 1
+        HorzScrollBar.Visible = False
+        VertScrollBar.Page = 1
+        Align = alClient
+        BorderStyle = bsNone
+        TabOrder = 0
+        object grpTotaisICMS: TGroupBox
+          Left = 0
+          Top = 0
+          Width = 1000
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'Totais (calculados a partir dos itens)'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 4
+          TabOrder = 0
+          object lblTotVProd: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Produtos'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speTotVProd: TFloatSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            DecimalPlaces = 2
+            MaxValue = 999999999999
+            MinValue = -999999999999
+            ReadOnly = True
+            TabStop = False
+            TabOrder = 0
+          end
+          object lblTotVNF: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Total da nota'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speTotVNF: TFloatSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            DecimalPlaces = 2
+            MaxValue = 999999999999
+            MinValue = -999999999999
+            ReadOnly = True
+            TabStop = False
+            TabOrder = 1
+          end
+          object lblTotVBC: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Base do ICMS'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speTotVBC: TFloatSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            DecimalPlaces = 2
+            MaxValue = 999999999999
+            MinValue = -999999999999
+            ReadOnly = True
+            TabStop = False
+            TabOrder = 2
+          end
+          object lblTotVICMS: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'ICMS'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speTotVICMS: TFloatSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            DecimalPlaces = 2
+            MaxValue = 999999999999
+            MinValue = -999999999999
+            ReadOnly = True
+            TabStop = False
+            TabOrder = 3
+          end
+          object lblTotVICMSDeson: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'ICMS desonerado'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speTotVICMSDeson: TFloatSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            DecimalPlaces = 2
+            MaxValue = 999999999999
+            MinValue = -999999999999
+            ReadOnly = True
+            TabStop = False
+            TabOrder = 4
+          end
+          object lblTotVFCP: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'FCP'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speTotVFCP: TFloatSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            DecimalPlaces = 2
+            MaxValue = 999999999999
+            MinValue = -999999999999
+            ReadOnly = True
+            TabStop = False
+            TabOrder = 5
+          end
+          object lblTotVBCST: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Base do ICMS ST'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speTotVBCST: TFloatSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            DecimalPlaces = 2
+            MaxValue = 999999999999
+            MinValue = -999999999999
+            ReadOnly = True
+            TabStop = False
+            TabOrder = 6
+          end
+          object lblTotVST: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'ICMS ST'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speTotVST: TFloatSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            DecimalPlaces = 2
+            MaxValue = 999999999999
+            MinValue = -999999999999
+            ReadOnly = True
+            TabStop = False
+            TabOrder = 7
+          end
+          object lblTotVFCPST: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'FCP ST'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speTotVFCPST: TFloatSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            DecimalPlaces = 2
+            MaxValue = 999999999999
+            MinValue = -999999999999
+            ReadOnly = True
+            TabStop = False
+            TabOrder = 8
+          end
+          object lblTotVIPI: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'IPI'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speTotVIPI: TFloatSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            DecimalPlaces = 2
+            MaxValue = 999999999999
+            MinValue = -999999999999
+            ReadOnly = True
+            TabStop = False
+            TabOrder = 9
+          end
+          object lblTotVIPIDevol: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'IPI devolvido'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speTotVIPIDevol: TFloatSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            DecimalPlaces = 2
+            MaxValue = 999999999999
+            MinValue = -999999999999
+            ReadOnly = True
+            TabStop = False
+            TabOrder = 10
+          end
+          object lblTotVII: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'II'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speTotVII: TFloatSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            DecimalPlaces = 2
+            MaxValue = 999999999999
+            MinValue = -999999999999
+            ReadOnly = True
+            TabStop = False
+            TabOrder = 11
+          end
+          object lblTotVPIS: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'PIS'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speTotVPIS: TFloatSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            DecimalPlaces = 2
+            MaxValue = 999999999999
+            MinValue = -999999999999
+            ReadOnly = True
+            TabStop = False
+            TabOrder = 12
+          end
+          object lblTotVCOFINS: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'COFINS'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speTotVCOFINS: TFloatSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            DecimalPlaces = 2
+            MaxValue = 999999999999
+            MinValue = -999999999999
+            ReadOnly = True
+            TabStop = False
+            TabOrder = 13
+          end
+          object lblTotVFrete: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Frete'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speTotVFrete: TFloatSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            DecimalPlaces = 2
+            MaxValue = 999999999999
+            MinValue = -999999999999
+            ReadOnly = True
+            TabStop = False
+            TabOrder = 14
+          end
+          object lblTotVSeg: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Seguro'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speTotVSeg: TFloatSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            DecimalPlaces = 2
+            MaxValue = 999999999999
+            MinValue = -999999999999
+            ReadOnly = True
+            TabStop = False
+            TabOrder = 15
+          end
+          object lblTotVDesc: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Desconto'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speTotVDesc: TFloatSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            DecimalPlaces = 2
+            MaxValue = 999999999999
+            MinValue = -999999999999
+            ReadOnly = True
+            TabStop = False
+            TabOrder = 16
+          end
+          object lblTotVOutro: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Outras despesas'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speTotVOutro: TFloatSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            DecimalPlaces = 2
+            MaxValue = 999999999999
+            MinValue = -999999999999
+            ReadOnly = True
+            TabStop = False
+            TabOrder = 17
+          end
+          object lblTotVTroco: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Troco'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speTotVTroco: TFloatSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            DecimalPlaces = 2
+            MaxValue = 999999999999
+            MinValue = -999999999999
+            ReadOnly = True
+            TabStop = False
+            TabOrder = 18
+          end
+        end
+        object grpTotaisIBSCBS: TGroupBox
+          Left = 0
+          Top = 1000
+          Width = 1000
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'Totais de IBS e CBS'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 4
+          TabOrder = 1
+          object lblTotVBCIBSCBS: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'Base do IBS/CBS'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speTotVBCIBSCBS: TFloatSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            DecimalPlaces = 2
+            MaxValue = 999999999999
+            MinValue = -999999999999
+            ReadOnly = True
+            TabStop = False
+            TabOrder = 0
+          end
+          object lblTotVIBS: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'IBS'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speTotVIBS: TFloatSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            DecimalPlaces = 2
+            MaxValue = 999999999999
+            MinValue = -999999999999
+            ReadOnly = True
+            TabStop = False
+            TabOrder = 1
+          end
+          object lblTotVIBSUF: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'IBS estadual'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speTotVIBSUF: TFloatSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            DecimalPlaces = 2
+            MaxValue = 999999999999
+            MinValue = -999999999999
+            ReadOnly = True
+            TabStop = False
+            TabOrder = 2
+          end
+          object lblTotVIBSMun: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'IBS municipal'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speTotVIBSMun: TFloatSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            DecimalPlaces = 2
+            MaxValue = 999999999999
+            MinValue = -999999999999
+            ReadOnly = True
+            TabStop = False
+            TabOrder = 3
+          end
+          object lblTotVCBS: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 170
+            Caption = 'CBS'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speTotVCBS: TFloatSpinEdit
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 260
+            Constraints.MinWidth = 260
+            DecimalPlaces = 2
+            MaxValue = 999999999999
+            MinValue = -999999999999
+            ReadOnly = True
+            TabStop = False
+            TabOrder = 4
+          end
+        end
+      end
+    end
+    object tabValidacao: TTabSheet
+      Caption = 'Validação'
+      object grpValidacao: TGroupBox
+        Left = 0
+        Top = 0
+        Width = 1000
+        Align = alClient
+        BorderSpacing.Around = 6
+        Caption = 'Resultado da última validação'
+        TabOrder = 0
+        object mmoValidacao: TMemo
+          Left = 6
+          Top = 6
+          Width = 980
+          Align = alClient
+          BorderSpacing.Around = 6
+          ScrollBars = ssAutoVertical
+          TabOrder = 0
+          ReadOnly = True
+        end
+      end
+    end
+  end
+  object dlgAbrirXML: TOpenDialog
+    DefaultExt = '.xml'
+    Filter = 'XML de NF-e/NFC-e (*.xml)|*.xml|Todos os arquivos|*'
+    Options = [ofFileMustExist, ofEnableSizing, ofViewDetail]
+    Left = 900
+    Top = 8
+  end
+  object dlgSalvarXML: TSaveDialog
+    DefaultExt = '.xml'
+    Filter = 'XML de NF-e/NFC-e (*.xml)|*.xml'
+    Options = [ofOverwritePrompt, ofEnableSizing, ofViewDetail]
+    Left = 960
+    Top = 8
+  end
+  object ACBrNFe1: TACBrNFe
+    Left = 1020
+    Top = 8
+  end
+end

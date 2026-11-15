@@ -37,7 +37,7 @@
 - `TDataSource`: dts
 - `TComboBox`: cbx
 - `TCheckBox`: chk
-- `TSpinEdit`: spe
+- `TSpinEdit`, `TFloatSpinEdit`: spe
 - `TDirectoryEdit`, `TFileNameEdit`: edt
 - `TPageControl`: pgc
 - `TTabSheet`: tab
@@ -48,6 +48,7 @@
 - `TRadioButton`: rbt
 - `TPopupMenu`: pop
 - `TMenuItem`: mni
+- `TOpenDialog`, `TSaveDialog`, `TSelectDirectoryDialog`: dlg
 - Form de relatório (Fortes Report): rel
 - `TRLReport`: rlr
 - `TRLBand`: rlb

@@ -24,6 +24,9 @@
         <PackageName Value="frce"/>
       </Item>
       <Item>
+        <PackageName Value="DateTimeCtrls"/>
+      </Item>
+      <Item>
         <PackageName Value="FCL"/>
       </Item>
       <Item>
@@ -57,6 +60,18 @@
       </Unit>
       <Unit>
         <Filename Value="tstfrmrelatorios.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="tstfrmconfig.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="tstemissaonfe.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="tstfrmemissaonfe.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
     </Units>

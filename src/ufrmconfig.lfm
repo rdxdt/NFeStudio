@@ -433,6 +433,355 @@ object frmConfig: TfrmConfig
         end
       end
     end
+    object tabEmitente: TTabSheet
+      Caption = 'Emitente'
+      object sbxEmitente: TScrollBox
+        Left = 0
+        Height = 500
+        Top = 0
+        Width = 700
+        HorzScrollBar.Page = 1
+        HorzScrollBar.Visible = False
+        VertScrollBar.Page = 1
+        Align = alClient
+        BorderStyle = bsNone
+        TabOrder = 0
+        object grpEmitenteIdentificacao: TGroupBox
+          Left = 0
+          Top = 0
+          Width = 690
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'Identificação'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 2
+          TabOrder = 0
+          object lblEmitCNPJCPF: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 150
+            Caption = 'CNPJ/CPF'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtEmitCNPJCPF: TEdit
+            Left = 0
+            Top = 10
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxLength = 18
+            Text = ''
+            TabOrder = 0
+          end
+          object lblEmitIE: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 150
+            Caption = 'Inscrição estadual'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtEmitIE: TEdit
+            Left = 0
+            Top = 10
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxLength = 14
+            Text = ''
+            TabOrder = 1
+          end
+          object lblEmitRazaoSocial: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 150
+            Caption = 'Razão social'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtEmitRazaoSocial: TEdit
+            Left = 0
+            Top = 10
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxLength = 60
+            Text = ''
+            TabOrder = 2
+          end
+          object lblEmitFantasia: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 150
+            Caption = 'Nome fantasia'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtEmitFantasia: TEdit
+            Left = 0
+            Top = 10
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxLength = 60
+            Text = ''
+            TabOrder = 3
+          end
+          object lblEmitCRT: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 150
+            Caption = 'Regime tributário (CRT)'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxEmitCRT: TComboBox
+            Left = 0
+            Top = 10
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            ItemHeight = 0
+            Items.Strings = (
+              '1 - Simples Nacional'
+              '2 - Simples Nacional - excesso de sublimite de receita bruta'
+              '3 - Regime Normal'
+              '4 - Simples Nacional - MEI'
+            )
+            Style = csDropDownList
+            TabOrder = 4
+          end
+          object lblEmitFone: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 150
+            Caption = 'Telefone'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtEmitFone: TEdit
+            Left = 0
+            Top = 10
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxLength = 14
+            Text = ''
+            TabOrder = 5
+          end
+        end
+        object grpEmitenteEndereco: TGroupBox
+          Left = 0
+          Top = 1000
+          Width = 690
+          Align = alTop
+          AutoSize = True
+          BorderSpacing.Around = 6
+          Caption = 'Endereço'
+          ChildSizing.LeftRightSpacing = 8
+          ChildSizing.TopBottomSpacing = 6
+          ChildSizing.HorizontalSpacing = 12
+          ChildSizing.VerticalSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 2
+          TabOrder = 1
+          object lblEmitCEP: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 150
+            Caption = 'CEP'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtEmitCEP: TEdit
+            Left = 0
+            Top = 10
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxLength = 9
+            Text = ''
+            TabOrder = 0
+          end
+          object lblEmitLogradouro: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 150
+            Caption = 'Logradouro'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtEmitLogradouro: TEdit
+            Left = 0
+            Top = 10
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxLength = 60
+            Text = ''
+            TabOrder = 1
+          end
+          object lblEmitNumero: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 150
+            Caption = 'Número'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtEmitNumero: TEdit
+            Left = 0
+            Top = 10
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxLength = 60
+            Text = ''
+            TabOrder = 2
+          end
+          object lblEmitComplemento: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 150
+            Caption = 'Complemento'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtEmitComplemento: TEdit
+            Left = 0
+            Top = 10
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxLength = 60
+            Text = ''
+            TabOrder = 3
+          end
+          object lblEmitBairro: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 150
+            Caption = 'Bairro'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtEmitBairro: TEdit
+            Left = 0
+            Top = 10
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxLength = 60
+            Text = ''
+            TabOrder = 4
+          end
+          object lblEmitCodMunicipio: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 150
+            Caption = 'Código do município (IBGE)'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object speEmitCodMunicipio: TSpinEdit
+            Left = 0
+            Top = 10
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxValue = 9999999
+            TabOrder = 5
+          end
+          object lblEmitMunicipio: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 150
+            Caption = 'Município'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object edtEmitMunicipio: TEdit
+            Left = 0
+            Top = 10
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            MaxLength = 60
+            Text = ''
+            TabOrder = 6
+          end
+          object lblEmitUF: TLabel
+            Left = 0
+            Top = 0
+            Height = 28
+            Width = 150
+            Caption = 'UF'
+            Layout = tlCenter
+            ParentColor = False
+          end
+          object cbxEmitUF: TComboBox
+            Left = 0
+            Top = 10
+            Height = 28
+            Width = 320
+            Constraints.MinWidth = 320
+            ItemHeight = 0
+            Items.Strings = (
+              'AC'
+              'AL'
+              'AP'
+              'AM'
+              'BA'
+              'CE'
+              'DF'
+              'ES'
+              'GO'
+              'MA'
+              'MT'
+              'MS'
+              'MG'
+              'PA'
+              'PB'
+              'PR'
+              'PE'
+              'PI'
+              'RJ'
+              'RN'
+              'RS'
+              'RO'
+              'RR'
+              'SC'
+              'SP'
+              'SE'
+              'TO'
+            )
+            Style = csDropDownList
+            TabOrder = 7
+          end
+        end
+      end
+    end
     object tabWebServices: TTabSheet
       Caption = 'WebServices'
       object sbxWebServices: TScrollBox

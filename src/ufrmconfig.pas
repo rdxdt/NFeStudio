@@ -51,6 +51,38 @@ type
     chkValidarDigest: TCheckBox;
     chkAtualizarXMLCancelado: TCheckBox;
     chkCamposFatObrigatorios: TCheckBox;
+    tabEmitente: TTabSheet;
+    sbxEmitente: TScrollBox;
+    grpEmitenteIdentificacao: TGroupBox;
+    lblEmitCNPJCPF: TLabel;
+    edtEmitCNPJCPF: TEdit;
+    lblEmitIE: TLabel;
+    edtEmitIE: TEdit;
+    lblEmitRazaoSocial: TLabel;
+    edtEmitRazaoSocial: TEdit;
+    lblEmitFantasia: TLabel;
+    edtEmitFantasia: TEdit;
+    lblEmitCRT: TLabel;
+    cbxEmitCRT: TComboBox;
+    lblEmitFone: TLabel;
+    edtEmitFone: TEdit;
+    grpEmitenteEndereco: TGroupBox;
+    lblEmitCEP: TLabel;
+    edtEmitCEP: TEdit;
+    lblEmitLogradouro: TLabel;
+    edtEmitLogradouro: TEdit;
+    lblEmitNumero: TLabel;
+    edtEmitNumero: TEdit;
+    lblEmitComplemento: TLabel;
+    edtEmitComplemento: TEdit;
+    lblEmitBairro: TLabel;
+    edtEmitBairro: TEdit;
+    lblEmitCodMunicipio: TLabel;
+    speEmitCodMunicipio: TSpinEdit;
+    lblEmitMunicipio: TLabel;
+    edtEmitMunicipio: TEdit;
+    lblEmitUF: TLabel;
+    cbxEmitUF: TComboBox;
     tabWebServices: TTabSheet;
     sbxWebServices: TScrollBox;
     grpWebServices: TGroupBox;
@@ -241,6 +273,9 @@ type
     procedure SalvarDANFE(Ini: TCustomIniFile);
     procedure CarregarIni;
     procedure SalvarIni;
+  protected
+    procedure CarregarEmitente(Ini: TCustomIniFile);
+    procedure SalvarEmitente(Ini: TCustomIniFile);
   public
     class function Executar(const ArquivoIni: string): Boolean;
   end;
@@ -251,7 +286,8 @@ var
 implementation
 
 uses
-  StrUtils, blcksock, ACBrDFeSSL, ACBrUtil.DateTime, pcnConversao, pcnConversaoNFe;
+  StrUtils, blcksock, ACBrDFeSSL, ACBrUtil.DateTime, ACBrUtil.Strings, ACBrValidador, pcnConversao,
+  pcnConversaoNFe;
 
 {$R *.lfm}
 
@@ -259,6 +295,7 @@ const
   // Mesmas seções/chaves gravadas pelo ufrmmain
   SECAO_DANFE = 'DANFE';
   SECAO_POSPRINTER = 'PosPrinter';
+  SECAO_EMITENTE = 'Emitente';
   // Ordem igual aos itens de cbxDANFE
   DANFE_CODIGOS: array[0..3] of string = ('RL', 'ESCPOS', 'FORTES', 'FORTESA4');
 
@@ -297,6 +334,7 @@ begin
     CarregarArquivos;
     CarregarPosPrinter(Ini);
     CarregarDANFE(Ini);
+    CarregarEmitente(Ini);
   finally
     Ini.Free;
   end;
@@ -315,6 +353,7 @@ begin
     ACBrNFe1.Configuracoes.GravarIni(Ini);
     SalvarPosPrinter(Ini);
     SalvarDANFE(Ini);
+    SalvarEmitente(Ini);
   finally
     Ini.Free;
   end;
@@ -574,6 +613,58 @@ end;
 procedure TfrmConfig.SalvarDANFE(Ini: TCustomIniFile);
 begin
   Ini.WriteString(SECAO_DANFE, 'Componente', DANFE_CODIGOS[cbxDANFE.ItemIndex]);
+end;
+
+procedure TfrmConfig.CarregarEmitente(Ini: TCustomIniFile);
+var
+  CRT: integer;
+  CEP: string;
+begin
+  edtEmitCNPJCPF.Text := FormatarCNPJouCPF(Ini.ReadString(SECAO_EMITENTE, 'CNPJCPF', ''));
+  edtEmitIE.Text := Ini.ReadString(SECAO_EMITENTE, 'IE', '');
+  edtEmitRazaoSocial.Text := Ini.ReadString(SECAO_EMITENTE, 'RazaoSocial', '');
+  edtEmitFantasia.Text := Ini.ReadString(SECAO_EMITENTE, 'Fantasia', '');
+  // CRT gravado com o código da NF-e (1 a 4); itens de cbxEmitCRT na mesma ordem
+  CRT := Ini.ReadInteger(SECAO_EMITENTE, 'CRT', 0);
+  if (CRT >= 1) and (CRT <= cbxEmitCRT.Items.Count) then
+    cbxEmitCRT.ItemIndex := CRT - 1
+  else
+    cbxEmitCRT.ItemIndex := -1;
+  edtEmitFone.Text := Ini.ReadString(SECAO_EMITENTE, 'Fone', '');
+  // FormatarCEP('') devolveria '00000-000'
+  CEP := Ini.ReadString(SECAO_EMITENTE, 'CEP', '');
+  if CEP <> '' then
+    CEP := FormatarCEP(CEP);
+  edtEmitCEP.Text := CEP;
+  edtEmitLogradouro.Text := Ini.ReadString(SECAO_EMITENTE, 'Logradouro', '');
+  edtEmitNumero.Text := Ini.ReadString(SECAO_EMITENTE, 'Numero', '');
+  edtEmitComplemento.Text := Ini.ReadString(SECAO_EMITENTE, 'Complemento', '');
+  edtEmitBairro.Text := Ini.ReadString(SECAO_EMITENTE, 'Bairro', '');
+  speEmitCodMunicipio.Value := Ini.ReadInteger(SECAO_EMITENTE, 'CodMunicipio', 0);
+  edtEmitMunicipio.Text := Ini.ReadString(SECAO_EMITENTE, 'Municipio', '');
+  cbxEmitUF.ItemIndex := cbxEmitUF.Items.IndexOf(Ini.ReadString(SECAO_EMITENTE, 'UF', ''));
+end;
+
+procedure TfrmConfig.SalvarEmitente(Ini: TCustomIniFile);
+begin
+  // gravados sem máscara, como no XML; OnlyAlphaNum preserva o CNPJ alfanumérico
+  Ini.WriteString(SECAO_EMITENTE, 'CNPJCPF', UpperCase(OnlyAlphaNum(edtEmitCNPJCPF.Text)));
+  Ini.WriteString(SECAO_EMITENTE, 'IE', Trim(edtEmitIE.Text));
+  Ini.WriteString(SECAO_EMITENTE, 'RazaoSocial', Trim(edtEmitRazaoSocial.Text));
+  Ini.WriteString(SECAO_EMITENTE, 'Fantasia', Trim(edtEmitFantasia.Text));
+  if cbxEmitCRT.ItemIndex >= 0 then
+    Ini.WriteInteger(SECAO_EMITENTE, 'CRT', cbxEmitCRT.ItemIndex + 1)
+  else
+    Ini.WriteString(SECAO_EMITENTE, 'CRT', '');
+  Ini.WriteString(SECAO_EMITENTE, 'Fone', OnlyNumber(edtEmitFone.Text));
+  Ini.WriteString(SECAO_EMITENTE, 'CEP', OnlyNumber(edtEmitCEP.Text));
+  Ini.WriteString(SECAO_EMITENTE, 'Logradouro', Trim(edtEmitLogradouro.Text));
+  Ini.WriteString(SECAO_EMITENTE, 'Numero', Trim(edtEmitNumero.Text));
+  Ini.WriteString(SECAO_EMITENTE, 'Complemento', Trim(edtEmitComplemento.Text));
+  Ini.WriteString(SECAO_EMITENTE, 'Bairro', Trim(edtEmitBairro.Text));
+  Ini.WriteInteger(SECAO_EMITENTE, 'CodMunicipio', speEmitCodMunicipio.Value);
+  Ini.WriteString(SECAO_EMITENTE, 'Municipio', Trim(edtEmitMunicipio.Text));
+  Ini.WriteString(SECAO_EMITENTE, 'UF', cbxEmitUF.Text);
 end;
 
 end.

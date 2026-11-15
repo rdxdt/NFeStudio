@@ -33,6 +33,7 @@ type
     btnMenu: TSpeedButton;
     dlgSelDir: TSelectDirectoryDialog;
     btnImportarXML: TSpeedButton;
+    btnEmissao: TSpeedButton;
     btnRelatorios: TSpeedButton;
     btnConfig: TSpeedButton;
     StatusBar1: TStatusBar;
@@ -233,6 +234,7 @@ type
     procedure btnFiltrarClick(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
     procedure btnImportarXMLClick(Sender: TObject);
+    procedure btnEmissaoClick(Sender: TObject);
     procedure btnMenuClick(Sender: TObject);
     procedure btnRelatoriosClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -266,7 +268,7 @@ uses
   {$IFDEF MSWINDOWS}
   WinDirs,
   {$ENDIF}
-  udmdnfe, ufrmconfig, ufrmnfedetalhes, ufrmrelatorios;
+  udmdnfe, ufrmconfig, ufrmnfedetalhes, ufrmrelatorios, ufrmemissaonfe;
 
 {$R *.lfm}
 
@@ -317,6 +319,12 @@ begin
   // mesmo com erro, parte das notas pode ter sido gravada
   AjustarPeriodoFiltro;
   pnlMenu.Visible := False;
+end;
+
+procedure TfrmMain.btnEmissaoClick(Sender: TObject);
+begin
+  pnlMenu.Visible := False;
+  TfrmEmissaoNFe.Exibir(ArquivoIni);
 end;
 
 procedure TfrmMain.btnFiltrarClick(Sender: TObject);

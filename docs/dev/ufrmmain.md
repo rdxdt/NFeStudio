@@ -64,6 +64,12 @@ procedure ImprimirDANFE(const Chave: string);
 
 `ACBrNFeDANFeESCPOS1.PosPrinter` aponta para `ACBrPosPrinter1`.
 
+### Emissão de NF-e/NFC-e (`btnEmissaoClick`)
+
+Esconde o `pnlMenu` e abre o `TfrmEmissaoNFe` com `TfrmEmissaoNFe.Exibir(ArquivoIni)` (ver
+[ufrmemissaonfe](ufrmemissaonfe.md)). O form usa o mesmo INI, então emitente, certificado e ambiente vêm da
+configuração.
+
 ### Relatórios (`btnRelatoriosClick`)
 
 Esconde o `pnlMenu` e abre o form de opções de relatório com `TfrmRelatorios.Exibir`
@@ -114,6 +120,7 @@ Se o arquivo não existir, ele é criado com os paths padrão e os valores atuai
 | `DFe`, `NFe`, `Proxy` | Configurações do `ACBrNFe1`, lidas/gravadas por `Configuracoes.LerIni`/`GravarIni` do ACBr |
 | `PosPrinter` | Configurações do `ACBrPosPrinter1` (enums gravados como inteiro)          |
 | `DANFE`      | Chave `Componente`: componente de DANFE atribuído ao `ACBrNFe1`           |
+| `Emitente`   | Dados do emissor, editados no `frmConfig` (ver [ufrmconfig](ufrmconfig.md)); ainda não lidos pelo `frmMain` |
 
 Valores aceitos em `[DANFE] Componente` (valor inválido usa `RL`):
 
